@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WISP Requirements for Tax Preparers (2026): What You Need and Why | Cyber Heists</title>
+<meta name="description" content="Every paid tax preparer needs a written information security plan (WISP). What the law requires, what goes in one, and the TaxSlayer case that shows what happens without one.">
+<link rel="canonical" href="https://thecyberheists.com/wisp-requirements-tax-preparers.html">
+<meta property="og:title" content="WISP requirements for tax preparers">
+<meta property="og:description" content="What the FTC and IRS require, what goes in a WISP, and the case that shows why it matters.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/wisp-requirements-tax-preparers.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"WISP requirements for tax preparers: what you need and why","datePublished":"2026-09-26","dateModified":"2026-09-26","author":{"@type":"Organization","name":"Cyber Heists"},"publisher":{"@type":"Organization","name":"Cyber Heists","logo":{"@type":"ImageObject","url":"https://thecyberheists.com/avatar.png"}},"image":"https://thecyberheists.com/og.jpg","mainEntityOfPage":"https://thecyberheists.com/wisp-requirements-tax-preparers.html"}
+</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Tax professionals</div>
+  <h1>WISP requirements for tax preparers: what you need and why</h1>
+  <div class="meta">Updated September 26, 2026 · 7 min read</div>
+
+  <p class="lead">If you prepare tax returns for pay, federal law says you must have a written information security plan, usually called a WISP. It does not matter whether you are a solo preparer working from home or a 20-person firm. Here is what the requirement is, what goes in the plan, and the case that shows what happens when there isn't one.</p>
+
+  <h2>Who has to have a WISP?</h2>
+  <p>The requirement comes from the Gramm-Leach-Bliley Act and the FTC Safeguards Rule. The Safeguards Rule treats tax preparation as a financial activity, so paid preparers must protect client data with a written information security program. There is no small-business exemption for having the plan; size only changes how detailed it needs to be.<sup>[1]</sup></p>
+  <p>The IRS reinforces this every year. The PTIN application and renewal form (Form W-12) asks preparers to confirm they know they are required to create and maintain a written information security plan.<sup>[2]</sup> So if you renew your PTIN, you have already told the IRS you know about the rule.</p>
+
+  <h2>The case: TaxSlayer</h2>
+  <div class="case">
+    <p>Between October and December 2015, attackers got into nearly 9,000 customer accounts at TaxSlayer, an online tax preparation service. They used passwords stolen from other websites and reused by customers, and TaxSlayer did not require strong passwords or extra verification to stop them. The attackers then used the stolen tax information to file fraudulent returns and collect refunds.<sup>[3]</sup></p>
+    <p>When the FTC charged TaxSlayer in 2017, one of its central findings was simple: the company had not developed a written comprehensive information security program until November 2015, and had not done a risk assessment to find threats like this one. The settlement put TaxSlayer under a 20-year order, with outside security assessments every two years for 10 years.<sup>[3][4]</sup></p>
+  </div>
+  <p><strong>The missing control:</strong> a written plan that forces someone to ask "how could someone get into client accounts?" and answer it with specific safeguards, such as multi-factor authentication and strong password rules. A WISP is not paperwork for its own sake. It is the document that makes you do the risk assessment before an attacker does it for you.</p>
+
+  <h2>What goes in a WISP</h2>
+  <p>The IRS publishes a free sample plan for small tax practices, Publication 5708, and its security guide, Publication 4557, explains the safeguards in more depth.<sup>[5]</sup> A complete WISP covers:</p>
+  <ol>
+    <li><strong>A responsible person.</strong> Name a Data Security Coordinator (the Safeguards Rule calls this the "Qualified Individual") who owns the plan.</li>
+    <li><strong>What data you hold and where.</strong> SSNs, bank details, prior returns: in which software, portals, cloud storage, email and paper files.</li>
+    <li><strong>A risk assessment.</strong> The realistic threats to that data: phishing, stolen passwords, lost laptops, ransomware, fake client requests, vendor compromise.</li>
+    <li><strong>Safeguards for each risk.</strong> Multi-factor authentication, encryption, access limited by job, automatic updates, secure disposal, and backups you have actually tested.</li>
+    <li><strong>Staff training.</strong> Everyone who touches client data, including seasonal staff, trained before they start and every year after.</li>
+    <li><strong>Vendor oversight.</strong> Which outside companies can reach your systems, and what your contracts require of them.</li>
+    <li><strong>An incident response plan.</strong> Who to call and in what order: your IRS Stakeholder Liaison, your state tax agency, your software provider, your insurer.</li>
+    <li><strong>A review schedule.</strong> At least once a year, and after any incident or major change.</li>
+  </ol>
+
+  <h2>The breach notification rule you may have missed</h2>
+  <p>Since May 13, 2024, the Safeguards Rule has also required covered businesses to notify the FTC within 30 days of discovering a breach involving unencrypted information of at least 500 people.<sup>[6]</sup> Your WISP's incident response section is where that step belongs, next to the IRS notification steps.<sup>[7]</sup></p>
+
+  <h2>How to get one done this week</h2>
+  <ul>
+    <li><strong>Start from Publication 5708.</strong> It is free and built for small practices. Fill in every section with how your office really works, not how you wish it worked.</li>
+    <li><strong>Turn on multi-factor authentication first.</strong> Email, tax software, client portal and remote access. It is the control that would have stopped the TaxSlayer attack.</li>
+    <li><strong>Write down who you call.</strong> Put names and phone numbers in the plan now, not during a breach.</li>
+    <li><strong>Have staff sign it.</strong> A signed acknowledgment shows the plan was communicated, not just written.</li>
+    <li><strong>Put the review on your calendar.</strong> Pick a date after filing season and repeat it every year.</li>
+  </ul>
+
+  <div class="kit">
+    <div class="mono">Tools that help</div>
+    <h3>Close the gaps around your WISP</h3>
+    <p>Start with the free Heist Control Checklist. If you want ready-made policies for access, passwords, payment verification, vendors and backups to sit alongside your plan, the Policy Pack has five editable Word templates. For a deeper look at risks from inside your own team, there is the Insider Threat Kit.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <p class="note">This article is general information, not legal advice. For questions about your specific obligations, talk to a qualified attorney.</p>
+
+  <div class="sources">
+    <div class="mono" style="margin-bottom:10px">Sources</div>
+    <ol>
+      <li><a href="https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know" target="_blank" rel="noopener">FTC: FTC Safeguards Rule, what your business needs to know</a></li>
+      <li><a href="https://rebootmsp.com/guides/w12-line-11-wisp" target="_blank" rel="noopener">Reboot: PTIN W-12 line 11, the WISP attestation explained</a></li>
+      <li><a href="https://search.ftc.gov/news-events/news/press-releases/2017/08/operator-online-tax-preparation-service-agrees-settle-ftc-charges-it-violated-financial-privacy" target="_blank" rel="noopener">FTC press release: operator of online tax preparation service agrees to settle charges (Aug 2017)</a></li>
+      <li><a href="https://www.ftc.gov/business-guidance/blog/2017/08/4-gramm-leach-bliley-tips-take-ftcs-taxslayer-case" target="_blank" rel="noopener">FTC blog: 4 Gramm-Leach-Bliley tips to take from the TaxSlayer case</a></li>
+      <li><a href="https://www.irs.gov/pub/irs-pdf/p4557.pdf" target="_blank" rel="noopener">IRS Publication 4557: Safeguarding Taxpayer Data</a></li>
+      <li><a href="https://www.ftc.gov/business-guidance/blog/2024/05/safeguards-rule-notification-requirement-now-effect" target="_blank" rel="noopener">FTC blog: Safeguards Rule notification requirement now in effect (May 2024)</a></li>
+      <li><a href="https://www.irs.gov/newsroom/tax-professionals-must-act-fast-after-discovering-a-data-breach" target="_blank" rel="noopener">IRS: tax professionals must act fast after discovering a data breach</a></li>
+    </ol>
+  </div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>
