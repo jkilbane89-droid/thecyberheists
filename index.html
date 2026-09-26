@@ -75,6 +75,9 @@ a.card:hover{border-color:var(--amber);transform:translateY(-2px)}
 .card .miss span{color:var(--text)}
 .card.locked{opacity:.62}
 /* checklist */
+.kit{margin-top:28px;padding:20px 22px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:24px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:15px;margin-bottom:14px}
 .check{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:center}
 .qs{list-style:none;display:grid;gap:10px}
 .qs li{padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:16px}
@@ -144,7 +147,7 @@ a.card:hover::after{opacity:1}
 <body>
 <nav><div class="wrap">
   <a class="brand" href="#top"><img src="avatar.png" alt="">CYBER HEISTS</a>
-  <div class="navlinks"><a href="#cases">Cases</a><a href="#checklist">Checklist</a><a class="hide-sm" href="#method">Method</a></div>
+  <div class="navlinks"><a href="#cases">Cases</a><a href="#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Kit</a><a class="hide-sm" href="#method">Method</a></div>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
@@ -207,6 +210,12 @@ a.card:hover::after{opacity:1}
     <h2>The Heist Control Checklist</h2>
     <p class="lede">The most dangerous person in any system is the one trusted to protect it. Twelve plain-English questions that check whether anyone on your team, or a vendor you're about to trust, could quietly do what a lottery's own security director did.</p>
     <a class="btn primary" href="heist-control-checklist.pdf" download>Download the checklist (PDF)</a>
+    <div class="kit">
+      <div class="mono">Go deeper · $29</div>
+      <h3>Insider Threat Self-Assessment Kit</h3>
+      <p>30 questions tied to real cases, an auto-scoring spreadsheet, 5 editable policy templates and a 30-day fix plan.</p>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Get the kit</a>
+    </div>
   </div>
   <ul class="qs">
     <li><b>01</b>Can one person write a change, deploy it, and sign off that it's safe?</li>
