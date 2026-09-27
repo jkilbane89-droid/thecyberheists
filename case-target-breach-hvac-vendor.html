@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Target Breach Happened: The HVAC Vendor Login | Cyber Heists</title>
+<meta name="description" content="How the 2013 Target breach happened: an HVAC contractor&#x27;s stolen login, ignored malware alerts, 40M cards, and the one control that would have stopped it.">
+<link rel="canonical" href="https://thecyberheists.com/case-target-breach-hvac-vendor.html">
+<meta property="og:title" content="How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered">
+<meta property="og:description" content="How the 2013 Target breach happened: an HVAC contractor&#x27;s stolen login, ignored malware alerts, 40M cards, and the one control that would have stopped it.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-target-breach-hvac-vendor.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Target breach happened: a vendor's billing login and the alarms nobody answered", "datePublished": "2026-09-26", "dateModified": "2026-09-26", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-target-breach-hvac-vendor.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
+@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · TARGET 2013</div>
+  <h1>How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</h1>
+  <div class="meta">Published 2026-09-26 · 4 min read</div>
+
+<p class="lead">The biggest retail breach of 2013 did not start at a cash register. It started with a login that belonged to a small heating and refrigeration contractor, and it ended with about 40 million payment cards and up to 70 million customer records in criminal hands.<sup>[1]</sup><sup>[4]</sup> This case file covers how thieves got from a vendor's billing login to the checkout lanes, the alarms that went off, what it cost, and the one missing control.</p>
+
+<h2>What happened</h2>
+<div class="case">
+<p>In the fall of 2013, a Pennsylvania refrigeration and HVAC contractor, Fazio Mechanical Services had an online connection to Target for billing, contracts and project management.<sup>[2]</sup> According to a later analysis by Senate Commerce Committee staff, the contractor's computers were hit by malware delivered by email roughly two months before the break-in, and that is believed to be how its Target login was stolen.<sup>[1]</sup></p>
+<p>In mid-November 2013, the intruders used those credentials to get inside Target's network. Over the following two weeks they tested card-stealing malware on a small number of store checkout terminals, and by November 30 most of the chain's point-of-sale systems were infected.<sup>[1]</sup><sup>[2]</sup> Cards swiped in U.S. stores between November 27 and December 15, the heart of the holiday shopping season, were exposed.<sup>[3]</sup></p>
+<p>Target did not find the breach on its own. The Department of Justice notified the company on December 12. A security journalist broke the story on December 18, and Target confirmed it the next day, putting the number at about 40 million credit and debit card accounts.<sup>[1]</sup><sup>[3]</sup> In January 2014 the company added that names, mailing addresses, phone numbers and email addresses for up to 70 million people had also been taken. It said this was part of the same incident, not a new one.<sup>[4]</sup></p>
+</div>
+
+<h2>How they got in</h2>
+<p>The contractor was not running Target's air conditioning remotely. It said publicly that its connection was used only for electronic billing, contract submission and project management.<sup>[2]</sup> That is exactly the point. A low-privilege supplier login, meant for sending invoices, turned out to be a door into the same network that eventually reached the registers.</p>
+<p>The Senate staff report walks through the attack in stages and finds a weak spot at almost every one. Two-factor authentication (a second proof of identity, such as a code on a phone) was rarely required for lower-level contractors. Once inside, the attackers apparently benefited from a default account password that had never been changed. Most importantly, the network was not divided tightly enough to stop someone who came in through the vendor side from moving to the systems that handle payment cards.<sup>[1]</sup></p>
+<p>At the checkout lanes, the malware grabbed card numbers from the terminals' memory in the brief moment before they were encrypted and sent onward. The stolen data was gathered inside Target's network, then shipped out to servers in several countries, including Russia, during ordinary business hours when heavy traffic helped it blend in. Staff put the haul at about 11 GB.<sup>[1]</sup></p>
+
+<h2>How it was caught and what it cost</h2>
+<p>The painful part of this story is that Target's defenses did notice. The company had invested in malware-detection tools, and according to the Senate staff analysis, they raised automated alerts when the data-theft malware was installed in early December, including details of where the data was being sent. Antivirus software had also flagged suspicious activity on November 28. The report found that those warnings were not acted on in time, and that the theft continued until outside investigators called.<sup>[1]</sup> Target had also been certified as meeting the payment card industry's security standard in September 2013, a reminder that passing an audit is not the same as being watched.<sup>[1]</sup></p>
+<p>The bills arrived for years. In 2015 Target agreed to a $10 million settlement with consumers, a $67 million settlement with Visa and about $39 million with banks and credit unions that had to reissue cards, bringing publicly reported settlements to roughly $116 million by the end of that year.<sup>[5]</sup> In May 2017 it agreed to pay $18.5 million to 47 states and the District of Columbia. That deal also required Target to hire an executive to run its security program, bring in independent assessors, and keep its cardholder data environment segmented from the rest of its network.<sup>[6]</sup></p>
+
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> vendor access segmented from payment systems.</p>
+<p>A supplier who needs to submit invoices should land in a small, walled-off area that can reach the billing portal and nothing else. If the contractor's stolen login had been limited to that corner, the attackers would have been standing in a closet with a filing cabinet, not in a hallway that led to every cash register in the country. The Senate staff named weak segmentation as the failure that let the intrusion cross from vendor access to payment systems, and the state attorneys general later wrote segmentation into Target's settlement.<sup>[1]</sup><sup>[6]</sup> It would not have stopped the phishing, but it would have made the stolen password nearly worthless.</p>
+
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>List every outside login.</strong> Write down every vendor, contractor, IT provider and software company that can sign in to your systems, and what each one can actually reach. Remove any account nobody can explain.</li>
+<li><strong>Put payments on their own network.</strong> Ask your IT provider or card processor to keep card terminals and point-of-sale gear on a separate network (or at least a separate Wi-Fi and VLAN, a virtual network divider) from office PCs, guest Wi-Fi and anything a vendor touches.</li>
+<li><strong>Require a second factor for remote access.</strong> Turn on two-factor authentication for every remote or vendor login, including the "small" ones for billing and scheduling.</li>
+<li><strong>Change default passwords.</strong> Check routers, cameras, card terminals and management software for factory or default passwords and replace them.</li>
+<li><strong>Make sure alerts reach a person.</strong> Decide who reads security warnings from your antivirus, firewall or managed IT provider, how fast they must respond, and who they call. An alert that nobody reads is just a log file.</li>
+</ul>
+
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-09-26" data-v="VzE_OF8NRmQ"><div class="soon">Episode drops 2026-09-26</div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
+
+  <div class="sources">
+    <div class="mono" style="margin-bottom:10px">Sources</div>
+    <ol><li><a href="https://www.commerce.senate.gov/wp-content/uploads/media/doc/2014%200325%20Target%20Kill%20Chain%20Analysis.pdf" target="_blank" rel="noopener">U.S. Senate Committee on Commerce, Science, and Transportation: A &quot;Kill Chain&quot; Analysis of the 2013 Target Data Breach (Majority Staff Report, March 26, 2014)</a></li><li><a href="https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/" target="_blank" rel="noopener">Krebs on Security: Target Hackers Broke in Via HVAC Company</a></li><li><a href="https://corporate.target.com/news-features/article/2013/12/target-confirms-unauthorized-access-to-payment-car" target="_blank" rel="noopener">Target: Target Confirms Unauthorized Access to Payment Card Data in U.S. Stores</a></li><li><a href="https://corporate.target.com/news-features/article/2014/01/an-update-on-our-data-breach-and-financial-perform" target="_blank" rel="noopener">Target: An Update on Our Data Breach and Financial Performance</a></li><li><a href="https://money.cnn.com/2015/12/02/news/companies/target-data-breach-settlement/index.html" target="_blank" rel="noopener">CNN Money: Target settles for $39 million over data breach</a></li><li><a href="https://ag.ny.gov/press-release/2017/ag-schneiderman-announces-185-million-multi-state-settlement-target-corporation" target="_blank" rel="noopener">New York State Attorney General: A.G. Schneiderman Announces $18.5 Million Multi-State Settlement With Target Corporation Over 2013 Data Breach</a></li></ol>
+  </div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+</script>
+</body>
+</html>

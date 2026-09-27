@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What caused the Equifax breach? A missed patch and a blind spot | Cyber Heists</title>
+<meta name="description" content="The 2017 Equifax breach exposed about 147 million people through an unpatched flaw and a monitoring tool blind for months. How it happened and how to avoid it.">
+<link rel="canonical" href="https://thecyberheists.com/case-equifax-breach-expired-certificate.html">
+<meta property="og:title" content="What caused the Equifax breach? An unpatched website and an expired certificate">
+<meta property="og:description" content="The 2017 Equifax breach exposed about 147 million people through an unpatched flaw and a monitoring tool blind for months. How it happened and how to avoid it.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-equifax-breach-expired-certificate.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What caused the Equifax breach? An unpatched website and an expired certificate", "datePublished": "2026-09-26", "dateModified": "2026-09-26", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-equifax-breach-expired-certificate.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
+@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · EQUIFAX 2017</div>
+  <h1>What caused the Equifax breach? An unpatched website and an expired certificate</h1>
+  <div class="meta">Published 2026-09-26 · 4 min read</div>
+
+<p class="lead">For at least 10 months before anyone noticed, a security device at Equifax that was supposed to inspect encrypted web traffic had been effectively blind, because a digital certificate it relied on had expired.<sup>[1]</sup> This case file walks through how an unpatched flaw in a consumer dispute website led to the exposure of personal data on about 147 million people, how it was finally spotted, what it cost, and the two plain habits that would have stopped it.<sup>[4]</sup></p>
+
+<h2>What happened</h2>
+<div class="case">
+<p>On March 7, 2017, a serious flaw was publicly disclosed in Apache Struts, a widely used building block for web applications, and a fix was released.<sup>[2]</sup> The government's computer emergency team flagged it to Equifax on March 8, and on March 9 Equifax's security staff emailed an internal notice telling system owners to apply the update within 48 hours.<sup>[2]</sup> One of the systems running the vulnerable software was Equifax's online dispute portal, the site consumers use to challenge errors on their credit reports. It was never patched.<sup>[5]</sup></p>
+<p>A scan run on March 15 was supposed to find any remaining vulnerable systems. It found none.<sup>[5]</sup> Meanwhile, outsiders had already begun probing Equifax systems for the flaw as early as March 10.<sup>[1]</sup> On May 13, 2017, attackers got into the dispute portal and stayed for about 76 days.<sup>[2]</sup></p>
+<p>During that stretch they found stored usernames and passwords, used them to reach dozens of databases that had nothing to do with disputes, and ran roughly 9,000 queries.<sup>[1]</sup><sup>[2]</sup> On July 29, Equifax renewed an expired certificate on its traffic-inspection equipment. With the device able to see again, staff immediately noticed suspicious traffic tied to the dispute portal. They blocked it that day and took the portal offline on July 30.<sup>[2]</sup><sup>[5]</sup> The public learned about the breach on September 7, 2017.<sup>[5]</sup></p>
+</div>
+
+<h2>How they got in</h2>
+<p>The front door was the known Struts flaw. Because the dispute portal was still running the old version months after the fix came out, the attackers could send it specially crafted requests that made the server run commands on their behalf.<sup>[3]</sup> That gave them a foothold inside Equifax's network.</p>
+<p>Three weaknesses turned that foothold into a disaster. First, the network was not divided into walled-off sections, so a break-in at one public website could reach 48 unrelated databases.<sup>[2]</sup> Second, credentials were stored unencrypted where the intruders could read them, which let them log in to more systems.<sup>[1]</sup> Third, nothing limited how many queries could be run, so thousands of requests pulling out personal data went unchallenged.<sup>[1]</sup></p>
+<p>According to the Justice Department, the intruders also covered their tracks: they routed traffic through about 34 servers in nearly 20 countries, used encrypted channels, and deleted log files.<sup>[3]</sup> Encrypted traffic is exactly what the inspection device was meant to examine, and with its certificate expired, it was not examining anything. A congressional investigation found Equifax had let more than 300 security certificates lapse, including 79 used to monitor business-critical domains.<sup>[2]</sup></p>
+
+<h2>How it was caught and what it cost</h2>
+<p>Nobody caught the intruders through a clever investigation. Detection came as a side effect of routine maintenance: renewing the lapsed certificate switched the inspection back on, and the suspicious traffic was visible almost at once.<sup>[2]</sup> Equifax then brought in an outside incident-response firm on August 2.<sup>[5]</sup></p>
+<p>Stolen data included names, Social Security numbers, birth dates, addresses and some driver's license numbers, plus about 209,000 credit card numbers.<sup>[1]</sup> Equifax's chief executive stepped down before testifying to Congress in October 2017 that the breach came from both human error and technology failures.<sup>[5]</sup> A House committee report later called the breach "entirely preventable."<sup>[2]</sup></p>
+<p>In July 2019, Equifax agreed to a settlement with the Federal Trade Commission, the Consumer Financial Protection Bureau 48 states, Washington, D.C., and Puerto Rico worth at least $575 million and up to $700 million, including up to $425 million for affected consumers, $175 million to the states and a $100 million civil penalty to the CFPB.<sup>[4]</sup></p>
+<p>In February 2020, the Justice Department charged four members of China's People's Liberation Army with computer fraud, economic espionage and wire fraud. DOJ attributed the intrusion to that unit of the Chinese military. The four were charged only; none has been tried.<sup>[3]</sup></p>
+
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> timely patching, backed by verified monitoring that proves your security tools are actually working.</p>
+<p>Equifax did send the patch notice. What it lacked was follow-through: no one confirmed the dispute portal had actually been updated, and the FTC said the company did not check that its own patch order was carried out.<sup>[4]</sup> A patch applied in March would have closed the door two months before the attackers walked through it.</p>
+<p>The second half matters just as much. A monitoring tool that silently stops working is worse than none, because it creates false confidence. A simple check that the inspection device was seeing traffic, or an alert when its certificate was about to expire, would likely have cut the 76 days down to hours or days.</p>
+
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Keep a list of what you run.</strong> Write down every website, server, laptop and piece of software your business depends on, and who is responsible for updating each one. You cannot patch what you forgot you had.</li>
+<li><strong>Turn on automatic updates, then verify.</strong> Enable auto-updates wherever you can, and once a month check that critical systems actually show the latest version instead of assuming they do.</li>
+<li><strong>Put expiration dates on a calendar.</strong> Security certificates, domain names and software licenses all expire. Add each renewal date to a shared calendar with a reminder 30 days ahead.</li>
+<li><strong>Test your alarms.</strong> Once a quarter, confirm your antivirus, firewall and backup tools are running and reporting. Ask your IT provider to show you a recent alert, not just tell you things are fine.</li>
+<li><strong>Do not store passwords in plain text.</strong> Use a password manager, and make sure logins for one system are not sitting in a file that another system can read.</li>
+</ul>
+
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-09-30" data-v="k8iji-DB-es"><div class="soon">Episode drops 2026-09-30</div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
+
+  <div class="sources">
+    <div class="mono" style="margin-bottom:10px">Sources</div>
+    <ol><li><a href="https://www.gao.gov/assets/gao-18-559.pdf" target="_blank" rel="noopener">U.S. Government Accountability Office: Data Protection: Actions Taken by Equifax and Federal Agencies in Response to the 2017 Breach (GAO-18-559)</a></li><li><a href="https://oversight.house.gov/wp-content/uploads/2018/12/Equifax-Report.pdf" target="_blank" rel="noopener">House Committee on Oversight and Government Reform: The Equifax Data Breach (Majority Staff Report, December 2018)</a></li><li><a href="https://www.justice.gov/opa/pr/chinese-military-personnel-charged-computer-fraud-economic-espionage-and-wire-fraud-hacking" target="_blank" rel="noopener">U.S. Department of Justice: Chinese Military Personnel Charged with Computer Fraud, Economic Espionage and Wire Fraud for Hacking into Credit Reporting Agency Equifax</a></li><li><a href="https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-pay-575-million-part-settlement-ftc-cfpb-states-related-2017-data-breach" target="_blank" rel="noopener">Federal Trade Commission: Equifax to Pay $575 Million as Part of Settlement with FTC, CFPB, and States Related to 2017 Data Breach</a></li><li><a href="https://docs.house.gov/meetings/IF/IF17/20171003/106455/HHRG-115-IF17-Wstate-SmithR-20171003.pdf" target="_blank" rel="noopener">U.S. House Energy and Commerce Committee: Prepared Testimony of Richard F. Smith, October 3, 2017</a></li></ol>
+  </div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+</script>
+</body>
+</html>

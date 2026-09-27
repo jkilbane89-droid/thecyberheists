@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Eddie Tipton rigged the Hot Lotto lottery drawing | Cyber Heists</title>
+<meta name="description" content="An insider rigged the Hot Lotto by writing its random number code. How the $16.5 million ticket unraveled, what it cost, and the control that was missing.">
+<link rel="canonical" href="https://thecyberheists.com/case-hot-lotto-lottery-rigging.html">
+<meta property="og:title" content="How the Hot Lotto was rigged: the security director who wrote the numbers">
+<meta property="og:description" content="An insider rigged the Hot Lotto by writing its random number code. How the $16.5 million ticket unraveled, what it cost, and the control that was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-hot-lotto-lottery-rigging.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Hot Lotto was rigged: the security director who wrote the numbers", "datePublished": "2026-09-26", "dateModified": "2026-09-26", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-hot-lotto-lottery-rigging.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
+@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · LOTTERY 2010</div>
+  <h1>How the Hot Lotto was rigged: the security director who wrote the numbers</h1>
+  <div class="meta">Published 2026-09-26 · 4 min read</div>
+
+<p class="lead">The man who rigged the Hot Lotto drawing was the lottery group's own information security director, and he wrote the software that picked the numbers.<sup>[1]</sup> This case file covers how he built a hidden exception into that software, how an unclaimed $16.5 million ticket gave him away, and the one control that would have stopped it.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Eddie Tipton worked in IT at the Multi-State Lottery Association, the nonprofit that runs shared games such as Powerball and Hot Lotto for member state lotteries, from 2003 until 2015.<sup>[6]</sup> He rose to information security director and helped write the code for the random number generator used in its drawings.<sup>[3]</sup><sup>[6]</sup> Starting in 2005, rigged drawings paid out in Colorado, Wisconsin, Kansas and Oklahoma, with prizes claimed by his brother, a friend in Texas and others who split the money with him.<sup>[4]</sup><sup>[5]</sup><sup>[6]</sup></p>
+<p>On December 23, 2010, a man in a hooded sweatshirt and ball cap bought Hot Lotto tickets at a QuikTrip in Des Moines. Six days later, on December 29, one of them matched every number in a drawing with an advertised jackpot of $16.5 million, or about $14.3 million as a lump sum.<sup>[1]</sup><sup>[2]</sup><sup>[3]</sup></p>
+<p>Nobody came forward for 11 months. In November 2011 a lawyer in Quebec called the Iowa Lottery with the ticket's serial number but could not explain how it was bought. On December 29, 2011, less than 2 hours before the one-year deadline, a law firm presented the ticket on behalf of a New York trust whose beneficiary was a company in Belize.<sup>[2]</sup><sup>[3]</sup> Iowa does not pay anonymous winners, and when lottery officials pressed for the names behind the trust, the claim was withdrawn in January 2012. The prize was never paid.<sup>[2]</sup><sup>[3]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>The drawing computer was supposed to be unpredictable. It took a reading from a Geiger counter measuring natural radiation in the room and used that as the starting point, or "seed," for picking numbers from nearly 11 million possible combinations.<sup>[3]</sup></p>
+<p>Tipton's version of the software carried an extra rule. On most days it behaved normally. But when a drawing fell on one of 3 specific dates a year, in late May, late November and late December, and on a Wednesday or Saturday evening, it quietly swapped the real seed for a predictable one.<sup>[3]</sup><sup>[5]</sup> That shrank the possible outcomes from millions to a small set that could be worked out in advance. The chosen dates tended to fall around holidays, when he was often away on vacation.<sup>[3]</sup></p>
+<p>Prosecutors said the altered code was loaded onto the drawing computers from a thumb drive and was designed to delete itself afterward.<sup>[1]</sup> In short, the person trusted to protect the machine was also the person who wrote its code and could change what ran on it.</p>
+<h2>How it was caught</h2>
+<p>The unclaimed ticket, not a security alert, broke the case. After the withdrawn claim, the Iowa Attorney General's office and the state Division of Criminal Investigation opened a criminal investigation.<sup>[2]</sup> In October 2014 investigators released the store surveillance clip to the public.<sup>[3]</sup></p>
+<p>The face was hard to see, but the voice was not. A Maine Lottery employee, an Iowa Lottery web developer and the association's own drawing manager each recognized the buyer's distinctive way of speaking as Tipton's.<sup>[3]</sup> He was arrested in January 2015 and convicted by a jury on July 20, 2015.<sup>[3]</sup> Investigators later found the altered code, and the other rigged jackpots came to light.<sup>[1]</sup><sup>[4]</sup></p>
+<h2>What it cost</h2>
+<p>In June 2017 Tipton pleaded guilty in Iowa to ongoing criminal conduct, telling the court he wrote software with code that let him predict winning numbers.<sup>[5]</sup> He also pleaded guilty in Wisconsin to theft by fraud and computer crime.<sup>[2]</sup><sup>[4]</sup> On August 22, 2017, he was sentenced to up to 25 years in prison.<sup>[7]</sup> His brother pleaded guilty to conspiracy and served 75 days in jail, and a Texas friend pleaded guilty to a computer crime.<sup>[2]</sup><sup>[6]</sup></p>
+<p>The rigged prizes paid out about $2.2 million, and the brothers agreed to pay $2.2 million in restitution to the Colorado, Kansas, Oklahoma and Wisconsin lotteries.<sup>[2]</sup><sup>[6]</sup> Tipton was paroled in July 2022 after about 5 years.<sup>[8]</sup> Hot Lotto itself was retired in October 2017.<sup>[3]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> segregation of duties. One person wrote the random number code, had the access to install and change it, and was in charge of the security meant to catch tampering, with no independent review in between.</p>
+<p>Splitting those jobs would have stopped this or cut it short. If a second person had to review every change, the odd rule would have raised an obvious question: why does a random number generator care what day it is? If someone else built and installed the approved version, and checked that the running software matched it, a quiet swap would have stood out. The scheme lasted from 2005 to 2011 because no one other than its author was looking inside.<sup>[4]</sup><sup>[5]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>List who can both make and approve changes.</strong> For payroll, vendor payments, bank details and key software, write down who can change them and who signs off. Any name that appears in both columns is a gap.</li>
+<li><strong>Require a second set of eyes.</strong> Set a simple rule that changes to money-moving systems or core software need approval from someone who did not make the change, even in a 5-person office.</li>
+<li><strong>Keep your tech person out of their own audit.</strong> If one employee or IT contractor runs your systems, have an outside party review access and logs once a year.</li>
+<li><strong>Watch results, not just logs.</strong> Look for patterns in outcomes, such as refunds, discounts or payouts that keep landing with the same people or on the same dates.</li>
+<li><strong>Make vacations real.</strong> Require people in sensitive roles to take time off while someone else covers their duties. Hidden schemes often surface when the person behind them is not there to manage them.</li>
+</ul>
+
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-09-25" data-v="fhuPn_xj8t8"><div class="soon">Episode drops 2026-09-25</div></div><div class="vid" data-d="2026-10-01" data-v="tD7SC1dokFU"><div class="soon">Episode drops 2026-10-01</div></div><div class="vid" data-d="2026-10-07" data-v="zfbh0w51PO8"><div class="soon">Episode drops 2026-10-07</div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
+
+  <div class="sources">
+    <div class="mono" style="margin-bottom:10px">Sources</div>
+    <ol><li><a href="https://news.sophos.com/en-us/2017/07/14/insider-who-scammed-14-3m-lottery-win-pleads-guilty/" target="_blank" rel="noopener">Sophos Naked Security: Insider who scammed $14.3m lottery win pleads guilty</a></li><li><a href="https://ialottery.com/Pages/Pressroom/OtherNews_Detail.aspx?otherNewsID=20" target="_blank" rel="noopener">Iowa Lottery: Statement following Eddie Tipton sentencing</a></li><li><a href="https://www.lotterypost.com/news/320169" target="_blank" rel="noopener">Lottery Post: The man who cracked the lottery (republished from The New York Times Magazine)</a></li><li><a href="https://cbi.colorado.gov/news-article/ag-coffman-announces-guilty-plea-of-man-who-stole-millions-in-multi-state-lottery" target="_blank" rel="noopener">Colorado Attorney General via Colorado Bureau of Investigation: AG Coffman announces guilty plea of man who stole millions in multi-state lottery fraud case</a></li><li><a href="https://www.cbsnews.com/colorado/news/mastermind-of-lottery-fraud-admits-he-rigged-jackpots" target="_blank" rel="noopener">CBS Colorado: Mastermind of lottery fraud admits he rigged jackpots</a></li><li><a href="https://www.nbcnews.com/news/us-news/former-lottery-executive-gets-25-years-rigging-numbers-four-states-n795056" target="_blank" rel="noopener">NBC News: Former lottery executive gets 25 years for rigging numbers in four states</a></li><li><a href="https://time.com/4911802/eddie-tipton-powerball-lottery-prison-sentence/" target="_blank" rel="noopener">Time: Eddie Tipton sentenced to 25 years for lotto scam</a></li><li><a href="https://www.axios.com/local/des-moines/2022/07/18/man-behind-largest-lottery-scam-us-history-paroled-iowa-prison" target="_blank" rel="noopener">Axios Des Moines: Man behind largest lottery scam in U.S. history paroled from Iowa prison</a></li></ol>
+  </div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+</script>
+</body>
+</html>
