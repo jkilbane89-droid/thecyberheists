@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ronin bridge hack 2022: full story of the $620 million theft | Cyber Heists</title>
+<meta name="description" content="How attackers used 5 of 9 signing keys to take about $620 million from the Ronin bridge in 2022, why no one noticed for 6 days, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/episode-ronin-2022.html">
+<meta property="og:title" content="The Ronin bridge heist, start to finish: a phished employee, 5 keys and 6 days unnoticed">
+<meta property="og:description" content="How attackers used 5 of 9 signing keys to take about $620 million from the Ronin bridge in 2022, why no one noticed for 6 days, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-ronin-2022.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Ronin bridge heist, start to finish: a phished employee, 5 keys and 6 days unnoticed", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-ronin-2022.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · RONIN BRIDGE 2022</div>
+  <h1>The Ronin bridge heist, start to finish: a phished employee, 5 keys and 6 days unnoticed</h1>
+  <div class="meta">Published 2026-09-29 · 7 min read · Episode 19 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-12-06" data-t="11:00" data-v="" data-title="Ronin bridge heist: a fake job offer, 5 keys, $620M gone for 6 days"><div class="soon"><b>Ronin bridge heist: a fake job offer, 5 keys, $620M gone for 6 days</b><span class="when">Premieres 2026-12-06</span></div></div></div></div>
+
+<p class="lead">About $620 million in cryptocurrency left the Ronin bridge on March 23, 2022, and the company that ran it did not find out until 6 days later.<sup>[1]</sup><sup>[2]</sup> This long read follows the heist from the game that built the bridge to the phished employee, the 5 keys, the missing alarm, the money trail to North Korea, and the one control that would have stopped it.</p>
+<h2>The game and the bridge behind it</h2>
+<div class="case">
+<p>Axie Infinity was a blockchain game made by the company Sky Mavis. To keep fees low and transactions fast, Sky Mavis ran its own blockchain for the game, called Ronin. Players who wanted to move money between Ronin and the main Ethereum network used a bridge: a vault on one side that held the real coins, and records on the other side of who owned them.<sup>[1]</sup></p>
+<p>Every withdrawal from that vault needed approval from validators, machines that each held a secret signing key. There were 9 validators, and any 5 of them agreeing was enough to approve a withdrawal.<sup>[1]</sup> On paper that is a sensible design. It means no single key, and no single person, can move the money alone.</p>
+<p>The weakness was in who held the keys. Sky Mavis itself ran 4 of the 9 validators.<sup>[1]</sup> Anyone who got deep enough into Sky Mavis would therefore be one signature short of controlling the vault.</p>
+</div>
+<p>The fifth signature came from a favor. In November 2021, when heavy traffic was straining the network, a community organization called the Axie DAO allowed Sky Mavis to sign transactions on its behalf. The arrangement was discontinued in December 2021, but the permission itself was never revoked.<sup>[1]</sup> From then on, whoever controlled Sky Mavis's systems could also get the DAO's validator to sign.</p>
+<h2>How one phished employee opened the vault</h2>
+<p>Sky Mavis later said the attack began with a spear-phishing campaign, meaning targeted messages crafted for specific people, aimed at its employees. One staff member was compromised, and that gave the attacker a foothold inside the company's infrastructure.<sup>[1]</sup></p>
+<p>From there, the attacker gained control of the 4 validators Sky Mavis ran. For the fifth, the attacker abused the leftover arrangement with the Axie DAO, using a Sky Mavis system that still had the DAO's permission to obtain its validator's signature.<sup>[1]</sup> Five of 9: exactly the threshold needed.</p>
+<p>On March 23, 2022, the attacker used those signatures to approve 2 withdrawals from the bridge: 173,600 ether and 25.5 million USDC, a cryptocurrency pegged to the U.S. dollar.<sup>[1]</sup> The FBI later valued the theft at $620 million.<sup>[2]</sup> The blockchain itself was not broken. Every signature was real. The keys were simply in the wrong hands.</p>
+<p>That distinction matters for how people think about security. Much of the public discussion of crypto theft focuses on bugs in code. In this case the code did what it was designed to do. It checked that 5 valid signatures were present and paid out. The failure was in the human arrangements around the keys: who held them, how many sat in one place, and whether a temporary permission had been cleaned up.<sup>[1]</sup></p>
+<h2>Six days before anyone noticed</h2>
+<p>Nothing sounded an alarm. Sky Mavis acknowledged afterward that it did not have a proper tracking system for monitoring large outflows from the bridge.<sup>[1]</sup> A withdrawal of hundreds of millions of dollars looked, to the system, like any other approved transaction.</p>
+<p>The theft was discovered on March 29, 2022, 6 days after it happened.<sup>[1]</sup> By then, the attacker had had nearly a week to begin moving the money, and the bridge had kept running as if nothing was wrong.</p>
+<p>Blockchain transactions are public, so the withdrawals were visible to anyone who looked. That is the uncomfortable irony: the evidence sat in plain view for 6 days, but no one had set up the system that would have looked on the company's behalf and raised a flag.<sup>[1]</sup></p>
+<p>Sky Mavis paused the bridge, brought in the security firms CrowdStrike and Polaris Infosec to investigate, and began redesigning the system.<sup>[1]</sup> The 6-day gap is the part of this case that applies far beyond crypto. A theft that is noticed in minutes can sometimes be frozen or traced before the money scatters. A theft noticed in days usually cannot.</p>
+<h2>The FBI's attribution and the money trail</h2>
+<p>On April 14, 2022, the FBI said the Lazarus Group and APT38, hacking groups associated with North Korea's government, were responsible for the theft of $620 million in Ethereum reported on March 29. It said it would continue, with the Treasury Department and other agencies, to expose and combat North Korea's use of cybercrime and cryptocurrency theft to generate revenue.<sup>[2]</sup> The Treasury Department sanctioned the address that received the stolen funds.<sup>[1]</sup></p>
+<p>The thieves laundered the proceeds through Tornado Cash, a so-called mixer that pools cryptocurrency from many users to obscure where it came from. The Treasury Department later sanctioned the mixer for facilitating money laundering.<sup>[3]</sup></p>
+<p>There was one partial recovery. On September 8, 2022, it was announced that about $30 million of the stolen funds had been seized with the help of the analytics firm Chainalysis, working with law enforcement and the crypto industry. That was about 5% of the total, and Chainalysis said it was the first time cryptocurrency stolen by a North Korean hacking group had ever been seized.<sup>[3]</sup> Nobody has been publicly charged or convicted for the theft.</p>
+<h2>How Sky Mavis rebuilt the bridge</h2>
+<p>Sky Mavis promised that users would get their money back, using company assets and personal funds from its leadership.<sup>[1]</sup> It increased the number of validators from 9 to 11, with a goal of 21 within 3 months, so that keys would be spread across more independent parties.<sup>[1]</sup></p>
+<p>It launched a $1 million bug bounty, a reward program for outside researchers who report flaws, and redesigned the bridge so that large withdrawals would require human approval.<sup>[1]</sup> Each change addressed a specific link in the chain: too few independent keyholders, a permission nobody removed, and no check on the size of what was leaving.</p>
+<p>None of those fixes involved stronger cryptography. They were about who holds access, when access ends, and who is watching.</p>
+<h2>Why 5 of 9 was really 1 of 1</h2>
+<p>Trace the chain backward. The money left because 5 valid signatures approved it. The signatures were available because 4 keys sat inside one company and a fifth was still on loan to that company months after the favor ended. The company was reachable because one employee fell for a targeted message. And the loss went unnoticed for 6 days because nothing watched how much was leaving.<sup>[1]</sup></p>
+<p>A 5-of-9 rule is meant to require agreement among several independent parties. In practice, one compromised company could produce 5 signatures on its own. The safeguard looked like a committee and worked like a single signature.</p>
+<p>That pattern shows up in ordinary businesses all the time: 2 signatures required on checks, but both signers share an office and a password; vendor access granted for a project and never removed; large transfers approved automatically because nobody set a threshold for review.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Nov 2021</td><td>Axie DAO lets Sky Mavis sign on its behalf during heavy traffic.<sup>[1]</sup></td></tr>
+<tr><td>Dec 2021</td><td>Arrangement ends, but the permission is not revoked.<sup>[1]</sup></td></tr>
+<tr><td>Mar 23, 2022</td><td>Attacker uses 5 of 9 keys to withdraw 173,600 ether and 25.5 million USDC.<sup>[1]</sup></td></tr>
+<tr><td>Mar 29, 2022</td><td>Theft discovered and reported.<sup>[1]</sup><sup>[2]</sup></td></tr>
+<tr><td>Apr 14, 2022</td><td>FBI attributes the theft to North Korea's Lazarus Group and APT38.<sup>[2]</sup></td></tr>
+<tr><td>Spring 2022</td><td>Validators raised from 9 to 11; $1 million bug bounty launched.<sup>[1]</sup></td></tr>
+<tr><td>Sep 8, 2022</td><td>About $30 million of the stolen funds seized.<sup>[3]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> spread signing authority across truly independent parties, make delegated access expire when the arrangement ends, and put a live alarm on large withdrawals. Any one of those would have stopped the theft or caught it within minutes instead of 6 days.<sup>[1]</sup></p>
+<ol>
+<li><strong>Make dual approval truly independent.</strong> If 2 people must approve a large payment, make sure they use separate accounts and devices and cannot approve for each other.</li>
+<li><strong>Put an end date on every access grant.</strong> When you give a vendor, contractor or partner access, set an expiry date and remove it when the job ends.</li>
+<li><strong>Review who can move money every quarter.</strong> List every person and system that can approve payments or withdrawals, and remove anyone who no longer needs to.</li>
+<li><strong>Set alerts on large or unusual outflows.</strong> Ask your bank and payment providers to notify you instantly for transfers above a threshold you choose.</li>
+<li><strong>Train staff to spot targeted messages.</strong> Tell employees that unexpected attachments, even from a recruiter or partner, get checked before they are opened on a work device.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The Ronin heist was one of the largest crypto thefts on record, but its causes were not exotic. A phished employee, a forgotten permission and a missing alarm are problems every organization can have.</p>
+<p>For a small business, the questions to ask are simple. Who can move your money? Are they really independent of each other? Does anyone still have access they no longer need? And if a large sum left your account tonight, how long would it take you to know?</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-fake-invoices-2013.html">How Google and Facebook were scammed: the fake supplier invoices</a></li><li><a href="case-arup-2024.html">The Arup deepfake scam: the $25 million video call where everyone else was fake</a></li><li><a href="case-voice-deepfake-2019.html">The first known AI voice scam: how a fake boss&#x27;s call took $243,000</a></li><li><a href="case-bitfinex-2016.html">The Bitfinex hack: how 119,754 bitcoin walked out, then sat still for 5 years</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://roninchain.com/blog/posts/back-to-building-ronin-security-breach-6513cc78a5edc1001b03c364" target="_blank" rel="noopener">Ronin: Back to building, Ronin security breach postmortem</a></li><li><a href="https://www.fbi.gov/news/press-releases/fbi-statement-on-attribution-of-malicious-cyber-activity-posed-by-the-democratic-peoples-republic-of-korea" target="_blank" rel="noopener">FBI: FBI statement on attribution of malicious cyber activity posed by the Democratic People&#x27;s Republic of Korea</a></li><li><a href="https://www.coindesk.com/policy/2022/09/08/us-government-recovers-30m-from-crypto-game-axie-infinity-hack" target="_blank" rel="noopener">CoinDesk: US government recovers $30M from crypto game Axie Infinity hack</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

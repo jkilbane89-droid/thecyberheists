@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tesla Gigafactory bribe plot: how an employee stopped it | Cyber Heists</title>
+<meta name="description" content="In 2020 a Russian national offered a Tesla Gigafactory worker up to $1 million to plant malware. The worker reported it. How the plot unraveled, and why.">
+<link rel="canonical" href="https://thecyberheists.com/case-tesla-2020.html">
+<meta property="og:title" content="The Tesla insider bribe plot: the $1 million offer an employee reported">
+<meta property="og:description" content="In 2020 a Russian national offered a Tesla Gigafactory worker up to $1 million to plant malware. The worker reported it. How the plot unraveled, and why.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-tesla-2020.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Tesla insider bribe plot: the $1 million offer an employee reported", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-tesla-2020.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · TESLA 2020</div>
+  <h1>The Tesla insider bribe plot: the $1 million offer an employee reported</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Insider bribe reporting channel</div>
+
+<p class="lead">In 2020 a criminal crew tried to buy its way into Tesla's Nevada battery factory by offering one employee up to $1 million to plug malware into the company network.<sup>[1]</sup><sup>[3]</sup> This case file covers how the approach worked, why it failed, and the one control that turned a would-be insider attack into an FBI sting.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Egor Igorevich Kriuchkov, then 27, a Russian national, had met a Tesla employee back in 2016. In July 2020 he got back in touch over a messaging app, saying he was planning a vacation in the US, and traveled to Nevada to see him.<sup>[3]</sup><sup>[4]</sup> The employee worked at the Gigafactory in Sparks, near Reno, a 1.9 million-square-foot plant that makes batteries.<sup>[4]</sup></p>
+<p>On August 3, 2020, after a road trip to Lake Tahoe, Kriuchkov made his pitch at a bar in the Reno area. Prosecutors said he asked the employee to install malware on Tesla's systems in exchange for a payment that started at $500,000 and was later raised to $1 million, payable in cash or bitcoin.<sup>[3]</sup><sup>[4]</sup></p>
+<p>The employee did not take the money. He told Tesla, and Tesla called the FBI.<sup>[1]</sup><sup>[2]</sup><sup>[5]</sup> Later meetings between the two were recorded while agents watched. When Kriuchkov sensed trouble, he drove from Reno to Los Angeles, where he was arrested on August 22, 2020, as he tried to leave the country.<sup>[1]</sup><sup>[4]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>The plan skipped the hard part of hacking. Instead of breaking through Tesla's defenses from outside, the crew wanted someone already inside to run their software on a company computer, so data could be copied out and used for extortion.<sup>[1]</sup><sup>[5]</sup></p>
+<p>According to prosecutors and court filings as reported, the malware was to be custom-built for Tesla at a cost of about $250,000. A flood of junk traffic from outside, known as a denial-of-service attack, would keep the security team busy while data was quietly copied out. The crew would then demand a ransom and threaten to publish the stolen files if Tesla did not pay.<sup>[3]</sup><sup>[4]</sup> Kriuchkov also claimed the group had squeezed a $4 million ransom out of another company.<sup>[3]</sup></p>
+<p>The weak point the crew was betting on was not a server. It was the chance that one person, offered life-changing money, would keep the offer to himself.</p>
+<h2>How it was caught and what it cost</h2>
+<p>The employee's report was the whole detection system. Federal authorities credited him for coming forward, and the network was never compromised.<sup>[2]</sup> Tesla chief executive Elon Musk publicly confirmed the company was the target and called it a serious attack.<sup>[3]</sup><sup>[4]</sup></p>
+<p>Kriuchkov was indicted in September 2020 and pleaded guilty on March 18, 2021, to conspiracy to intentionally cause damage to a protected computer.<sup>[1]</sup> On May 24, 2021, a federal judge in Reno sentenced him to 10 months in custody, which he had already served, and he was to be deported. He was also ordered to pay about $14,825 in restitution to Tesla for investigation costs.<sup>[1]</sup><sup>[2]</sup> Co-conspirators were identified in court papers only by nicknames and were not charged by name.<sup>[2]</sup><sup>[3]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> a fast, trusted channel for insiders to report bribes and recruitment attempts. Here it was not missing, and that is the point. Tesla's employee knew who to tell, told them quickly, and the company escalated straight to the FBI.<sup>[1]</sup><sup>[2]</sup></p>
+<p>Most companies never test this. If an employee is approached with an offer, do they know where to go, do they trust they will not be blamed, and does the company know to call law enforcement rather than quietly fire someone? Without that channel, a crew only needs one person in the building to stay silent. With it, the approach becomes evidence.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Name the person to tell.</strong> Put in writing who staff should contact if anyone offers them money, gifts or favors for access, passwords or data, with a backup contact if that person is involved.</li>
+<li><strong>Promise no blame for reporting.</strong> Make clear that reporting an approach, even one that came from a friend, will be treated as the right call.</li>
+<li><strong>Know your law enforcement contact.</strong> Keep the number for your local FBI field office or police cyber unit on file so a report can be escalated the same day.</li>
+<li><strong>Limit what one person can run.</strong> Stop regular staff from installing software on work computers, so a single bribed or tricked employee cannot launch an attack alone.</li>
+<li><strong>Mention it in onboarding.</strong> Spend 2 minutes telling new hires that criminals do try to recruit employees, and what to do if it happens.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-05" data-v="DqwMrForrf8" data-title="The $1M bribe to hack Tesla that an employee reported"><div class="soon"><b>The $1M bribe to hack Tesla that an employee reported</b><span class="when">Drops 2026-11-05</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-ubiquiti-2020.html">The Ubiquiti hack was an inside job: how a senior developer extorted his employer</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-twitter-2015.html">How a Twitter employee sold user data to Saudi Arabia for a watch and cash</a></li><li><a href="case-knowbe4-2024.html">How a security training company hired a North Korean fake IT worker</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://therecord.media/russian-who-tried-to-hack-tesla-last-summer-pleads-guilty/" target="_blank" rel="noopener">The Record: Russian who tried to hack Tesla last summer pleads guilty</a></li><li><a href="https://www.aljazeera.com/economy/2021/5/24/us-to-deport-russian-man-who-tried-to-hack-tesla" target="_blank" rel="noopener">Al Jazeera (AP): US to deport Russian man who tried to hack Tesla</a></li><li><a href="https://www.audacy.com/wwl/articles/ap-news/tesla-targeted-in-failed-ransomware-extortion-scheme" target="_blank" rel="noopener">AP via Audacy: Tesla targeted in failed ransomware extortion scheme</a></li><li><a href="https://www.techspot.com/news/86550-tesla-nevada-gigafactory-targeted-russian-hacking-plot.html" target="_blank" rel="noopener">TechSpot: Tesla&#x27;s Nevada Gigafactory targeted in Russian hacking plot</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/russian-man-pleads-guilty-in-thwarted-tesla-hack" target="_blank" rel="noopener">Dark Reading: Russian man pleads guilty in thwarted Tesla hack</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WannaCry ransomware attack 2017: full story, timeline and cost | Cyber Heists</title>
+<meta name="description" content="How WannaCry hit 200,000 computers and 81 NHS trusts in 2017 via a flaw Microsoft fixed 2 months earlier: the kill switch, the arrest, the cost and the lesson.">
+<link rel="canonical" href="https://thecyberheists.com/episode-wannacry-2017.html">
+<meta property="og:title" content="WannaCry, start to finish: a leaked spy tool, an unapplied patch and a $10.69 off switch">
+<meta property="og:description" content="How WannaCry hit 200,000 computers and 81 NHS trusts in 2017 via a flaw Microsoft fixed 2 months earlier: the kill switch, the arrest, the cost and the lesson.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-wannacry-2017.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "WannaCry, start to finish: a leaked spy tool, an unapplied patch and a $10.69 off switch", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-wannacry-2017.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · WANNACRY 2017</div>
+  <h1>WannaCry, start to finish: a leaked spy tool, an unapplied patch and a $10.69 off switch</h1>
+  <div class="meta">Published 2026-09-29 · 8 min read · Episode 11 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-08" data-t="11:00" data-v="1w93WyUg2Kk" data-title="WannaCry 2017: the worm that shut hospitals, stopped by a $10 domain"><div class="soon"><b>WannaCry 2017: the worm that shut hospitals, stopped by a $10 domain</b><span class="when">Premieres 2026-11-08</span></div></div></div></div>
+
+<p class="lead">On May 12, 2017, a piece of ransomware reached more than 200,000 computers in about 150 countries in a single afternoon, and the fix that would have stopped it had been sitting on Microsoft's website for 2 months.<sup>[2]</sup><sup>[11]</sup> This long read follows WannaCry from a leaked spy agency tool to England's hospitals, the accidental off switch, the arrest nobody expected, the attribution to North Korea, and the one control that would have kept it out.</p>
+<h2>The stolen spy tool behind WannaCry</h2>
+<div class="case">
+<p>WannaCry's engine was not written by the people who released it. It rode on a flaw in the Windows file-sharing service, the part of the operating system that lets office computers swap documents and reach shared printers. The flaw let an attacker take control of a vulnerable machine across a network without anyone clicking anything. According to widespread reporting, the exploit for it had been built by the U.S. National Security Agency, which has never publicly commented on it.<sup>[7]</sup></p>
+<p>On March 14, 2017, Microsoft published a security bulletin rated critical that fixed the flaw in every supported version of Windows.<sup>[2]</sup> A month later, on April 14, a group calling itself the Shadow Brokers posted a batch of hacking tools online, including the exploit for this flaw. Microsoft said at the time that the leaked exploits had already been patched.<sup>[3]</sup> That was true for anyone who had installed the March update. For everyone else, a weapon that had been secret was now free to download.</p>
+<p>In England, NHS Digital, the health service's technology body, issued critical alerts in March and April urging organizations to install the update. The government had told trusts back in 2014 to move off Windows XP, a system Microsoft no longer supported, by April 2015.<sup>[1]</sup> Many had not finished either job when May arrived.</p>
+</div>
+<p>Someone then attached the leaked exploit to ransomware, software that scrambles files and demands payment to unscramble them. The result was a worm, meaning a program that copies itself from machine to machine with no human help. Each infected computer locked its owner's files, displayed a ransom note asking for bitcoin, and went looking for the next vulnerable neighbor on the network and on the internet.<sup>[11]</sup> There was no email to delete and no link to avoid. One unpatched computer with file sharing exposed was enough.</p>
+<h2>How WannaCry hit England's hospitals</h2>
+<p>The worm began spreading on Friday, May 12, 2017.<sup>[1]</sup> Within hours it had reached companies across Europe and beyond. Spain's largest telephone company told staff to shut down their computers, carmaker Renault halted production at some plants in France, Nissan's factory in Sunderland in northern England was hit, and ransom notes appeared on departure boards at German rail stations.<sup>[4]</sup></p>
+<p>England's National Health Service took the worst of it. The National Audit Office, the government's spending watchdog, later found that at least 81 of the 236 hospital trusts in England were affected, about a third of the total, along with 603 primary care and other NHS organizations, including 595 family doctor practices.<sup>[1]</sup> Five emergency departments, in London, Essex, Hertfordshire, Hampshire and Cumbria, had to send some patients elsewhere. The audit office could identify 6,912 cancelled appointments directly and estimated the true figure at more than 19,000.<sup>[1]</sup></p>
+<p>The common thread was plain. Every NHS organization the audit office examined had been infected through Windows systems that were either missing the March update or too old to receive it.<sup>[1]</sup> Nobody in the NHS paid the ransom, and the audit office found no evidence that patient data had been taken.<sup>[1]</sup> The worm was not after records. It simply locked whatever it reached, and in a hospital what it reached were the systems used to book scans, read results and move patients.</p>
+<h2>The $10.69 kill switch</h2>
+<p>That same afternoon a 22-year-old malware researcher working from his home in England was picking apart a sample of the worm. He noticed that before it did anything, each copy tried to contact a long, nonsense web address that nobody owned. He registered the address for $10.69, a routine habit he used to watch what malware was doing.<sup>[5]</sup> It turned out to be an off switch. Once the address answered, new copies of the worm that could reach it stopped instead of encrypting files.<sup>[5]</sup><sup>[10]</sup></p>
+<p>The audit office credited that registration, which took effect between May 12 and May 15, with halting the attack and preventing much wider disruption.<sup>[1]</sup> It was not a cure. Machines already locked stayed locked, and a copy running on a network cut off from the internet could not see the answer. Between May 15 and mid-September, 92 NHS organizations, including 21 trusts, were still found contacting the address, a sign the worm was sitting on their machines.<sup>[1]</sup></p>
+<p>Microsoft also took an unusual step. On May 13 it released an emergency fix for Windows XP and other systems it had long since stopped supporting, so that organizations still running them had some protection.<sup>[6]</sup> Microsoft's president used the moment to criticize governments for keeping software flaws secret instead of reporting them, comparing the leak to the theft of military weapons.<sup>[7]</sup></p>
+<h2>The ransom, the bill and the researcher's arrest</h2>
+<p>For an attack that spanned the globe, the ransom haul was small. The 3 bitcoin wallets named in the ransom note took in roughly $140,000 in total, and in early August 2017 they were emptied in a series of withdrawals.<sup>[8]</sup> The design of the payment system made it hard for the attackers to tell who had paid, which is one reason paying was never a reliable way to get files back.</p>
+<p>The real cost landed on the victims. In October 2018 the Department of Health and Social Care estimated that WannaCry cost the NHS about 92 million pounds: about 19 million in lost output while services were disrupted and about 73 million in IT repair and support afterward. Officials called it a broad estimate.<sup>[14]</sup></p>
+<p>The researcher's story took a turn of its own. In early August 2017, after attending security conferences in Las Vegas, he was arrested by the FBI on charges that had nothing to do with WannaCry. Prosecutors said that years earlier he had helped create and sell banking malware that stole login details.<sup>[9]</sup> In April 2019 he pleaded guilty to 2 counts.<sup>[15]</sup> On July 26, 2019, a federal judge in Wisconsin sentenced him to time served and 1 year of supervised release, and said his role in stopping WannaCry weighed heavily against the harm of the malware he admitted writing.<sup>[10]</sup></p>
+<h2>How WannaCry was traced to North Korea</h2>
+<p>On December 19, 2017, the British government said it was highly likely that a North Korean group was behind WannaCry, and the White House publicly attributed the attack to North Korea the same week.<sup>[12]</sup><sup>[13]</sup></p>
+<p>On September 6, 2018, the Justice Department charged a North Korean computer programmer who, prosecutors say, worked for a government front company and belonged to a team behind a string of attacks, including WannaCry, the 2014 attack on Sony Pictures and the $81 million theft from Bangladesh Bank in 2016.<sup>[11]</sup> Investigators linked the cases through shared code and shared infrastructure, such as the same accounts and servers turning up in more than one operation.<sup>[11]</sup> The defendant has not been brought to a U.S. court, and the charges remain allegations.</p>
+<p>The attribution did not change what the NHS had learned about itself. The audit office noted that before the attack there was no formal process for checking whether local NHS bodies had actually acted on critical security alerts.<sup>[1]</sup> The warnings had gone out. Nobody was tracking whether they landed.</p>
+<h2>What would have stopped the worm</h2>
+<p>Put the sequence side by side. The flaw was public and fixed in March. The exploit was public in April. The worm arrived in May. At every step, a machine that had installed the March update was safe from this particular attack, and a machine running an unsupported system that could not be updated was a standing invitation.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The worm also moved as far as it did because the file-sharing service was reachable from places it never needed to be reached from: from the open internet, and between computers inside a network that had no reason to talk to each other. Closing that door at the edge of the network, and limiting it inside, would have slowed the spread even where patching lagged.<sup>[1]</sup></p>
+<p>WannaCry was stopped by luck and a $10.69 web address. It could have been stopped weeks earlier by a routine update that had already been written, tested and published.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Apr 2015</td><td>Deadline NHS trusts had been given to move off Windows XP.<sup>[1]</sup></td></tr>
+<tr><td>Mar 14, 2017</td><td>Microsoft publishes a critical fix for the Windows file-sharing flaw.<sup>[2]</sup></td></tr>
+<tr><td>Mar&ndash;Apr 2017</td><td>NHS Digital issues critical alerts urging the update.<sup>[1]</sup></td></tr>
+<tr><td>Apr 14, 2017</td><td>The Shadow Brokers leak the exploit online.<sup>[3]</sup></td></tr>
+<tr><td>May 12, 2017</td><td>WannaCry begins spreading; at least 81 NHS trusts are hit.<sup>[1]</sup></td></tr>
+<tr><td>May 12&ndash;15, 2017</td><td>A researcher's registered web address acts as a kill switch.<sup>[1]</sup><sup>[5]</sup></td></tr>
+<tr><td>May 13, 2017</td><td>Microsoft releases an emergency patch for Windows XP.<sup>[6]</sup></td></tr>
+<tr><td>Aug 2017</td><td>Ransom wallets emptied; the researcher is arrested in Las Vegas on unrelated charges.<sup>[8]</sup><sup>[9]</sup></td></tr>
+<tr><td>Dec 19, 2017</td><td>UK and U.S. governments attribute WannaCry to North Korea.<sup>[12]</sup><sup>[13]</sup></td></tr>
+<tr><td>Sep 6, 2018</td><td>Justice Department charges a North Korean programmer.<sup>[11]</sup></td></tr>
+<tr><td>Oct 2018</td><td>Health department puts the NHS cost at about 92 million pounds.<sup>[14]</sup></td></tr>
+<tr><td>Jul 26, 2019</td><td>The researcher is sentenced to supervised release, no further prison.<sup>[10]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> install critical security updates within days, take systems too old to update off the network, and block the file-sharing service at the network edge. Any one of those would have kept WannaCry out of most of the machines it locked.<sup>[1]</sup><sup>[2]</sup></p>
+<ol>
+<li><strong>Turn on automatic updates everywhere.</strong> Set every Windows PC, laptop and server to install security updates on its own, and check monthly that none has quietly stopped.</li>
+<li><strong>Set a deadline for critical patches.</strong> When a vendor labels an update critical, give it a firm window, such as 7 days, and have someone confirm in writing that it is done.</li>
+<li><strong>Retire or isolate unsupported systems.</strong> List every device running software its maker no longer updates. Replace it, or unplug it from the main network if it runs a machine you cannot replace yet.</li>
+<li><strong>Close file sharing to the internet.</strong> Ask your IT provider to confirm that the router or firewall blocks outside access to Windows file sharing, and that remote staff reach files through a secure connection instead.</li>
+<li><strong>Keep offline backups and test them.</strong> Store a recent copy of key files somewhere ransomware cannot reach, and practice restoring it so a locked screen is an inconvenience, not a shutdown.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>WannaCry is remembered for its lucky ending, but the lesson is in its beginning. The flaw was known, the fix was free, and the warnings had been sent. The gap was between a warning and a finished job, and nobody was measuring it.</p>
+<p>Most small businesses will never be targeted by a spy agency's leaked tools. They do not need to be. Worms and ransomware crews scan the whole internet for the same unpatched doors, and they do not check who owns the building. An update installed this week is still the cheapest security there is.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/" target="_blank" rel="noopener">National Audit Office: Investigation: WannaCry cyber attack and the NHS</a></li><li><a href="https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010" target="_blank" rel="noopener">Microsoft: Microsoft Security Bulletin MS17-010 - Critical</a></li><li><a href="https://www.securityweek.com/microsoft-latest-shadow-brokers-exploits-already-patched" target="_blank" rel="noopener">SecurityWeek: Microsoft says latest Shadow Brokers exploits already patched</a></li><li><a href="https://www.timesofisrael.com/organizations-hit-by-unprecedented-global-cyberattack/" target="_blank" rel="noopener">Times of Israel: Organizations hit by unprecedented global cyberattack</a></li><li><a href="https://www.ksl.com/article/news/world/22-year-old-credited-for-accidentally-stopping-wannacry-from-spreading/44237228" target="_blank" rel="noopener">KSL: 22-year-old credited for accidentally stopping WannaCry from spreading</a></li><li><a href="https://www.engadget.com/2017-05-13-Microsoft-WindowsXP-WannaCrypt-NHS-patch.html" target="_blank" rel="noopener">Engadget: Microsoft patches Windows XP to fight WannaCrypt attacks</a></li><li><a href="https://www.cfpublic.org/2017-05-15/wannacry-ransomware-microsoft-calls-out-nsa-for-stockpiling-vulnerabilities" target="_blank" rel="noopener">NPR (via Central Florida Public Media): WannaCry ransomware: Microsoft calls out NSA for stockpiling vulnerabilities</a></li><li><a href="https://fortune.com/2017/08/03/wannacry-ransom-bitcoin" target="_blank" rel="noopener">Fortune: WannaCry ransom bitcoin wallets emptied</a></li><li><a href="https://techcrunch.com/2017/08/03/marcus-hutchins-malwaretechblog-arrest-fbi/amp/" target="_blank" rel="noopener">TechCrunch: Marcus Hutchins arrested by FBI</a></li><li><a href="https://krebsonsecurity.com/2019/07/no-jail-time-for-wannacry-hero/" target="_blank" rel="noopener">Krebs on Security: No jail time for WannaCry hero</a></li><li><a href="https://www.justice.gov/usao-cdca/pr/north-korean-regime-backed-programmer-charged-conspiracy-conduct-multiple-cyberattacks" target="_blank" rel="noopener">U.S. Department of Justice: North Korean regime-backed programmer charged with conspiracy to conduct multiple cyber attacks</a></li><li><a href="https://www.gov.uk/government/news/foreign-office-minister-condemns-north-korean-actor-for-wannacry-attacks" target="_blank" rel="noopener">GOV.UK: Foreign Office minister condemns North Korean actor for WannaCry attacks</a></li><li><a href="https://www.govexec.com/technology/2017/12/north-korea-was-behind-wannacry-cyberattacks-says-white-house/144674/" target="_blank" rel="noopener">Government Executive: North Korea was behind the WannaCry cyberattacks, says White House</a></li><li><a href="https://www.computerweekly.com/news/252450600/Cost-of-WannaCry-attack-to-NHS-set-at-92m" target="_blank" rel="noopener">Computer Weekly: Cost of WannaCry attack to NHS set at 92m pounds</a></li><li><a href="https://www.engadget.com/2019/04/19/marcus-hutchins-malwaretech/" target="_blank" rel="noopener">Engadget: MalwareTech security researcher pleads guilty</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

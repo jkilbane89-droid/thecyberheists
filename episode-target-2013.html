@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Target data breach 2013: full story, timeline and cost | Cyber Heists</title>
+<meta name="description" content="How a heating contractor&#x27;s stolen login led to 40 million stolen Target cards in 2013: the registers, the ignored alerts, the $292 million bill and the lesson.">
+<link rel="canonical" href="https://thecyberheists.com/episode-target-2013.html">
+<meta property="og:title" content="The Target breach, start to finish: a contractor&#x27;s login, ignored alarms and 40 million cards">
+<meta property="og:description" content="How a heating contractor&#x27;s stolen login led to 40 million stolen Target cards in 2013: the registers, the ignored alerts, the $292 million bill and the lesson.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-target-2013.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Target breach, start to finish: a contractor's login, ignored alarms and 40 million cards", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-target-2013.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · TARGET 2013</div>
+  <h1>The Target breach, start to finish: a contractor&#x27;s login, ignored alarms and 40 million cards</h1>
+  <div class="meta">Published 2026-09-29 · 9 min read · Episode 01 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-10-04" data-t="11:00" data-v="fhDLVXB2Lnc" data-title="Target 2013: the full heist, from a vendor&#x27;s inbox to 40 million cards"><div class="soon"><b>Target 2013: the full heist, from a vendor&#x27;s inbox to 40 million cards</b><span class="when">Premieres 2026-10-04</span></div></div></div></div>
+
+<p class="lead">In the 2013 holiday season, the security tools at America's No. 3 retailer spotted the malware that was stealing its customers' cards, and the warnings sat unanswered until the Justice Department phoned nearly 2 weeks later.<sup>[1]</sup><sup>[6]</sup> This long read follows the whole Target heist in order: the small contractor whose login was stolen, the registers, the alarms, the disclosures, the bill, and the one control that would have broken the chain.</p>
+<h2>The vendor login that opened the door</h2>
+<div class="case">
+<p>Fazio Mechanical Services was a refrigeration and HVAC contractor based in Sharpsburg, Pennsylvania, that worked on Target stores.<sup>[2]</sup> Like many suppliers, it had an account on Target's systems. The company later said that connection existed only for electronic billing, contract submission and project management, not for controlling heating or cooling equipment.<sup>[2]</sup></p>
+<p>The Senate Commerce Committee staff who reconstructed the attack found that the contractor had been hit with malware delivered by phishing email at least 2 months before the break-in, and that its Target credentials were taken that way.<sup>[1]</sup> The staff also noted that details about Target's suppliers, including pages for its supplier portal and facilities management, could be found with ordinary internet searches, so picking a supplier to go after did not require inside knowledge.<sup>[1]</sup></p>
+<p>On November 12, 2013, the intruders used the stolen login to get into Target's network for the first time.<sup>[1]</sup> A former vendor manager told the Senate staff that Target rarely asked low-level contractors for a second proof of identity when they signed in, so a password alone was enough.<sup>[1]</sup></p>
+</div>
+<p>Two months earlier, in September 2013, Target had been certified as compliant with the payment card industry's security standard, the rulebook card brands use to judge whether a merchant protects card data properly.<sup>[1]</sup> On paper, the systems that touched cards were separated from everything else. In practice, a login created to send invoices became the first step on a path that ended at the checkout lanes. The staff report lists weak separation between the vendor side and sensitive systems as one of the failures that made that path possible.<sup>[1]</sup></p>
+<h2>How the malware reached the registers</h2>
+<p>Getting from a billing account to a cash register took the attackers a few days. The Senate staff said they may have used a default account name that shipped with a common IT management product, a reminder that factory settings left in place are one of the easiest ways to move around a network.<sup>[1]</sup> Between November 15 and 28, they tried their card-stealing software on a handful of store terminals. By November 30, most of Target's point-of-sale systems were infected.<sup>[1]</sup></p>
+<p>The software read card details from a terminal's memory at the moment of a swipe, before the data was scrambled for its trip to the bank. Target later said cards used in its U.S. stores from November 27 to December 15 were exposed, a 19-day window that took in Black Friday and most of the holiday rush.<sup>[4]</sup> The stolen numbers were collected on servers inside Target's own network. Starting December 2, they were shipped out in batches during normal business hours, roughly 10 a.m. to 6 p.m. Central time, when the extra traffic would blend in with the day's work. About 11 GB left the company, with drop servers traced to Russia, Miami and Brazil.<sup>[1]</sup></p>
+<p>The cards did not stay hidden for long. Within days they were for sale on an underground card shop in batches of up to 1 million, priced from about $20 to more than $100 each depending on the card.<sup>[3]</sup> One New England bank quietly bought back about 20 of its own customers' cards from the shop. Every one of the 19 that were still valid had been used at Target stores across the country during the breach window, which gave banks an independent way to confirm where the leak was.<sup>[3]</sup></p>
+<h2>The alarms that went unanswered</h2>
+<p>Target was not flying blind. About 6 months before the breach it had installed a malware detection system from the security firm FireEye, and a team in Bangalore, India, watched it around the clock and reported to the security operations center in Minneapolis.<sup>[7]</sup> On November 30, as the malware was being installed, the system raised an alert. More alerts followed as the attackers updated their software in early December, and some were marked at the top of the system's severity scale.<sup>[1]</sup><sup>[7]</sup> The company's antivirus software had flagged suspicious behavior on November 28 as well.<sup>[1]</sup></p>
+<p>The Bangalore team passed the warnings to Minneapolis. The Senate staff concluded that Target's security team neither acted on the alarms nor let the detection system remove the malware automatically.<sup>[1]</sup> That automatic removal feature had been switched off. Reporting at the time said the team had turned it off because it produced too many false positives, and may not yet have trusted the tool to act on its own.<sup>[6]</sup><sup>[7]</sup> The alerts carried a generic malware label, the kind a busy team sees many of every day.<sup>[6]</sup></p>
+<p>Target's spokeswoman later said the team had looked at the activity and judged that it did not need immediate follow-up, and that the company was investigating whether different judgments would have changed the outcome.<sup>[6]</sup> Researchers later found that the malware itself contained login details for the thieves' staging servers, a clue that could have led investigators to the data before it left.<sup>[8]</sup> Instead, the outside world moved first. On December 12, the Justice Department told Target about the breach. Within about 3 days, nearly all of the malware was gone.<sup>[1]</sup><sup>[6]</sup></p>
+<h2>Disclosure, 70 million more records and a CEO's exit</h2>
+<p>A security journalist reported the breach on December 18, and Target confirmed it on December 19, putting the number at about 40 million credit and debit card accounts.<sup>[1]</sup><sup>[4]</sup> The company said guests would owe nothing for fraudulent charges and offered a year of free credit monitoring.<sup>[5]</sup></p>
+<p>Then the story grew. On January 10, 2014, Target said that names, mailing addresses, phone numbers and email addresses for up to 70 million people had also been taken. It stressed that this was part of the same incident, discovered as the investigation went on, not a new break-in.<sup>[5]</sup> With overlap between the 2 groups, later estimates put the total at up to 110 million customers.<sup>[15]</sup> Target also reported that comparable sales for the holiday quarter had fallen about 2.5%.<sup>[5]</sup></p>
+<p>In March 2014, the Senate Commerce Committee staff published its "kill chain" analysis, a stage-by-stage walk through the attack that found Target had missed chances to stop it at several points along the way.<sup>[1]</sup> On May 5, 2014, chairman and CEO Gregg Steinhafel stepped down after a 35-year career at the company, and the chief financial officer took over on an interim basis.<sup>[9]</sup><sup>[15]</sup> Private security firms pinned the attack on Russian cybercriminals, but the U.S. government did not make an official attribution, and no one has been publicly convicted of the intrusion.<sup>[15]</sup></p>
+<h2>What the breach cost Target</h2>
+<p>The legal bills came from 3 directions: shoppers, the banks that had to replace cards, and the states. In March 2015, Target agreed to a $10 million class action settlement with consumers, with individuals able to claim up to $10,000 for documented losses.<sup>[10]</sup> In August 2015, it agreed to pay up to $67 million to banks that issued Visa cards.<sup>[11]</sup> In December 2015, it added a $39.4 million deal covering Mastercard issuers and other banks and credit unions.<sup>[12]</sup></p>
+<p>On May 23, 2017, Target settled with 47 states and the District of Columbia for $18.5 million, which the Nevada attorney general called the largest multistate data breach settlement reached to that point.<sup>[13]</sup> Money was only part of it. The agreement required a formal security program run by a designated executive, encryption and network access controls, password rotation and two-factor sign-in for certain accounts.<sup>[13]</sup> The fixes Target had made after the breach became obligations it had to keep.<sup>[15]</sup></p>
+<p>Adding it up, Target's filings put the total cost of the breach at about $292 million. Insurance covered roughly $90 million, leaving about $202 million for the company to absorb.<sup>[14]</sup></p>
+<h2>Walking the chain backwards</h2>
+<p>Read the story in reverse and every link was visible before it broke. The card data left because nobody acted on the alerts in early December. The malware was installed because nobody acted on the alert of November 30 or the antivirus warning 2 days earlier. The attackers reached the registers because a supplier's billing login could travel far beyond the billing system. And the login was stolen because a single phishing email landed at a small contractor with no reason to think it was anyone's target.<sup>[1]</sup></p>
+<p>Any one of those links, closed, would have shortened or stopped the heist. The two that mattered most were a wall that kept supplier access away from the payment systems, and a rule that a serious alert gets a human decision within hours, not a shrug.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Sep 2013</td><td>Target certified as compliant with the card industry security standard.<sup>[1]</sup></td></tr>
+<tr><td>Nov 12, 2013</td><td>Intruders first log in with the contractor's stolen credentials.<sup>[1]</sup></td></tr>
+<tr><td>Nov 15&ndash;28, 2013</td><td>Card-stealing software tested on a small number of registers.<sup>[1]</sup></td></tr>
+<tr><td>Nov 28, 2013</td><td>Antivirus software flags suspicious behavior.<sup>[1]</sup></td></tr>
+<tr><td>Nov 30, 2013</td><td>Most registers infected; FireEye raises an alert.<sup>[1]</sup><sup>[7]</sup></td></tr>
+<tr><td>Dec 2, 2013</td><td>Stolen data starts leaving the network; more alerts fire.<sup>[1]</sup></td></tr>
+<tr><td>Dec 12, 2013</td><td>Justice Department notifies Target.<sup>[1]</sup></td></tr>
+<tr><td>Dec 19, 2013</td><td>Target confirms about 40 million card accounts affected.<sup>[4]</sup></td></tr>
+<tr><td>Jan 10, 2014</td><td>Target adds up to 70 million people's contact details.<sup>[5]</sup></td></tr>
+<tr><td>May 5, 2014</td><td>CEO steps down.<sup>[9]</sup></td></tr>
+<tr><td>Aug 18, 2015</td><td>Up to $67 million settlement with Visa issuers.<sup>[11]</sup></td></tr>
+<tr><td>May 23, 2017</td><td>$18.5 million settlement with 47 states and D.C.<sup>[13]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> keep supplier access walled off from payment systems, and make sure every serious alert gets a human response. Either one would have cut this chain; together they would have made the stolen password close to useless and the malware short-lived.<sup>[1]</sup></p>
+<ol>
+<li><strong>Map what each outside account can reach.</strong> For every contractor, software company and IT provider with a login, write down what it is for and what it can actually touch, then remove access that goes beyond that purpose.</li>
+<li><strong>Put card terminals on their own network.</strong> Ask your IT provider or payment processor to keep point-of-sale devices on a separate network segment from office computers, guest Wi-Fi and anything a vendor uses.</li>
+<li><strong>Require two-factor sign-in for every remote login.</strong> Include the small accounts used for invoices, scheduling or support, since those are the ones attackers expect to be loosely guarded.</li>
+<li><strong>Replace default names and passwords.</strong> Check routers, cameras, terminals and management software for factory accounts and change or disable them.</li>
+<li><strong>Name an alert owner and a deadline.</strong> Decide who reads warnings from your antivirus, firewall or managed IT provider, how fast they must act, and when a device gets pulled offline without waiting for a meeting.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>Target had bought good tools, passed its audit and staffed a round-the-clock monitoring team, and it still lost 40 million cards. The gap was not technology. It was the space between a warning and a decision, and between what a supplier needed and what it could reach.</p>
+<p>For a small business the scale is different but the shape is the same. Your weakest outside login and your least-read alert inbox are where the next heist starts. Close the first and answer the second, and a stolen password becomes an annoyance instead of a headline.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-solarwinds-2020.html">How the SolarWinds hack happened: malware shipped as a trusted update</a></li><li><a href="case-marriott-2018.html">What caused the Marriott breach: the intruder that came with Starwood</a></li><li><a href="case-bybit-2025.html">How the Bybit hack happened: a vendor&#x27;s laptop and a screen that lied</a></li><li><a href="case-cm-software-2025.html">The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves</a></li><li><a href="case-caesars-2023.html">How the Caesars hack happened: a con at the outsourced IT help desk</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://commerce.senate.gov/services/files/6E528123-41FC-4C22-A696-A224BBADB6B5" target="_blank" rel="noopener">U.S. Senate Committee on Commerce, Science, and Transportation: A &quot;Kill Chain&quot; Analysis of the 2013 Target Data Breach (Majority Staff Report, March 26, 2014)</a></li><li><a href="https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/" target="_blank" rel="noopener">Krebs on Security: Target Hackers Broke in Via HVAC Company</a></li><li><a href="https://krebsonsecurity.com/2013/12/cards-stolen-in-target-breach-flood-underground-markets/" target="_blank" rel="noopener">Krebs on Security: Cards Stolen in Target Breach Flood Underground Markets</a></li><li><a href="https://corporate.target.com/press/release/2013/12/target-confirms-unauthorized-access-to-payment-card-data-in-u-s-stores" target="_blank" rel="noopener">Target: Target Confirms Unauthorized Access to Payment Card Data in U.S. Stores</a></li><li><a href="https://corporate.target.com/press/release/2014/01/target-provides-update-on-data-breach-and-financial-performance" target="_blank" rel="noopener">Target: Target Provides Update on Data Breach and Financial Performance</a></li><li><a href="https://www.businessinsurance.com/target-says-it-declined-to-act-on-early-alert-of-cyber-breach/" target="_blank" rel="noopener">Business Insurance: Target says it declined to act on early alert of cyber breach</a></li><li><a href="https://www.theregister.com/2014/03/14/target_failed_to_act_on_security_alerts/" target="_blank" rel="noopener">The Register: Target failed to act on security alerts</a></li><li><a href="https://www.helpnetsecurity.com/2014/03/14/target-failed-to-act-on-malware-alerts-and-signs-of-breach/" target="_blank" rel="noopener">Help Net Security: Target failed to act on malware alerts and signs of breach</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/0000027419/000110465914034312/a14-11908_1ex99.htm" target="_blank" rel="noopener">SEC (Target Form 8-K exhibit): Target announces CEO leadership transition, May 5, 2014</a></li><li><a href="https://www.cbsnews.com/amp/news/target-reaches-proposed-settlement-with-data-breach-victims" target="_blank" rel="noopener">CBS News: Target agrees to pay $10 million to data breach victims</a></li><li><a href="https://cutimes.com/2015/08/18/target-settles-with-visa-for-67-million" target="_blank" rel="noopener">CU Times: Target Settles With Visa for $67 Million</a></li><li><a href="https://www.nbcnews.com/tech/security/target-pay-39-million-settlement-banks-over-data-breach-n472996" target="_blank" rel="noopener">NBC News: Target to pay $39 million settlement to banks over data breach</a></li><li><a href="https://ag.nv.gov/News/PR/2017/Attorney_General_Laxalt_and_47_States_Reach_$18_5_Million_Settlement_With_Target_Corporation_over_2013_Data_Breach" target="_blank" rel="noopener">Nevada Attorney General: Attorney General Laxalt and 47 States Reach $18.5 Million Settlement With Target Corporation over 2013 Data Breach</a></li><li><a href="https://www.thesslstore.com/blog/2013-target-data-breach-settled/" target="_blank" rel="noopener">The SSL Store: Cost of 2013 Target Data Breach Nears $300 Million</a></li><li><a href="https://www.cyberscoop.com/target-pays-out-to-victims-of-infamous-2013-christmas-data-breach/" target="_blank" rel="noopener">CyberScoop: Target pays out $18.5M to victims of infamous 2013 data breach</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

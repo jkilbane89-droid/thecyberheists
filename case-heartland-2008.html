@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Heartland Payment Systems breach happened | Cyber Heists</title>
+<meta name="description" content="Card data moving unencrypted inside Heartland Payment Systems was stolen by a ring led by a Secret Service informant. How it worked, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-heartland-2008.html">
+<meta property="og:title" content="How the Heartland breach happened: 130 million cards and an informant">
+<meta property="og:description" content="Card data moving unencrypted inside Heartland Payment Systems was stolen by a ring led by a Secret Service informant. How it worked, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-heartland-2008.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Heartland breach happened: 130 million cards and an informant", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-heartland-2008.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · HEARTLAND 2008</div>
+  <h1>How the Heartland breach happened: 130 million cards and an informant</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Encrypt card data in transit internally</div>
+
+<p class="lead">While his crew was breaking into one of America's biggest card processors, Albert Gonzalez was on the U.S. Secret Service payroll as an informant, earning about $75,000 a year.<sup>[3]</sup> This case file covers how the Heartland Payment Systems breach worked, how it became what prosecutors called the largest card data breach ever charged in the United States, and the one control that would have made the stolen data useless.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Years earlier, Gonzalez had been arrested for fraudulent ATM withdrawals in New York and was put to work undercover for the Secret Service, helping bring down an online card-fraud forum whose members were arrested in October 2004. The agency paid him in cash.<sup>[3]</sup> At the same time, with 2 co-conspirators, he was running his own operation. Starting in October 2006, the group went after the networks of large retailers and processors.<sup>[1]</sup></p>
+<p>One target was Heartland Payment Systems, a New Jersey company that handled card payments for about 175,000 merchants, some 100 million card transactions a month.<sup>[5]</sup> Attackers got into its network in late 2007 and planted software that quietly collected card data for months.<sup>[4]</sup></p>
+<p>Gonzalez was arrested in May 2008 over earlier retail breaches.<sup>[3]</sup> On January 20, 2009, Heartland announced that it had found malicious software in its processing system after the card brands alerted it to suspicious activity.<sup>[5]</sup> On August 17, 2009, federal prosecutors charged Gonzalez and 2 others with stealing data on more than 130 million credit and debit cards from Heartland, 7-Eleven and the Hannaford supermarket chain.<sup>[1]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>According to the indictment, the group got past the companies' firewalls using SQL injection, a well-known type of attack where a website accepts malicious input and passes it straight to the database behind it.<sup>[1]</sup> At Heartland, the underlying flaw had been sitting in the system for several years before it was used.<sup>[4]</sup></p>
+<p>Once inside, they installed sniffer programs, software that watches traffic on a network and copies whatever passes by.<sup>[2]</sup> At Heartland, card numbers, expiration dates and some cardholder names flowed between internal systems without encryption, so the sniffers could read them as they went past.<sup>[4]</sup><sup>[5]</sup> Heartland's chief executive said afterward that the malware could collect unencrypted data in motion.<sup>[5]</sup> Prosecutors said the stolen data was sent to servers the group ran in California, Illinois, Latvia, the Netherlands and Ukraine.<sup>[1]</sup></p>
+<p>Heartland had passed its payment card industry security assessment in April 2008, while the intruders were inside.<sup>[5]</sup> Passing a checklist did not mean the data was protected on every internal hop.</p>
+<h2>What it cost</h2>
+<p>Gonzalez pleaded guilty. On March 25 and 26, 2010, he was sentenced to 20 years, and then 20 years and 1 day, in federal prison, to run concurrently, for the Heartland case and the earlier retail breaches.<sup>[2]</sup> Agents had also recovered more than $1 million in cash that he directed them to, buried in a barrel in his parents' backyard.<sup>[3]</sup></p>
+<p>Heartland's market value fell by half after the announcement, and it had spent more than $32 million on legal, forensic and settlement costs by August 2009.<sup>[4]</sup> It later agreed to pay $60 million to settle with Visa and up to $41.4 million with MasterCard to cover card-issuer losses and costs.<sup>[6]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> encrypting card data as it moves inside the network. Heartland protected the perimeter and passed its audit, but inside the network card numbers traveled in plain text.</p>
+<p>If card data had been encrypted from the moment it was captured until it reached the card networks, the sniffers would have collected scrambled records worth nothing to the buyers. The break-in might still have happened, but the payoff would not. Heartland's own answer after the breach was exactly this: it championed end-to-end encryption and built terminals that encrypt data at the point of swipe.<sup>[4]</sup><sup>[5]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Ask your card processor about point-to-point encryption.</strong> Many processors offer terminals that encrypt the card the moment it is tapped or swiped. Ask whether yours does, and switch if it does not.</li>
+<li><strong>Keep card numbers off your own systems.</strong> Use hosted payment pages and tokenization, which replaces the card number with a stand-in value, so your network never holds real card data.</li>
+<li><strong>Do not treat a passed audit as the finish line.</strong> A compliance questionnaire is a minimum. Ask your IT provider where customer data travels unencrypted inside your network.</li>
+<li><strong>Keep web software patched.</strong> Update your website, plugins and online forms promptly, since web-facing flaws were the front door here.</li>
+<li><strong>Listen when outsiders flag fraud.</strong> If your bank or processor reports suspicious card activity tied to you, treat it as a possible breach and bring in help the same day.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-16" data-v="JF_RdWJppS4" data-title="The card thief who was also a Secret Service informant"><div class="soon"><b>The card thief who was also a Secret Service informant</b><span class="when">Drops 2026-11-16</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More patching and monitoring cases</div><ul><li><a href="guide-patching-small-business.html">Guide: How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="case-nasa-jpl-2018.html">How a Raspberry Pi let hackers into NASA&#x27;s Jet Propulsion Laboratory</a></li><li><a href="controls.html#patching-monitoring">Every patching and monitoring control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.justice.gov/archives/opa/pr/alleged-international-hacker-indicted-massive-attack-us-retail-and-banking-networks" target="_blank" rel="noopener">U.S. Department of Justice: Alleged international hacker indicted for massive attack on U.S. retail and banking networks</a></li><li><a href="https://www.justice.gov/archives/opa/pr/leader-hacking-ring-sentenced-massive-identity-thefts-payment-processor-and-us-retail" target="_blank" rel="noopener">U.S. Department of Justice: Leader of hacking ring sentenced for massive identity thefts from payment processor and U.S. retail networks</a></li><li><a href="https://www.cnn.com/2010/TECH/ptech/03/24/secret.service.hacker/index.html" target="_blank" rel="noopener">CNN: Secret Service paid hacker $75,000 a year</a></li><li><a href="https://www.philadelphiafed.org/-/media/frbp/assets/consumer-finance/discussion-papers/D-2010-January-Heartland-Payment-Systems.pdf" target="_blank" rel="noopener">Federal Reserve Bank of Philadelphia: Heartland Payment Systems: Lessons learned from a data breach (January 2010)</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/heartland-ceo-provides-more-details-on-big-data-breach" target="_blank" rel="noopener">Dark Reading: Heartland CEO provides more details on big data breach</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/heartland-reaches-41-million-settlement-with-mastercard-over-data-breach" target="_blank" rel="noopener">Dark Reading: Heartland reaches $41 million settlement with MasterCard over data breach</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

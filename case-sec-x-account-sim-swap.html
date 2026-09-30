@@ -59,24 +59,51 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
 a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .watch{margin:36px 0 8px}
-.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
 .vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
-.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
-@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
-  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
 </div></nav>
 
 <article>
   <div class="mono">Case file · SEC 2024</div>
   <h1>How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</h1>
-  <div class="meta">Published 2026-09-26 · 5 min read</div>
+  <div class="meta">Published 2026-09-26 · 5 min read · Missing control: No SMS account recovery</div>
 
 <p class="lead">The takeover of the U.S. Securities and Exchange Commission's X account, the one that briefly moved the price of bitcoin, started at a cellphone store in Alabama with a homemade ID card.<sup>[2]</sup><sup>[3]</sup> This case file covers what happened on January 9, 2024, how a phone number became the key to a federal regulator's account, what it cost the man who pleaded guilty, and the one control that would have stopped it.</p>
 
@@ -111,9 +138,10 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 <li><strong>Plan for a fake post.</strong> Decide in advance how you will lock the account, alert followers through another channel and report it to the platform.</li>
 </ul>
 
+  <div class="callout"><div class="mono">Full episode</div><p><a href="episode-sec-2024.html">The SEC&#x27;s X account hack, start to finish: a fake ID, a phone store and a bitcoin jump</a>: the long read behind the CL14 episode, chapter by chapter.</p></div>
   <div class="watch">
     <div class="mono">Watch the case</div>
-    <div class="vids"><div class="vid" data-d="2026-09-28" data-v="X3sfdIj0e1k"><div class="soon">Episode drops 2026-09-28</div></div><div class="vid" data-d="2026-10-04" data-v="oa620_qZaWc"><div class="soon">Episode drops 2026-10-04</div></div><div class="vid" data-d="2026-10-10" data-v="9zj6izCh4dE"><div class="soon">Episode drops 2026-10-10</div></div></div>
+    <div class="vids"><div class="vid" data-d="2026-09-28" data-v="T3fMFg25seA" data-title="He hacked the SEC&#x27;s account with a printer"><div class="soon"><b>He hacked the SEC&#x27;s account with a printer</b><span class="when">Drops 2026-09-28</span></div></div><div class="vid" data-d="2026-10-04" data-v="7HmXHVdvEnA" data-title="What the SEC hacker googled"><div class="soon"><b>What the SEC hacker googled</b><span class="when">Drops 2026-10-04</span></div></div><div class="vid" data-d="2026-10-10" data-v="VeZnUvyT7o8" data-title="The SEC&#x27;s account ran six months without MFA"><div class="soon"><b>The SEC&#x27;s account ran six months without MFA</b><span class="when">Drops 2026-10-10</span></div></div></div>
   </div>
 
   <div class="kit">
@@ -127,23 +155,23 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
     </div>
   </div>
 
-  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="case-mgm-2023.html">How the MGM Resorts cyberattack happened: the help desk call that cost $100 million</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
 
-  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
-
-  <div class="sources">
-    <div class="mono" style="margin-bottom:10px">Sources</div>
-    <ol><li><a href="https://www.sec.gov/secgov-x-account" target="_blank" rel="noopener">U.S. Securities and Exchange Commission: SEC Statement on @SECGov X Account Compromise</a></li><li><a href="https://www.justice.gov/usao-dc/pr/fbi-arrests-alabama-man-january-2024-sec-x-hack-spiked-value-bitcoin" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: FBI Arrests Alabama Man for January 2024 SEC X Hack That Spiked the Value of Bitcoin</a></li><li><a href="https://www.justice.gov/usao-dc/pr/guilty-plea-hacking-secs-x-account-caused-bitcoin-value-spike" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: Guilty Plea in Hacking of SEC&#x27;s X Account That Caused Bitcoin Value Spike</a></li><li><a href="https://www.justice.gov/opa/pr/alabama-man-sentenced-14-months-connection-securities-and-exchange-commission-x-hack-spiked" target="_blank" rel="noopener">U.S. Department of Justice: Alabama Man Sentenced to 14 Months in Connection with SEC X Hack That Spiked Bitcoin Value</a></li><li><a href="https://www.helpnetsecurity.com/2024/01/10/sec-x-account-hijacked/" target="_blank" rel="noopener">Help Net Security: SEC&#x27;s X account hacked to post fake news of Bitcoin ETF approval</a></li><li><a href="https://qz.com/sec-x-account-didnt-have-two-factor-authentication-2fa-1851154916" target="_blank" rel="noopener">Quartz: The SEC didn&#x27;t have 2-factor authentication when it got hacked, X says</a></li></ol>
-  </div>
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.sec.gov/secgov-x-account" target="_blank" rel="noopener">U.S. Securities and Exchange Commission: SEC Statement on @SECGov X Account Compromise</a></li><li><a href="https://www.justice.gov/usao-dc/pr/fbi-arrests-alabama-man-january-2024-sec-x-hack-spiked-value-bitcoin" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: FBI Arrests Alabama Man for January 2024 SEC X Hack That Spiked the Value of Bitcoin</a></li><li><a href="https://www.justice.gov/usao-dc/pr/guilty-plea-hacking-secs-x-account-caused-bitcoin-value-spike" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: Guilty Plea in Hacking of SEC&#x27;s X Account That Caused Bitcoin Value Spike</a></li><li><a href="https://www.justice.gov/opa/pr/alabama-man-sentenced-14-months-connection-securities-and-exchange-commission-x-hack-spiked" target="_blank" rel="noopener">U.S. Department of Justice: Alabama Man Sentenced to 14 Months in Connection with SEC X Hack That Spiked Bitcoin Value</a></li><li><a href="https://www.helpnetsecurity.com/2024/01/10/sec-x-account-hijacked/" target="_blank" rel="noopener">Help Net Security: SEC&#x27;s X account hacked to post fake news of Bitcoin ETF approval</a></li><li><a href="https://qz.com/sec-x-account-didnt-have-two-factor-authentication-2fa-1851154916" target="_blank" rel="noopener">Quartz: The SEC didn&#x27;t have 2-factor authentication when it got hacked, X says</a></li></ol></div>
 </article>
 
 <footer><div class="wrap">
   <div>© 2026 Cyber Heists</div>
-  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
 </div></footer>
 <script>
 const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
-document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
 </script>
 </body>
 </html>

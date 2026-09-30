@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Caesars was hacked in 2023: the IT help desk vendor con | Cyber Heists</title>
+<meta name="description" content="Hackers got into Caesars in 2023 by fooling its outsourced IT help desk, then took its loyalty database. How it happened, the reported ransom, and the fix.">
+<link rel="canonical" href="https://thecyberheists.com/case-caesars-2023.html">
+<meta property="og:title" content="How the Caesars hack happened: a con at the outsourced IT help desk">
+<meta property="og:description" content="Hackers got into Caesars in 2023 by fooling its outsourced IT help desk, then took its loyalty database. How it happened, the reported ransom, and the fix.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-caesars-2023.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Caesars hack happened: a con at the outsourced IT help desk", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-caesars-2023.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · CAESARS 2023</div>
+  <h1>How the Caesars hack happened: a con at the outsourced IT help desk</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Help desk identity verification</div>
+
+<p class="lead">The attackers who got into Caesars Entertainment in 2023 did not break through the casino giant's own defenses. They talked their way past an outside company that provided its IT support.<sup>[1]</sup> This case file covers how a phone-and-chat con at a vendor led to the theft of a loyalty database, the reported $15 million ransom, and the one control that would have closed the door.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>According to Caesars' later breach notices, an unauthorized party got into its systems on August 18, 2023, and began taking data on August 23.<sup>[3]</sup> The way in was what Caesars called a social engineering attack on an outsourced IT support vendor: someone persuaded the vendor's staff to help them, rather than hacking anything.<sup>[1]</sup></p>
+<p>On September 7, 2023, Caesars determined that the attackers had copied its loyalty program database. For what the company called a significant number of members, that database held driver's license numbers, Social Security numbers, or both.<sup>[1]</sup> Caesars said it found no sign that passwords, bank account details or payment card data were taken.<sup>[1]</sup></p>
+<p>On September 14, 2023, Caesars disclosed the attack in a filing with the Securities and Exchange Commission. The same day, news reports said the company had paid about $15 million to the attackers, after a demand of about $30 million, to keep the stolen data from being released.<sup>[2]</sup><sup>[3]</sup> Caesars' filing said only that it had taken steps to make sure the stolen data was deleted, and that it could not guarantee that result.<sup>[1]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>Help desks exist to fix problems quickly: reset a password, restore a login, get someone back to work. That speed is exactly what social engineers use. By posing convincingly as someone entitled to help, an attacker can get a support worker to hand over access that no amount of technical hacking would have produced.<sup>[1]</sup><sup>[2]</sup></p>
+<p>In this case the help desk did not even belong to Caesars. It was run by an outside vendor, which meant Caesars' security depended on how carefully another company checked callers. Reports linked the attack to the same crew that hit rival MGM Resorts that month, where attackers were reported to have phoned the IT help desk while posing as an employee.<sup>[3]</sup><sup>[4]</sup></p>
+<h2>How it was caught</h2>
+<p>Caesars said it detected suspicious activity, called in outside security experts and notified law enforcement and state gaming regulators.<sup>[1]</sup> Its customer-facing operations were not disrupted, which is one reason the attack drew far less public attention at first than the MGM outage.<sup>[1]</sup></p>
+<p>In October 2023, Caesars began mailing breach notices. A filing with the Maine attorney general's office listed 41,397 Maine residents among those affected, and said names and driver's license or ID numbers were among the data taken.<sup>[3]</sup> Caesars offered affected people 2 years of free credit monitoring and identity theft protection.<sup>[3]</sup></p>
+<p>In November 2024, federal prosecutors in Los Angeles charged 5 young men, described in news coverage as members of the same loose hacking crew, with conspiracy, wire fraud and identity theft.<sup>[4]</sup> Those charges are allegations, and the coverage tied them to the group's wider phishing campaign against many companies.<sup>[4]</sup></p>
+<h2>What it cost</h2>
+<p>Caesars said at the time that it did not expect the incident to have a material effect on its finances, while noting it was still counting the expense.<sup>[1]</sup> The reported payment of about $15 million was on top of response costs, monitoring for customers, and the legal claims that typically follow a breach like this.<sup>[2]</sup><sup>[3]</sup> Paying also carried a risk that Caesars itself acknowledged: there is no way to be sure a criminal actually deletes what was stolen.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> strong identity verification at the help desk, including at any vendor that handles support for you.</p>
+<p>A password reset or new login should never be granted just because a caller sounds confident, knows an employee's name, or claims to be in a hurry. If the vendor's staff had been required to confirm the caller's identity through a separate, trusted route, such as a callback to a number on file, a manager's approval, or a video check against a known photo, the con would have hit a wall at the first step. Everything that followed, including the database theft and the ransom, depended on that one bad reset.</p>
+<p>Outsourcing the help desk does not outsource the risk. Caesars' own filing named the vendor as the way in.<sup>[1]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Set a reset rule and write it down.</strong> No password or two-factor reset over the phone or chat without a callback to a number already on file, or approval from the person's manager.</li>
+<li><strong>Put it in your IT contract.</strong> If an outside company handles your support, ask in writing how they verify callers, and require that they follow your reset rule.</li>
+<li><strong>Protect admin accounts extra.</strong> Resets for owners, finance staff and anyone with admin rights should need two people to approve.</li>
+<li><strong>Alert the real user.</strong> Make sure staff get an automatic notice when their password or sign-in method changes, so a fake reset gets reported fast.</li>
+<li><strong>Keep less sensitive data.</strong> If you do not need copies of driver's licenses or Social Security numbers, stop collecting them, and delete old ones you are not required to keep.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-22" data-v="q1lq5FTPwxY" data-title="How Hackers Got Past Caesars Through Its IT Vendor"><div class="soon"><b>How Hackers Got Past Caesars Through Its IT Vendor</b><span class="when">Drops 2026-11-22</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More vendors and third parties cases</div><ul><li><a href="guide-vendor-access-security.html">Guide: How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-solarwinds-2020.html">How the SolarWinds hack happened: malware shipped as a trusted update</a></li><li><a href="case-marriott-2018.html">What caused the Marriott breach: the intruder that came with Starwood</a></li><li><a href="case-bybit-2025.html">How the Bybit hack happened: a vendor&#x27;s laptop and a screen that lied</a></li><li><a href="case-cm-software-2025.html">The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves</a></li><li><a href="case-atm-heist-2013.html">How the $45 million ATM heist worked: prepaid cards with no limits</a></li><li><a href="controls.html#vendors-third-parties">Every vendors and third parties control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.sec.gov/Archives/edgar/data/1590895/000119312523235015/d537840d8k.htm" target="_blank" rel="noopener">SEC: Caesars Entertainment Form 8-K, September 14, 2023</a></li><li><a href="https://www.cnbc.com/2023/09/14/caesars-paid-millions-in-ransom-to-cybercrime-group-prior-to-mgm-hack.html" target="_blank" rel="noopener">CNBC: Caesars paid millions in ransom to cybercrime group prior to MGM hack</a></li><li><a href="https://www.theregister.com/2023/10/12/caesars_breach_notification/" target="_blank" rel="noopener">The Register: Caesars breach notification details</a></li><li><a href="https://www.scrippsnews.com/news/five-defendants-charged-in-connection-with-2023-mgm-caesars-cyberattacks" target="_blank" rel="noopener">Scripps News: Five defendants charged in connection with 2023 MGM, Caesars cyberattacks</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the 2016 Uber data breach happened and was covered up | Cyber Heists</title>
+<meta name="description" content="Reused passwords and a cloud key left in code exposed 57 million Uber users in 2016. How the $100,000 cover-up unraveled, what it cost, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-uber-2016.html">
+<meta property="og:title" content="How the Uber breach happened: a cloud key left in the code, and a $100,000 cover-up">
+<meta property="og:description" content="Reused passwords and a cloud key left in code exposed 57 million Uber users in 2016. How the $100,000 cover-up unraveled, what it cost, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-uber-2016.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Uber breach happened: a cloud key left in the code, and a $100,000 cover-up", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-uber-2016.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · UBER 2016</div>
+  <h1>How the Uber breach happened: a cloud key left in the code, and a $100,000 cover-up</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: No secret keys in code</div>
+
+<p class="lead">The 2016 Uber hackers did not break any encryption. They logged into employees' code accounts with passwords recycled from an old leak at another company, and found a key to Uber's cloud storage sitting in the code.<sup>[1]</sup> This case file covers how that key exposed data on 57 million people, how the breach was paid off and hidden for a year, and the control that would have kept the door shut.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>On November 14, 2016, Uber's chief security officer, Joe Sullivan, received an email from a hacker saying they had taken a large amount of Uber data and wanted a six-figure payment.<sup>[1]</sup><sup>[2]</sup> The files covered about 57 million riders and drivers, including names, email addresses, phone numbers and roughly 600,000 driver's license numbers.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The timing was awkward. The Federal Trade Commission was already investigating Uber over an earlier 2014 breach, and Sullivan had given sworn testimony to the agency about Uber's data security only days before the email arrived.<sup>[3]</sup><sup>[4]</sup> Instead of reporting the new breach, Uber paid the 2 hackers $100,000 in bitcoin in December 2016 through its bug bounty program, the scheme companies use to reward researchers who report flaws responsibly. The hackers signed agreements stating, falsely, that they had not taken or kept any data.<sup>[2]</sup><sup>[3]</sup></p>
+<p>Uber's program normally capped rewards at $10,000.<sup>[1]</sup> Uber's security team tracked down the 2 hackers' real identities in December 2016, but the breach stayed secret from the public and regulators until new management disclosed it in November 2017, about a year later.<sup>[1]</sup><sup>[2]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>According to trial testimony from an Uber security manager, the attackers started with usernames and passwords exposed years earlier in a large breach at LinkedIn. Some Uber engineers had reused those same passwords on their accounts at GitHub, a service where developers store and share code.<sup>[1]</sup></p>
+<p>Inside Uber's private code, the attackers found an access key for Uber's Amazon cloud storage. An access key works like a password for a program rather than a person, and whoever holds it can use it from anywhere. That key opened a storage bucket holding more than 200 files of user and driver data, which the attackers downloaded.<sup>[1]</sup></p>
+<p>So 2 weaknesses lined up: reused passwords let outsiders into the code, and a secret left inside the code turned a look at source files into a copy of the customer database.</p>
+<h2>What it cost</h2>
+<p>The cover-up turned out to be more expensive than the breach. In September 2018 Uber agreed to pay $148 million to settle claims from all 50 states and Washington, D.C., which said it had broken breach notification laws by waiting more than a year to tell people.<sup>[5]</sup> Uber also fired Sullivan and a deputy over their handling of the incident.<sup>[5]</sup></p>
+<p>The 2 hackers pleaded guilty to computer fraud conspiracy on October 30, 2019. Prosecutors said that after the Uber payout, they breached another company, Lynda.com, and tried to ransom that data too.<sup>[2]</sup><sup>[3]</sup></p>
+<p>On October 5, 2022, a federal jury convicted Sullivan of obstructing the FTC's proceedings and of misprision of a felony, which means actively concealing a crime he knew about.<sup>[2]</sup> In May 2023 a judge sentenced him to 3 years of probation, a $50,000 fine and 200 hours of community service. Prosecutors had asked for 15 months in prison.<sup>[4]</sup> The Ninth Circuit upheld the conviction on March 17, 2025.<sup>[6]</sup> It was widely seen as the first time a corporate security chief was criminally convicted over a breach response.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> keeping secret keys out of code. Passwords, access keys and tokens that let software reach live data should be stored in a locked-down secrets vault, not written into files that dozens of developers and any compromised account can read.</p>
+<p>If the storage key had not been in the code, the reused passwords would have exposed source files but not the personal data of 57 million people. Reused passwords were the first failure, and multi-factor sign-in on developer accounts would have blocked that step too. But secrets in code are the kind of mistake that turns a small intrusion into a headline. The second lesson is just as plain: a breach you hide becomes a much larger legal problem than the one you report.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Search your code and shared files for secrets.</strong> Ask your developer or IT provider to scan code repositories, scripts and shared drives for stored passwords, API keys and cloud keys, and to move any they find into a password manager or secrets vault.</li>
+<li><strong>Rotate any key that has ever been exposed.</strong> A key that sat in code or email should be treated as known to outsiders. Replace it, then delete the old one.</li>
+<li><strong>Require multi-factor sign-in on code and cloud accounts.</strong> Turn it on for GitHub, your cloud provider, your website host and anything else that holds your data or code.</li>
+<li><strong>Ban password reuse with a password manager.</strong> Give staff a tool that creates unique passwords, so a leak at one site does not unlock another.</li>
+<li><strong>Write down who you must notify after a breach.</strong> Know your state's notification rules, your insurer's number and your lawyer's contact before you need them. Paying for silence is not a plan.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-11" data-v="LkBIrsNad-s" data-title="Uber paid hackers and called it a bug bounty"><div class="soon"><b>Uber paid hackers and called it a bug bounty</b><span class="when">Drops 2026-11-11</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://courthousenews.com/former-uber-security-chief-details-hunt-for-hackers-behind-2016-data-breach/" target="_blank" rel="noopener">Courthouse News Service: Former Uber security chief details hunt for hackers behind 2016 data breach</a></li><li><a href="https://www.justice.gov/usao-ndca/pr/former-chief-security-officer-uber-convicted-federal-charges-covering-data-breach" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, Northern District of California: Former chief security officer of Uber convicted of federal charges for covering up data breach</a></li><li><a href="https://www.justice.gov/usao-ndca/pr/former-chief-security-officer-uber-charged-obstruction-justice" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, Northern District of California: Former chief security officer of Uber charged with obstruction of justice</a></li><li><a href="https://www.ktvu.com/news/former-uber-exec-sentenced-for-covering-up-data-breach" target="_blank" rel="noopener">KTVU: Former Uber exec sentenced for covering up data breach</a></li><li><a href="https://cyberscoop.com/uber-data-breach-settlement-148-million/" target="_blank" rel="noopener">CyberScoop: Uber data breach settlement, $148 million</a></li><li><a href="https://www.dailyjournal.com/article/384269-9th-circuit-upholds-conviction-of-former-uber-security-chief" target="_blank" rel="noopener">Daily Journal: 9th Circuit upholds conviction of former Uber security chief</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

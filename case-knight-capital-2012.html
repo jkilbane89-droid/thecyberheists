@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What happened to Knight Capital? The $460M software glitch | Cyber Heists</title>
+<meta name="description" content="Knight Capital lost over $460 million in 45 minutes in 2012 after a botched code release. How it happened, what it cost, and the control that was missing.">
+<link rel="canonical" href="https://thecyberheists.com/case-knight-capital-2012.html">
+<meta property="og:title" content="What happened to Knight Capital: $460 million lost in 45 minutes">
+<meta property="og:description" content="Knight Capital lost over $460 million in 45 minutes in 2012 after a botched code release. How it happened, what it cost, and the control that was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-knight-capital-2012.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What happened to Knight Capital: $460 million lost in 45 minutes", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-knight-capital-2012.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · KNIGHT CAPITAL 2012</div>
+  <h1>What happened to Knight Capital: $460 million lost in 45 minutes</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Verified, controlled code deployment</div>
+
+<p class="lead">Knight Capital lost more than $460 million in about 45 minutes on August 1, 2012, and nobody broke in.<sup>[1]</sup> One of its 8 trading servers was still running code that had sat unused for years. This case file covers how a routine software release went wrong, why the warnings were missed, what it cost, and the control that would have stopped it.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>In 2012 Knight Capital was one of the biggest market makers on the U.S. stock market, handling a large share of retail orders routed from online brokers. Its order-routing system, called SMARS, ran on 8 servers.<sup>[3]</sup> In late July 2012 Knight rolled out new code for a new program for retail orders at the New York Stock Exchange, which was due to start on August 1.<sup>[1]</sup><sup>[3]</sup></p>
+<p>A technician copied the new code to the servers but missed one of the 8. Nobody else checked the work, because Knight did not require a second technician to review a deployment.<sup>[2]</sup><sup>[3]</sup> That eighth server still held an old function, known internally as Power Peg, that had not been used since 2003 but had never been removed.<sup>[3]</sup></p>
+<p>Before the market opened on August 1, Knight's system sent 97 automated emails to staff flagging an error. They were not set up as alerts, and nobody acted on them.<sup>[1]</sup><sup>[2]</sup> When trading began at 9:30, the 7 updated servers behaved normally. The eighth began firing orders without stopping. To fill just 212 small customer orders, it sent more than 4 million orders into the market in about 45 minutes.<sup>[1]</sup><sup>[2]</sup></p>
+<p>By the time the system was shut down, Knight had made more than 4 million trades in 154 stocks, covering more than 397 million shares. It was left holding about $3.5 billion in stocks it had bought and about $3.15 billion in stocks it had sold short, none of which it wanted.<sup>[3]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>No outsider was involved. The damage came from 3 old decisions meeting 1 new mistake.</p>
+<p>First, the dead code stayed. Power Peg was retired in 2003 but left in place and still able to run.<sup>[3]</sup> Second, in 2005 Knight moved a piece of it, the counter that told Power Peg when an order was fully filled, and never retested the old function afterward. Without that counter, Power Peg had no way to know when to stop.<sup>[3]</sup> Third, the new 2012 code reused a setting, or flag, that used to switch Power Peg on. On 7 servers the flag now meant "use the new retail program." On the eighth, it woke up the old code.<sup>[3]</sup></p>
+<p>The new mistake was the missed server. One person copied the release by hand, there was no written procedure for doing it, and no one confirmed that all 8 servers matched.<sup>[2]</sup><sup>[3]</sup> Knight also had no automated control to halt a system that was behaving wildly, so staff had to diagnose the problem live while the market moved.<sup>[2]</sup></p>
+<h2>What it cost</h2>
+<p>The trading loss was more than $460 million.<sup>[1]</sup> An analyst estimated the hit at about 30 percent of the firm's shareholder equity, and Knight's stock fell sharply in the days that followed.<sup>[4]</sup> Within a week, Knight took a $400 million rescue from a group of investors that included Getco, Blackstone and TD Ameritrade, in exchange for a majority stake.<sup>[4]</sup><sup>[5]</sup> In December 2012 Getco agreed to buy the whole company in a deal valued at about $1.4 billion.<sup>[5]</sup></p>
+<p>On October 16, 2013, the SEC charged Knight with violating the Market Access Rule, which requires brokers to have controls that stop erroneous orders before they reach the market. It was the first enforcement case under that rule. Knight agreed to pay $12 million and hire an independent consultant to review its controls.<sup>[1]</sup><sup>[2]</sup> The SEC's market abuse chief said firms must ask what would happen if each component in their systems malfunctions.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> verified, controlled code deployment. That means a written release procedure, a second person checking that every server received the new version, and an automatic way to stop the system when it misbehaves.</p>
+<p>Any one of those would have changed the outcome. A second check would likely have caught the server that was missed. A simple comparison of what was running on all 8 machines would have shown one did not match. Removing dead code, or retesting it when the parts it relied on moved, would have left nothing old to wake up. And a kill switch tied to trading limits would have stopped the flood of orders in seconds rather than 45 minutes.<sup>[2]</sup><sup>[3]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Write down how updates go live.</strong> For your website, point-of-sale, booking or payment tools, keep a one-page checklist of steps, including how to confirm the update actually landed everywhere.</li>
+<li><strong>Have a second person confirm.</strong> After any change to a system that touches money or customers, ask someone who did not make the change to check it works as expected.</li>
+<li><strong>Delete what you no longer use.</strong> Old plugins, retired payment integrations and unused user accounts should be removed, not just switched off.</li>
+<li><strong>Treat automated warnings as alarms.</strong> Make sure error emails from your systems go to a named person who reads them, not to a shared inbox nobody watches.</li>
+<li><strong>Set limits that stop things automatically.</strong> Use daily caps on payouts, refunds, ad spend and transfers so a runaway process hits a ceiling before it hits your bank balance.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-10-11" data-v="Bctm5BReeR4" data-title="The heist with no thief: Knight Capital&#x27;s 45 minutes"><div class="soon"><b>The heist with no thief: Knight Capital&#x27;s 45 minutes</b><span class="when">Drops 2026-10-11</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More patching and monitoring cases</div><ul><li><a href="guide-patching-small-business.html">Guide: How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="case-nasa-jpl-2018.html">How a Raspberry Pi let hackers into NASA&#x27;s Jet Propulsion Laboratory</a></li><li><a href="controls.html#patching-monitoring">Every patching and monitoring control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://mondovisione.com/news/sec-charges-knight-capital-with-violations-of-market-access-rule-20131016/" target="_blank" rel="noopener">Mondo Visione (SEC press release 2013-222 reprint): SEC charges Knight Capital with violations of market access rule</a></li><li><a href="https://www.wilmerhale.com/insights/client-alerts/knight-capital-settles-rule-15c3-5-violations-with-sec-agrees-to-pay-12-million" target="_blank" rel="noopener">WilmerHale: Knight Capital settles Rule 15c3-5 violations with SEC, agrees to pay $12 million</a></li><li><a href="https://jrvarma.in/blog/Y2013/Knight-Capital.html" target="_blank" rel="noopener">Prof. Jayanth R. Varma&#x27;s blog: SEC order explains Knight Capital systems failure</a></li><li><a href="https://www.nbcnews.com/business/markets/knight-capital-gets-400-million-lifeline-flna926363" target="_blank" rel="noopener">NBC News: Knight Capital gets $400 million lifeline</a></li><li><a href="https://money.cnn.com/2012/12/19/investing/knight-capital" target="_blank" rel="noopener">CNN Money: Getco to buy Knight Capital</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

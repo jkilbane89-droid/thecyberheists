@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capital One breach 2019: the firewall mistake and 106M records | Cyber Heists</title>
+<meta name="description" content="Full Capital One breach: a scanning tool, a misconfigured cloud firewall, an overpowered server role, 4 months unnoticed, a stranger&#x27;s tip, a split sentence.">
+<link rel="canonical" href="https://thecyberheists.com/episode-capital-one-2019.html">
+<meta property="og:title" content="Capital One 2019: one cloud firewall mistake, 106 million people and one tip">
+<meta property="og:description" content="Full Capital One breach: a scanning tool, a misconfigured cloud firewall, an overpowered server role, 4 months unnoticed, a stranger&#x27;s tip, a split sentence.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-capital-one-2019.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Capital One 2019: one cloud firewall mistake, 106 million people and one tip", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-capital-one-2019.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · CAPITAL ONE 2019</div>
+  <h1>Capital One 2019: one cloud firewall mistake, 106 million people and one tip</h1>
+  <div class="meta">Published 2026-09-29 · 9 min read · Episode 07 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-10-25" data-t="11:00" data-v="XPf5eVNsEzY" data-title="Capital One 2019: one cloud firewall mistake, 106M people, one tip"><div class="soon"><b>Capital One 2019: one cloud firewall mistake, 106M people, one tip</b><span class="when">Premieres 2026-10-25</span></div></div></div></div>
+
+<p class="lead">For almost 4 months in 2019, data on about 106 million Capital One customers and applicants sat on a stranger's server, and the bank learned about it from an email to its bug-report inbox.<sup>[1]</sup><sup>[2]</sup> This long read follows the case from the scanning tool to the firewall setting, the online boasting, the arrest, a sentence that split the courts, and the control that would have caught it in March instead of July.</p>
+<h2>The engineer and the scanning tool</h2>
+<div class="case">
+<p>Paige Thompson was a Seattle software engineer who had worked at Amazon Web Services, the cloud platform on which Capital One ran a large part of its business.<sup>[5]</sup><sup>[2]</sup> By 2019 she was building a tool of her own. According to the Justice Department, it scanned the internet for cloud accounts that had been set up wrong, and she used the mistakes it found to get inside.<sup>[3]</sup></p>
+<p>The tool found plenty. Prosecutors said she reached data belonging to more than 30 organizations. On some of those servers she installed cryptocurrency-mining software, so that other companies' paid computing power earned coins for her own wallet.<sup>[3]</sup> One of the organizations on her list was a major US bank.</p>
+<p>The weakness she hunted for was not exotic. A web application firewall is a filter placed in front of a website to block malicious traffic. Set up carelessly, it can be tricked into making requests on an outsider's behalf from inside the network, a class of flaw known as server-side request forgery.<sup>[4]</sup> Inside a cloud network, one internal address hands out temporary credentials to any server that asks for them. A tricked firewall can ask on the attacker's behalf.<sup>[4]</sup></p>
+</div>
+<p>In other words, the attack did not start with Capital One. It started with a general search for a common configuration mistake, and Capital One happened to have it.</p>
+<h2>The firewall setting that exposed 106 million records</h2>
+<p>On March 22 and 23, 2019, someone used Capital One's misconfigured firewall to reach its cloud storage.<sup>[1]</sup><sup>[2]</sup> The credentials the firewall handed over belonged to a server role, a cloud identity that defines what a machine may do. That role carried far more permission than a firewall needs: it could list the bank's storage buckets and read what was in them.<sup>[4]</sup></p>
+<p>What came out was years of credit card application data, from 2005 to early 2019. It included names, addresses, phone numbers, email addresses, dates of birth and self-reported income, plus credit scores, limits, balances and payment history for some customers, and fragments of transaction data from 23 days between 2016 and 2018.<sup>[1]</sup> It also included about 140,000 US Social Security numbers, about 80,000 linked bank account numbers and about 1 million Canadian Social Insurance Numbers. In total, about 100 million people in the US and 6 million in Canada were affected.<sup>[1]</sup></p>
+<p>Capital One said no credit card account numbers or login credentials were taken.<sup>[1]</sup> Still, nothing inside the bank raised an alarm while a firewall's identity read through its customer files. The data went to a server outside the bank and stayed there, untouched by any detection, for months.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>The online boasting and the tip that ended it</h2>
+<p>She did not sell the data. She talked about it. Prosecutors said she bragged about her intrusions to others by text and in online forums.<sup>[3]</sup> She used the handle erratic, and she posted material about the theft on GitHub, a public site for sharing code.<sup>[2]</sup> Krebs on Security reported that the data she posted there had been encrypted first.<sup>[4]</sup></p>
+<p>Someone who saw those posts did the responsible thing. On July 17, 2019, a message arrived through Capital One's Responsible Disclosure Program, the channel the bank ran for outsiders to report security problems. The tipster pointed to the GitHub material and suggested the bank may have suffered a data theft.<sup>[1]</sup><sup>[2]</sup></p>
+<p>Two days later, on July 19, Capital One confirmed the intrusion and contacted the FBI.<sup>[1]</sup><sup>[2]</sup> Four months of silence inside the bank ended within 48 hours of an outsider's email.</p>
+<h2>The arrest, the fines and the settlement</h2>
+<p>On July 29, 2019, FBI agents searched Thompson's Seattle home, seized storage devices holding a copy of the data, and arrested her. She was 33 and charged with computer fraud and abuse.<sup>[2]</sup> The government later said it believed the data had been recovered and that there was no evidence it was used for fraud or shared.<sup>[1]</sup></p>
+<p>The bank's regulator, the Office of the Comptroller of the Currency, fined Capital One $80 million in 2020 over its data protection failures.<sup>[5]</sup><sup>[6]</sup> The bank also agreed to a $190 million class-action settlement with affected customers.<sup>[5]</sup> Together, penalties and settlement came to $270 million, before counting the cost of the response itself.</p>
+<p>The criminal case took 3 years to reach trial. On June 17, 2022, after a 7-day trial and about 10 hours of deliberation, a Seattle jury convicted her of wire fraud, 5 counts of unauthorized access to a protected computer and 1 count of damaging a protected computer. It acquitted her of access device fraud and aggravated identity theft.<sup>[3]</sup> At trial, a prosecutor summed up the government's view: she wanted data, money and bragging rights.<sup>[3]</sup></p>
+<h2>A sentence that split the courts</h2>
+<p>Prosecutors asked for 7 years in prison. In early October 2022, US District Judge Robert Lasnik sentenced her to time served plus 5 years of probation with location and computer monitoring.<sup>[5]</sup><sup>[6]</sup> He pointed to her mental health and said prison would be particularly hard on her as a transgender woman.<sup>[5]</sup><sup>[6]</sup> The US Attorney in Seattle responded publicly that this was not what justice looks like.<sup>[5]</sup></p>
+<p>The government appealed, and the Ninth Circuit Court of Appeals vacated the sentence as too lenient and sent it back.<sup>[7]</sup> Federal sentencing guidelines had called for 135 to 168 months, and at resentencing prosecutors asked for 84 months.<sup>[7]</sup></p>
+<p>In November 2025 the same judge reached the same conclusion. He imposed time served, 5 years of supervised release including 3 years of home confinement, and 250 hours of community service, and kept restitution at $40.7 million. He wrote that he could not find prison would deliver needed medical care or treatment in the most effective way.<sup>[7]</sup></p>
+<h2>Why the bank found out from a stranger</h2>
+<p>Put the chain back together. The bank learned of the breach from an outside tip because nothing internal flagged a firewall's credentials reading large amounts of customer data.<sup>[1]</sup><sup>[2]</sup> The data was readable because the firewall's server role had permission to list and read storage it never needed.<sup>[4]</sup> And the credentials were reachable because the firewall was misconfigured in a way that let an outsider make it ask for them.<sup>[2]</sup><sup>[4]</sup></p>
+<p>Break any one of those links and the case shrinks: a configuration review catches the firewall, a tighter role limits what the credentials open, or an alert on bulk reads cuts 4 months down to hours.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Mar 22&ndash;23, 2019</td><td>Data copied from Capital One's cloud storage.<sup>[1]</sup></td></tr>
+<tr><td>Jul 17, 2019</td><td>Tip arrives through the bank's responsible disclosure program.<sup>[1]</sup><sup>[2]</sup></td></tr>
+<tr><td>Jul 19, 2019</td><td>Capital One confirms the intrusion and contacts the FBI.<sup>[1]</sup><sup>[2]</sup></td></tr>
+<tr><td>Jul 29, 2019</td><td>FBI searches Thompson's home and arrests her in Seattle.<sup>[2]</sup></td></tr>
+<tr><td>2020</td><td>OCC fines Capital One $80 million.<sup>[6]</sup></td></tr>
+<tr><td>2022</td><td>$190 million class settlement with customers.<sup>[1]</sup><sup>[5]</sup></td></tr>
+<tr><td>Jun 17, 2022</td><td>Jury convicts Thompson on 7 counts, acquits on 2.<sup>[3]</sup></td></tr>
+<tr><td>Oct 2022</td><td>Sentenced to time served and 5 years of probation.<sup>[5]</sup><sup>[6]</sup></td></tr>
+<tr><td>2025</td><td>Ninth Circuit vacates the sentence as too lenient.<sup>[7]</sup></td></tr>
+<tr><td>Nov 2025</td><td>Resentenced to time served, home confinement and $40.7 million restitution.<sup>[7]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> reviewing cloud settings and permissions before and after they go live, with each machine's access limited to what it needs and an alert on bulk reads of customer data.</p><ol>
+<li><strong>Inventory your cloud services.</strong> List every cloud account, storage service and app your business pays for or connects to. Forgotten accounts are the ones nobody reviews.</li>
+<li><strong>Trim what each account can reach.</strong> For every staff login, shared folder, app connection and server, ask what it actually needs to read. Remove everything else, starting with anything that can see customer data.</li>
+<li><strong>Run the built-in security check monthly.</strong> Most business cloud platforms include a configuration or sharing report. Read it, or have your IT provider summarize it, and fix what it flags.</li>
+<li><strong>Turn on alerts for mass downloads.</strong> Ask for a notice when an account downloads or syncs an unusual volume of files. A large overnight pull of customer records should reach a person within hours.</li>
+<li><strong>Give outsiders a way to warn you.</strong> Publish a security contact on your website and make sure someone reads it. That inbox is how Capital One found out.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>Capital One was not careless about security in general, and it was not the only organization hit by the same scanner. What it shows is that in the cloud, a single setting and an overly generous permission can matter as much as any hacker's skill, and that logs nobody watches are not a defense.</p>
+<p>Small businesses now run on the same kind of rented cloud services. The habits that would have shortened this case, knowing what you have, limiting who and what can read it, and getting alerted when something reads too much, cost little and work at any size.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.capitalone.com/digital/facts2019/" target="_blank" rel="noopener">Capital One: Information on the Capital One cyber incident</a></li><li><a href="https://www.justice.gov/usao-wdwa/pr/seattle-tech-worker-arrested-data-theft-involving-large-financial-services-company" target="_blank" rel="noopener">US Department of Justice (W.D. Wash.): Seattle tech worker arrested for data theft involving large financial services company</a></li><li><a href="https://www.justice.gov/usao-wdwa/pr/former-seattle-tech-worker-convicted-wire-fraud-and-computer-intrusions" target="_blank" rel="noopener">US Department of Justice (W.D. Wash.): Former Seattle tech worker convicted of wire fraud and computer intrusions</a></li><li><a href="https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/" target="_blank" rel="noopener">Krebs on Security: What we can learn from the Capital One hack</a></li><li><a href="https://www.cbsnews.com/amp/news/paige-thompson-capital-one-hack-probation-doj" target="_blank" rel="noopener">CBS News: Seattle software engineer gets probation for 2019 Capital One hack</a></li><li><a href="https://www.theregister.com/2022/10/05/paige_thompson_sentence_doj_unhappy/" target="_blank" rel="noopener">The Register: DOJ unhappy with Capital One hacker&#x27;s sentence</a></li><li><a href="https://cyberscoop.com/court-reimposes-original-sentence-for-capital-one-hacker/" target="_blank" rel="noopener">CyberScoop: Court reimposes original sentence for Capital One hacker</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snowflake data breaches 2024: full story, AT&amp;T and timeline | Cyber Heists</title>
+<meta name="description" content="How passwords stolen by malware as far back as 2020 opened about 165 companies&#x27; Snowflake accounts in 2024, the AT&amp;T call logs, the guilty pleas and the lesson.">
+<link rel="canonical" href="https://thecyberheists.com/episode-snowflake-2024.html">
+<meta property="og:title" content="The Snowflake breaches, start to finish: old stolen passwords, 165 companies and AT&amp;T&#x27;s call logs">
+<meta property="og:description" content="How passwords stolen by malware as far back as 2020 opened about 165 companies&#x27; Snowflake accounts in 2024, the AT&amp;T call logs, the guilty pleas and the lesson.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-snowflake-2024.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Snowflake breaches, start to finish: old stolen passwords, 165 companies and AT&T's call logs", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-snowflake-2024.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · SNOWFLAKE 2024</div>
+  <h1>The Snowflake breaches, start to finish: old stolen passwords, 165 companies and AT&amp;T&#x27;s call logs</h1>
+  <div class="meta">Published 2026-09-29 · 7 min read · Episode 16 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-25" data-t="11:00" data-v="Ow0t5UAX8Z0" data-title="Snowflake 2024: old stolen passwords, 165 companies, AT&amp;T&#x27;s call logs"><div class="soon"><b>Snowflake 2024: old stolen passwords, 165 companies, AT&amp;T&#x27;s call logs</b><span class="when">Premieres 2026-11-25</span></div></div></div></div>
+
+<p class="lead">In 2024, criminals walked into the data of at least 165 companies on one cloud platform without hacking the platform at all: they logged in with passwords stolen by malware, some of them nearly 4 years earlier.<sup>[1]</sup><sup>[2]</sup> This long read follows the Snowflake campaign from the first tip to the AT&amp;T call records, the arrests and guilty pleas, and the one control that would have made those old passwords worthless.</p>
+<h2>A shared cloud platform and a tip in April</h2>
+<div class="case">
+<p>Snowflake is a cloud service where large companies store and analyze enormous amounts of data. Each customer runs its own account and manages its own users and sign-in rules. In 2024, whether those accounts required a second sign-in step beyond a password was largely up to the customer.<sup>[1]</sup></p>
+<p>In April 2024, the security firm Mandiant received intelligence about database records that had been stolen and appeared to come from a customer's Snowflake account. As it dug in, it found a much wider pattern, and on May 22, 2024, it contacted Snowflake. On May 30, Snowflake published guidance for customers on detecting the intrusions and tightening their accounts.<sup>[1]</sup></p>
+<p>By June 10, Mandiant said it had notified about 165 organizations that their data might have been exposed. It attributed the campaign to a financially motivated group, with members it believed were based in North America and collaborators in Turkey, that stole data, extorted victims and sold records on criminal forums.<sup>[1]</sup> Crucially, Mandiant found no evidence that Snowflake's own corporate environment had been breached. Every intrusion it examined traced back to customer credentials.<sup>[1]</sup></p>
+</div>
+<p>That distinction matters for anyone who uses cloud software. Cloud providers secure their own systems. Customers are still responsible for who can log in to their accounts and how. In this case, the platform held, and the doors that customers controlled did not.</p>
+<h2>Passwords stolen years earlier that still worked</h2>
+<p>Mandiant traced the stolen logins to infostealers, a kind of malware that quietly copies passwords saved on an infected computer and sends them to criminals, who resell them in bulk. It identified 6 different infostealer families in the campaign.<sup>[1]</sup></p>
+<p>The dates were the startling part. The earliest infection Mandiant found went back to November 2020, and in some cases stolen credentials still worked up to 4 years after they were taken. About 79.7% of the accounts the attackers used had credentials that had already been exposed before.<sup>[1]</sup></p>
+<p>Many of the infected machines were not company computers at all. Mandiant said initial infections often happened on contractors' personal or unmonitored laptops that were also used for gaming and downloading pirated software. A single infected contractor laptop could expose logins, sometimes with administrator rights, for several client organizations at once.<sup>[1]</sup></p>
+<p>Mandiant boiled the success of the campaign down to 3 missing protections: no multifactor authentication on the affected accounts, credentials that were never changed even years after being stolen, and no network allow lists, the rules that limit logins to known, trusted locations.<sup>[1]</sup></p>
+<h2>AT&amp;T's call records and a $370,000 payment</h2>
+<p>The victims included some of the best-known names in American business. Prosecutors later listed AT&amp;T, Ticketmaster, Advance Auto Parts, Neiman Marcus, Santander, LendingTree and a major U.S. school district among them.<sup>[2]</sup> The Ticketmaster data covered about 560 million users.<sup>[2]</sup></p>
+<p>The AT&amp;T theft was the largest in reach. The stolen files held call and text logs for more than 100 million customers: records of which numbers contacted which, and when, rather than the content of calls or messages.<sup>[2]</sup><sup>[3]</sup> Metadata on that scale can reveal relationships, routines and movements, which is why it drew so much attention.</p>
+<p>AT&amp;T paid the group $370,000 in ransom to have the data deleted, according to reporting on the case.<sup>[3]</sup> Across the campaign, prosecutors said the crew collected about $2.5 million in ransom payments and another $495,000 from selling stolen data, and they put total victim losses at about $9.5 million.<sup>[2]</sup> Other stolen files contained banking and financial records, Social Security numbers, driver's license and passport numbers, and even DEA registration numbers used by medical prescribers.<sup>[2]</sup></p>
+<h2>The arrests and guilty pleas</h2>
+<p>In November 2024, Canadian police arrested Connor Riley Moucka of Kitchener, Ontario, who used online names including Judische. He was extradited to the United States in July 2025.<sup>[2]</sup> In August 2026, then 26, he pleaded guilty to computer fraud, wire fraud, aggravated identity theft and conspiracy for breaches carried out between February and October 2024. The charges carry up to 32 years in prison. His sentencing was scheduled for October 27, 2026.<sup>[2]</sup></p>
+<p>The second defendant was a U.S. Army soldier stationed in South Korea, Cameron John Wagenius, who went by Kiberphant0m online. Prosecutors said he and others used Snowflake accounts that had exposed credentials and no multifactor authentication to steal AT&amp;T's call and text metadata and data from Verizon's push-to-talk business and more than a dozen other telecom companies.<sup>[3]</sup> In October 2024 he publicly tried to extort victims, including by claiming to hold call logs of the President-elect and Vice President. For all of that, he made about $1,500 selling stolen data.<sup>[3]</sup></p>
+<p>Wagenius pleaded guilty to all counts in 2 federal indictments. On September 25, 2026, a judge sentenced him to 70 months in federal prison and ordered $294,978 in restitution.<sup>[3]</sup> While awaiting sentencing, according to the report, he broke federal prison computer rules by using other inmates' email accounts to ask AI tools about software vulnerabilities and ways to escape prison.<sup>[3]</sup> A third man living in Turkey has been charged but, as of that report, had not been convicted.<sup>[2]</sup><sup>[3]</sup></p>
+<h2>Why a platform nobody broke into lost so much data</h2>
+<p>Trace the chain back. The call logs left because an account accepted a login. The login worked because the password was correct and nothing else was asked. The password was correct because it had been stolen by malware, often from a contractor's personal laptop, and never changed, sometimes for years. And the login came from wherever the criminals happened to be, because nothing limited where sign-ins could come from.<sup>[1]</sup></p>
+<p>Any one of Mandiant's 3 protections would have broken that chain. A second sign-in step would have stopped the stolen password on its own. Rotating passwords would have killed it before it reached a buyer. A list of allowed locations would have rejected logins from the attackers' servers.<sup>[1]</sup></p>
+<p>None of those protections is exotic or expensive. Customers could already switch them on in their own accounts. The gap was that they were optional, and busy teams left them off because everything seemed to work fine without them. A setting that is off by default tends to stay off until something goes wrong.<sup>[1]</sup></p>
+<p>The case also shows how far contractor risk reaches. The companies that lost data did not choose to install malware or download pirated games. Someone with access to their accounts did, on a machine nobody at the company was watching.<sup>[1]</sup></p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Nov 2020</td><td>Earliest infostealer infection Mandiant linked to the campaign.<sup>[1]</sup></td></tr>
+<tr><td>Feb&ndash;Oct 2024</td><td>Breaches of Snowflake customer accounts, per prosecutors.<sup>[2]</sup></td></tr>
+<tr><td>Apr 2024</td><td>Mandiant receives intelligence about stolen database records.<sup>[1]</sup></td></tr>
+<tr><td>May 22, 2024</td><td>Mandiant contacts Snowflake.<sup>[1]</sup></td></tr>
+<tr><td>May 30, 2024</td><td>Snowflake publishes detection and hardening guidance.<sup>[1]</sup></td></tr>
+<tr><td>Jun 10, 2024</td><td>Mandiant reports about 165 organizations notified.<sup>[1]</sup></td></tr>
+<tr><td>Oct 2024</td><td>Soldier publicly extorts telecom victims.<sup>[3]</sup></td></tr>
+<tr><td>Nov 2024</td><td>Canadian defendant arrested.<sup>[2]</sup></td></tr>
+<tr><td>Jul 2025</td><td>He is extradited to the United States.<sup>[2]</sup></td></tr>
+<tr><td>Aug 2026</td><td>He pleads guilty; sentencing set for Oct 27, 2026.<sup>[2]</sup></td></tr>
+<tr><td>Sep 25, 2026</td><td>Soldier sentenced to 70 months in prison.<sup>[3]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> require a second sign-in factor on every cloud account, allow logins only from trusted networks, and change passwords on a schedule so a stolen one expires before it is used. Mandiant found all 3 missing in the accounts that were breached.<sup>[1]</sup></p>
+<ol>
+<li><strong>Make two-factor sign-in mandatory.</strong> In every cloud service your business uses, change the setting from optional to required for all users, including contractors and service accounts that people log in to.</li>
+<li><strong>Restrict where logins can come from.</strong> Where a service allows it, limit admin and data-access logins to your office network or company VPN.</li>
+<li><strong>Rotate passwords and remove stale accounts.</strong> Change shared and long-lived passwords at least yearly, and delete accounts belonging to people and contractors who no longer need them.</li>
+<li><strong>Set rules for contractor devices.</strong> Require contractors who log in to your systems to use a work-only device with up-to-date security software, not a personal machine shared with games and downloads.</li>
+<li><strong>Watch for your logins being sold.</strong> Use a breach-monitoring service or your security provider's alerts to learn when company email addresses show up in stolen-password dumps, and reset them immediately.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The Snowflake campaign was one of the largest data thefts of its year, and it required no break-in at all. It ran on old passwords and optional settings.</p>
+<p>For a small business, the takeaway is to look at your own cloud accounts, not your provider's reputation. If a password stolen from a contractor's laptop 4 years ago would still let someone in today, that is the gap to close first. Start with the accounts that hold customer data or move money, then work outward to everything else.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-snowflake-2024.html">How the 2024 Snowflake breaches happened: old stolen passwords and no second lock</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion" target="_blank" rel="noopener">Google Cloud (Mandiant): UNC5537 targets Snowflake customer instances for data theft and extortion</a></li><li><a href="https://therecord.media/guilty-plea-snowflake-hack-connor-riley-moucka" target="_blank" rel="noopener">The Record: Guilty plea in Snowflake hacks</a></li><li><a href="https://krebsonsecurity.com/2026/09/u-s-soldier-gets-70-months-in-prison-for-att-verizon-extortions/" target="_blank" rel="noopener">Krebs on Security: U.S. soldier gets 70 months in prison for AT&amp;T, Verizon extortions</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

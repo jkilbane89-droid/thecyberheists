@@ -59,24 +59,51 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
 a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .watch{margin:36px 0 8px}
-.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
 .vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
-.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
-@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
-  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
 </div></nav>
 
 <article>
   <div class="mono">Case file · LOTTERY 2010</div>
   <h1>How the Hot Lotto was rigged: the security director who wrote the numbers</h1>
-  <div class="meta">Published 2026-09-26 · 4 min read</div>
+  <div class="meta">Published 2026-09-26 · 4 min read · Missing control: Segregation of duties</div>
 
 <p class="lead">The man who rigged the Hot Lotto drawing was the lottery group's own information security director, and he wrote the software that picked the numbers.<sup>[1]</sup> This case file covers how he built a hidden exception into that software, how an unclaimed $16.5 million ticket gave him away, and the one control that would have stopped it.</p>
 <h2>What happened</h2>
@@ -107,9 +134,10 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 <li><strong>Make vacations real.</strong> Require people in sensitive roles to take time off while someone else covers their duties. Hidden schemes often surface when the person behind them is not there to manage them.</li>
 </ul>
 
+  <div class="callout"><div class="mono">Full episode</div><p><a href="episode-lottery-2010.html">The lottery security chief who rigged five states, and the voice that gave him away</a>: the long read behind the CL05 episode, chapter by chapter.</p></div>
   <div class="watch">
     <div class="mono">Watch the case</div>
-    <div class="vids"><div class="vid" data-d="2026-09-25" data-v="fhuPn_xj8t8"><div class="soon">Episode drops 2026-09-25</div></div><div class="vid" data-d="2026-10-01" data-v="tD7SC1dokFU"><div class="soon">Episode drops 2026-10-01</div></div><div class="vid" data-d="2026-10-07" data-v="zfbh0w51PO8"><div class="soon">Episode drops 2026-10-07</div></div></div>
+    <div class="vids"><div class="vid" data-d="2026-09-25" data-v="_bxZyRkzda0" data-title="He guarded the lottery. He also rigged it."><div class="soon"><b>He guarded the lottery. He also rigged it.</b><span class="when">Drops 2026-09-25</span></div></div><div class="vid" data-d="2026-10-01" data-v="ULrwGJsYcz8" data-title="Caught by one word on a store camera"><div class="soon"><b>Caught by one word on a store camera</b><span class="when">Drops 2026-10-01</span></div></div><div class="vid" data-d="2026-10-07" data-v="Zt3_lHtPRu8" data-title="Why would anyone walk away from $14 million?"><div class="soon"><b>Why would anyone walk away from $14 million?</b><span class="when">Drops 2026-10-07</span></div></div></div>
   </div>
 
   <div class="kit">
@@ -123,23 +151,23 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
     </div>
   </div>
 
-  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-ubiquiti-2020.html">The Ubiquiti hack was an inside job: how a senior developer extorted his employer</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-twitter-2015.html">How a Twitter employee sold user data to Saudi Arabia for a watch and cash</a></li><li><a href="case-tesla-2020.html">The Tesla insider bribe plot: the $1 million offer an employee reported</a></li><li><a href="case-knowbe4-2024.html">How a security training company hired a North Korean fake IT worker</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
 
-  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
-
-  <div class="sources">
-    <div class="mono" style="margin-bottom:10px">Sources</div>
-    <ol><li><a href="https://news.sophos.com/en-us/2017/07/14/insider-who-scammed-14-3m-lottery-win-pleads-guilty/" target="_blank" rel="noopener">Sophos Naked Security: Insider who scammed $14.3m lottery win pleads guilty</a></li><li><a href="https://ialottery.com/Pages/Pressroom/OtherNews_Detail.aspx?otherNewsID=20" target="_blank" rel="noopener">Iowa Lottery: Statement following Eddie Tipton sentencing</a></li><li><a href="https://www.lotterypost.com/news/320169" target="_blank" rel="noopener">Lottery Post: The man who cracked the lottery (republished from The New York Times Magazine)</a></li><li><a href="https://cbi.colorado.gov/news-article/ag-coffman-announces-guilty-plea-of-man-who-stole-millions-in-multi-state-lottery" target="_blank" rel="noopener">Colorado Attorney General via Colorado Bureau of Investigation: AG Coffman announces guilty plea of man who stole millions in multi-state lottery fraud case</a></li><li><a href="https://www.cbsnews.com/colorado/news/mastermind-of-lottery-fraud-admits-he-rigged-jackpots" target="_blank" rel="noopener">CBS Colorado: Mastermind of lottery fraud admits he rigged jackpots</a></li><li><a href="https://www.nbcnews.com/news/us-news/former-lottery-executive-gets-25-years-rigging-numbers-four-states-n795056" target="_blank" rel="noopener">NBC News: Former lottery executive gets 25 years for rigging numbers in four states</a></li><li><a href="https://time.com/4911802/eddie-tipton-powerball-lottery-prison-sentence/" target="_blank" rel="noopener">Time: Eddie Tipton sentenced to 25 years for lotto scam</a></li><li><a href="https://www.axios.com/local/des-moines/2022/07/18/man-behind-largest-lottery-scam-us-history-paroled-iowa-prison" target="_blank" rel="noopener">Axios Des Moines: Man behind largest lottery scam in U.S. history paroled from Iowa prison</a></li></ol>
-  </div>
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://news.sophos.com/en-us/2017/07/14/insider-who-scammed-14-3m-lottery-win-pleads-guilty/" target="_blank" rel="noopener">Sophos Naked Security: Insider who scammed $14.3m lottery win pleads guilty</a></li><li><a href="https://ialottery.com/Pages/Pressroom/OtherNews_Detail.aspx?otherNewsID=20" target="_blank" rel="noopener">Iowa Lottery: Statement following Eddie Tipton sentencing</a></li><li><a href="https://www.lotterypost.com/news/320169" target="_blank" rel="noopener">Lottery Post: The man who cracked the lottery (republished from The New York Times Magazine)</a></li><li><a href="https://cbi.colorado.gov/news-article/ag-coffman-announces-guilty-plea-of-man-who-stole-millions-in-multi-state-lottery" target="_blank" rel="noopener">Colorado Attorney General via Colorado Bureau of Investigation: AG Coffman announces guilty plea of man who stole millions in multi-state lottery fraud case</a></li><li><a href="https://www.cbsnews.com/colorado/news/mastermind-of-lottery-fraud-admits-he-rigged-jackpots" target="_blank" rel="noopener">CBS Colorado: Mastermind of lottery fraud admits he rigged jackpots</a></li><li><a href="https://www.nbcnews.com/news/us-news/former-lottery-executive-gets-25-years-rigging-numbers-four-states-n795056" target="_blank" rel="noopener">NBC News: Former lottery executive gets 25 years for rigging numbers in four states</a></li><li><a href="https://time.com/4911802/eddie-tipton-powerball-lottery-prison-sentence/" target="_blank" rel="noopener">Time: Eddie Tipton sentenced to 25 years for lotto scam</a></li><li><a href="https://www.axios.com/local/des-moines/2022/07/18/man-behind-largest-lottery-scam-us-history-paroled-iowa-prison" target="_blank" rel="noopener">Axios Des Moines: Man behind largest lottery scam in U.S. history paroled from Iowa prison</a></li></ol></div>
 </article>
 
 <footer><div class="wrap">
   <div>© 2026 Cyber Heists</div>
-  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
 </div></footer>
 <script>
 const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
-document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
 </script>
 </body>
 </html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Ubiquiti lost $46.7 million to a fake executive email scam | Cyber Heists</title>
+<meta name="description" content="In 2015 fraudsters posing as Ubiquiti staff got its Hong Kong unit to wire $46.7 million overseas. How it worked, what was recovered, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-ubiquiti-2015.html">
+<meta property="og:title" content="How Ubiquiti lost $46.7 million: the wire requests nobody called to check">
+<meta property="og:description" content="In 2015 fraudsters posing as Ubiquiti staff got its Hong Kong unit to wire $46.7 million overseas. How it worked, what was recovered, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-ubiquiti-2015.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Ubiquiti lost $46.7 million: the wire requests nobody called to check", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-ubiquiti-2015.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · UBIQUITI 2015</div>
+  <h1>How Ubiquiti lost $46.7 million: the wire requests nobody called to check</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Callback verification for wire requests</div>
+
+<p class="lead">In 2015 a publicly traded networking company sent $46.7 million to criminals, and its own investigators found no sign that anyone had broken into its computers.<sup>[1]</sup> This case file covers how a stream of fake requests emptied a subsidiary's accounts, how much came back, and the one habit that would have stopped it.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Ubiquiti Networks, a California maker of wireless and networking gear, kept money in a subsidiary incorporated in Hong Kong. In 2015 outsiders targeted the company's finance department with messages that impersonated employees and asked for payments to be sent abroad.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The requests looked routine enough that staff acted on them. Over a series of transfers, $46.7 million left the Hong Kong subsidiary for overseas bank accounts held by third parties.<sup>[1]</sup></p>
+<p>On June 5, 2015, the company realized what had happened. It began working with its banks and law enforcement to trace and claw back the money, and its board's audit committee opened an independent investigation, which wrapped up on July 17, 2015.<sup>[1]</sup> The public learned about it that August, when the company disclosed the loss in a filing with the Securities and Exchange Commission.<sup>[1]</sup><sup>[2]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>This was a business email compromise, sometimes called CEO fraud. The criminals did not need malware or stolen passwords. They needed the finance team to believe that a message came from someone inside the company with the authority to move money.<sup>[2]</sup><sup>[3]</sup></p>
+<p>Scams like this usually lean on 3 things: a sender name that looks familiar, a plausible business reason such as a deal, a supplier payment or an urgent transfer, and pressure to act quickly or quietly. A finance employee who is used to taking instructions by email sees nothing unusual, follows the process they normally follow, and releases the wire. Each payment on its own can look ordinary. It is only when someone steps back and asks whether the real executive ever made the request that the whole thing falls apart.</p>
+<p>The company's investigation found no evidence that its systems had been penetrated and no evidence that any employee was criminally involved.<sup>[1]</sup> In other words, the process worked exactly as designed. The design simply had no step that checked whether a request was real before the money moved.</p>
+<h2>What it cost</h2>
+<p>Once the fraud came to light, the recovery effort got some of the money back, but not most of it. As of the August 2015 filing, Ubiquiti had recovered $8.1 million, and another $6.8 million was frozen under legal injunctions while it tried to get that returned. The remaining $31.8 million was still missing.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The fallout reached the company's financial reporting too. The audit committee concluded that Ubiquiti's internal control over financial reporting was ineffective because of one or more material weaknesses, a formal finding that public companies must disclose to investors.<sup>[1]</sup> In the same filing the company said its chief accounting officer had resigned and that an interim replacement had been appointed, while stating the resignation was not due to any disagreement over its operations or reporting.<sup>[1]</sup> Ubiquiti said it had put enhanced controls in place since June 5 and was adding more procedures recommended by the investigation.<sup>[1]</sup></p>
+<p>Ubiquiti was far from alone. Earlier in 2015 the FBI warned that scams of this kind had taken nearly $215 million from businesses over roughly 14 months.<sup>[2]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> callback verification for wire requests. Before any new or unusual payment goes out, someone confirms it with the requester by phone, using a number already on file, never one supplied in the request itself.</p>
+<p>A single call would have been enough. The people being impersonated had not asked for these payments, so the first time finance checked with them through a separate channel the scheme would have ended. Instead, each transfer relied only on the message that asked for it, and the losses kept growing until the fraud was finally noticed. Recovery after the fact is slow and partial, as Ubiquiti's numbers show. Verification before the money moves costs a few minutes.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Make the callback rule written policy.</strong> Any request to send money, change bank details or pay a new account gets confirmed by phone with a known number before it is paid. No exceptions for urgency or seniority.</li>
+<li><strong>Use the number you already have.</strong> Call the person from your contact list or vendor file, not from the email signature, invoice or message that made the request.</li>
+<li><strong>Tell staff it is safe to slow the boss down.</strong> Say out loud that nobody will be in trouble for checking a request from an owner or manager. Scammers count on people being afraid to ask.</li>
+<li><strong>Set a threshold for a second approver.</strong> Above a dollar amount you choose, require 2 people to sign off on a wire, so one convincing message cannot move money alone.</li>
+<li><strong>Know who to call if it happens.</strong> Keep your bank's fraud line handy and report quickly. The faster a bank is told, the better the chance of freezing funds.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-21" data-v="" data-title="Fake executive emails that cost $46.7 million"><div class="soon"><b>Fake executive emails that cost $46.7 million</b><span class="when">Drops 2026-12-21</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More payments and fraud cases</div><ul><li><a href="guide-fake-invoice-payment-fraud.html">Guide: How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-fake-invoices-2013.html">How Google and Facebook were scammed: the fake supplier invoices</a></li><li><a href="case-arup-2024.html">The Arup deepfake scam: the $25 million video call where everyone else was fake</a></li><li><a href="case-voice-deepfake-2019.html">The first known AI voice scam: how a fake boss&#x27;s call took $243,000</a></li><li><a href="case-bitfinex-2016.html">The Bitfinex hack: how 119,754 bitcoin walked out, then sat still for 5 years</a></li><li><a href="case-fake-support-2024.html">How a fake Google support call stole 4,100 bitcoin from one person</a></li><li><a href="controls.html#payments-fraud">Every payments and fraud control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.sec.gov/Archives/edgar/data/1511737/000157104915006288/t1501817_8k.htm" target="_blank" rel="noopener">SEC: Ubiquiti Networks, Inc. Form 8-K (August 2015)</a></li><li><a href="https://krebsonsecurity.com/2015/08/tech-firm-ubiquiti-suffers-46m-cyberheist/" target="_blank" rel="noopener">Krebs on Security: Tech firm Ubiquiti suffers $46M cyberheist</a></li><li><a href="https://www.csoonline.com/article/552387/ubiquiti-networks-victim-of-39-million-social-engineering-attack.html" target="_blank" rel="noopener">CSO Online: Ubiquiti Networks victim of $39 million social engineering attack</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

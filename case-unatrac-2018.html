@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Unatrac $11 million email scam worked | Cyber Heists</title>
+<meta name="description" content="A finance chief typed a password into a fake email login and scammers wired out about $11 million in 9 days. How the Unatrac scam worked and the simple fix.">
+<link rel="canonical" href="https://thecyberheists.com/case-unatrac-2018.html">
+<meta property="og:title" content="How one fake login cost Unatrac $11 million: the Forbes-listed fraudster&#x27;s email scam">
+<meta property="og:description" content="A finance chief typed a password into a fake email login and scammers wired out about $11 million in 9 days. How the Unatrac scam worked and the simple fix.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-unatrac-2018.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How one fake login cost Unatrac $11 million: the Forbes-listed fraudster's email scam", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-unatrac-2018.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · UNATRAC 2018</div>
+  <h1>How one fake login cost Unatrac $11 million: the Forbes-listed fraudster&#x27;s email scam</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: MFA on executive email accounts</div>
+
+<p class="lead">In 2016 a Nigerian businessman was named one of Africa's most promising young entrepreneurs. 2 years later, prosecutors say, a scheme he ran used one stolen email password to pull about $11 million out of a heavy equipment exporter in roughly 9 days.<sup>[1]</sup><sup>[3]</sup><sup>[4]</sup> This case file covers how the Unatrac fraud worked, how it ended in a 10-year federal sentence, and the one control that would have made the stolen password useless.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>In June 2016 Obinwanne Okeke, then 28, appeared on Forbes Africa's 30 Under 30 list as the founder of Invictus Group, a company he described as spanning construction, agriculture, oil and gas, telecommunications and real estate.<sup>[4]</sup></p>
+<p>In April 2018 the chief financial officer of Unatrac Holding Limited, the export sales office for Caterpillar heavy industrial and farm equipment, received phishing emails. One linked to a page that looked like the sign-in page for the company's Microsoft Office 365 email. The login details typed there went to the scammers.<sup>[1]</sup><sup>[3]</sup></p>
+<p>With the CFO's mailbox open to them, the scammers sent wire transfer requests with fake invoices attached. Between April 11 and April 19, 2018, about 15 payments went out, totaling nearly $11 million, to accounts overseas.<sup>[1]</sup><sup>[2]</sup><sup>[3]</sup> Unatrac reported the fraud to the FBI in June 2018.<sup>[3]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>This is business email compromise, one of the most expensive frauds businesses face. The scammer does not need to break into the bank or the accounting system. They take over one trusted mailbox and let the company's own staff move the money.<sup>[1]</sup></p>
+<p>A CFO's mailbox is the best one to own. Requests to pay an invoice look routine when they come from the finance chief's real address, in an existing thread, at a normal time of day. According to an FBI affidavit described in the Nigerian press, the account was accessed about 464 times, mostly from internet addresses in Nigeria, with no sign in the reporting that anything blocked or challenged those logins.<sup>[3]</sup><sup>[5]</sup></p>
+<p>Prosecutors said this was not a one-off. They described Okeke as running the scheme from about 2015 to 2019, sending phishing emails, building fake login pages and collecting credentials from hundreds of victims in several countries.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>How it was caught</h2>
+<p>Investigators traced email accounts used in the scheme back to accounts associated with Okeke.<sup>[5]</sup> On August 6, 2019, FBI agents arrested him at Washington Dulles International Airport, shortly before he was due to board a flight to Nigeria.<sup>[3]</sup></p>
+<h2>What it cost</h2>
+<p>On June 18, 2020, Okeke pleaded guilty in federal court in Virginia to conspiracy to commit wire fraud, which carried a maximum of 20 years.<sup>[2]</sup> On February 16, 2021, he was sentenced to 10 years in prison.<sup>[1]</sup> He also agreed to forfeit his interest in assets tied to the fraud.<sup>[5]</sup></p>
+<p>Prosecutors put the known losses from the scheme at about $11 million, most of it from Unatrac.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> multi-factor authentication on executive email accounts. A password alone opened the CFO's mailbox, again and again, from the other side of the world.</p>
+<p>Multi-factor authentication asks for a second proof, such as a code from an app or a physical security key, before a new device can sign in. With it turned on, a password typed into a fake page would not have been enough on its own, and hundreds of logins from unfamiliar locations would have run into a wall instead of a mailbox. A second, simpler control would have caught the money on the way out: calling to confirm any new payment request or bank change on a number already on file, not one in the email.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Turn on MFA for every mailbox, starting with finance and owners.</strong> The people who can approve payments are the ones scammers want. Use an authenticator app or security key, not text messages, where you can.</li>
+<li><strong>Call to confirm payment requests.</strong> Any new invoice, urgent wire or change of bank details gets a phone call to a number you already have, before money moves.</li>
+<li><strong>Watch for strange sign-ins.</strong> Most business email services can alert you to logins from new countries or devices. Turn those alerts on and have someone read them.</li>
+<li><strong>Check mailbox rules.</strong> Scammers often hide replies with forwarding or filtering rules. Look at the rules on finance mailboxes once a month.</li>
+<li><strong>Require 2 people for large payments.</strong> No single inbox, even the CFO's, should be enough to send a big wire.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-12" data-v="" data-title="A Forbes Africa Cover Star&#x27;s Eleven Million Dollar Scam"><div class="soon"><b>A Forbes Africa Cover Star&#x27;s Eleven Million Dollar Scam</b><span class="when">Drops 2026-12-12</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More payments and fraud cases</div><ul><li><a href="guide-fake-invoice-payment-fraud.html">Guide: How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-fake-invoices-2013.html">How Google and Facebook were scammed: the fake supplier invoices</a></li><li><a href="case-arup-2024.html">The Arup deepfake scam: the $25 million video call where everyone else was fake</a></li><li><a href="case-voice-deepfake-2019.html">The first known AI voice scam: how a fake boss&#x27;s call took $243,000</a></li><li><a href="case-bitfinex-2016.html">The Bitfinex hack: how 119,754 bitcoin walked out, then sat still for 5 years</a></li><li><a href="case-fake-support-2024.html">How a fake Google support call stole 4,100 bitcoin from one person</a></li><li><a href="controls.html#payments-fraud">Every payments and fraud control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.justice.gov/usao-edva/pr/nigerian-national-sentenced-prison-11-million-global-fraud-scheme" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, Eastern District of Virginia: Nigerian national sentenced to prison for $11 million global fraud scheme</a></li><li><a href="https://www.justice.gov/usao-edva/pr/nigerian-businessman-pleads-guilty-11-million-fraud-scheme" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, Eastern District of Virginia: Nigerian businessman pleads guilty to $11 million fraud scheme</a></li><li><a href="https://www.thecable.ng/fbi-arrested-invictus-obi-at-dulles-international-airport-just-before-escaping-us" target="_blank" rel="noopener">TheCable: FBI arrested Invictus Obi at Dulles International Airport just before escaping US</a></li><li><a href="https://www.forbes.com/sites/kerryadolan/2016/06/06/africas-most-promising-entrepreneurs-forbes-africas-30-under-30-for-2016/" target="_blank" rel="noopener">Forbes: Africa&#x27;s most promising entrepreneurs, Forbes Africa&#x27;s 30 Under 30 for 2016</a></li><li><a href="https://en.wikipedia.org/wiki/Obinwanne_Okeke" target="_blank" rel="noopener">Wikipedia: Obinwanne Okeke</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

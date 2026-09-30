@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uber hack 2022 and the 2016 cover-up: full story and timeline | Cyber Heists</title>
+<meta name="description" content="How a bought password and one approved prompt let an intruder into Uber in 2022, how the 2016 cover-up ended in a conviction, and the control that was missing.">
+<link rel="canonical" href="https://thecyberheists.com/episode-uber-2022.html">
+<meta property="og:title" content="The Uber hacks, start to finish: a bought password, a tired yes and a security chief&#x27;s conviction">
+<meta property="og:description" content="How a bought password and one approved prompt let an intruder into Uber in 2022, how the 2016 cover-up ended in a conviction, and the control that was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-uber-2022.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Uber hacks, start to finish: a bought password, a tired yes and a security chief's conviction", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-uber-2022.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · UBER 2022</div>
+  <h1>The Uber hacks, start to finish: a bought password, a tired yes and a security chief&#x27;s conviction</h1>
+  <div class="meta">Published 2026-09-29 · 8 min read · Episode 13 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-15" data-t="11:00" data-v="5w7hK5awIok" data-title="Uber 2022: a bought password, an hour of prompts, a guilty verdict"><div class="soon"><b>Uber 2022: a bought password, an hour of prompts, a guilty verdict</b><span class="when">Premieres 2026-11-15</span></div></div></div></div>
+
+<p class="lead">In September 2022 an intruder got into Uber with a password bought from criminals and a single tap on a contractor's phone, and 3 weeks later a federal jury convicted Uber's former security chief over how the company had handled a different breach 6 years earlier.<sup>[1]</sup><sup>[5]</sup> This long read covers both: the login, the keys left in a script, Uber's own account, the 2016 payoff, the verdict, and the one control that ties them together.</p>
+<h2>The bought password and the approval prompt</h2>
+<div class="case">
+<p>The way in did not start with an Uber employee. It started with an outside contractor. According to Uber's own account, filed with the Securities and Exchange Commission, the contractor's personal device had been infected with malware that exposed their Uber login, and the attacker most likely bought that corporate password on the dark web.<sup>[1]</sup></p>
+<p>A password alone should not have been enough. Uber's sign-in also asked for a second step: an approval request sent to the contractor's phone. The attacker tried to log in repeatedly, and each request was refused. Then, Uber said, the contractor accepted one, and the attacker was in.<sup>[1]</sup></p>
+<p>The attacker gave his own version to researchers while the breach was still unfolding. He said he sent approval prompts for more than an hour, then contacted the contractor on a messaging app while posing as a member of Uber's IT team and suggested that accepting the prompt would make the notifications stop.<sup>[2]</sup> Uber did not confirm that part, but its timeline of repeated refusals followed by one approval matches it.<sup>[1]</sup></p>
+</div>
+<p>Security people call this approval fatigue: flood someone with prompts at an awkward hour, add a plausible voice claiming to be the help desk, and wait for a tired person to press yes. It works because a push prompt asks a human to judge a login they did not start, with no easy way to see who is really behind it. Sign-in methods tied to a physical key or to the specific website do not have that weakness, because there is nothing for the user to approve on someone else's behalf.</p>
+<h2>The admin password left in a script</h2>
+<p>A contractor's account is a small key. What turned it into a large one, according to what the attacker told researchers, was a script he found on a shared internal network drive. The script contained, in plain text, the login for an administrator account on the system Uber used to store and hand out its other privileged passwords.<sup>[2]</sup> Uber has not publicly confirmed that detail.</p>
+<p>From there, the attacker claimed access to email, cloud systems and source code, and screenshots he shared led one well-known security researcher to say he appeared to have near-total access.<sup>[2]</sup> Uber's own list of what was touched was shorter but still serious: several employee accounts with elevated permissions, the company's email and document suite, its Slack workspace, from which some messages were downloaded, a finance tool used for invoices, and Uber's dashboard on the bug bounty platform where outside researchers report security flaws.<sup>[1]</sup></p>
+<p>The attacker also announced himself. On the evening of September 15, 2022, he posted to a company-wide Slack channel that he was a hacker and that Uber had suffered a data breach. Some employees reportedly took it for a joke at first.<sup>[3]</sup> Uber took Slack and other internal tools offline while it investigated.<sup>[1]</sup><sup>[3]</sup></p>
+<h2>What Uber said the intruder took</h2>
+<p>On September 19, 2022, Uber published an update. It said the attacker was likely affiliated with a group that had breached Microsoft, Cisco, Samsung, Nvidia and Okta earlier that year, and that it was working with the FBI and the Justice Department.<sup>[1]</sup></p>
+<p>Uber also said it had found no evidence that the attacker reached the production systems that run its apps, user accounts or the databases holding sensitive customer information such as card numbers, bank details or trip histories. It said no changes had been made to its code, and that its services stayed up throughout.<sup>[1]</sup></p>
+<p>The response steps it listed read like a checklist for this kind of intrusion: block or reset compromised accounts, disable affected internal tools, rotate keys, lock the code from changes, force everyone to sign in again, and tighten multifactor sign-in rules.<sup>[1]</sup> In the attacker's own telling, he was 18 and had done it to show that Uber's security was weak.<sup>[2]</sup> In the UK, a jury later found that a teenager who was 17 at the time had carried out the Uber intrusion along with other attacks linked to the same group. Because he was found unfit to stand trial, the jury decided whether he had done the acts rather than returning a criminal conviction.<sup>[11]</sup></p>
+<h2>The 2016 breach Uber hid</h2>
+<p>The timing was awkward for a reason. That same month, Uber's handling of an older breach was on trial in San Francisco.</p>
+<p>In 2016, hackers got into Uber's cloud storage and took data on about 57 million riders and drivers, including the names and license numbers of about 600,000 drivers.<sup>[4]</sup> They contacted Uber to demand payment. The company was already under investigation by the Federal Trade Commission over an earlier breach from 2014, and its chief security officer, Joe Sullivan, had testified to the agency about Uber's security in November 2016. About 10 days later, he learned of the new breach.<sup>[5]</sup> Prosecutors said he told a subordinate it would play very badly given what Uber had already told the FTC.<sup>[5]</sup></p>
+<p>Instead of reporting it, Uber paid the hackers $100,000 through its bug bounty program, which is meant to reward researchers who find and report flaws and normally had a cap of $10,000. The hackers signed nondisclosure agreements that falsely said they had not taken or kept any data.<sup>[4]</sup> The breach stayed hidden until a new chief executive disclosed it in November 2017, a year after it happened.<sup>[4]</sup><sup>[5]</sup> In September 2018, Uber paid $148 million to settle with all 50 states and the District of Columbia.<sup>[6]</sup></p>
+<h2>The verdict against Uber's former security chief</h2>
+<p>In August 2020, federal prosecutors charged Joe Sullivan with obstruction of justice and concealing a felony.<sup>[4]</sup> In July 2022, Uber itself entered a non-prosecution agreement with the Justice Department in which it admitted that its staff had concealed the 2016 breach from the FTC, and agreed to cooperate in the case.<sup>[7]</sup></p>
+<p>Sullivan's trial ran in September 2022, in the same weeks the new intruder was inside Uber's network. In October 2022 the jury found him guilty on both counts.<sup>[5]</sup><sup>[8]</sup> It was widely described as the first criminal conviction of a corporate security executive over how a breach was handled.<sup>[8]</sup> On May 4, 2023, a federal judge sentenced him to 3 years of probation and a $50,000 fine.<sup>[5]</sup><sup>[9]</sup></p>
+<p>Sullivan appealed. In March 2025 the Ninth Circuit Court of Appeals upheld the conviction.<sup>[10]</sup> The case changed how security leaders talk about breach disclosure: the cover-up, not the hack, is what ended in a criminal record.</p>
+<h2>One thread through two breaches</h2>
+<p>Lay the 2 incidents side by side and they fail in different places but the same way. In 2022, the defense rested on a prompt that a worn-down person could approve and on a powerful password sitting in a file anyone inside could read.<sup>[1]</sup><sup>[2]</sup> In 2016, it rested on a few people deciding that silence was safer than disclosure.<sup>[5]</sup></p>
+<p>In each case, one human decision was the only thing standing between an attacker and serious damage, and nothing in the system checked that decision. Good security design assumes people will be tired, rushed or under pressure, and removes the single points where one yes, or one quiet payment, can undo everything else.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Nov 2016</td><td>Security chief testifies to the FTC; about 10 days later learns of a new breach.<sup>[5]</sup></td></tr>
+<tr><td>Late 2016</td><td>Uber pays hackers $100,000 through its bug bounty program.<sup>[4]</sup></td></tr>
+<tr><td>Nov 2017</td><td>New CEO discloses the 2016 breach of about 57 million records.<sup>[4]</sup></td></tr>
+<tr><td>Sep 2018</td><td>Uber settles with all 50 states and D.C. for $148 million.<sup>[6]</sup></td></tr>
+<tr><td>Aug 2020</td><td>Former security chief charged.<sup>[4]</sup></td></tr>
+<tr><td>Jul 2022</td><td>Uber signs a non-prosecution agreement admitting the cover-up.<sup>[7]</sup></td></tr>
+<tr><td>Sep 15, 2022</td><td>Intruder posts in Uber's company-wide Slack.<sup>[3]</sup></td></tr>
+<tr><td>Sep 19, 2022</td><td>Uber publishes its account of the intrusion.<sup>[1]</sup></td></tr>
+<tr><td>Oct 2022</td><td>Jury convicts the former security chief on both counts.<sup>[8]</sup></td></tr>
+<tr><td>May 4, 2023</td><td>Sentenced to 3 years of probation and a $50,000 fine.<sup>[9]</sup></td></tr>
+<tr><td>Mar 2025</td><td>Ninth Circuit upholds the conviction.<sup>[10]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> use sign-in methods that cannot be approved by a tired thumb, keep privileged passwords out of scripts and shared files, and have a breach process that reports instead of pays for silence. The first 2 would have kept the 2022 intruder small; the third would have kept 2016 from becoming a criminal case.<sup>[1]</sup><sup>[5]</sup></p>
+<ol>
+<li><strong>Replace push-to-approve with stronger sign-in.</strong> Where your email and cloud tools allow it, use security keys or passkeys for staff and contractors, or at least number-matching prompts that require typing a code shown on screen.</li>
+<li><strong>Tell staff the help desk never asks for approvals.</strong> Make it a written rule that nobody from IT will ever ask them to accept a login prompt, and that unexpected prompts get reported, not accepted.</li>
+<li><strong>Search shared drives for stored passwords.</strong> Look for scripts, spreadsheets and documents containing logins, move them into a password manager, and change every password you find.</li>
+<li><strong>Give contractors the least access that works.</strong> Separate contractor accounts from admin rights and review each one quarterly; remove any that are no longer needed.</li>
+<li><strong>Write down who decides on disclosure.</strong> Before anything happens, name the people who assess a breach, involve a lawyer, and set the rule that extortion demands are reported, never quietly paid off.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The 2022 intrusion cost a bought password and some persistence. The 2016 cover-up cost $148 million in settlements and a felony conviction. Both are reminders that the expensive failures are usually decisions, not technology.</p>
+<p>For a small business, the lesson fits on an index card: make sure one tired yes cannot open everything, keep your master keys out of files, and decide in advance that you will report a breach rather than hope nobody finds out.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.sec.gov/Archives/edgar/data/1543151/000155278122000558/e22427_ex99-1.htm" target="_blank" rel="noopener">Uber (SEC Form 8-K exhibit): Security update, September 2022</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/hacker-pwns-uber-via-compromised-slack-account" target="_blank" rel="noopener">Dark Reading: Hacker pwns Uber via compromised VPN account</a></li><li><a href="https://www.cnbc.com/2022/09/16/uber-investigates-cybersecurity-incident-after-reports-of-a-hack.html" target="_blank" rel="noopener">CNBC: Uber investigates cybersecurity incident after reports of a hack</a></li><li><a href="https://www.npr.org/2020/08/20/904113981/former-uber-executive-charged-with-paying-hush-money-to-conceal-massive-breach" target="_blank" rel="noopener">NPR: Former Uber executive charged with paying hush money to conceal massive breach</a></li><li><a href="https://www.justice.gov/usao-ndca/pr/former-chief-security-officer-uber-sentenced-three-years-probation-covering-data" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, N.D. California: Former chief security officer of Uber sentenced to three years&#x27; probation for covering up data breach</a></li><li><a href="https://hunton.com/privacy-and-information-security-law/uber-settles-50-state-attorneys-general-148-million-connection-2016-data-breach" target="_blank" rel="noopener">Hunton Andrews Kurth: Uber settles with 50 state attorneys general for $148 million in connection with 2016 data breach</a></li><li><a href="https://www.justice.gov/usao-ndca/pr/uber-enters-non-prosecution-agreement" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, N.D. California: Uber enters non-prosecution agreement</a></li><li><a href="https://www.nortonrosefulbright.com/en/knowledge/publications/73fc0f07/us-jury-convicts-former-chief-security-officer-for-mishandling-cybersecurity-breach" target="_blank" rel="noopener">Norton Rose Fulbright: US jury convicts former chief security officer for mishandling cybersecurity breach</a></li><li><a href="https://therecord.media/former-uber-ciso-avoids-prison-sentenced-to-three-year-probation" target="_blank" rel="noopener">The Record: Former Uber CISO avoids prison, sentenced to three-year probation</a></li><li><a href="https://therecord.media/joe-sullivan-former-uber-executive-conviction-upheld" target="_blank" rel="noopener">The Record: Appellate court upholds sentence for former Uber cyber executive Joe Sullivan</a></li><li><a href="https://www.businessday.co.za/bd/world/europe/2023-08-23-london-court-finds-teen-hacked-uber-and-revolut/" target="_blank" rel="noopener">BusinessDay (Reuters): London court finds teen hacked Uber and Revolut</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

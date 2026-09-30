@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Jeep Cherokee was hacked remotely in 2015 | Cyber Heists</title>
+<meta name="description" content="In 2015 researchers remotely took over a Jeep on a highway through its dashboard system, forcing a 1.4 million vehicle recall. How it worked, and why.">
+<link rel="canonical" href="https://thecyberheists.com/case-jeep-2015.html">
+<meta property="og:title" content="How the Jeep Cherokee hack worked: from the dashboard radio to the brakes">
+<meta property="og:description" content="In 2015 researchers remotely took over a Jeep on a highway through its dashboard system, forcing a 1.4 million vehicle recall. How it worked, and why.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-jeep-2015.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Jeep Cherokee hack worked: from the dashboard radio to the brakes", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-jeep-2015.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · JEEP 2015</div>
+  <h1>How the Jeep Cherokee hack worked: from the dashboard radio to the brakes</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Isolate infotainment from vehicle controls</div>
+
+<p class="lead">In the summer of 2015, a Jeep Cherokee cruising at 70 mph slowed to a crawl on a highway because 2 people who were not in the car told it to.<sup>[1]</sup> Nobody was hurt and it was a planned demonstration, but it led to a recall of about 1.4 million vehicles. This case file covers how the car was reached, what the recall cost, and the one design control that was missing.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Two security researchers spent years studying how modern cars could be attacked from a distance.<sup>[2]</sup> Their target was the Uconnect dashboard system that Fiat Chrysler fitted to many of its vehicles, the screen that handles the radio, navigation and phone features.<sup>[1]</sup></p>
+<p>In July 2015 they showed a reporter what they had found. With the reporter driving a 2014 Jeep Cherokee, they worked the car remotely and brought it down from 70 mph to a near stop. In the course of their research they showed they could also affect steering, braking, the wipers and washer fluid, the door locks and the dashboard gauges, and could shut off the engine.<sup>[1]</sup></p>
+<p>The published story drew wide attention. On July 24, 2015, Fiat Chrysler announced a recall of about 1.4 million vehicles, and federal safety regulators opened an inquiry into whether the fix went far enough.<sup>[1]</sup><sup>[3]</sup><sup>[4]</sup> The researchers then presented their work at the Black Hat security conference in Las Vegas in August 2015.<sup>[2]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>A modern car is a small network of computers. Some of them run the engine, brakes and steering and talk to each other over an internal network. Others run comfort and entertainment features. The safest design keeps those 2 worlds apart, so a problem in the entertainment side can never reach the driving side.</p>
+<p>The Uconnect unit sat between those worlds. It had a cellular connection through a mobile carrier so it could offer connected features, which meant it could be reached from outside the car.<sup>[2]</sup> The researchers found that vulnerable vehicles could be found and contacted over that carrier's network, and estimated that more than a million cars might be exposed.<sup>[2]</sup></p>
+<p>The entertainment unit was not supposed to send commands to the rest of the car. But it could talk to a chip that did have access to the internal network, and the researchers found that the software on that chip could be replaced without proper authorization. Once that was done, messages from the dashboard system could reach the parts of the car that handle driving.<sup>[2]</sup> In plain terms, the wall between the radio and the brakes had a door, and the door was not locked.</p>
+<h2>What it cost</h2>
+<p>No one was harmed and no criminal attack using this flaw was reported. The price was paid by the manufacturer and its customers. The recall covered about 1.4 million vehicles across several brands, including 2013 to 2015 Ram pickups and Dodge Vipers, 2014 and 2015 Jeep Cherokee and Grand Cherokee and Dodge Durango SUVs, and 2015 Chrysler 200 and 300, Dodge Charger and Dodge Challenger models.<sup>[1]</sup></p>
+<p>Each affected owner needed a software update to the Uconnect system.<sup>[3]</sup><sup>[4]</sup> The National Highway Traffic Safety Administration opened an investigation to judge whether the recall was effective.<sup>[1]</sup> Beyond the direct cost, the case changed the conversation in the car industry: remote hacking was no longer a theory, and it could force a recall the same way a faulty part could.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> isolating the infotainment system from the vehicle controls. The part of the car that talks to the outside world should have had no path to send commands to the engine, brakes or steering.</p>
+<p>Every connected system will eventually have a bug. What turned this bug into a safety problem was that the internet-facing system could, with some work, give orders to the systems that move the car. Strict separation, backed by a check that only approved, signed software could run on the chip linking the 2 sides, would have limited any break-in to the radio and screen. Fixing that after the fact required a recall. Building it in from the start would have kept a dashboard flaw a dashboard problem.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Separate your guest and business networks.</strong> Put guest Wi-Fi, smart TVs, cameras and other gadgets on their own network, away from the computers that handle payments and customer records.</li>
+<li><strong>Keep payment and control systems off the internet where you can.</strong> Card terminals, building controls and anything that moves money should only connect to what they strictly need.</li>
+<li><strong>List every device that connects out.</strong> Printers, alarm panels, thermostats and vehicles with apps all count. You cannot protect what you do not know is connected.</li>
+<li><strong>Apply updates and recalls promptly.</strong> When a vendor issues a security fix or recall for a product you own, schedule it the same week rather than waiting for the next service visit.</li>
+<li><strong>Ask vendors how their products are separated.</strong> Before buying connected equipment, ask whether its online features can reach its critical functions and how updates are verified.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2027-01-09" data-v="" data-title="Researchers Shut Down a Jeep on the Highway, Remotely"><div class="soon"><b>Researchers Shut Down a Jeep on the Highway, Remotely</b><span class="when">Drops 2027-01-09</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More patching and monitoring cases</div><ul><li><a href="guide-patching-small-business.html">Guide: How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="controls.html#patching-monitoring">Every patching and monitoring control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://darkreading.com/vulnerabilities-threats/chrysler-recalls-1-4-million-vehicles-after-jeep-hacking-demo" target="_blank" rel="noopener">Dark Reading: Chrysler recalls 1.4 million vehicles after Jeep hacking demo</a></li><li><a href="https://www.kaspersky.com/blog/blackhat-jeep-cherokee-hack-explained/" target="_blank" rel="noopener">Kaspersky Daily: Black Hat USA 2015, the full story of how that Jeep was hacked</a></li><li><a href="https://blog.stellantisnorthamerica.com/2015/07/24/unhacking-the-hack-ensuring-security/" target="_blank" rel="noopener">Stellantis North America: Unhacking the hack, ensuring security (July 24, 2015)</a></li><li><a href="https://www.csmonitor.com/layout/set/amphtml/Business/In-Gear/2015/0724/Fiat-Chrysler-recalls-1.4-million-Dodge-Jeep-Ram-vehicles-over-hacking-concerns" target="_blank" rel="noopener">Christian Science Monitor: Fiat Chrysler recalls 1.4 million Dodge, Jeep, Ram vehicles over hacking concerns</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

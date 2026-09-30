@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bangladesh Bank heist 2016: full story, timeline and the typo | Cyber Heists</title>
+<meta name="description" content="How hackers sent 35 orders for $951 million from Bangladesh&#x27;s central bank in 2016, why $81 million got out, where it went, and the payment check it lacked.">
+<link rel="canonical" href="https://thecyberheists.com/episode-bangladesh-bank-2016.html">
+<meta property="og:title" content="The Bangladesh Bank heist, start to finish: a fake job seeker, a dead printer and $81 million">
+<meta property="og:description" content="How hackers sent 35 orders for $951 million from Bangladesh&#x27;s central bank in 2016, why $81 million got out, where it went, and the payment check it lacked.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-bangladesh-bank-2016.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Bangladesh Bank heist, start to finish: a fake job seeker, a dead printer and $81 million", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-bangladesh-bank-2016.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · BANGLADESH BANK 2016</div>
+  <h1>The Bangladesh Bank heist, start to finish: a fake job seeker, a dead printer and $81 million</h1>
+  <div class="meta">Published 2026-09-29 · 9 min read · Episode 02 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-10-07" data-t="11:00" data-v="xK-OvZ3QgIU" data-title="The billion-dollar bank heist: 35 orders, a broken printer, one typo"><div class="soon"><b>The billion-dollar bank heist: 35 orders, a broken printer, one typo</b><span class="when">Premieres 2026-10-07</span></div></div></div></div>
+
+<p class="lead">On a Thursday night in February 2016, 35 payment orders left the central bank of Bangladesh asking the Federal Reserve Bank of New York to move about $951 million, and the one machine meant to show staff what was leaving had gone silent.<sup>[1]</sup><sup>[3]</sup> This long read follows the whole heist in order: the fake job seeker, the time-zone gap, the casinos in Manila, the one person convicted, and the check that would have caught it within hours.</p>
+<h2>The fake job application that opened the bank</h2>
+<div class="case">
+<p>The theft began about a year before any money moved. In January 2015, several Bangladesh Bank employees received emails from someone presenting himself as a job seeker, inviting them to download a CV and cover letter. The applicant was invented, and at least 1 employee who opened the files let the intruders into the bank's systems.<sup>[3]</sup> The U.S. Justice Department later described the entry point the same way: targeted emails written to look legitimate to specific staff.<sup>[4]</sup></p>
+<p>What the intruders wanted was not a vault but a messaging system. Bangladesh Bank keeps part of its foreign reserves in a U.S. dollar account at the New York Fed, and orders to move that money travel over SWIFT, the network banks use to send each other payment instructions. A message that comes from the bank's own SWIFT terminals, using the right operators' credentials, looks genuine to the bank on the other end.<sup>[1]</sup><sup>[4]</sup> So the crew spent months inside learning how payments were made and whose logins could make them.</p>
+<p>The landing zone was built in parallel. On May 15, 2015, 4 U.S. dollar accounts were opened at the Jupiter Street branch of Rizal Commercial Banking Corporation (RCBC) in Makati, the business district of Metro Manila, in names that turned out to be fictitious.<sup>[1]</sup><sup>[2]</sup> Each started with a small deposit of about $500 and then sat idle for roughly 9 months.<sup>[1]</sup><sup>[3]</sup></p>
+</div>
+<p>That wait is the tell of a planned job. Dormant accounts draw less scrutiny than brand-new ones that suddenly receive millions, and they gave the thieves a place to land the money the moment the orders cleared. The long quiet period also meant the break-in and the payout were separated by most of a year, which made the connection harder to see after the fact.</p>
+<h2>Why the heist was timed around 3 weekends</h2>
+<p>The orders were sent at 8:36 p.m. on Thursday, February 4, 2016, Dhaka time.<sup>[3]</sup> In Bangladesh the weekend falls on Friday and Saturday, so the office was emptying out. In New York it was Thursday morning, a full business day at the Fed. By the time Dhaka came back to work on Sunday, New York was on its own Saturday-Sunday weekend.<sup>[3]</sup> And Monday, February 8, was the Lunar New Year, a public holiday in the Philippines.<sup>[1]</sup> Put together, there was a stretch of days in which the sending bank, the paying bank and the receiving bank were never all open at once.</p>
+<p>The malware had a second job: hiding the evidence. Bangladesh Bank relied on a printer that produced a paper record of SWIFT messages. That printer, on the 10th floor, started misbehaving around the time the orders went out.<sup>[3]</sup> Staff treated it as an ordinary technical fault, the kind that gets fixed after the weekend. When the system was finally working again, the bank found messages from New York asking about transfers nobody in Dhaka had authorized.<sup>[1]</sup></p>
+<p>This is the heart of the case. The bank's only routine view of outgoing payments came from the same compromised system that was sending them. Once the attackers controlled that system, they controlled what the staff could see.</p>
+<h2>35 payment orders and 1 misspelled word</h2>
+<p>Of the 35 instructions, the Fed blocked 30, worth about $850 million. Five were paid, totaling $101 million.<sup>[1]</sup> Four of them, about $81 million, went to the dormant accounts in Manila. The fifth, $20 million, was addressed to a supposed charity in Sri Lanka, the Shalika Foundation, with "foundation" misspelled. A routing bank in the chain paused the payment and asked for clarification, and a Sri Lankan bank separately judged the transfer too large for the recipient. All $20 million came back.<sup>[1]</sup></p>
+<p>The Manila money moved fast. The $81 million reached the RCBC accounts on Friday, February 5.<sup>[2]</sup> Bangladesh Bank's stop requests went out on February 8, the holiday, and RCBC received the SWIFT message on February 9.<sup>[1]</sup> By the time the accounts were frozen, about $58.1 million had already been withdrawn over the counter.<sup>[1]</sup><sup>[2]</sup></p>
+<p>Much of the rest passed through a money remittance company, Philrem Service Corporation, which received about $80.9 million through various accounts, converted it to pesos and passed it on between February 5 and 13.<sup>[2]</sup> The bank that stopped the Sri Lanka payment did what the sending bank could not: it looked at an odd detail and asked a question before the money moved.</p>
+<h2>How the money vanished into Manila's casinos</h2>
+<p>From the remittance company, the pesos went to the gaming floor. Reporting on the case says about $50 million was deposited across 2 Manila casinos, Solaire and Midas, and about $31 million was handed to a businessman who left the country.<sup>[3]</sup> At the time, Philippine casinos were outside the country's anti-money-laundering law, so they did not have to report suspicious transactions the way banks did.<sup>[7]</sup> Once money is turned into chips and back again, the paper trail thins out quickly.</p>
+<p>Bangladesh did not handle the news well either. The theft became public about a month after the transfers, through reports in the Philippine press, and the finance minister said he had not been told by the central bank. He called its handling of the matter very incompetent.<sup>[5]</sup> On March 15, 2016, Governor Atiur Rahman resigned.<sup>[5]</sup></p>
+<p>The Philippine regulators moved next. On June 1, 2016, the central bank revoked the licenses of Philrem and 2 other remittance firms. On August 5, 2016, it fined RCBC 1 billion pesos.<sup>[2]</sup> A casino junket operator returned about $15 million, and that was most of what came back from the Philippines.<sup>[1]</sup><sup>[2]</sup> In July 2017, the Philippines brought casinos under its anti-money-laundering law, closing the gap the thieves had used.<sup>[7]</sup></p>
+<h2>The branch manager, the North Korea charge and the lawsuit</h2>
+<p>Only 1 person has been convicted. Maia Santos-Deguito, the manager of the Jupiter Street branch, was found guilty by a Makati court on January 10, 2019, of 8 counts of money laundering, and sentenced to 4 to 7 years on each count. She was also ordered to pay about $109 million.<sup>[1]</sup><sup>[2]</sup> The Philippine Court of Appeals dismissed her appeal on February 6, 2023.<sup>[1]</sup><sup>[6]</sup></p>
+<p>The people at the keyboards were never in the Philippines. In September 2018, the Justice Department announced charges against a North Korean programmer. Prosecutors say he belonged to a North Korean government-sponsored hacking team, and the DOJ attributed the Bangladesh Bank theft, the 2014 Sony Pictures attack and the 2017 WannaCry ransomware outbreak to that group. He has been charged, not convicted, and is not in U.S. custody.<sup>[4]</sup></p>
+<p>Bangladesh Bank also went after the money in court. It sued RCBC and others in New York in 2019. A federal judge dismissed the racketeering case in March 2020, and the bank took its claims to New York state court, where appeals by RCBC and other defendants to end the case were rejected.<sup>[8]</sup><sup>[9]</sup> Of the $81 million that reached Manila, roughly $65 million has never been recovered.<sup>[3]</sup></p>
+<h2>What actually stopped most of the money</h2>
+<p>Look at where the heist failed and a pattern appears. The 30 blocked orders were stopped by people at the Fed looking at requests that did not fit. The $20 million was saved by a bank that noticed a spelling error and asked. Every successful defense came from someone outside Bangladesh Bank checking a payment through their own eyes and their own systems.<sup>[1]</sup></p>
+<p>The $81 million got through because the sending bank had no independent view of its own account. Its record of outgoing payments came from the compromised system, and nobody was checking over the weekend. A daily comparison against the Fed's own statement, or a phone call on a known number for any unusually large order, would have raised the alarm while the money was still sitting in Manila.<sup>[1]</sup><sup>[2]</sup> After the heist, SWIFT launched a customer security program with mandatory baseline controls for the banks on its network.<sup>[1]</sup></p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Jan 2015</td><td>Fake job application emails reach bank staff; malware gets in.<sup>[3]</sup></td></tr>
+<tr><td>May 15, 2015</td><td>4 dollar accounts opened at RCBC's Jupiter Street branch under fictitious names.<sup>[1]</sup></td></tr>
+<tr><td>Feb 4, 2016</td><td>35 SWIFT orders for about $951 million sent at 8:36 p.m. Dhaka time.<sup>[1]</sup><sup>[3]</sup></td></tr>
+<tr><td>Feb 5, 2016</td><td>$81 million lands in the Manila accounts.<sup>[2]</sup></td></tr>
+<tr><td>Feb 8&ndash;9, 2016</td><td>Stop requests sent during the Lunar New Year holiday; accounts frozen after most withdrawals.<sup>[1]</sup><sup>[2]</sup></td></tr>
+<tr><td>Mar 15, 2016</td><td>Governor Atiur Rahman resigns.<sup>[5]</sup></td></tr>
+<tr><td>Jun 1, 2016</td><td>Philippine central bank revokes Philrem's license.<sup>[2]</sup></td></tr>
+<tr><td>Aug 5, 2016</td><td>RCBC fined 1 billion pesos.<sup>[2]</sup></td></tr>
+<tr><td>Jul 2017</td><td>Philippine casinos brought under the anti-money-laundering law.<sup>[7]</sup></td></tr>
+<tr><td>Sep 2018</td><td>DOJ announces charges against a North Korean programmer.<sup>[4]</sup></td></tr>
+<tr><td>Jan 10, 2019</td><td>Branch manager convicted on 8 counts of money laundering.<sup>[1]</sup></td></tr>
+<tr><td>Feb 6, 2023</td><td>Court of Appeals upholds the conviction.<sup>[1]</sup><sup>[6]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> independent, out-of-band verification of outgoing payments, checked every day including weekends and holidays. Bangladesh Bank's only check lived on the same system the thieves controlled, so it went dark exactly when it was needed.<sup>[1]</sup><sup>[3]</sup></p>
+<ol>
+<li><strong>Reconcile against the bank's own record.</strong> Compare outgoing payments to your bank's online statement every business day, not to your accounting software or emailed confirmations.</li>
+<li><strong>Call back on a number you already have.</strong> Confirm any large, unusual or first-time payment by phone using contact details on file, never ones in the request.</li>
+<li><strong>Split entry and approval.</strong> The person who sets up a payment should never be the only person who approves it, especially for new payees.</li>
+<li><strong>Send transfer alerts to someone outside the process.</strong> Turn on your bank's text or email alerts for outgoing transfers above a set amount and route them to an owner or partner.</li>
+<li><strong>Treat a silent safeguard as an alarm.</strong> If a report, alert feed or printout that normally arrives stops arriving, investigate that day instead of waiting for Monday.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The Bangladesh Bank heist is remembered for the typo, but the typo only saved $20 million. What saved $850 million was other people's diligence, and what lost $81 million was a bank that could not see its own money leaving. Luck and strangers are not a plan.</p>
+<p>A small business faces the same shape of risk with a smaller number attached. If the only place you can see a payment is the system that sent it, a thief who controls that system controls your view. A second, independent look, checked by a person who does not send payments, turns a weekend-long head start into a same-day phone call.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-fake-invoices-2013.html">How Google and Facebook were scammed: the fake supplier invoices</a></li><li><a href="case-arup-2024.html">The Arup deepfake scam: the $25 million video call where everyone else was fake</a></li><li><a href="case-voice-deepfake-2019.html">The first known AI voice scam: how a fake boss&#x27;s call took $243,000</a></li><li><a href="case-bitfinex-2016.html">The Bitfinex hack: how 119,754 bitcoin walked out, then sat still for 5 years</a></li><li><a href="case-fake-support-2024.html">How a fake Google support call stole 4,100 bitcoin from one person</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://en.wikipedia.org/wiki/Bangladesh_Bank_robbery" target="_blank" rel="noopener">Wikipedia: Bangladesh Bank robbery</a></li><li><a href="https://pcij.org/2020/09/21/what-went-before-the-bangladesh-bank-heist/" target="_blank" rel="noopener">Philippine Center for Investigative Journalism: What went before: The Bangladesh Bank heist</a></li><li><a href="https://www.thedailystar.net/tech-startup/news/when-north-korean-hackers-almost-pulled-billion-dollar-heist-bangladesh-bank-2115317" target="_blank" rel="noopener">The Daily Star: When North Korean hackers almost pulled off a billion-dollar heist from Bangladesh Bank</a></li><li><a href="https://www.justice.gov/usao-cdca/pr/north-korean-regime-backed-programmer-charged-conspiracy-conduct-multiple-cyberattacks" target="_blank" rel="noopener">U.S. Department of Justice: North Korean Regime-Backed Programmer Charged With Conspiracy to Conduct Multiple Cyber Attacks and Intrusions</a></li><li><a href="https://www.aljazeera.com/news/2016/3/15/bangladesh-bank-governor-resigns-after-81m-hack" target="_blank" rel="noopener">Al Jazeera: Bangladesh Bank governor resigns after $81m hack</a></li><li><a href="https://news.abs-cbn.com/news/04/19/23/ca-upholds-maia-deguitos-money-laundering-conviction" target="_blank" rel="noopener">ABS-CBN News: CA upholds Maia Deguito&#x27;s money laundering conviction over Bangladesh bank heist</a></li><li><a href="https://business.inquirer.net/?p=233522" target="_blank" rel="noopener">Philippine Daily Inquirer: Duterte signs law including casinos in AMLC coverage</a></li><li><a href="https://www.steptoe.com/a/web/4MFfJt5fYdF4STxtQDvnsm/3ZFvT9/19-civ-00983-20200320-opinion-dismissing-hacking-rico-case.pdf" target="_blank" rel="noopener">Steptoe (court filing): Opinion dismissing Bangladesh Bank RICO case, 19 Civ. 00983, March 20, 2020</a></li><li><a href="https://www.tbsnews.net/node/568974" target="_blank" rel="noopener">The Business Standard: Reserve heist: US court rejects RCBC, 6 others&#x27; appeal</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What was the MOVEit hack? How Clop stole data from 60M people | Cyber Heists</title>
+<meta name="description" content="In 2023 the Clop gang exploited a MOVEit Transfer flaw to steal files from 1,000+ organizations and 60 million people. How it worked and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-moveit-2023.html">
+<meta property="og:title" content="How the MOVEit hack happened: one file-transfer flaw, 60 million people">
+<meta property="og:description" content="In 2023 the Clop gang exploited a MOVEit Transfer flaw to steal files from 1,000+ organizations and 60 million people. How it worked and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-moveit-2023.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the MOVEit hack happened: one file-transfer flaw, 60 million people", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-moveit-2023.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · MOVEIT 2023</div>
+  <h1>How the MOVEit hack happened: one file-transfer flaw, 60 million people</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Purge data from file-transfer servers</div>
+
+<p class="lead">The 2023 MOVEit attacks hit more than 1,000 organizations and more than 60 million people, and the gang behind them did not lock a single file. They copied what was sitting on file-transfer servers and threatened to publish it.<sup>[1]</sup><sup>[2]</sup> This case file covers how one flaw in a widely used file-sharing product became one of the largest data thefts on record, what it cost, and the control that would have left the thieves far less to take.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>MOVEit Transfer, made by Progress Software, is a managed file transfer product. Organizations use it to send large or sensitive files to partners, such as payroll records, benefits data and customer lists, instead of emailing them.<sup>[3]</sup> Starting on May 27, 2023, the Memorial Day weekend in the US, a criminal group known as Clop began exploiting a previously unknown flaw in the product, tracked as CVE-2023-34362.<sup>[1]</sup><sup>[3]</sup></p>
+<p>Progress warned customers on May 31 and released fixes. Researchers counted about 2,500 MOVEit servers exposed to the internet, most of them in the US.<sup>[3]</sup> On June 5 the gang claimed responsibility, and instead of emailing ransom notes it told victims to contact it and set June 14 as the date it would start publishing stolen data.<sup>[4]</sup> CISA and the FBI issued a joint warning about the campaign on June 7.<sup>[1]</sup></p>
+<p>The first public victims included a UK payroll provider and airlines whose staff data passed through it.<sup>[4]</sup> The list kept growing all summer. By late August, more than 1,000 organizations had been confirmed as victims, with about 84% in the US.<sup>[2]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>The flaw let an outsider send specially crafted requests to a MOVEit server over the internet and trick it into running the attacker's commands, with no password needed.<sup>[1]</sup><sup>[3]</sup> The attackers then planted a hidden web page, disguised to look like part of the normal software, that worked as a back door. Through it they could read the server's database, list the files stored there and download them.<sup>[1]</sup><sup>[3]</sup></p>
+<p>Because the flaw was unknown until the attacks began, patching could not have stopped the first wave. What decided the damage was what each server held. Files that had been sent months earlier and never cleared out were just as easy to steal as the day's transfers.<sup>[3]</sup> The attackers did not need to encrypt anything to get paid. Federal agencies noted that since 2021 this group had leaned mostly on stealing data rather than locking it.<sup>[1]</sup></p>
+<h2>What it cost</h2>
+<p>By August 25, 2023, a count of disclosures showed about 60 million people affected.<sup>[2]</sup> The largest single victims included the government contractor Maximus with about 11 million people, France's unemployment agency with about 10 million, and Louisiana's Office of Motor Vehicles with about 6 million.<sup>[2]</sup> Colorado's Medicaid agency and Oregon's Department of Transportation each reported millions more.<sup>[2]</sup></p>
+<p>One incident response firm estimated Clop could earn about $100 million from ransom payments. One analysis, based on an average cost per breached record, put the total cost of the breaches at close to $10 billion.<sup>[2]</sup> The US State Department offered a reward of up to $10 million for information on Clop.<sup>[2]</sup> The group is known for extortion that threatens to publish stolen data, and US agencies estimate it has hit thousands of organizations worldwide since 2019.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> purging data from file-transfer servers. A file-transfer system is a loading dock, not a warehouse. Files should be deleted automatically once the recipient has picked them up, or after a short set period.</p>
+<p>No organization could have patched a flaw that no one knew about. But every organization decided how long files sat on its MOVEit server. Where files were cleared within days, the attackers found little to take. Where years of payroll, benefits and customer files were kept, they found everything.<sup>[2]</sup><sup>[3]</sup> Short retention does not stop the break-in; it limits what a break-in is worth. Keeping internet-facing servers patched and watched is the other half of the job, and the government advisory stressed both.<sup>[1]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Set automatic deletion on file-sharing tools.</strong> In whatever you use to send files, whether a transfer service, shared links or a client portal, set files to expire after a few days and remove old uploads now.</li>
+<li><strong>List who holds your data.</strong> Ask payroll, benefits, accounting and IT vendors what file-transfer tools they use and how long they keep your files. The MOVEit victims included many companies hit through a vendor.</li>
+<li><strong>Patch internet-facing systems first.</strong> Anything reachable from the internet, such as file transfer, VPN, remote access and websites, should get security updates within days, not at the next quarterly cycle.</li>
+<li><strong>Send only what is needed.</strong> Before sharing a spreadsheet, strip columns the recipient does not need, such as Social Security numbers or dates of birth.</li>
+<li><strong>Watch for large downloads.</strong> Ask your IT provider to alert on unusual volumes of data leaving file servers, especially at night or on holiday weekends.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2027-01-04" data-v="" data-title="One file-transfer flaw, 60 million people&#x27;s data stolen"><div class="soon"><b>One file-transfer flaw, 60 million people&#x27;s data stolen</b><span class="when">Drops 2027-01-04</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More patching and monitoring cases</div><ul><li><a href="guide-patching-small-business.html">Guide: How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="controls.html#patching-monitoring">Every patching and monitoring control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-158a" target="_blank" rel="noopener">CISA and FBI: #StopRansomware, CL0P ransomware gang exploits CVE-2023-34362 MOVEit vulnerability (AA23-158A)</a></li><li><a href="https://techcrunch.com/2023/08/25/moveit-mass-hack-by-the-numbers/" target="_blank" rel="noopener">TechCrunch: MOVEit mass hack by the numbers</a></li><li><a href="https://www.bleepingcomputer.com/news/security/new-moveit-transfer-zero-day-mass-exploited-in-data-theft-attacks/" target="_blank" rel="noopener">BleepingComputer: New MOVEit Transfer zero-day mass exploited in data theft attacks</a></li><li><a href="https://www.bleepingcomputer.com/news/security/clop-ransomware-claims-responsibility-for-moveit-extortion-attacks/" target="_blank" rel="noopener">BleepingComputer: Clop ransomware claims responsibility for MOVEit extortion attacks</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

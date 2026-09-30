@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Code Spaces was hacked: the AWS login that killed a company | Cyber Heists</title>
+<meta name="description" content="In June 2014 an extortionist holding Code Spaces&#x27; cloud login wiped its servers and every backup in about 12 hours. What happened, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-code-spaces-2014.html">
+<meta property="og:title" content="How the Code Spaces hack happened: one cloud login deleted a company in 12 hours">
+<meta property="og:description" content="In June 2014 an extortionist holding Code Spaces&#x27; cloud login wiped its servers and every backup in about 12 hours. What happened, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-code-spaces-2014.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the Code Spaces hack happened: one cloud login deleted a company in 12 hours", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-code-spaces-2014.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · CODE SPACES 2014</div>
+  <h1>How the Code Spaces hack happened: one cloud login deleted a company in 12 hours</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: MFA on the cloud admin console</div>
+
+<p class="lead">In June 2014, a code-hosting company that advertised full redundancy and real-time backups to multiple off-site locations went out of business in about 12 hours.<sup>[1]</sup><sup>[2]</sup> This case file covers how one stolen cloud login let an extortionist delete the company's servers and its backups together, and the control that would have kept the key out of his hands.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Code Spaces sold hosted source-code storage and project tools to software teams. Its website said more than 200 companies a week used the service, and it promised customers high availability, real-time off-site backups and a proven recovery plan.<sup>[2]</sup> The whole business ran on Amazon Web Services, the cloud platform where companies rent servers and storage and manage them through a web control panel.<sup>[1]</sup></p>
+<p>In mid-June 2014, Code Spaces was hit with a denial-of-service attack, a flood of junk traffic meant to knock a site offline. At the same time, someone had gotten into the company's Amazon control panel and left messages demanding money, along with a free email address to reply to.<sup>[1]</sup></p>
+<p>Staff tried to take back control by changing the control panel passwords. It did not work. The intruder had already created extra logins for himself, and when he saw the company fighting back, he began deleting.<sup>[1]</sup> Machine images, storage volumes, database files, snapshots, storage buckets and backups disappeared. Only a few old code repositories survived.<sup>[1]</sup></p>
+<p>Code Spaces then posted a statement saying most of its data, backups, machine configurations and off-site backups had been partly or completely deleted. It said it could not keep operating, would help customers export whatever data was left, and would cease trading.<sup>[1]</sup><sup>[2]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>The company did not publicly explain how the attacker got its control panel login.<sup>[1]</sup> What is clear is what that login could do. One account had the power to create new users, to run and remove servers, and to delete every copy of the data, including the ones the company thought of as backups.<sup>[1]</sup></p>
+<p>That is the core problem. Code Spaces' backups were real, and they were in more than one place, but all of them could be reached and erased from the same cloud account. To the attacker, the backups were just more things to delete.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>How it was caught</h2>
+<p>This attack announced itself. The attacker wanted to be paid, so he made sure the company knew he was inside.<sup>[1]</sup> The problem was not detection but what came after. Changing passwords did not remove the extra logins the intruder had already set up, so the company's attempt to lock him out only prompted him to act.<sup>[1]</sup></p>
+<p>Security specialists quoted after the attack said it showed the need for stronger sign-in than passwords alone for cloud control panels, frequent rotation of access keys, and monitoring that flags unexpected changes such as new accounts being created.<sup>[2]</sup></p>
+<h2>What it cost</h2>
+<p>Everything. Within about 12 hours of the first attack, the company said it had lost most of its data and could not continue.<sup>[1]</sup><sup>[2]</sup> The loss was financial and also a matter of trust: a business that sold safe storage could not survive losing its customers' code.<sup>[2]</sup> Customers who had relied on Code Spaces as their only copy of their work lost that too.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> multi-factor authentication on the cloud admin console, backed by backups that the same admin login cannot delete.</p>
+<p>With a second sign-in step, such as a code from a phone app or a hardware key, a stolen password alone would not have opened the control panel. And if the backups had lived in a separate account, or in storage set up so that copies cannot be erased for a set time, the attacker could have caused a bad day instead of ending the company. The redundancy Code Spaces advertised was real for hardware failures. It offered no protection against one person with the master key.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Put two-factor on every admin login.</strong> Your cloud accounts, website host, domain registrar and Microsoft 365 or Google Workspace admin accounts should all require a second step at sign-in.</li>
+<li><strong>Keep one backup out of reach.</strong> Store at least one copy of your important data somewhere your everyday admin login cannot delete, such as a separate account, locked storage or an offline drive.</li>
+<li><strong>Test a restore.</strong> Once a quarter, bring back a real file or system from backup. A backup you have never restored is a hope, not a plan.</li>
+<li><strong>Get alerts on new accounts.</strong> Turn on notices for new admin users, new access keys and mass deletions, so a hidden back door shows up quickly.</li>
+<li><strong>Plan the lockout.</strong> Write down who to call at your cloud provider and how to disable every login at once, not just change one password.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-30" data-v="" data-title="The cloud hack that deleted a company in twelve hours"><div class="soon"><b>The cloud hack that deleted a company in twelve hours</b><span class="when">Drops 2026-12-30</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://threatpost.com/hacker-puts-hosting-service-code-spaces-out-of-business/106761/" target="_blank" rel="noopener">Threatpost: Hacker puts hosting service Code Spaces out of business</a></li><li><a href="https://www.pcworld.com/article/439918/hacker-puts-full-redundancy-codehosting-firm-out-of-business.html" target="_blank" rel="noopener">PCWorld: Hacker puts &#x27;full redundancy&#x27; code-hosting firm out of business</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

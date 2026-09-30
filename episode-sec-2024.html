@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEC X account hack 2024: the SIM swap, full story and timeline | Cyber Heists</title>
+<meta name="description" content="How a SIM swap and a switched-off login setting let hijackers post a fake bitcoin fund approval from the SEC&#x27;s X account in 2024, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/episode-sec-2024.html">
+<meta property="og:title" content="The SEC&#x27;s X account hack, start to finish: a fake ID, a phone store and a bitcoin jump">
+<meta property="og:description" content="How a SIM swap and a switched-off login setting let hijackers post a fake bitcoin fund approval from the SEC&#x27;s X account in 2024, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-sec-2024.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The SEC's X account hack, start to finish: a fake ID, a phone store and a bitcoin jump", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-sec-2024.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · SEC X ACCOUNT 2024</div>
+  <h1>The SEC&#x27;s X account hack, start to finish: a fake ID, a phone store and a bitcoin jump</h1>
+  <div class="meta">Published 2026-09-29 · 7 min read · Episode 14 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-18" data-t="11:00" data-v="7gOatT-0OUs" data-title="The SEC&#x27;s X account hack: a SIM swap, a fake ID, a $1,000 bitcoin jump"><div class="soon"><b>The SEC&#x27;s X account hack: a SIM swap, a fake ID, a $1,000 bitcoin jump</b><span class="when">Premieres 2026-11-18</span></div></div></div></div>
+
+<p class="lead">On January 9, 2024, the official X account of the Securities and Exchange Commission announced a decision the agency had not made, and the price of bitcoin rose by more than $1,000 before falling by more than $2,000 once the truth came out.<sup>[2]</sup><sup>[3]</sup> This long read follows the hijacking from the fake post to the phone store in Alabama, the switched-off login protection that made it possible, the searches that helped investigators, the sentence, and the one control that was missing.</p>
+<h2>The fake bitcoin fund post</h2>
+<div class="case">
+<p>For years, companies had asked the SEC to approve exchange-traded funds that hold bitcoin directly, the kind of fund that trades on a stock exchange like an ordinary share. By early 2024 the market was watching the agency closely for any word on those applications.</p>
+<p>At 4:11 p.m. Eastern time on January 9, 2024, the @SECGov account on X posted that the SEC had granted approval for bitcoin funds to list on all registered national securities exchanges. At 4:13 p.m. a second post appeared, containing only the ticker symbol for bitcoin. The account also liked 2 posts from accounts unrelated to the agency.<sup>[1]</sup></p>
+<p>None of it came from the SEC. The agency said an unauthorized party had gained control of the account shortly after 4 p.m., and it moved to delete the posts and regain control.<sup>[1]</sup> In that short window, prosecutors later said, the price of bitcoin rose by more than $1,000, then fell by more than $2,000 after the SEC said the post was false.<sup>[2]</sup><sup>[3]</sup></p>
+</div>
+<p>The episode showed how much weight a single official account can carry. A regulator's verified feed is where traders expect real announcements to appear first. For a few minutes, whoever controlled the login effectively spoke for the agency that oversees America's securities markets, and trading software and human traders reacted before anyone could check.</p>
+<h2>How the SEC lost its phone number</h2>
+<p>The SEC's own review, published in a series of updates on January 9, 10, 12 and 22, found that nobody had broken into the agency's computers. It said there was no evidence the intruders had reached SEC systems, data, devices or its other social media accounts.<sup>[1]</sup></p>
+<p>Instead, the attackers went around the agency entirely. They took control of the mobile phone number linked to the X account through the phone carrier, a technique known as a SIM swap. A SIM card is the small chip that ties a phone number to a handset. Persuade a carrier to issue a new one for someone else's number, and that person's calls and text messages start arriving on your phone. With the number in hand, the attackers could reset the account's password.<sup>[1]</sup></p>
+<p>That should have hit a second wall. Multifactor authentication, the extra sign-in step that asks for something beyond a password, is designed to stop exactly this. But the SEC said that in July 2023, X Support had turned off multifactor authentication on the account at the request of SEC staff, because they were having trouble getting into it. Once access was sorted out, it was not switched back on. It stayed off for about 6 months, until staff re-enabled it after the January 9 compromise.<sup>[1]</sup></p>
+<h2>The fake ID and the phone store in Alabama</h2>
+<p>The investigation drew in the SEC's inspector general, the FBI, the Cybersecurity and Infrastructure Security Agency, the Commodity Futures Trading Commission and the Justice Department.<sup>[1]</sup> In October 2024, it reached a man in northern Alabama.</p>
+<p>According to federal prosecutors, co-conspirators sent Eric Council Jr. of Athens, Alabama, personal details of the person whose phone number controlled the SEC account, along with a template for an identification card. He used a portable card printer to produce a fake ID in that person's name and went to a phone carrier store in Huntsville, where he used it to obtain a replacement SIM card for the number.<sup>[2]</sup><sup>[3]</sup></p>
+<p>He then bought a new iPhone with cash at a nearby Apple store, put the SIM card in it, and received the password reset codes for the @SECGov account as text messages. He photographed the codes and passed them on. A co-conspirator used them to get into the account and post the false announcement.<sup>[3]</sup> Afterward, prosecutors said, Council drove to Birmingham and returned the iPhone for cash. He was paid in bitcoin for his part.<sup>[2]</sup></p>
+<p>His role took a printed card, a store counter and a phone he later returned. No hacking of the SEC or of X was needed at any point, which is what makes the case so instructive: the weakest link was a customer service process built to help people who lose their phones.</p>
+<h2>The searches that pointed to him</h2>
+<p>Investigators did not need to reverse-engineer anything clever. Prosecutors said that after the hack, Council searched online for terms about hacking the SEC account, for information about SIM swaps, and for how he could know for sure whether the FBI was investigating him.<sup>[2]</sup></p>
+<p>In June 2024, agents searched his home and recovered a fake ID, the portable ID card printer and a laptop holding templates for more fake IDs.<sup>[3]</sup> On October 17, 2024, the FBI arrested him, then 25, on charges of conspiracy to commit aggravated identity theft and access device fraud.<sup>[2]</sup> The U.S. Attorney for the District of Columbia said his office would hold accountable people who commit such crimes.<sup>[2]</sup></p>
+<p>Prosecutors also said the SEC job was not a one-off. According to the Justice Department, Council received about $50,000 for performing SIM swaps.<sup>[3]</sup> The people who wrote and published the fake post have not been named in public filings, and nothing in the public record says whether anyone else has been charged.</p>
+<h2>The sentence and what the SEC changed</h2>
+<p>On February 10, 2025, Council pleaded guilty to conspiracy to commit aggravated identity theft. On May 16, 2025, a federal judge in Washington, D.C., sentenced him, then 26, to 14 months in prison and 3 years of supervised release, with conditions barring him from dark web access and identity fraud, and ordered him to forfeit $50,000.<sup>[3]</sup></p>
+<p>The SEC turned multifactor authentication back on for the account after the compromise.<sup>[1]</sup> The fix was simple, which is the uncomfortable part. The protection existed, was available and had been in use. It was switched off to solve a short-term access problem and then forgotten.</p>
+<p>The deeper weakness sits in how many services still let a text message reset a password. A phone number feels personal, but it is controlled by a carrier and can be moved by anyone who convinces a store clerk. When a text message is both the way to reset a password and the only second factor, whoever controls the number controls the account.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Jul 2023</td><td>Multifactor sign-in on @SECGov turned off at staff request.<sup>[1]</sup></td></tr>
+<tr><td>Jan 9, 2024</td><td>Phone number hijacked through the carrier; password reset.<sup>[1]</sup><sup>[3]</sup></td></tr>
+<tr><td>Jan 9, 2024, 4:11 p.m.</td><td>False post announcing approval of bitcoin funds.<sup>[1]</sup></td></tr>
+<tr><td>Jan 9, 2024, 4:13 p.m.</td><td>Second unauthorized post; bitcoin jumps, then falls.<sup>[1]</sup><sup>[2]</sup></td></tr>
+<tr><td>Jan 22, 2024</td><td>SEC publishes its finding of a SIM swap.<sup>[1]</sup></td></tr>
+<tr><td>Jun 2024</td><td>Agents search the Alabama man's home and find ID-making gear.<sup>[3]</sup></td></tr>
+<tr><td>Oct 17, 2024</td><td>FBI arrests him.<sup>[2]</sup></td></tr>
+<tr><td>Feb 10, 2025</td><td>He pleads guilty to conspiracy to commit aggravated identity theft.<sup>[3]</sup></td></tr>
+<tr><td>May 16, 2025</td><td>Sentenced to 14 months in prison and $50,000 forfeiture.<sup>[3]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> a second sign-in factor that cannot be moved to another phone, such as a hardware security key, kept on even when it is inconvenient, and account recovery that never trusts a text message alone. With that in place, a stolen phone number would have been a dead end.<sup>[1]</sup></p>
+<ol>
+<li><strong>Put security keys on your most visible accounts.</strong> For company social media, email and banking, register a physical security key or passkey, and keep a backup key in a safe place.</li>
+<li><strong>Remove phone numbers as a recovery route where you can.</strong> In each account's security settings, check whether a text message alone can reset the password, and switch to an app or key if possible.</li>
+<li><strong>Never switch off two-factor sign-in to fix a lockout.</strong> If you must, set a calendar reminder and name a person responsible for turning it back on the same day.</li>
+<li><strong>Add a carrier PIN or port lock.</strong> Ask your mobile carrier to add a PIN or lock to every business line so a store cannot move the number without it.</li>
+<li><strong>List who controls each shared account.</strong> For every company account, record whose phone and email it is tied to, and review the list whenever someone changes roles or leaves.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The SEC was not outwitted by advanced hacking. It was undone by a phone number, a printed card and a security setting that had been switched off months earlier to solve a small problem.</p>
+<p>Every small business has an account that speaks for it in public or moves its money. Ask one question about each: if someone walked into a phone store with a fake ID tomorrow, would they get in? If the answer is maybe, the fix takes an afternoon, and it costs far less than explaining a fake announcement to customers.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.sec.gov/secgov-x-account" target="_blank" rel="noopener">U.S. Securities and Exchange Commission: SEC statement on @SECGov X account compromise</a></li><li><a href="https://www.justice.gov/usao-dc/pr/fbi-arrests-alabama-man-january-2024-sec-x-hack-spiked-value-bitcoin" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: FBI arrests Alabama man for January 2024 SEC X hack that spiked the value of bitcoin</a></li><li><a href="https://www.justice.gov/usao-dc/pr/alabama-man-sentenced-hack-sec-x-account-spiked-value-bitcoin" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: Alabama man sentenced for hack of SEC X account that spiked value of bitcoin</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

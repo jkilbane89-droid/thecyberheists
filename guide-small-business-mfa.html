@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which MFA Stops Phishing? A Small Business Rollout Guide | Cyber Heists</title>
+<meta name="description" content="Text codes, app prompts or security keys? Which kind of multi-factor authentication stops phishing, where to turn it on first, and a 4-week rollout plan.">
+<link rel="canonical" href="https://thecyberheists.com/guide-small-business-mfa.html">
+<meta property="og:title" content="Which two-step login actually stops phishing, and how a small office rolls it out">
+<meta property="og:description" content="Text codes, app prompts or security keys? Which kind of multi-factor authentication stops phishing, where to turn it on first, and a 4-week rollout plan.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/guide-small-business-mfa.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Which two-step login actually stops phishing, and how a small office rolls it out", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/guide-small-business-mfa.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Multi-factor authentication</div>
+  <h1>Which two-step login actually stops phishing, and how a small office rolls it out</h1>
+  <div class="meta">Published 2026-09-29 · 7 min read</div>
+
+<p class="lead">Most break-ins at small offices do not start with a clever hack. They start with a password someone typed into the wrong page, and the only question is whether a second login step stops it there.<sup>[1]</sup> This guide explains which kinds of two-step login actually stop phishing, which ones only slow it down, and how an office of 2 to 50 people can roll out the stronger kind without a revolt at the front desk.</p>
+<h2>What two-step login is, in one paragraph</h2>
+<p>Multi-factor authentication, usually shortened to MFA and also called two-step or two-factor login, means a password is not enough on its own. After the password, the service asks for a second proof: a code from a text message, a code from an app, a tap on a phone prompt, or a small physical key you plug in or touch. The Federal Trade Commission tells small businesses to require it for any part of the network that holds sensitive information.<sup>[2]</sup> For tax preparers it is no longer optional: the IRS reminded professionals in 2024 that the FTC's Safeguards Rule has required MFA since June 2023, whatever the size of the firm.<sup>[3]</sup></p>
+<p>The catch is that not all second steps are equal. Some can be tricked out of a person just as easily as the password.</p>
+<h2>The ladder: which kinds stop phishing</h2>
+<p>The Cybersecurity and Infrastructure Security Agency (CISA) ranks the options from strongest to weakest.<sup>[1]</sup> Here is that ladder in plain English:</p>
+<ul>
+<li><strong>Security keys and passkeys (strongest).</strong> These use a standard called FIDO2 or WebAuthn. The key or passkey checks the web address it is talking to and will not sign in to a fake site. CISA calls this phishing-resistant, and it is the only widely available kind that earns the label.<sup>[1]</sup></li>
+<li><strong>Authenticator app with number matching.</strong> The login screen shows a number and you type it into the app. Better than a plain prompt, because you cannot approve blind.</li>
+<li><strong>One-time codes from an app or token.</strong> The rotating 6-digit code. Good against stolen passwords, but a fake page can ask you for the code too.</li>
+<li><strong>Push prompts without number matching.</strong> A simple "Approve?" pop-up. Attackers can send prompt after prompt until someone taps yes, which CISA calls push bombing.<sup>[1]</sup></li>
+<li><strong>Text message or voice codes (last resort).</strong> CISA says these are open to phishing and to SIM swaps, where a criminal talks a phone carrier into moving your number to their phone.<sup>[1]</sup></li>
+</ul>
+<p>Any of these beats a password alone. But if the goal is to stop phishing, and for most offices it should be, only the top rung actually closes the door.</p>
+<h2>Why codes and prompts fail against a good phishing page</h2>
+<p>In the summer of 2022, employees at two tech companies got the same kind of text message claiming to be from IT, with a link to a lookalike login page. At Cloudflare, at least 76 employees were targeted and 3 typed in their usernames and passwords.<sup>[4]</sup> At Twilio, some employees did the same.<sup>[5]</sup></p>
+<p>The fake pages were built to capture the one-time code as well, and pass it to the attackers in real time. Twilio's staff had codes, so the attackers got in and reached customer data; Twilio later counted 209 customer accounts affected. Cloudflare's staff each had a physical security key, and every login required it. On the fake site, the keys simply refused to work, so the three people who were fooled had nothing useful to hand over.<sup>[4]</sup><sup>[5]</sup> Twilio's fix afterward was to issue security keys to every employee.<sup>[5]</sup> The full story is in our case file on <a href="case-twilio-2022.html">the Twilio and Cloudflare texts</a>.</p>
+<p>Push prompts have their own weak spot. In September 2022 an intruder with an Uber contractor's stolen password kept triggering approval requests on the contractor's phone. The contractor rejected them at first, then accepted one.<sup>[6]</sup> See <a href="case-uber-2022.html">how push fatigue opened Uber's internal tools</a>. The same tactic, along with fake help desk calls and SIM swaps, appears in a 2023 FBI and CISA advisory on the group known as Scattered Spider, which recommends phishing-resistant MFA as the answer.<sup>[8]</sup></p>
+<h2>The door with no lock at all</h2>
+<p>Before worrying about which kind of MFA, check where you have none. The attack on Change Healthcare in February 2024 began with stolen credentials used on a remote-access portal that did not have MFA turned on, according to testimony from the chief executive of its parent company.<sup>[7]</sup> Colonial Pipeline was shut down in 2021 through an old remote-access account that was protected by a password alone.<sup>[9]</sup> In both cases the rest of the company may have had MFA. One forgotten entrance was enough.</p>
+<p>Our case files on <a href="case-change-healthcare-2024.html">Change Healthcare</a> and <a href="case-colonial-pipeline-vpn-password.html">Colonial Pipeline</a> walk through both. The lesson for a small office is simple: list every way into your systems from outside, and make sure each one asks for a second step.</p>
+<h2>Where to turn it on first</h2>
+<p>CISA suggests starting with the accounts that would hurt most if taken: email, file storage, remote access and anything with administrator rights, plus staff who handle sensitive records.<sup>[1]</sup> For a typical dental, medical, accounting, insurance, legal or real estate office, that list looks like this:</p>
+<ul>
+<li><strong>Email and office suite.</strong> Microsoft 365 or Google Workspace, starting with the owner and anyone with admin rights. Email is where password resets land, so it guards everything else.</li>
+<li><strong>Remote access.</strong> Any remote desktop tool, VPN or portal your staff or IT provider uses to reach the office from outside.</li>
+<li><strong>Money.</strong> Online banking, payroll, accounting software and payment processors.</li>
+<li><strong>Client records.</strong> Practice management, electronic health records, tax software, case management and transaction management systems.</li>
+<li><strong>Public face.</strong> Your domain registrar, website host and social media accounts. A hijacked domain or page can be used to fool your own clients.</li>
+</ul>
+<h2>How to roll it out in a small office</h2>
+<p>A good rollout takes about a month and one person who owns it. Here is a plan that works for most offices:</p>
+<ul>
+<li><strong>Week 1: make a list.</strong> Write down every system above, who uses it, and what second step it supports today. Most major services now support security keys or passkeys.</li>
+<li><strong>Week 1: start at the top.</strong> Put security keys or passkeys on owner and administrator accounts first. They are the ones attackers want most.</li>
+<li><strong>Week 2: buy 2 keys per person who needs them.</strong> One for daily use and a spare kept somewhere safe, so a lost key is an inconvenience, not a lockout.</li>
+<li><strong>Week 2: give everyone else the best option available.</strong> Where keys are not practical, use an authenticator app with number matching, which CISA names as the best stopgap.<sup>[1]</sup></li>
+<li><strong>Week 3: do a 15-minute sit-down with staff.</strong> Explain what the prompt looks like, and one rule: never approve a login you did not start, and never read a code to anyone.</li>
+<li><strong>Week 4: switch off the fallbacks.</strong> Once the stronger method works, remove text-message codes where the service allows it. Attackers aim for the weakest option still switched on. Our case on <a href="case-sec-x-account-sim-swap.html">the SEC's hijacked X account</a> shows what a phone number alone can unlock.</li>
+<li><strong>Ongoing: no exceptions without an end date.</strong> If you turn MFA off to fix a problem, write down who did it and when it goes back on, then check.</li>
+</ul>
+<p>Ask your IT provider to confirm, in writing, that every remote-access tool they use to reach your office also requires MFA. Contractor and vendor logins were the way in at Uber and at Australian insurer Medibank, whose case file is <a href="case-medibank-2022.html">here</a>.</p>
+<h2>Your one-page MFA checklist</h2>
+<ul>
+<li><strong>Every outside entrance has a second step.</strong> Email, remote access, VPN, cloud apps and vendor portals, with no forgotten old accounts.</li>
+<li><strong>Admins and money handlers use security keys or passkeys.</strong> These are the accounts that can move money or change everything else.</li>
+<li><strong>Everyone else uses an app with number matching at minimum.</strong> Plain push prompts and text codes are a step down.</li>
+<li><strong>Text-message fallback is removed where possible.</strong> Especially on email, banking, domain and social media accounts.</li>
+<li><strong>Spare keys are registered and stored safely.</strong> Two per person who uses keys.</li>
+<li><strong>Staff know the two rules.</strong> Never approve a prompt you did not start. Never share a code.</li>
+<li><strong>Your IT provider has confirmed MFA on its own access.</strong> In writing, not a verbal "yes, of course."</li>
+<li><strong>Exceptions have an owner and an end date.</strong> Reviewed every quarter.</li>
+</ul>
+<h2>Common questions</h2>
+<h3>Is a text-message code better than nothing?</h3>
+<p>Yes. A text code stops the most common attack, where someone buys or guesses your password and tries it. But CISA ranks text and voice codes as a last resort because they can be phished and can be stolen through a SIM swap.<sup>[1]</sup> Use them only where a service offers nothing better, and never on the email account that controls your other resets.</p>
+<h3>What is the difference between a passkey and a security key?</h3>
+<p>Both use the same FIDO2 standard and both refuse to work on a fake site.<sup>[1]</sup> A security key is a small physical device on a keyring. A passkey lives on your phone or computer and is unlocked with your fingerprint, face or PIN. Keys are easy to hand out and track in an office; passkeys cost nothing extra. Many offices use keys for admins and passkeys for everyone else.</p>
+<h3>Our staff share one front-desk login. Can that have MFA?</h3>
+<p>It can, but shared logins are a problem of their own: you cannot tell who did what, and a person who leaves still knows the password. The better fix is one account per person, each with its own second step. If a shared account truly cannot be avoided, put a security key on it, keep the key at the desk, and change the password whenever someone who knew it leaves.</p>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Put it in writing</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More guides</div><ul><li><a href="guide-employee-offboarding-checklist.html">Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-fake-invoice-payment-fraud.html">How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="guide-help-desk-caller-verification.html">How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-patching-small-business.html">How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="guide-ransomware-backups.html">Backups that survive ransomware: offline copies, tested restores and a one-page plan</a></li><li><a href="guide-vendor-access-security.html">How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="controls.html#identity-access">Cases behind these controls</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">General guidance, not legal advice. Check requirements specific to your industry with a qualified adviser.</p>
+  
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf" target="_blank" rel="noopener">CISA: Implementing Phishing-Resistant MFA (fact sheet, October 2022)</a></li><li><a href="https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/basics" target="_blank" rel="noopener">FTC: Cybersecurity Basics</a></li><li><a href="https://www.irs.gov/newsroom/multi-factor-authentication-key-protection-to-tax-professionals-security-arsenal-now-required" target="_blank" rel="noopener">IRS: Multi-factor authentication: Key protection to tax professionals&#x27; security arsenal now required (IR-2024-201)</a></li><li><a href="https://securityaffairs.com/134237/hacking/twilio-hackers-hit-cloudflare-employees.html" target="_blank" rel="noopener">Security Affairs: Hackers behind Twilio data breach also targeted Cloudflare employees</a></li><li><a href="https://www.twilio.com/en-us/blog/august-2022-social-engineering-attack" target="_blank" rel="noopener">Twilio: Incident report, employee and customer account compromise</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/1543151/000155278122000558/e22427_ex99-1.htm" target="_blank" rel="noopener">Uber (SEC Form 8-K exhibit): Security update</a></li><li><a href="https://www.theregister.com/2024/04/30/unitedhealth_ceo_ransom/" target="_blank" rel="noopener">The Register: UnitedHealth CEO says the ransom decision was his, Citrix portal lacked MFA</a></li><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-320a" target="_blank" rel="noopener">CISA and FBI: Scattered Spider (Cybersecurity Advisory AA23-320A)</a></li><li><a href="https://www.cnbc.com/2021/06/08/colonial-pipeline-ceo-testifies-on-first-hours-of-ransomware-attack.html" target="_blank" rel="noopener">CNBC: Colonial Pipeline CEO testifies on first hours of ransomware attack</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>

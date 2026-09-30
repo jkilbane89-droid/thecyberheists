@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What happened to QuadrigaCX? The crypto exchange that was empty | Cyber Heists</title>
+<meta name="description" content="QuadrigaCX said its founder died with the only keys. Regulators found the wallets empty and a fraud behind it. How it worked, what it cost, the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-quadriga-2018.html">
+<meta property="og:title" content="What really happened at QuadrigaCX: the cold wallets that were already empty">
+<meta property="og:description" content="QuadrigaCX said its founder died with the only keys. Regulators found the wallets empty and a fraud behind it. How it worked, what it cost, the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-quadriga-2018.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What really happened at QuadrigaCX: the cold wallets that were already empty", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-quadriga-2018.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · QUADRIGA 2018</div>
+  <h1>What really happened at QuadrigaCX: the cold wallets that were already empty</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Independent audits of client asset custody</div>
+
+<p class="lead">When Canada's largest crypto exchange told customers their coins were locked in offline wallets that only its dead founder could open, the story was only half true: the wallets had been emptied months before he died.<sup>[2]</sup> This case file covers how QuadrigaCX really lost its clients' money, what regulators found, and the one control that would have exposed it years earlier.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>QuadrigaCX was a Canadian cryptocurrency exchange where customers deposited dollars and bought or sold bitcoin and other coins. In early December 2018 its founder and chief executive died while traveling in India. The death was not made public until January 2019.<sup>[2]</sup></p>
+<p>The exchange then told customers it could not pay them. The story it gave was that most of their crypto sat in "cold wallets," storage kept offline for safety, and that only the founder held the keys. The amount at stake was reported at around $190 million Canadian, roughly $137 million US, owed to more than 100,000 users.<sup>[2]</sup><sup>[3]</sup> In February 2019 a Nova Scotia court granted the company creditor protection, and Ernst &amp; Young was appointed to track down the assets.<sup>[2]</sup></p>
+<p>What the monitor found changed the story. Six cold wallets that should have held millions had been emptied in April 2018, months before the founder's death, and had held essentially nothing since.<sup>[2]</sup><sup>[4]</sup> It also found 14 user accounts that had been created outside the normal sign-up process, under aliases.<sup>[2]</sup> Quadriga moved into bankruptcy, and the Ontario Securities Commission opened its own review.<sup>[1]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>The Ontario Securities Commission published its findings in June 2020 after a 10-month investigation. Its staff concluded that Quadriga's collapse was not a lost-password accident but a fraud run by the founder.<sup>[1]</sup></p>
+<p>According to the regulator, he opened hidden accounts on the exchange under aliases and credited them with balances of cash and crypto that did not exist. He then used those made-up balances to trade against real customers, who received the fake assets while handing over real ones. When that trading lost money, new customer deposits were used to cover the gap, which is the basic shape of a Ponzi scheme.<sup>[1]</sup> Commentators at the time described it as an old-fashioned fraud with a high-tech wrapper.<sup>[5]</sup></p>
+<p>The regulator also found that he took millions of dollars in client assets for his own use.<sup>[1]</sup> None of this was visible from the outside because the exchange kept no proper books. Investigators had to rebuild its records from more than 368,000 client accounts and over 6 million transactions, using data from banks and payment processors.<sup>[1]</sup></p>
+<p>The key point for any business is that one person had sole control of the customer assets, and no one else ever checked whether the coins the exchange reported actually existed.</p>
+<h2>What it cost</h2>
+<p>The commission put client losses at $169 million Canadian, spread across about 76,000 clients, about 40% of them in Ontario.<sup>[1]</sup> Roughly $115 million of that came from the founder's fraudulent trading on his own platform.<sup>[1]</sup></p>
+<p>No one was prosecuted. The commission said it would not bring enforcement action because the founder was dead and the company was bankrupt, and it noted its findings had never been tested before a court or tribunal.<sup>[1]</sup> Its enforcement director said the point of publishing was to help stop this kind of collapse from happening again.<sup>[1]</sup></p>
+<p>The bankruptcy dragged on for years. When distributions were finally set, creditors were told to expect about 13% of their claims.<sup>[6]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> independent audits of client asset custody. Nobody outside the founder's control verified, on a regular schedule, that the coins and cash the exchange owed customers were really in its wallets and bank accounts.</p>
+<p>A routine reconciliation, done by someone other than the person holding the keys, would have compared what customers were owed with what the company actually held. Empty cold wallets would have shown up in the first check after April 2018, not after a death. Accounts with invented balances would have failed the same test, because their money did not trace back to any real deposit.<sup>[1]</sup><sup>[2]</sup> A second key holder would also have removed the single point of failure that the exchange blamed for its collapse.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Reconcile customer money monthly.</strong> If you hold deposits, retainers, gift card balances or prepaid funds, compare what you owe against what sits in the account every month, and have someone other than the bookkeeper sign off.</li>
+<li><strong>Never let one person hold the only keys.</strong> Bank logins, payment accounts, domain registrars and any crypto wallets should have at least 2 authorized people, with recovery details stored in a sealed, known place.</li>
+<li><strong>Get an outside review.</strong> Even a small practice can pay an outside accountant once a year to confirm balances directly with the bank rather than relying on internal reports.</li>
+<li><strong>Watch for accounts nobody can explain.</strong> Review user, vendor and customer lists for entries created outside the normal process, and ask who made them.</li>
+<li><strong>Write down who can move money.</strong> List every person who can transfer funds and every account they can reach, and make any single-person control a known, time-limited exception.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-24" data-v="" data-title="The crypto exchange that was empty before its CEO died"><div class="soon"><b>The crypto exchange that was empty before its CEO died</b><span class="when">Drops 2026-12-24</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-ubiquiti-2020.html">The Ubiquiti hack was an inside job: how a senior developer extorted his employer</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-twitter-2015.html">How a Twitter employee sold user data to Saudi Arabia for a watch and cash</a></li><li><a href="case-tesla-2020.html">The Tesla insider bribe plot: the $1 million offer an employee reported</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.osc.ca/en/news-events/news/osc-publishes-investigative-report-quadrigacx" target="_blank" rel="noopener">Ontario Securities Commission: OSC publishes investigative report of QuadrigaCX</a></li><li><a href="https://www.kpbs.org/news/2019/03/06/crypto-mystery-quadrigas-wallets-are-empty" target="_blank" rel="noopener">KPBS (NPR): Crypto mystery: Quadriga&#x27;s wallets are empty</a></li><li><a href="https://www.fxstreet.com/cryptocurrencies/news/quadrigacx-loses-190-million-of-their-customers-money-as-they-lose-access-to-their-cold-storage-wallets-following-founders-death-201902012337" target="_blank" rel="noopener">FXStreet: QuadrigaCX loses $190 million of customers&#x27; money as it loses access to cold storage wallets</a></li><li><a href="https://cointelegraph.com/news/report-quadrigacx-wallets-have-been-empty-unused-since-april" target="_blank" rel="noopener">Cointelegraph: Report: QuadrigaCX wallets have been empty, unused since April</a></li><li><a href="https://pymnts.com/cryptocurrency/2020/failed-canadian-crypto-firm-quadriga-was-just-a-high-tech-version-of-an-old-fashioned-ponzi-scheme" target="_blank" rel="noopener">PYMNTS: Failed Canadian crypto firm Quadriga was just a high-tech version of an old-fashioned Ponzi scheme</a></li><li><a href="https://forklog.com/en/quadrigacx-creditors-to-receive-13-of-their-claims/amp" target="_blank" rel="noopener">ForkLog: QuadrigaCX creditors to receive 13% of their claims</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

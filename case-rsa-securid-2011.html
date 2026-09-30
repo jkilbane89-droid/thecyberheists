@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the RSA SecurID breach happened: a junk-mail spreadsheet | Cyber Heists</title>
+<meta name="description" content="In 2011 a spreadsheet pulled from a junk folder let intruders into RSA and near its SecurID token data. How it happened, what it cost, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-rsa-securid-2011.html">
+<meta property="og:title" content="The RSA SecurID hack of 2011: one spreadsheet from the junk folder">
+<meta property="og:description" content="In 2011 a spreadsheet pulled from a junk folder let intruders into RSA and near its SecurID token data. How it happened, what it cost, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-rsa-securid-2011.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The RSA SecurID hack of 2011: one spreadsheet from the junk folder", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-rsa-securid-2011.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · RSA SECURID 2011</div>
+  <h1>The RSA SecurID hack of 2011: one spreadsheet from the junk folder</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Isolate authentication secrets from corporate network</div>
+
+<p class="lead">The company whose key-fob tokens guarded logins at banks, governments and defense contractors was breached in 2011 through a spreadsheet an employee fished out of the junk mail folder.<sup>[1]</sup> This case file covers how that one email led to stolen SecurID information, why a defense contractor said it paid the price, and the one control that would have kept the crown jewels out of reach.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>RSA, the security division of EMC, made SecurID: small hardware tokens that show a new number every minute or so. Employees type that number with their password, so a stolen password alone is not supposed to be enough.<sup>[2]</sup> Large organizations issued the tokens by the tens of thousands.<sup>[2]</sup></p>
+<p>In March 2011, over two days, two small groups of RSA employees received phishing emails with the subject line "2011 Recruitment Plan" and a spreadsheet attached.<sup>[1]</sup> The company's filters had done their job and sent the messages to junk mail. But at least one employee retrieved the message and opened the file, and that was enough.<sup>[1]</sup></p>
+<p>RSA spotted the attack while it was in progress, but not before information related to SecurID had been taken.<sup>[1]</sup><sup>[2]</sup> The company did not publish a full inventory of what was lost.<sup>[2]</sup> In late May, Lockheed Martin detected an intrusion attempt on its own network, and in early June it said its investigation had concluded the RSA breach was a direct contributing factor.<sup>[2]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>The spreadsheet carried a hidden object that took advantage of a flaw in Adobe Flash that had not yet been fixed, a so-called zero-day, later catalogued as CVE-2011-0609.<sup>[1]</sup><sup>[3]</sup> Opening the file quietly installed a backdoor that gave the intruders remote control of the employee's computer.<sup>[1]</sup></p>
+<p>From that first foothold, the attackers went after more powerful accounts. They collected login details, worked their way up to administrator-level access, and gathered the data they wanted on internal servers before sending it out of the company in compressed, encrypted bundles.<sup>[1]</sup></p>
+<p>The hard part for RSA was what sat within reach. Press reports at the time raised the worry that the stolen material could include the secret seed values that make each token's numbers unique, or the records linking tokens to those seeds.<sup>[1]</sup> Anyone holding that information would be much closer to faking a token's code, which is exactly what the product was meant to prevent.</p>
+<h2>What it cost</h2>
+<p>The breach turned into a customer crisis. In an open letter, RSA's executive chairman, Art Coviello, said the attackers had been after security information to target the defense sector, not money or personal data.<sup>[2]</sup> After the Lockheed news, RSA offered to replace tokens for virtually every customer, with a focus on organizations protecting intellectual property, and offered extra fraud monitoring to banks with large, dispersed customer bases.<sup>[2]</sup></p>
+<p>Lockheed said it was replacing 45,000 SecurID tokens used by its employees, and RSA gave 45,000 new tokens to its own staff.<sup>[2]</sup> Reports at the time also said other defense contractors had been targeted using stolen SecurID information.<sup>[2]</sup> Beyond hardware, the real cost was trust: a product sold as the second lock on the door had to be re-issued because the keys to the lock had been kept too close to everyday email.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> isolating authentication secrets from the corporate network. Information that could help defeat SecurID was reachable from ordinary office systems, the same systems where staff read email and opened attachments.</p>
+<p>Phishing will always get through sometimes; here, even the junk filter could not save the day once a person rescued the message.<sup>[1]</sup> The damage depended on what the intruders could reach next. If the token secrets had lived on a separate, locked-down network with no path from staff workstations, and with tight, logged access for the handful of people who needed them, a single infected laptop would have been a bad week instead of a global token recall.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Name your crown jewels.</strong> Write down the few things that would hurt most if stolen: admin passwords, backup keys, customer databases, banking logins. Know exactly where each one lives.</li>
+<li><strong>Keep them off everyday machines.</strong> Store the most sensitive credentials in a password manager or vault with its own strong login, not in files or spreadsheets on the computers used for email and web browsing.</li>
+<li><strong>Use separate admin accounts.</strong> People who manage systems should use one account for daily email and a different one, with a second factor, for administrator work.</li>
+<li><strong>Tell staff the junk folder is there for a reason.</strong> Make it normal to ask IT before opening anything unexpected, especially attachments from strangers, and never penalize someone for asking.</li>
+<li><strong>Keep software updated automatically.</strong> Turn on automatic updates for browsers, office apps and plug-ins, and remove old ones you no longer use so there is less to exploit.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-26" data-v="" data-title="The junk-mail spreadsheet that breached RSA SecurID"><div class="soon"><b>The junk-mail spreadsheet that breached RSA SecurID</b><span class="when">Drops 2026-12-26</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.theregister.com/2011/04/04/rsa_hack_howdunnit/" target="_blank" rel="noopener">The Register: RSA explains how attackers breached its systems</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/rsa-offers-securid-token-replacement-for-customers-in-wake-of-lockheed-hack" target="_blank" rel="noopener">Dark Reading: RSA offers SecurID token replacement for customers in wake of Lockheed hack</a></li><li><a href="https://www.darkreading.com/cyberattacks-data-breaches/rsa-secureid-attack-began-with-excel-file-rigged-with-flash-zero-day" target="_blank" rel="noopener">Dark Reading: RSA SecurID attack began with Excel file rigged with Flash zero-day</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

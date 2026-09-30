@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Desk Caller Verification: Stop Reset and SIM Swap Scams | Cyber Heists</title>
+<meta name="description" content="The MGM attack reportedly began with a help desk call. How to verify callers before password and MFA resets, and how to lock your number against SIM swaps.">
+<link rel="canonical" href="https://thecyberheists.com/guide-help-desk-caller-verification.html">
+<meta property="og:title" content="How to verify callers before password resets, and protect your phone number from SIM swaps">
+<meta property="og:description" content="The MGM attack reportedly began with a help desk call. How to verify callers before password and MFA resets, and how to lock your number against SIM swaps.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/guide-help-desk-caller-verification.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to verify callers before password resets, and protect your phone number from SIM swaps", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/guide-help-desk-caller-verification.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Caller verification</div>
+  <h1>How to verify callers before password resets, and protect your phone number from SIM swaps</h1>
+  <div class="meta">Published 2026-09-29 · 6 min read</div>
+
+<p class="lead">The attack that knocked out slot machines and hotel room keys at MGM Resorts in 2023 reportedly began with a phone call to the company's own IT help desk.<sup>[1]</sup> This guide explains how to check that a caller is who they say they are before anyone resets a password or a second login step, and how individuals can stop a criminal from talking a phone carrier into handing over their number.</p>
+<h2>Why the help desk is a target</h2>
+<p>A help desk exists to get people back to work quickly. In a small office, that "help desk" might be the office manager, the owner's nephew who knows computers, or an outside IT company. Whoever it is, they hold a power attackers want: they can reset a password or remove the second login step on an account.</p>
+<p>That is why strong multi-factor login is only as strong as the reset process behind it. In a 2023 advisory, the FBI and CISA described a group known as Scattered Spider that poses as IT or help desk staff by phone and text, persuades phone carriers to move a target's number to a SIM card the group controls, and floods employees with login approval prompts until someone accepts.<sup>[2]</sup> Each of those tricks targets a person trying to be helpful, not a piece of software.</p>
+<h2>Three cases, one missing check</h2>
+<p><strong>MGM Resorts, 2023.</strong> According to reporting at the time, attackers called MGM's IT service desk while posing as an employee and talked their way into access. A former employee told reporters that staff could get a password reset by giving details such as their name, employee ID and date of birth, the kind of facts that can be pieced together online. Reporting said the attackers then impersonated people with higher-level access and had their multi-factor settings reset.<sup>[1]</sup> MGM later estimated the attack would cut about $100 million from quarterly earnings.<sup>[3]</sup> See <a href="case-mgm-2023.html">the MGM help desk call</a>.</p>
+<p><strong>Electronic Arts, 2021.</strong> The hackers told reporters that after getting into an EA chat workspace, they messaged IT support posing as an employee who had lost a phone at a party, and support issued them a new multi-factor token. They said that let them reach the systems holding game source code.<sup>[4]</sup> Read <a href="case-ea-2021.html">the EA lost-phone story</a>.</p>
+<p><strong>The SEC's X account, 2024.</strong> A man in Alabama used a fake ID at a phone store to get a replacement SIM card for the number linked to the Securities and Exchange Commission's X account, then used it to receive the codes needed to get in. A fake post about bitcoin followed. He pleaded guilty and was sentenced to 14 months in prison.<sup>[5]</sup> The SEC said multi-factor login on the account had been switched off months earlier.<sup>[6]</sup> See <a href="case-sec-x-account-sim-swap.html">the SEC SIM swap</a>.</p>
+<p>In each case, someone was asked to trust a story, and the process let the story win.</p>
+<h2>Identifiers are not proof</h2>
+<p>The core mistake is treating facts about a person as proof that you are talking to that person. A name, date of birth, employee number, last 4 digits of a Social Security number, address or manager's name are identifiers. Many of them sit in old data leaks or on professional networking profiles. Anyone who has done an hour of homework can recite them.</p>
+<p>Help desks can also leak these details to each other. In 2012, attackers took over a technology journalist's Apple, Google and Twitter accounts in about an hour by calling Amazon and Apple support and using what one company revealed to satisfy the other's identity check. Both companies changed their rules within days. See <a href="case-icloud-wipe-2012.html">the iCloud wipe case</a>.</p>
+<p>Proof means the caller controls something only the real person has: the phone number already in your records, the security key registered to their account, or their face matching the photo you have on file, confirmed by someone who knows them.</p>
+<h2>A caller verification rule for small offices</h2>
+<p>Write this down, and make sure whoever handles resets, inside or outside the office, follows it every time:</p>
+<ul>
+<li><strong>Hang up and call back.</strong> For any reset request by phone, text, chat or email, end the conversation and call the person back on the number already in your staff records. Never use a number the caller gives you.</li>
+<li><strong>Confirm with a second person.</strong> For owner, administrator and finance accounts, the person's manager or another partner confirms the request before anything changes.</li>
+<li><strong>Treat multi-factor resets as the highest risk.</strong> Removing someone's second login step or registering a new phone for them should require the callback plus a second approval, or an in-person or live video check against a photo you already have.</li>
+<li><strong>Tell the real person.</strong> Turn on alerts so staff get an email or text whenever their password or login settings change, and ask them to report any change they did not request.</li>
+<li><strong>Urgency is a warning sign.</strong> "I'm about to present to a client" or "the boss needs this now" is a reason to slow down, not speed up.</li>
+<li><strong>Ask your IT provider for its process in writing.</strong> Rival casino company Caesars disclosed a similar attack around the same time as MGM, which reporting said came through an outsourced IT support vendor.<sup>[1]</sup> Our <a href="guide-vendor-access-security.html">vendor access guide</a> covers what to ask.</li>
+</ul>
+<p>The best long-term fix is to make resets rare. Staff who use security keys or passkeys, with a registered spare, seldom need a reset at all. See our <a href="guide-small-business-mfa.html">MFA guide</a>.</p>
+<h2>Protecting a phone number from SIM swaps</h2>
+<p>A SIM swap is when a criminal persuades a phone carrier to move someone's number onto a new SIM card, so their calls and texts, including login codes, go to the criminal. A port-out is the same trick using a transfer to a different carrier. Both depend on a store employee or call center agent believing a story.</p>
+<p>New rules help. In late 2023 the Federal Communications Commission adopted rules requiring wireless carriers to use secure methods to confirm a customer's identity before a SIM change or port-out, to notify customers immediately when such a request is made, and to let customers lock their accounts against these changes.<sup>[7]</sup></p>
+<p>For individuals, including older adults and anyone with savings or crypto:</p>
+<ul>
+<li><strong>Turn on your carrier's account lock or number lock.</strong> Ask for any SIM-change or port-out protection they offer, and set an account PIN that is not your birthday or the last digits of your Social Security number.</li>
+<li><strong>Move important accounts off text-message codes.</strong> For email, banking and investment accounts, use an authenticator app, a passkey or a security key where offered, and remove your phone number as a recovery method if the service allows.</li>
+<li><strong>Watch for sudden "No service."</strong> If your phone loses signal for no reason and you get an unexpected notice about a SIM change, call your carrier from another phone right away.</li>
+<li><strong>Never share a code.</strong> No real bank, carrier or tech company will call and ask you to read back a code sent to your phone. Hang up and call the number on the back of your card or on your bill.</li>
+</ul>
+<p>For businesses, put the same locks on company phone lines, especially any number used to recover email, banking, domain or social media accounts.</p>
+<h2>Your caller verification checklist</h2>
+<ul>
+<li><strong>A written verification rule.</strong> Callback to a known number for every reset request.</li>
+<li><strong>Second approval for sensitive accounts.</strong> Owners, admins and anyone who moves money.</li>
+<li><strong>Multi-factor resets get extra checks.</strong> Never on a caller's word alone.</li>
+<li><strong>Change alerts are on.</strong> Staff hear about any password or login change.</li>
+<li><strong>Your IT provider follows the same rule.</strong> Confirmed in writing.</li>
+<li><strong>Carrier locks are on.</strong> For business lines and personal numbers that protect important accounts.</li>
+<li><strong>Text-message recovery is removed where possible.</strong> On email, banking, domain and social accounts.</li>
+</ul>
+<h2>Common questions</h2>
+<h3>Isn't calling people back rude or slow?</h3>
+<p>It takes a minute, and staff get used to it quickly when it applies to everyone, including the owner. Explain it once as a rule that protects everyone's accounts. A real employee locked out before a meeting will be far less inconvenienced by a callback than by an attacker taking over their account.</p>
+<h3>What if the caller is the boss and is angry?</h3>
+<p>That pressure is exactly what attackers use. The owner or managing partner should say, in writing, that nobody will ever be in trouble for following the verification rule, including with the owner. Then the answer to an angry caller is simple: "I'll call you right back on your number."</p>
+<h3>Does the FCC rule mean I no longer need a carrier PIN?</h3>
+<p>No. The rule requires carriers to use secure identity checks and to offer account locks, but you usually still need to turn the lock on yourself.<sup>[7]</sup> Ask your carrier what protection it offers, switch it on, and keep your PIN somewhere safe.</p>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Put it in writing</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More guides</div><ul><li><a href="guide-employee-offboarding-checklist.html">Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-fake-invoice-payment-fraud.html">How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="guide-patching-small-business.html">How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="guide-ransomware-backups.html">Backups that survive ransomware: offline copies, tested restores and a one-page plan</a></li><li><a href="guide-small-business-mfa.html">Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="guide-vendor-access-security.html">How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="controls.html#identity-access">Cases behind these controls</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">General guidance, not legal advice. Check requirements specific to your industry with a qualified adviser.</p>
+  
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.dig-in.com/articles/mgm-resorts-hackers-broke-in-after-tricking-it-service-desk" target="_blank" rel="noopener">Digital Insurance (Bloomberg): MGM Resorts hackers broke in after tricking IT service desk</a></li><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-320a" target="_blank" rel="noopener">CISA and FBI: Scattered Spider (Cybersecurity Advisory AA23-320A)</a></li><li><a href="https://www.sec.gov/Archives/edgar/data/789570/000119312523251667/d461062d8k.htm" target="_blank" rel="noopener">SEC: MGM Resorts International Form 8-K, October 5, 2023</a></li><li><a href="https://cyberscoop.com/ea-games-fifa-hack-hackers-slack/" target="_blank" rel="noopener">CyberScoop: Hackers used Slack to break into EA Games</a></li><li><a href="https://www.justice.gov/opa/pr/alabama-man-sentenced-14-months-connection-securities-and-exchange-commission-x-hack-spiked" target="_blank" rel="noopener">U.S. Department of Justice: Alabama Man Sentenced to 14 Months in Connection with SEC X Hack That Spiked Bitcoin Value</a></li><li><a href="https://www.sec.gov/secgov-x-account" target="_blank" rel="noopener">U.S. Securities and Exchange Commission: SEC Statement on @SECGov X Account Compromise</a></li><li><a href="https://docs.fcc.gov/public/attachments/DOC-397990A1.pdf" target="_blank" rel="noopener">FCC: Protecting Consumers from SIM Swap and Port-Out Fraud (Report and Order, adopted 2023)</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>

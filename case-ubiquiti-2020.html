@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ubiquiti breach: the developer who hacked his own company | Cyber Heists</title>
+<meta name="description" content="A Ubiquiti developer stole company data, demanded 50 bitcoin posing as a hacker, then planted a false story. How he was caught, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-ubiquiti-2020.html">
+<meta property="og:title" content="The Ubiquiti hack was an inside job: how a senior developer extorted his employer">
+<meta property="og:description" content="A Ubiquiti developer stole company data, demanded 50 bitcoin posing as a hacker, then planted a false story. How he was caught, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-ubiquiti-2020.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Ubiquiti hack was an inside job: how a senior developer extorted his employer", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-ubiquiti-2020.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · UBIQUITI 2020</div>
+  <h1>The Ubiquiti hack was an inside job: how a senior developer extorted his employer</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Monitor privileged insider access</div>
+
+<p class="lead">The hacker who tried to squeeze Ubiquiti for 50 bitcoin was a senior developer on its own cloud team, and after the break-in he joined the group investigating it.<sup>[1]</sup><sup>[4]</sup> This case file covers how he used access he already had, how a brief VPN failure pointed straight back to his home, and the one control that would have caught him sooner.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Nickolas Sharp joined Ubiquiti, the maker of Wi-Fi and networking gear, in August 2018 and worked in its cloud division, where he held administrator credentials for the company's Amazon Web Services accounts and its GitHub code repositories.<sup>[2]</sup><sup>[5]</sup> In December 2020, prosecutors said, he used those credentials to copy gigabytes of confidential data, including about 155 code repositories, while routing his traffic through a commercial VPN to hide where he was.<sup>[2]</sup><sup>[4]</sup> He also changed log retention settings so the records of what he did would disappear quickly.<sup>[2]</sup><sup>[3]</sup></p>
+<p>Ubiquiti spotted the intrusion in late December, and Sharp joined the internal response.<sup>[2]</sup><sup>[4]</sup> On January 11, 2021, the company told customers it had been breached.<sup>[5]</sup> Around the same time, an anonymous note demanded 50 bitcoin, about $1.9 million at the time, to stay quiet and to reveal a supposed backdoor into the network. Ubiquiti refused and went to law enforcement. The note's author then posted some of the stolen files online.<sup>[2]</sup><sup>[3]</sup><sup>[4]</sup></p>
+<p>On March 24, 2021, the FBI searched Sharp's home.<sup>[5]</sup> Days later, posing as an anonymous insider, he told a well-known security journalist that an outside attacker had gained full administrative control of the company's cloud and that Ubiquiti was playing it down. The story ran on March 30, and Ubiquiti's shares fell about 20%, wiping out more than $4 billion in market value.<sup>[1]</sup><sup>[3]</sup><sup>[5]</sup> He left the company around the end of March.<sup>[1]</sup><sup>[5]</sup></p>
+</div>
+<h2>How he got in</h2>
+<p>He did not have to break in at all. His job gave him administrator keys to the systems that held the company's code and cloud data, and nothing stopped a trusted cloud lead from using those keys in the middle of the night to pull down large amounts of data.<sup>[2]</sup></p>
+<p>The disguise was thin. To make the activity look like it came from an outsider, he connected through a paid VPN service. He then tried to cover the trail by shortening how long the cloud logs were kept.<sup>[2]</sup><sup>[3]</sup> Because he was also on the response team, he was in a position to see what investigators were looking at, which is exactly the problem with letting a person with broad, unwatched access investigate an incident involving that access.<sup>[4]</sup></p>
+<h2>How it was caught</h2>
+<p>A household internet hiccup did most of the work. During the data theft, his home connection briefly dropped, the VPN stopped masking him, and his real home IP address showed up in the company's logs alongside the VPN address.<sup>[2]</sup><sup>[4]</sup> Investigators also tied the VPN account to a payment account in his name.<sup>[5]</sup> When agents confronted him and searched his home in March 2021, what he told them turned into a separate charge of lying to the FBI.<sup>[3]</sup></p>
+<p>Sharp was arrested and charged in December 2021 with computer fraud, sending threats across state lines, wire fraud and lying to the FBI.<sup>[2]</sup><sup>[5]</sup> Ubiquiti said at the time that the evidence pointed to someone with detailed knowledge of its cloud setup.<sup>[5]</sup></p>
+<h2>What it cost</h2>
+<p>In February 2023 Sharp pleaded guilty to a computer intrusion charge, wire fraud and making false statements to the FBI.<sup>[3]</sup> In May 2023 he was sentenced to 6 years in prison and 3 years of supervised release, and ordered to pay $1,590,487 in restitution and forfeit equipment used in the crime.<sup>[1]</sup></p>
+<p>The ransom was never paid, but the damage did not depend on it. The false news story did more harm than the theft itself, knocking billions off the company's market value for a breach that was, in fact, one employee misusing his own access.<sup>[1]</sup><sup>[3]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> monitoring what privileged insiders do with their access. Sharp's keys were legitimate, so the question was never whether he could get in. It was whether anyone would notice an administrator copying large amounts of code at odd hours and then turning down the logging.</p>
+<p>An alert on bulk downloads, a rule that changes to log retention need a second approval, and logs copied somewhere the admin cannot edit would each have flagged the theft within days instead of leaving it to be discovered through a ransom note. Keeping people with suspicious access patterns off the investigation is part of the same control: whoever watches the watchers should not be the one being watched.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Know who holds the master keys.</strong> List every person and contractor with administrator access to your cloud, email, website and accounting systems, and remove any access that is not needed for their current job.</li>
+<li><strong>Turn on download and admin alerts.</strong> Most cloud and file-sharing services can email you when someone downloads unusually large amounts of data or changes security settings. Switch those alerts on and send them to someone other than the admin.</li>
+<li><strong>Protect the logs.</strong> Keep activity logs for at least 90 days and store a copy where your IT person cannot shorten or delete them.</li>
+<li><strong>Require two people for security changes.</strong> Changes to logging, backups or admin accounts should need sign-off from a second person, even if that person is the owner.</li>
+<li><strong>Bring in an outside view during an incident.</strong> If you suspect a breach, have an independent IT firm or advisor lead the review rather than relying only on the staff whose access is involved.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-10-14" data-v="M5pEbVsGS5k" data-title="The Ubiquiti Hacker Was Its Own Developer"><div class="soon"><b>The Ubiquiti Hacker Was Its Own Developer</b><span class="when">Drops 2026-10-14</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-twitter-2015.html">How a Twitter employee sold user data to Saudi Arabia for a watch and cash</a></li><li><a href="case-tesla-2020.html">The Tesla insider bribe plot: the $1 million offer an employee reported</a></li><li><a href="case-knowbe4-2024.html">How a security training company hired a North Korean fake IT worker</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://thehackernews.com/2023/05/former-ubiquiti-employee-gets-6-years.html" target="_blank" rel="noopener">The Hacker News: Former Ubiquiti employee gets 6 years in prison for $2 million crypto extortion case</a></li><li><a href="https://www.theregister.com/2021/12/02/nickolas_sharp_ubiquiti_hack_charged/" target="_blank" rel="noopener">The Register: Ex-Ubiquiti engineer charged with stealing data and extorting company</a></li><li><a href="https://www.securityweek.com/former-ubiquiti-employee-who-posed-as-hacker-pleads-guilty/" target="_blank" rel="noopener">SecurityWeek: Former Ubiquiti employee who posed as hacker pleads guilty</a></li><li><a href="https://www.bitdefender.com/blog/hotforsecurity/man-charged-with-ubiquiti-data-breach-and-extortion-was-employee-assigned-to-investigate-hack/" target="_blank" rel="noopener">Bitdefender: Man charged with Ubiquiti data breach and extortion was employee assigned to investigate hack</a></li><li><a href="https://therecord.media/former-ubiquiti-employee-charged-with-hacking-and-extorting-company/" target="_blank" rel="noopener">The Record: Former Ubiquiti employee charged with hacking and extorting company</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

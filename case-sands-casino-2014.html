@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Las Vegas Sands hack: how Iran wiped a casino empire | Cyber Heists</title>
+<meta name="description" content="In 2014 attackers wiped about three-quarters of Las Vegas Sands&#x27; servers after entering through a test web server. How it happened and the control that failed.">
+<link rel="canonical" href="https://thecyberheists.com/case-sands-casino-2014.html">
+<meta property="og:title" content="The Las Vegas Sands cyberattack: a forgotten test server and a wiped casino network">
+<meta property="og:description" content="In 2014 attackers wiped about three-quarters of Las Vegas Sands&#x27; servers after entering through a test web server. How it happened and the control that failed.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-sands-casino-2014.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Las Vegas Sands cyberattack: a forgotten test server and a wiped casino network", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-sands-casino-2014.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · SANDS CASINO 2014</div>
+  <h1>The Las Vegas Sands cyberattack: a forgotten test server and a wiped casino network</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Lock down forgotten development servers</div>
+
+<p class="lead">One of the world's largest casino companies had about three-quarters of its Las Vegas servers wiped in early 2014, and the attackers got their start on a test web server at a casino in Pennsylvania.<sup>[1]</sup><sup>[2]</sup> This case file covers the remark that preceded the attack, how the intruders moved from a side door to headquarters, what the damage cost, and the one control that was missing.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>In October 2013, Las Vegas Sands chairman and CEO Sheldon Adelson spoke at Yeshiva University in New York and suggested the United States could fire a nuclear weapon into the Iranian desert as a warning over Iran's nuclear program.<sup>[1]</sup><sup>[3]</sup> The comment drew angry responses in Iran.</p>
+<p>In January 2014, intruders began targeting Sands Bethlehem, the company's casino resort in Bethlehem, Pennsylvania.<sup>[1]</sup> Their way in was a web development server, a machine the company used to test website pages before they went live.<sup>[1]</sup><sup>[4]</sup> By the start of February they had found login details belonging to a company engineer who worked at headquarters but had used systems in Bethlehem, and they used them to reach the Las Vegas network.<sup>[1]</sup></p>
+<p>In early February 2014, they released destructive software that erased data across the company's computers. About three-quarters of the Las Vegas servers were hit, email went down, and staff found desktops and laptops unusable.<sup>[1]</sup><sup>[2]</sup> The company cut itself off from the internet to stop the spread.<sup>[1]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>The weak point was not the casino floor or the main website. It was a server built for testing, the kind of machine that is often set up quickly, given a simple login, and then forgotten while attention goes to production systems. The attackers ran automated password guessing against it, trying thousands of combinations a minute until one worked.<sup>[1]</sup></p>
+<p>Once on that machine, they looked for passwords left behind by people who had logged in earlier. One belonged to an engineer with access to the Las Vegas headquarters network, and the company's internal connection between sites let them follow that path.<sup>[1]</sup><sup>[4]</sup> In other words, a low-value test box in one property shared enough with the rest of the business that taking it over opened the way to everything else.</p>
+<p>The wiper itself was not sophisticated. Reports described it as a short program of about 150 lines.<sup>[1]</sup> It did not need to be clever, because by then the attackers had the access they needed.</p>
+<h2>What it cost</h2>
+<p>The company estimated the cost of replacing and rebuilding systems at more than $40 million.<sup>[1]</sup><sup>[2]</sup> Core casino operations kept running because they relied on a separate mainframe system that the wiper did not reach.<sup>[1]</sup> In filings, the company also said attackers had likely compromised the Pennsylvania property and may have taken data, including some customer information.<sup>[5]</sup></p>
+<p>No one was charged. On February 26, 2015, Director of National Intelligence James Clapper told the Senate Armed Services Committee that Iran was responsible, and he grouped the attack with North Korea's destructive hack of Sony Pictures.<sup>[5]</sup><sup>[6]</sup> That was the first time the U.S. government publicly attributed the Sands attack to Iran.<sup>[6]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> lock down forgotten development servers. Test machines that face the internet need the same strong logins, limits on repeated guessing and monitoring as production systems, or they should not face the internet at all.</p>
+<p>Each part of that would have helped. Blocking an account after a handful of wrong guesses, or requiring a second login factor, would have made the password-guessing attack fail. Keeping the test server off the internet, or behind a login only staff could reach, would have taken away the side door entirely. And keeping development machines separated from the network that connects to headquarters would have meant that even a fully compromised test box led nowhere. Thousands of guesses a minute is also noisy; someone watching that server's logs had a chance to spot it weeks before the wipe.<sup>[1]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Find your test and staging sites.</strong> Ask your web developer or IT provider to list every copy of your website, test server and old admin page that can be reached from the internet, and shut down anything nobody needs.</li>
+<li><strong>Put real logins on what remains.</strong> Every admin page and remote login should use a long unique password, a second factor and a lockout after repeated failures.</li>
+<li><strong>Keep test systems apart.</strong> Development machines should not share passwords or network access with the systems that run payroll, email or customer records.</li>
+<li><strong>Turn on alerts for failed logins.</strong> Most hosting and remote-access tools can email you when there are many failed attempts. Switch that on.</li>
+<li><strong>Keep offline backups.</strong> A wiper destroys what it can reach, so keep at least one recent backup disconnected from the network and test restoring from it.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-22" data-v="" data-title="The casino owner&#x27;s Iran remark and the wiper that followed"><div class="soon"><b>The casino owner&#x27;s Iran remark and the wiper that followed</b><span class="when">Drops 2026-12-22</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More patching and monitoring cases</div><ul><li><a href="guide-patching-small-business.html">Guide: How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li><li><a href="case-knight-capital-2012.html">What happened to Knight Capital: $460 million lost in 45 minutes</a></li><li><a href="case-wannacry-2017.html">How WannaCry hit the NHS: the fix existed 2 months before the attack</a></li><li><a href="case-heartland-2008.html">How the Heartland breach happened: 130 million cards and an informant</a></li><li><a href="case-irish-hse-2021.html">How the HSE cyber attack happened: one spreadsheet and 8 weeks of ignored alerts</a></li><li><a href="controls.html#patching-monitoring">Every patching and monitoring control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.nextgov.com/cybersecurity/2014/12/software-vulnerability-network-intrusion-cyber/143547" target="_blank" rel="noopener">Nextgov: Sands casino corporate systems eviscerated by Iranians</a></li><li><a href="https://www.casino.org/news/iranian-hackers-retaliate-40m/" target="_blank" rel="noopener">Casino.org: Iranian hackers retaliated against Sheldon Adelson for $40M hit</a></li><li><a href="https://www.tabletmag.com/sections/news/articles/when-iranian-hackers-hit-adelsons-casinos" target="_blank" rel="noopener">Tablet: When Iranian hackers hit Adelson&#x27;s casinos</a></li><li><a href="https://thehill.com/policy/cybersecurity/226915-iranian-hackers-downed-us-casino-empire/" target="_blank" rel="noopener">The Hill: Iranian hackers downed Adelson&#x27;s casino empire</a></li><li><a href="https://money.cnn.com/2015/02/27/technology/security/iran-hack-casino/index.html" target="_blank" rel="noopener">CNN Money: Iran hacked an American casino, U.S. says</a></li><li><a href="https://www.bloomberg.com/news/articles/2015-02-26/iran-behind-cyber-attack-on-adelson-s-sands-corp-clapper-says" target="_blank" rel="noopener">Bloomberg: Iran behind cyber-attack on Adelson&#x27;s Sands Corp., Clapper says</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

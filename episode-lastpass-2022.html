@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LastPass breach 2022: full story, stolen vaults and crypto thefts | Cyber Heists</title>
+<meta name="description" content="How attackers used a developer&#x27;s laptop and a senior engineer&#x27;s access to steal LastPass vault backups in 2022, the crypto thefts that followed, and the lesson.">
+<link rel="canonical" href="https://thecyberheists.com/episode-lastpass-2022.html">
+<meta property="og:title" content="The LastPass breach, start to finish: a targeted engineer, stolen vaults and a $150 million theft">
+<meta property="og:description" content="How attackers used a developer&#x27;s laptop and a senior engineer&#x27;s access to steal LastPass vault backups in 2022, the crypto thefts that followed, and the lesson.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-lastpass-2022.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The LastPass breach, start to finish: a targeted engineer, stolen vaults and a $150 million theft", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-lastpass-2022.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · LASTPASS 2022</div>
+  <h1>The LastPass breach, start to finish: a targeted engineer, stolen vaults and a $150 million theft</h1>
+  <div class="meta">Published 2026-09-29 · 7 min read · Episode 17 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-29" data-t="11:00" data-v="gYPbQDTuhtM" data-title="LastPass 2022: one engineer&#x27;s home PC, stolen vaults, $150M in crypto"><div class="soon"><b>LastPass 2022: one engineer&#x27;s home PC, stolen vaults, $150M in crypto</b><span class="when">Premieres 2026-11-29</span></div></div></div></div>
+
+<p class="lead">In 2022 a company whose whole business was keeping passwords safe lost backups of its customers' encrypted password vaults, and federal agents later tied a single $150 million cryptocurrency theft to data from those breaches.<sup>[1]</sup><sup>[2]</sup> This long read follows the LastPass heist from a developer's laptop to a senior engineer's machine, the stolen vaults, the crypto thefts that followed, and the one control that would have kept the keys out of reach.</p>
+<h2>The first break-in: a developer's laptop</h2>
+<div class="case">
+<p>A password manager stores every login a person owns in one encrypted vault, locked by a single master password. LastPass built its service on a zero-knowledge model: the company never stored customers' master passwords, so in principle it could not read what was inside their vaults.<sup>[1]</sup></p>
+<p>In August 2022 that promise was tested. An attacker compromised a software engineer's corporate laptop and used it to reach LastPass's cloud-based development environment. From there, the company later said, the intruder copied source code from 14 of its 200 code repositories, technical documents describing how the development environment worked, and internal scripts that contained LastPass secrets and certificates.<sup>[1]</sup></p>
+<p>On August 25, 2022, LastPass disclosed that its development environment had been breached. In September it said no customer data had been accessed, which was true at that point. The development environment held no customer vaults.<sup>[1]</sup><sup>[2]</sup></p>
+</div>
+<p>What the attacker took, though, was a map. Documentation that explains how systems fit together, plus secrets pulled from scripts, tells an intruder where the valuable data lives and which people and credentials can reach it. The first incident was the reconnaissance for the second.</p>
+<p>It is also a reminder that disclosure is a moving target. The first public statement was accurate about what was known in August. It did not, and could not yet, account for what the stolen material would make possible a few weeks later. Customers who read only the first notice had little reason to act.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>The second break-in: a senior engineer targeted</h2>
+<p>In its March 2023 update, LastPass explained what came next. The attacker targeted a senior DevOps engineer, one of the staff who managed the company's infrastructure, by exploiting vulnerable third-party software. That delivered malware which got around the company's controls and gave the attacker access to cloud backup storage.<sup>[1]</sup></p>
+<p>The engineer's access was the prize. LastPass said the attacker obtained DevOps secrets, restricted credentials, configuration and integration secrets, and ultimately the customer data and vault backups themselves.<sup>[1]</sup> The last activity by the intruder that LastPass detected was on October 26, 2022.<sup>[1]</sup></p>
+<p>The lesson in this chapter is about where powerful access lives. A handful of people at any technology company hold keys that open everything. If any device those people use can be taken over through an outdated program, then the strongest encryption on the servers only protects data until the attacker reaches that person's keyboard.</p>
+<h2>What was inside the stolen vault backups</h2>
+<p>LastPass disclosed a second incident on November 30, 2022, and in the following weeks explained that encrypted password vaults had been taken.<sup>[2]</sup> Its March 2023 update laid out the details. Customer metadata and vault backups were copied, along with the seeds for LastPass's own authenticator app and backup phone numbers used for multifactor sign-in, and part of the database used for business customers who sign in through their company's identity system.<sup>[1]</sup></p>
+<p>The vault contents were encrypted under the zero-knowledge model, and LastPass stressed that master passwords were never stored and were not taken. But not everything in a vault was encrypted. LastPass said website addresses, file paths and, in some cases, email addresses were stored in a readable form.<sup>[1]</sup> For a thief, a list of which banks, exchanges and services a person uses is a useful guide to which stolen vaults are worth attacking.</p>
+<p>The loss of the authenticator seeds and backup phone numbers mattered too. Those are the pieces of information that make up a second sign-in step. LastPass said the database holding them was encrypted, but that the key to decrypt it had also been taken, so the second sign-in step itself had to be treated as exposed.<sup>[1]</sup> For many customers, resetting multifactor settings became as important as changing passwords.</p>
+<p>The bigger risk was time. Once a vault is copied, there is no login screen, no lockout after failed attempts and no alert. A thief can make guesses at the master password offline for as long as they like. How long that takes depends on the strength of the password and on how many times the vault's encryption repeats its scrambling step. Newer LastPass accounts were set to a much higher number of those repetitions, eventually 600,000, while some older accounts were protected by far fewer.<sup>[2]</sup></p>
+<h2>The crypto thefts that followed</h2>
+<p>After the breach, a pattern began to show up among cryptocurrency investors. Researchers tracking the thefts documented six-figure heists happening several times a month, hitting dozens of victims. In a September 2023 analysis, they found a common thread: the victims had stored the seed phrases for their crypto wallets in LastPass secure notes before the 2022 breaches.<sup>[2]</sup> A seed phrase is the master key to a crypto wallet. Anyone who has it can move the money, and the transfer cannot be reversed.</p>
+<p>The largest case came later. On January 30, 2024, a co-founder of a major cryptocurrency company lost about $150 million in a single theft.<sup>[2]</sup> On March 6, 2025, federal prosecutors in Northern California filed to seize about $24 million in cryptocurrency recovered from it. In the filing, the Secret Service and FBI said stolen data and passwords had been used to get into victims' accounts and steal cryptocurrency, and investigators tied the theft to the LastPass breaches of 2022.<sup>[2]</sup></p>
+<p>LastPass responded that its law enforcement partners had not made it aware of any conclusive evidence connecting crypto thefts to its incident.<sup>[2]</sup> No attacker has been publicly named or convicted for the LastPass intrusions.</p>
+<h2>What LastPass changed afterward</h2>
+<p>LastPass said it rebuilt its entire development environment, added security technology and controls, and rotated every secret and certificate that had been exposed in plain text.<sup>[1]</sup> For the backup storage, it applied new policies, changed how privileged access worked and rotated the secrets the attacker had reached.<sup>[1]</sup></p>
+<p>It also published recommended actions for customers.<sup>[1]</sup> For anyone whose vault might be cracked, the sensible to-do list was the same: change the master password, then change the passwords stored inside the vault, starting with the most valuable accounts. For crypto holders who had stored seed phrases, the only real fix was to move funds to a new wallet with a new phrase.</p>
+<p>For business customers the list was longer, because the stolen material included secrets used to connect LastPass with other company systems. Every one of those had to be treated as known to the attacker and replaced.<sup>[1]</sup> That is the hidden cost of a breach at a security vendor: the cleanup lands on every customer, not just the company that was hit.</p>
+<p>The sequence is the lesson. The company did not lose its customers' data to a flaw in its encryption. It lost it through the people and machines that held the keys to its backups.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Aug 2022</td><td>Developer's corporate laptop compromised; source code and documents copied.<sup>[1]</sup></td></tr>
+<tr><td>Aug 25, 2022</td><td>LastPass discloses the development environment breach.<sup>[2]</sup></td></tr>
+<tr><td>Sep 15, 2022</td><td>LastPass says no customer data was accessed.<sup>[2]</sup></td></tr>
+<tr><td>Oct 26, 2022</td><td>Last detected activity by the intruder.<sup>[1]</sup></td></tr>
+<tr><td>Nov 30, 2022</td><td>Second breach disclosed; vault backups compromised.<sup>[2]</sup></td></tr>
+<tr><td>Mar 1, 2023</td><td>LastPass publishes its full account of both incidents.<sup>[1]</sup></td></tr>
+<tr><td>Sep 2023</td><td>Researchers link a run of crypto thefts to seed phrases stored in LastPass.<sup>[2]</sup></td></tr>
+<tr><td>Jan 30, 2024</td><td>About $150 million stolen from a crypto company co-founder.<sup>[2]</sup></td></tr>
+<tr><td>Mar 6, 2025</td><td>Prosecutors file to seize about $24 million tied to that theft.<sup>[2]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> keep the most powerful keys reachable only from locked-down, company-managed devices that are patched and monitored, and force every customer vault up to current protection settings. A single engineer's machine should never be one piece of outdated software away from every backup.<sup>[1]</sup></p>
+<ol>
+<li><strong>Separate admin work from everything else.</strong> Anyone who can reach backups, payroll or customer data should do that work on a dedicated company device, not a machine that also runs personal apps.</li>
+<li><strong>Keep every program on those devices updated.</strong> Turn on automatic updates for the operating system and every installed app, and remove software nobody needs.</li>
+<li><strong>Limit who holds the master keys.</strong> List the people who can open backups or admin accounts, keep that list as short as possible, and review it every quarter.</li>
+<li><strong>Never store crypto seed phrases or master keys in a cloud notes field.</strong> Keep them offline, on paper or a hardware device, in a secure place.</li>
+<li><strong>Upgrade old security settings on purpose.</strong> When a service raises its default protection, check that older accounts, including yours, actually moved to the new setting.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>Password managers remain far safer than reusing passwords or writing them in a spreadsheet. The LastPass breach does not change that. What it shows is that a vault is only as safe as the people and devices that hold its keys.</p>
+<p>For a small business, the takeaway is simple: find out which few people could open everything, and make sure the computers they use for that work are the most boring, locked-down, fully updated machines you own.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-lastpass-2022.html">How the LastPass breach happened: the engineer&#x27;s home computer</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://blog.lastpass.com/posts/security-incident-update-recommended-actions" target="_blank" rel="noopener">LastPass: Security incident update and recommended actions (March 1, 2023)</a></li><li><a href="https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/" target="_blank" rel="noopener">Krebs on Security: Feds link $150M cyberheist to 2022 LastPass hacks</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How EA was hacked in 2021: a $10 cookie and a help desk call | Cyber Heists</title>
+<meta name="description" content="Hackers used a $10 stolen cookie to enter EA&#x27;s Slack, then talked IT support into a login token. What they took, what it cost, and the control that was missing.">
+<link rel="canonical" href="https://thecyberheists.com/case-ea-2021.html">
+<meta property="og:title" content="How the EA hack happened: a $10 stolen cookie and a lost-phone story">
+<meta property="og:description" content="Hackers used a $10 stolen cookie to enter EA&#x27;s Slack, then talked IT support into a login token. What they took, what it cost, and the control that was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-ea-2021.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How the EA hack happened: a $10 stolen cookie and a lost-phone story", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-ea-2021.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · EA 2021</div>
+  <h1>How the EA hack happened: a $10 stolen cookie and a lost-phone story</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Verify identity before issuing MFA tokens</div>
+
+<p class="lead">The break-in at Electronic Arts reportedly started with a $10 purchase: a stolen login cookie that let intruders into the company's internal Slack chat.<sup>[1]</sup><sup>[2]</sup> This case file covers how a friendly message to IT support turned that foothold into about 780 gigabytes of game source code, how the extortion attempt played out, and the one control that would have stopped it at the help desk.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>On June 10, 2021, hackers began advertising what they said was a haul of data taken from Electronic Arts, the maker of FIFA, Madden and Battlefield. They claimed about 780 gigabytes, including source code for FIFA 21 and its matchmaking servers and code and tools for Frostbite, the engine that runs many EA games, and they priced it at $28 million.<sup>[3]</sup><sup>[5]</sup> Security researchers said pieces of the code had first been offered for sale in early May.<sup>[4]</sup></p>
+<p>EA confirmed the intrusion. The company said no player data was accessed, that it had no reason to believe player privacy was at risk, and that it had already made security improvements and was working with law enforcement.<sup>[2]</sup><sup>[5]</sup></p>
+<p>The hackers then explained to reporters how they had done it. They said they bought a stolen cookie for $10, used it to get into an EA Slack workspace, and then persuaded IT support to give them a way past the company's multifactor login.<sup>[1]</sup><sup>[2]</sup><sup>[4]</sup></p>
+<p>Buyers were scarce. Other criminal groups showed little interest in game source code, so the group tried to extort EA directly. When EA did not pay, the hackers released a first 1.3 gigabyte sample of FIFA 21 code on July 14, 2021, and posted the full archive on an underground forum on July 26.<sup>[5]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>A cookie is a small file your browser keeps so a website remembers you are already logged in. If someone copies it off an infected computer, they can sometimes use it to appear as that person without knowing the password. Stolen cookies are traded in bulk on criminal marketplaces, and the hackers said the one they bought opened a Slack workspace used by EA staff.<sup>[1]</sup><sup>[5]</sup></p>
+<p>Slack access alone did not reach EA's code servers. For that, the network required a second login factor, the kind of one-time code or token normally tied to an employee's phone. So the intruders, posing as an employee, messaged IT support and said they had lost their phone at a party. Support issued a multifactor token. By the hackers' account it worked twice, and the tokens let them onto EA's corporate network and to the systems that held source code.<sup>[1]</sup><sup>[2]</sup><sup>[3]</sup></p>
+<p>Note what was not needed: no clever break-in of EA's servers. A believable story in a trusted chat channel did the heavy lifting, and a help desk trying to be helpful did the rest.</p>
+<h2>What it cost</h2>
+<p>EA said the incident would not affect its games or its business, and no customer records were taken.<sup>[2]</sup> The damage was to its intellectual property. Source code for a best-selling game and its engine was dumped publicly, which security writers warned could help people build cheats or probe EA's games and servers for weaknesses.<sup>[3]</sup><sup>[5]</sup></p>
+<p>The hackers failed to get the $28 million they asked for, and EA did not pay the later extortion demand.<sup>[5]</sup> No arrests have been publicly reported in the sources reviewed for this case file, and the people behind it have not been named by authorities.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> verifying identity before resetting or issuing multifactor credentials. The help desk accepted a lost-phone story from a chat account and handed over a new second factor, without confirming the requester through a separate, trusted channel.</p>
+<p>Multifactor login exists to stop exactly this kind of intruder, who has one piece of an employee's identity but not the rest. A reset process that trusts the chat message defeats the whole point. If support had called the employee back on a phone number already on file, checked with their manager, or required a live video check with ID before issuing a token, the story would likely have fallen apart. Security experts commenting on the case recommended the same thing: confirm the request through a second communication channel before granting access.<sup>[4]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Write a lost-device rule.</strong> Decide in advance what someone must prove before IT resets a password or multifactor device, and make it the same for everyone, including the boss.</li>
+<li><strong>Call back on a known number.</strong> Never verify a request using contact details supplied in the request itself. Use the phone number in your staff records or confirm in person.</li>
+<li><strong>Treat chat as untrusted for access requests.</strong> A message from a colleague's account is not proof it is the colleague. Require a second channel for resets, payments and new access.</li>
+<li><strong>Tell staff when their access changes.</strong> Set systems to alert the employee by email or text when a new device or token is added, so the real person can raise the alarm.</li>
+<li><strong>Keep sessions short.</strong> Ask your IT provider to shorten how long logins stay active and to sign everyone out after a reset, which makes a stolen cookie go stale sooner.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-10" data-v="JX1THnv0OL8" data-title="How a Ten-Dollar Purchase Cracked Open EA"><div class="soon"><b>How a Ten-Dollar Purchase Cracked Open EA</b><span class="when">Drops 2026-11-10</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://gameworldobserver.com/2021/06/11/hackers-only-needed-10-and-cookies-to-hack-electronic-arts-and-steal-780-gb-of-data" target="_blank" rel="noopener">Game World Observer: Hackers only needed $10 and cookies to hack Electronic Arts and steal 780 GB of data</a></li><li><a href="https://www.slashgear.com/the-ea-hack-was-worryingly-simple-11677618/" target="_blank" rel="noopener">SlashGear: The EA hack was worryingly simple</a></li><li><a href="https://www.gamespot.com/articles/hackers-obtain-700gb-of-eas-data-and-source-code-using-stolen-cookies-report/1100-6492660/" target="_blank" rel="noopener">GameSpot: Hackers obtain 700GB of EA&#x27;s data and source code using stolen cookies</a></li><li><a href="https://cyberscoop.com/ea-games-fifa-hack-hackers-slack/" target="_blank" rel="noopener">CyberScoop: Hackers used Slack to break into EA Games</a></li><li><a href="https://therecord.media/hackers-leak-full-ea-data-after-failed-extortion-attempt" target="_blank" rel="noopener">The Record: Hackers leak full EA data after failed extortion attempt</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

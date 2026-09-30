@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change Healthcare ransomware attack 2024: full story and timeline | Cyber Heists</title>
+<meta name="description" content="How a stolen password on a portal with no second sign-in step led to the Change Healthcare attack, a $22 million ransom and 192.7 million people exposed.">
+<link rel="canonical" href="https://thecyberheists.com/episode-change-healthcare-2024.html">
+<meta property="og:title" content="The Change Healthcare attack, start to finish: one password, no second lock, 192.7 million people">
+<meta property="og:description" content="How a stolen password on a portal with no second sign-in step led to the Change Healthcare attack, a $22 million ransom and 192.7 million people exposed.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-change-healthcare-2024.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Change Healthcare attack, start to finish: one password, no second lock, 192.7 million people", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-change-healthcare-2024.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · CHANGE HEALTHCARE 2024</div>
+  <h1>The Change Healthcare attack, start to finish: one password, no second lock, 192.7 million people</h1>
+  <div class="meta">Published 2026-09-29 · 8 min read · Episode 15 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-22" data-t="11:00" data-v="E_UOGC1x8NU" data-title="Change Healthcare 2024: one login, no second factor, 192.7M people"><div class="soon"><b>Change Healthcare 2024: one login, no second factor, 192.7M people</b><span class="when">Premieres 2026-11-22</span></div></div></div></div>
+
+<p class="lead">The attack that left pharmacies across America unable to process prescriptions in February 2024 started 9 days earlier, with a stolen password on a remote login page that had no second sign-in step.<sup>[1]</sup> This long read follows the Change Healthcare heist in order: the outage, the unlocked door, the $22 million ransom that bought nothing, the count that reached 192.7 million people, the fallout, and the one control that would have stopped it.</p>
+<h2>The outage that stopped America's prescriptions</h2>
+<div class="case">
+<p>Change Healthcare sits in the plumbing of American medicine. When a pharmacy checks a patient's coverage or a clinic sends a bill to an insurer, the request often travels through its network. By one estimate, it handles around half of all health transactions in the United States.<sup>[2]</sup> UnitedHealth Group owns it through its Optum division.</p>
+<p>On February 21, 2024, Change reported a cyber security issue, and outages spread across the country.<sup>[2]</sup> The ransomware, software that locks computer systems until a ransom is paid, had been launched inside its network that day. UnitedHealth's response was drastic: it cut every connection to Change's systems at once to keep the infection from spreading to hospitals, pharmacies and other customers.<sup>[1]</sup></p>
+<p>That quarantine stopped the attack from spreading, and it also stopped the money. Pharmacies struggled to confirm coverage, and clinics could not submit claims, which meant insurers could not pay them. For smaller practices living claim to claim, the outage became a cash crisis within days.<sup>[1]</sup><sup>[2]</sup></p>
+</div>
+<p>On February 29, UnitedHealth named the attackers: a ransomware group known as ALPHV, or BlackCat.<sup>[2]</sup> Groups like it run as a kind of franchise. A core team maintains the ransomware and the payment site, and affiliates, independent criminals who break into victims, do the intrusions in exchange for a cut of each ransom.</p>
+<h2>The login with no second lock</h2>
+<p>The explanation came from UnitedHealth's chief executive, Andrew Witty, in written testimony to the Senate Finance Committee on May 1, 2024. On February 12, he said, criminals used compromised credentials to get into a Change Healthcare Citrix portal, a remote access system that let people reach company desktops from outside the office. That portal did not have multifactor authentication, the second sign-in step that asks for a code or a device on top of a password.<sup>[1]</sup></p>
+<p>Later reporting said the credentials belonged to a low-level customer support account.<sup>[2]</sup> Whoever it belonged to, a password alone was enough to open the door. The intruders then had 9 days inside before the ransomware went off on February 21, time to move around the network and copy data out.<sup>[1]</sup><sup>[3]</sup> Change later confirmed, on March 7, that data had been taken.<sup>[3]</sup></p>
+<p>This is the uncomfortable part of the case. The attack did not depend on a new or clever technique. Stolen passwords are bought and sold constantly, and remote access pages are among the first places criminals try them. A second sign-in step on that one portal would have turned the stolen password into a useless string of characters.</p>
+<h2>The $22 million ransom and the double cross</h2>
+<p>Witty told senators that the decision to pay the ransom was his, and that it was one of the hardest decisions he had ever made.<sup>[1]</sup> In early March 2024, UnitedHealth paid $22 million, with the stated aim of protecting patients' data and getting it deleted.<sup>[2]</sup><sup>[3]</sup></p>
+<p>It did not work out that way. Shortly after the payment, ALPHV's leadership disappeared. The affiliate who had carried out the break-in said the group's operators had kept the entire payment in what is known as an exit scam, cheating their own partner.<sup>[2]</sup> The affiliate still had the stolen data. On April 15, 2024, a new group called RansomHub posted samples of the stolen files and demanded a second ransom.<sup>[2]</sup></p>
+<p>Paying had not bought the data back or guaranteed its deletion. It had only shown the criminals that the victim would pay. On April 22, UnitedHealth confirmed publicly that the stolen files could cover a substantial proportion of people in America.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>Rebuilding Change and counting 192.7 million people</h2>
+<p>While the ransom drama played out, UnitedHealth rebuilt. Witty told the Senate that experts from Google, Microsoft, Cisco, Amazon, Mandiant and Palo Alto Networks helped reconstruct the systems from the ground up. Thousands of laptops were replaced, credentials were rotated across the company and the data center network was rebuilt.<sup>[1]</sup> By March 7, 99% of the pharmacies that had used Change before the attack were processing claims again. By late April, payment processing was back to about 86% of its earlier level.<sup>[1]</sup></p>
+<p>To keep providers afloat, UnitedHealth said it had advanced more than $6.5 billion in accelerated payments and no-interest loans by April 26, about a third of it going to hospitals that serve low-income communities.<sup>[1]</sup> In his testimony Witty also offered a direct apology to everyone affected.<sup>[1]</sup></p>
+<p>The count of affected people grew for more than a year. Formal notifications began on June 20, 2024, with letters mailed from July 29.<sup>[2]</sup> In October 2024, Change confirmed more than 100 million people. In January 2025 it raised the figure to 190 million, more than half the U.S. population.<sup>[2]</sup> As of July 31, 2025, it told federal regulators the total was 192.7 million, making it the largest health care data breach on record. The exposed files included health information, Social Security numbers, driver's license and passport numbers, and financial and payment card details.<sup>[3]</sup></p>
+<h2>Regulators, lawsuits and a state's complaint</h2>
+<p>The questions moved from Congress to regulators and courts. In March 2024, the Department of Health and Human Services' Office for Civil Rights, which enforces federal health privacy law, announced an investigation unusually early in the life of a breach. As of November 2025, it had not announced any findings or enforcement action.<sup>[3]</sup></p>
+<p>Lawsuits from patients and health care providers were gathered into a single multidistrict case in federal court in Minnesota, where they were still moving through pretrial proceedings in late 2025.<sup>[3]</sup> On December 16, 2024, the state of Nebraska filed its own lawsuit laying out what it described as a series of security failures.<sup>[2]</sup></p>
+<p>None of that litigation changes the basic account Witty gave under oath: one remote access portal, one stolen password, and no second factor.<sup>[1]</sup></p>
+<h2>How one password became 192.7 million records</h2>
+<p>Trace it backward. The pharmacies stopped because the network was encrypted and then cut off. The network was encrypted because intruders had 9 days inside. The intruders were inside because a remote login page trusted a password on its own.<sup>[1]</sup></p>
+<p>Every later cost flowed from that first step: the ransom, the rebuild, the loans to providers, the notifications to 192.7 million people and the lawsuits.<sup>[1]</sup><sup>[3]</sup> Large organizations often have one forgotten system that missed a security upgrade, especially after an acquisition, when the buyer inherits a network it did not design. Attackers do not need to find every weakness. They need the one that nobody has listed.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Feb 12, 2024</td><td>Intruders log in to a remote access portal with stolen credentials and no second factor.<sup>[1]</sup></td></tr>
+<tr><td>Feb 21, 2024</td><td>Ransomware launched; UnitedHealth cuts connections to Change.<sup>[1]</sup></td></tr>
+<tr><td>Feb 29, 2024</td><td>UnitedHealth attributes the attack to ALPHV/BlackCat.<sup>[2]</sup></td></tr>
+<tr><td>Early Mar 2024</td><td>$22 million ransom paid; the gang vanishes with it.<sup>[2]</sup></td></tr>
+<tr><td>Mar 7, 2024</td><td>99% of pharmacies processing claims again; data theft confirmed.<sup>[1]</sup><sup>[3]</sup></td></tr>
+<tr><td>Apr 15, 2024</td><td>A second group posts stolen samples and demands another ransom.<sup>[2]</sup></td></tr>
+<tr><td>May 1, 2024</td><td>CEO testifies that the portal lacked multifactor authentication.<sup>[1]</sup></td></tr>
+<tr><td>Jun 20, 2024</td><td>Formal breach notifications begin.<sup>[2]</sup></td></tr>
+<tr><td>Oct 2024</td><td>Count confirmed at more than 100 million people.<sup>[2]</sup></td></tr>
+<tr><td>Dec 16, 2024</td><td>Nebraska sues over security failures.<sup>[2]</sup></td></tr>
+<tr><td>Jan 2025</td><td>Count raised to 190 million.<sup>[2]</sup></td></tr>
+<tr><td>Jul 31, 2025</td><td>Final reported count of 192.7 million people.<sup>[3]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> multifactor authentication on every remote access portal, with no exceptions for older systems, and an inventory that proves none are left without it. On February 12, that would have made the stolen password worthless.<sup>[1]</sup></p>
+<ol>
+<li><strong>List every way into your network from outside.</strong> Remote desktop, VPN, web email, cloud admin pages, vendor support tools: write them all down, including ones inherited from an old IT provider or a business you bought.</li>
+<li><strong>Turn on two-factor sign-in for each one.</strong> Use an authenticator app, passkey or security key rather than text messages where possible, and make it mandatory for every account, not optional.</li>
+<li><strong>Close what you do not use.</strong> If a remote access page exists only for convenience or history, shut it off instead of securing it.</li>
+<li><strong>Check again after every change.</strong> When you add a system, switch providers or merge with another business, repeat the inventory and confirm the second factor is on before the new door opens.</li>
+<li><strong>Plan for the outage, not just the breach.</strong> Keep offline backups, a paper fallback for critical work, and enough cash cushion to survive weeks without a key partner's system.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>Change Healthcare is the clearest modern proof that one missing checkbox can outweigh billions in security spending. The company had world-class help after the attack. What it lacked beforehand was a second sign-in step on a single page.</p>
+<p>For a small business, the math is even starker. You probably have a handful of remote logins, not thousands. Turning on two-factor sign-in for all of them takes an afternoon, and it closes the door this heist walked through.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-change-healthcare-2024.html">How the Change Healthcare breach happened: one password, no second factor</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.finance.senate.gov/imo/media/doc/0501_witty_testimony.pdf" target="_blank" rel="noopener">U.S. Senate Committee on Finance: Written testimony of Andrew Witty, CEO, UnitedHealth Group (May 1, 2024)</a></li><li><a href="https://techcrunch.com/2025/01/27/how-the-ransomware-attack-at-change-healthcare-went-down-a-timeline/" target="_blank" rel="noopener">TechCrunch: How the ransomware attack at Change Healthcare went down, a timeline</a></li><li><a href="https://www.nixonpeabody.com/insights/alerts/2025/11/12/change-healthcare-cybersecurity-breach-impact-on-healthcare-providers" target="_blank" rel="noopener">Nixon Peabody: Change Healthcare cybersecurity breach, impact on healthcare providers</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

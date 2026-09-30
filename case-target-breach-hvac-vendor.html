@@ -59,24 +59,51 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
 a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .watch{margin:36px 0 8px}
-.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
 .vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.soon{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px}
-.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0}.more a{text-decoration:none}
-@media(max-width:560px){.navlinks{gap:14px;font-size:14px}article{padding-top:40px}}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
-  <div class="navlinks"><a href="/#cases">Cases</a><a href="/#checklist">Checklist</a><a href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
 </div></nav>
 
 <article>
   <div class="mono">Case file · TARGET 2013</div>
   <h1>How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</h1>
-  <div class="meta">Published 2026-09-26 · 4 min read</div>
+  <div class="meta">Published 2026-09-26 · 4 min read · Missing control: Vendor access segmented from payment systems</div>
 
 <p class="lead">The biggest retail breach of 2013 did not start at a cash register. It started with a login that belonged to a small heating and refrigeration contractor, and it ended with about 40 million payment cards and up to 70 million customer records in criminal hands.<sup>[1]</sup><sup>[4]</sup> This case file covers how thieves got from a vendor's billing login to the checkout lanes, the alarms that went off, what it cost, and the one missing control.</p>
 
@@ -109,9 +136,10 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 <li><strong>Make sure alerts reach a person.</strong> Decide who reads security warnings from your antivirus, firewall or managed IT provider, how fast they must respond, and who they call. An alert that nobody reads is just a log file.</li>
 </ul>
 
+  <div class="callout"><div class="mono">Full episode</div><p><a href="episode-target-2013.html">The Target breach, start to finish: a contractor&#x27;s login, ignored alarms and 40 million cards</a>: the long read behind the CL01 episode, chapter by chapter.</p></div>
   <div class="watch">
     <div class="mono">Watch the case</div>
-    <div class="vids"><div class="vid" data-d="2026-09-26" data-v="VzE_OF8NRmQ"><div class="soon">Episode drops 2026-09-26</div></div></div>
+    <div class="vids"><div class="vid" data-d="2026-09-26" data-v="1-M0CFGriS0" data-title="How a heating contractor&#x27;s login cost Target 40M cards"><div class="soon"><b>How a heating contractor&#x27;s login cost Target 40M cards</b><span class="when">Drops 2026-09-26</span></div></div></div>
   </div>
 
   <div class="kit">
@@ -125,23 +153,23 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
     </div>
   </div>
 
-  <div class="more"><div class="mono">More case files</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-equifax-breach-expired-certificate.html">What caused the Equifax breach? An unpatched website and an expired certificate</a></li><li><a href="case-capital-one-cloud-breach.html">How the Capital One breach happened: one misconfigured cloud firewall</a></li></ul></div>
+  <div class="more"><div class="mono">More vendors and third parties cases</div><ul><li><a href="guide-vendor-access-security.html">Guide: How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="case-solarwinds-2020.html">How the SolarWinds hack happened: malware shipped as a trusted update</a></li><li><a href="case-marriott-2018.html">What caused the Marriott breach: the intruder that came with Starwood</a></li><li><a href="case-bybit-2025.html">How the Bybit hack happened: a vendor&#x27;s laptop and a screen that lied</a></li><li><a href="case-cm-software-2025.html">The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves</a></li><li><a href="case-caesars-2023.html">How the Caesars hack happened: a con at the outsourced IT help desk</a></li><li><a href="case-atm-heist-2013.html">How the $45 million ATM heist worked: prepaid cards with no limits</a></li><li><a href="controls.html#vendors-third-parties">Every vendors and third parties control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
 
-  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports and reputable reporting, listed below. People are named only where they were convicted or spoke publicly in an official role.</p>
-
-  <div class="sources">
-    <div class="mono" style="margin-bottom:10px">Sources</div>
-    <ol><li><a href="https://www.commerce.senate.gov/wp-content/uploads/media/doc/2014%200325%20Target%20Kill%20Chain%20Analysis.pdf" target="_blank" rel="noopener">U.S. Senate Committee on Commerce, Science, and Transportation: A &quot;Kill Chain&quot; Analysis of the 2013 Target Data Breach (Majority Staff Report, March 26, 2014)</a></li><li><a href="https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/" target="_blank" rel="noopener">Krebs on Security: Target Hackers Broke in Via HVAC Company</a></li><li><a href="https://corporate.target.com/news-features/article/2013/12/target-confirms-unauthorized-access-to-payment-car" target="_blank" rel="noopener">Target: Target Confirms Unauthorized Access to Payment Card Data in U.S. Stores</a></li><li><a href="https://corporate.target.com/news-features/article/2014/01/an-update-on-our-data-breach-and-financial-perform" target="_blank" rel="noopener">Target: An Update on Our Data Breach and Financial Performance</a></li><li><a href="https://money.cnn.com/2015/12/02/news/companies/target-data-breach-settlement/index.html" target="_blank" rel="noopener">CNN Money: Target settles for $39 million over data breach</a></li><li><a href="https://ag.ny.gov/press-release/2017/ag-schneiderman-announces-185-million-multi-state-settlement-target-corporation" target="_blank" rel="noopener">New York State Attorney General: A.G. Schneiderman Announces $18.5 Million Multi-State Settlement With Target Corporation Over 2013 Data Breach</a></li></ol>
-  </div>
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.commerce.senate.gov/wp-content/uploads/media/doc/2014%200325%20Target%20Kill%20Chain%20Analysis.pdf" target="_blank" rel="noopener">U.S. Senate Committee on Commerce, Science, and Transportation: A &quot;Kill Chain&quot; Analysis of the 2013 Target Data Breach (Majority Staff Report, March 26, 2014)</a></li><li><a href="https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/" target="_blank" rel="noopener">Krebs on Security: Target Hackers Broke in Via HVAC Company</a></li><li><a href="https://corporate.target.com/news-features/article/2013/12/target-confirms-unauthorized-access-to-payment-car" target="_blank" rel="noopener">Target: Target Confirms Unauthorized Access to Payment Card Data in U.S. Stores</a></li><li><a href="https://corporate.target.com/news-features/article/2014/01/an-update-on-our-data-breach-and-financial-perform" target="_blank" rel="noopener">Target: An Update on Our Data Breach and Financial Performance</a></li><li><a href="https://money.cnn.com/2015/12/02/news/companies/target-data-breach-settlement/index.html" target="_blank" rel="noopener">CNN Money: Target settles for $39 million over data breach</a></li><li><a href="https://ag.ny.gov/press-release/2017/ag-schneiderman-announces-185-million-multi-state-settlement-target-corporation" target="_blank" rel="noopener">New York State Attorney General: A.G. Schneiderman Announces $18.5 Million Multi-State Settlement With Target Corporation Over 2013 Data Breach</a></li></ol></div>
 </article>
 
 <footer><div class="wrap">
   <div>© 2026 Cyber Heists</div>
-  <div><a href="/">All cases</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
 </div></footer>
 <script>
 const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
-document.querySelectorAll('.vid').forEach(el=>{const d=el.dataset.d;if(Date.now()>=new Date(d+'T12:00:00'+off(d)).getTime()){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="Cyber Heists episode" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}else{el.querySelector('.soon').textContent='Episode drops '+new Date(d+'T12:00:00'+off(d)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
 </script>
 </body>
 </html>

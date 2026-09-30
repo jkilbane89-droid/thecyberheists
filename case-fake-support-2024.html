@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The fake Google support call that stole 4,100 bitcoin | Cyber Heists</title>
+<meta name="description" content="In August 2024 callers posing as Google and Gemini support talked one person out of more than 4,100 bitcoin. How the scam worked and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-fake-support-2024.html">
+<meta property="og:title" content="How a fake Google support call stole 4,100 bitcoin from one person">
+<meta property="og:description" content="In August 2024 callers posing as Google and Gemini support talked one person out of more than 4,100 bitcoin. How the scam worked and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-fake-support-2024.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How a fake Google support call stole 4,100 bitcoin from one person", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-fake-support-2024.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · FAKE SUPPORT 2024</div>
+  <h1>How a fake Google support call stole 4,100 bitcoin from one person</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Call back on a known number</div>
+
+<p class="lead">One phone call from someone claiming to be Google support ended with a single person in Washington, D.C. losing more than 4,100 bitcoin, worth over $230 million at the time.<sup>[1]</sup><sup>[2]</sup> This case file covers how the fake support call worked, how the thieves' spending helped bring them down, and the one habit that would have stopped it.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>On August 18, 2024, a Washington, D.C. resident who held a large amount of bitcoin got a call from a number that appeared to belong to Google. The caller said the person's account had been compromised. A second caller then posed as support staff for Gemini, a cryptocurrency exchange, continuing the same story.<sup>[1]</sup><sup>[4]</sup></p>
+<p>Believing they were getting help, the victim was talked into resetting two-factor protections and sharing their computer screen. What the callers saw on that screen let them take the private keys, the secret codes that control a bitcoin wallet. With those keys they moved more than 4,100 bitcoin to wallets they controlled.<sup>[1]</sup><sup>[3]</sup></p>
+<p>Federal prosecutors later said the theft was part of a larger criminal group that ran from October 2023 to May 2025. Its members met through online gaming platforms and were spread across California, Connecticut, New York, Florida and abroad.<sup>[2]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>This was not a technical break-in. It was a performance. Prosecutors described a group with assigned jobs: people who pulled personal details from leaked databases, people who picked targets, callers who played the support agents, launderers who turned crypto into cash, and in some cases burglars who went after hardware wallets in people's homes.<sup>[3]</sup></p>
+<p>The call itself relied on three tricks. First, a spoofed caller ID, so the number on the screen looked like it came from a real company. Second, urgency: the victim was told their account was already under attack, which pushes people to act before thinking. Third, a request that feels routine to anyone who has ever had tech help, which is to share your screen so the agent can see the problem.<sup>[1]</sup><sup>[4]</sup> Once a stranger can see or control your screen, anything displayed there, including passwords and wallet keys, belongs to them too.</p>
+<p>Real support teams at large tech companies generally do not call customers out of the blue to report a hacked account. The warning itself was the scam.</p>
+<h2>How it was caught</h2>
+<p>The spending was hard to miss. Prosecutors say proceeds went on nightclub evenings costing up to $500,000, luxury watches, designer handbags handed out at parties, rental homes in Los Angeles, the Hamptons and Miami, private jets, a private security team, and a fleet of at least 28 exotic cars worth from $100,000 to $3.8 million each.<sup>[2]</sup><sup>[3]</sup> An independent crypto investigator publicly traced the stolen funds and highlighted the group's flashy lifestyle within weeks.<sup>[4]</sup></p>
+<p>In September 2024, about a month after the theft, the FBI arrested 2 men in Miami and Los Angeles and seized luxury cars in a raid on a Miami property.<sup>[4]</sup> In May 2025 prosecutors charged 12 more people, and said the stolen coins had been swapped into harder-to-trace currency and moved through mixers and pass-through wallets to hide their origin.<sup>[1]</sup></p>
+<h2>What it cost</h2>
+<p>On September 8, 2026, Malone Lam, a 22-year-old Singaporean citizen living in Miami, pleaded guilty to a racketeering conspiracy in federal court in Washington, D.C. Prosecutors described him as the leader who coordinated the thefts and picked targets, and put the group's total take at more than $245 million.<sup>[2]</sup> The charge carries up to 20 years in prison. No sentencing date had been set; a status hearing was scheduled for December 8, 2026.<sup>[5]</sup></p>
+<p>By then, 11 of 18 defendants charged in the investigation had pleaded guilty, according to press coverage of the plea.<sup>[5]</sup> Earlier, in December 2025, a 22-year-old California man, Evan Tangeman, pleaded guilty for his role laundering proceeds.<sup>[3]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> hang up and call back on a number you already know.</p>
+<p>A call-back rule breaks this kind of scam at its first step. If the victim had ended the call and dialed Google or Gemini using a number from the company's own website or account page, the real company would have said there was no problem. Spoofed caller ID only works while the scammer controls the line. A second rule, never share your screen with anyone who contacted you first, would have closed the door even if the call-back was skipped.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Write down the call-back rule.</strong> Any unexpected call about a hacked account, a payment problem or a bank change gets a hang-up and a call back on a number from your own records, never one the caller gives.</li>
+<li><strong>Ban screen sharing on inbound calls.</strong> Staff should only share screens or allow remote access with IT or vendors they contacted first, through a known channel.</li>
+<li><strong>Distrust caller ID.</strong> Tell everyone in the office that the name and number on the screen can be faked and prove nothing.</li>
+<li><strong>Keep secrets off screen.</strong> Store passwords, recovery codes and wallet keys in a password manager or offline, not in open documents or notes.</li>
+<li><strong>Slow down big moves.</strong> Require a second person to approve large transfers or changes to security settings, so one pressured employee cannot act alone.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-09" data-v="a0Mj8NhQiN8" data-title="The fake Google support call that cost 4,100 bitcoin"><div class="soon"><b>The fake Google support call that cost 4,100 bitcoin</b><span class="when">Drops 2026-11-09</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More payments and fraud cases</div><ul><li><a href="guide-fake-invoice-payment-fraud.html">Guide: How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="case-bangladesh-bank-swift-heist.html">How the Bangladesh Bank heist happened: $81 million over SWIFT, stopped short by a typo</a></li><li><a href="case-fake-invoices-2013.html">How Google and Facebook were scammed: the fake supplier invoices</a></li><li><a href="case-arup-2024.html">The Arup deepfake scam: the $25 million video call where everyone else was fake</a></li><li><a href="case-voice-deepfake-2019.html">The first known AI voice scam: how a fake boss&#x27;s call took $243,000</a></li><li><a href="case-bitfinex-2016.html">The Bitfinex hack: how 119,754 bitcoin walked out, then sat still for 5 years</a></li><li><a href="case-pnb-2018.html">How the Punjab National Bank fraud hid $1.8 billion outside the bank&#x27;s own books</a></li><li><a href="controls.html#payments-fraud">Every payments and fraud control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.bleepingcomputer.com/news/security/us-charges-12-more-suspects-linked-to-230-million-crypto-theft/" target="_blank" rel="noopener">BleepingComputer: US charges 12 more suspects linked to $230 million crypto theft</a></li><li><a href="https://www.justice.gov/usao-dc/pr/singaporean-ringleader-245-million-cryptocurrency-racketeering-enterprise-pleads-guilty" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: Singaporean ringleader of $245 million cryptocurrency racketeering enterprise pleads guilty</a></li><li><a href="https://www.justice.gov/usao-dc/pr/guilty-plea-and-superseding-indictment-announced-social-engineering-scheme-stole-263" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, District of Columbia: Guilty plea and superseding indictment announced in social engineering scheme that stole $263 million</a></li><li><a href="https://www.bitdefender.com/blog/hotforsecurity/two-men-arrested-one-month-after-230-million-of-cryptocurrency-stolen-from-a-single-victim/" target="_blank" rel="noopener">Bitdefender: Two men arrested one month after $230 million of cryptocurrency stolen from a single victim</a></li><li><a href="https://www.nbcmiami.com/news/local/malone-lam-pleads-guilty-ringleader-international-crypto-scheme-rico-miami/3856604/" target="_blank" rel="noopener">NBC 6 Miami: Malone Lam pleads guilty as ringleader of international crypto scheme</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

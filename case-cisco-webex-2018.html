@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a former Cisco engineer deleted 456 Webex servers | Cyber Heists</title>
+<meta name="description" content="A former Cisco engineer got back into its cloud 5 months after resigning and deleted the servers behind Webex Teams. What it cost, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-cisco-webex-2018.html">
+<meta property="og:title" content="The Cisco Webex outage: how an ex-employee wiped 456 servers 5 months after quitting">
+<meta property="og:description" content="A former Cisco engineer got back into its cloud 5 months after resigning and deleted the servers behind Webex Teams. What it cost, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-cisco-webex-2018.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Cisco Webex outage: how an ex-employee wiped 456 servers 5 months after quitting", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-cisco-webex-2018.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · CISCO WEBEX 2018</div>
+  <h1>The Cisco Webex outage: how an ex-employee wiped 456 servers 5 months after quitting</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Revoke cloud access at offboarding</div>
+
+<p class="lead">Five months after he resigned from Cisco, a former engineer got back into the company's cloud and deleted 456 virtual machines, the servers that ran its Webex Teams collaboration app.<sup>[1]</sup><sup>[3]</sup> This case file covers what happened on that day in September 2018, what it cost Cisco and its customers, and the one control that would have made the whole thing impossible.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Sudhish Kasaba Ramesh worked at Cisco for nearly 2 years before resigning in April 2018.<sup>[1]</sup><sup>[4]</sup> Webex Teams, the company's chat and meeting app for businesses, ran on Cisco's cloud infrastructure hosted by Amazon Web Services.<sup>[1]</sup></p>
+<p>On September 24, 2018, Ramesh accessed that cloud environment without authorization. Working from a personal Google Cloud account, he deployed code that deleted 456 virtual machines supporting Webex Teams.<sup>[1]</sup><sup>[3]</sup></p>
+<p>The effect for customers was immediate. More than 16,000 Webex Teams accounts were shut down, some for as long as 2 weeks, while Cisco rebuilt what had been erased.<sup>[1]</sup><sup>[2]</sup> Prosecutors said no customer data was compromised; the harm was the outage and the cleanup.<sup>[1]</sup></p>
+</div>
+<h2>How he got in</h2>
+<p>He did not need to trick anyone. According to prosecutors, he simply reached into Cisco's cloud account from outside the company months after his last day, and his access still worked well enough to deploy code and delete servers.<sup>[1]</sup><sup>[3]</sup></p>
+<p>Public court records did not explain exactly which credentials or permissions let him back in, and press coverage noted it was unclear how a former employee could still reach the infrastructure.<sup>[2]</sup> What is clear is the shape of the gap: an account, key or permission that should have died with his employment was still alive in April and still alive in September.</p>
+<p>Prosecutors also did not publicly describe a motive. In his plea, Ramesh admitted he acted recklessly in deploying the code and consciously ignored the obvious risk that it would harm Cisco.<sup>[1]</sup></p>
+<h2>What it cost</h2>
+<p>Cisco spent about $1.4 million in employee time restoring the damage and refunded more than $1 million to affected customers, for a total of about $2.4 million.<sup>[1]</sup><sup>[4]</sup></p>
+<p>Ramesh was indicted in July 2020 and pleaded guilty on August 26, 2020, to one count of intentionally accessing a protected computer without authorization and recklessly causing damage.<sup>[1]</sup><sup>[5]</sup> On December 9, 2020, a federal judge in San Jose sentenced him to 24 months in prison, 1 year of supervised release and a $15,000 fine.<sup>[1]</sup> The charge carried a maximum of 5 years.<sup>[3]</sup> He was ordered to report to prison in February 2021.<sup>[1]</sup></p>
+<p>For a single afternoon's work by one person, that is a large bill: 2 weeks of customer outages, millions in costs and a federal prison sentence, none of it involving sophisticated hacking.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> revoking every bit of cloud access on the day someone leaves. Offboarding usually means collecting a laptop and shutting off an email account. Cloud consoles, access keys, shared service accounts and project permissions often live somewhere else and get forgotten.</p>
+<p>If every account, key and role tied to Ramesh had been cut in April 2018, there would have been nothing for him to use in September. And if Cisco had been reviewing who could still reach its production cloud, a working login belonging to someone who had left 5 months earlier would have stood out as an obvious problem long before it was used.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Write a one-page offboarding checklist.</strong> List every system a person might touch: email, cloud accounts, website host, domain registrar, accounting, payroll, social media, shared passwords. Work through it on their last day, not the week after.</li>
+<li><strong>Change shared passwords when people leave.</strong> Any password or access key that a departing employee or contractor knew should be changed the same day.</li>
+<li><strong>Review access every quarter.</strong> Pull the user list from each important system and compare it with your current staff. Anyone who is gone, or no longer needs it, comes off.</li>
+<li><strong>Use one login to rule the rest.</strong> Where you can, have staff sign in to business apps with their company email account, so disabling that one account shuts most doors at once.</li>
+<li><strong>Keep backups the cloud admin cannot delete.</strong> Store copies of critical systems and data somewhere separate, so a single person with the wrong access cannot wipe out both the live system and its recovery copy.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-04" data-v="APQyDuA6nbY" data-title="He quit Cisco, then deleted 456 of its virtual machines"><div class="soon"><b>He quit Cisco, then deleted 456 of its virtual machines</b><span class="when">Drops 2026-11-04</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.justice.gov/usao-ndca/pr/san-jose-man-sentenced-two-years-imprisonment-damaging-cisco-s-network" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, Northern District of California: San Jose man sentenced to two years imprisonment for damaging Cisco&#x27;s network</a></li><li><a href="https://threatpost.com/cisco-employee-convicted-deleting-webex-accounts/162246" target="_blank" rel="noopener">Threatpost: Ex-Cisco employee convicted for deleting 16K Webex accounts</a></li><li><a href="https://www.bleepingcomputer.com/news/security/ex-cisco-engineer-who-nuked-16k-webex-accounts-goes-to-prison/" target="_blank" rel="noopener">BleepingComputer: Ex-Cisco engineer who nuked 16K WebEx accounts goes to prison</a></li><li><a href="https://www.infosecurity-magazine.com/news/cisco-engineer-24m/" target="_blank" rel="noopener">Infosecurity Magazine: Former Cisco engineer gets two years for $2.4M WebEx attack</a></li><li><a href="https://www.securityweek.com/former-cisco-employee-sentenced-prison-webex-hack/" target="_blank" rel="noopener">SecurityWeek: Former Cisco employee sentenced to prison for Webex hack</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sony Pictures hack 2014: full story, timeline and cost | Cyber Heists</title>
+<meta name="description" content="How a 2014 attack wiped half of Sony Pictures&#x27; computers, leaked 47,000 Social Security numbers and pulled a film from theaters, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/episode-sony-pictures-2014.html">
+<meta property="og:title" content="The Sony Pictures hack, start to finish: a wiped studio, a pulled film and a folder named Password">
+<meta property="og:description" content="How a 2014 attack wiped half of Sony Pictures&#x27; computers, leaked 47,000 Social Security numbers and pulled a film from theaters, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-sony-pictures-2014.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Sony Pictures hack, start to finish: a wiped studio, a pulled film and a folder named Password", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-sony-pictures-2014.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · SONY PICTURES 2014</div>
+  <h1>The Sony Pictures hack, start to finish: a wiped studio, a pulled film and a folder named Password</h1>
+  <div class="meta">Published 2026-09-29 · 8 min read · Episode 12 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-11-11" data-t="11:00" data-v="3MhhhNAmlSQ" data-title="Sony Pictures 2014: a wiped studio, leaked emails, a Password folder"><div class="soon"><b>Sony Pictures 2014: a wiped studio, leaked emails, a Password folder</b><span class="when">Premieres 2026-11-11</span></div></div></div></div>
+
+<p class="lead">In about an hour on the morning of November 24, 2014, malware erased roughly half of the personal computers and servers at Sony Pictures, and a studio with 7,000 employees went back to fax machines and paper paychecks.<sup>[1]</sup> This long read follows the attack from a comedy about North Korea to the leaks, the threat that pulled a film from theaters, the FBI's attribution, the bill, and the one control that would have made the thieves' job much harder.</p>
+<h2>The movie, the warning email and the wiper</h2>
+<div class="case">
+<p>In 2014 Sony Pictures was preparing a comedy called The Interview, in which 2 American journalists are recruited to kill North Korea's leader. It cost about $44 million to make, with a marketing budget of about $32 million, and the studio hoped for $100 million or more at the box office.<sup>[1]</sup></p>
+<p>On November 21, 2014, several top Sony executives received an email from a group that demanded money and warned that the studio would suffer if it did not pay. Nobody acted on it; the message only became public later, when it turned up among leaked emails.<sup>[5]</sup></p>
+<p>At about 7 a.m. Pacific time on Monday, November 24, an image of a red skeleton and a message signed by a group calling itself Guardians of Peace appeared on Sony screens. Behind it was a wiper, malware built to destroy rather than to steal or ransom. It overwrote data using a method that made recovery impractical. When it was done, 3,262 of the studio's 6,797 personal computers and 837 of its 1,555 servers had been erased.<sup>[1]</sup> Staff communicated by fax and posted notes, and the company paid its 7,000 employees with paper checks.<sup>[1]</sup></p>
+</div>
+<p>A wiper that reaches thousands of machines in an hour does not start at the front door on the day it runs. The FBI later said the attackers had stolen large amounts of personal and business data before the destruction began, and that the attack left thousands of Sony computers inoperable and forced the whole network offline.<sup>[2]</sup> In other words, the intruders had been inside long enough to map the place, collect what they wanted and copy it out before anyone saw the skull.</p>
+<h2>What leaked: films, salaries and a folder named Password</h2>
+<p>Starting in late November and continuing for weeks, the stolen files were posted to public file-sharing sites in 9 batches.<sup>[1]</sup> The first to appear were films: 5 Sony titles, 4 of them not yet released in theaters.<sup>[1]</sup> Then came spreadsheets of executive salaries, internal emails in which executives discussed stars and projects, and personnel records.<sup>[1]</sup></p>
+<p>The personal data hit hardest. Analysts who went through the leaked files found more than 47,000 unique Social Security numbers, belonging to current and former employees and to some actors and freelancers, many of them stored in ordinary spreadsheets.<sup>[7]</sup> Sony later told a court that about 437,000 people had been affected in some way.<sup>[4]</sup></p>
+<p>One directory drew particular attention from security professionals. It was named, simply, Password, and it held documents and spreadsheets listing login details for company systems and social media accounts, stored as plain text with file names that described what they contained.<sup>[6]</sup> Nobody outside the investigation can say exactly how much that folder helped the attackers move around. But it showed how the studio handled its keys: written down, labeled and left where anyone already inside could read them.</p>
+<h2>The threat that pulled The Interview from theaters</h2>
+<p>On December 16, 2014, a new message tied to the hackers warned people to stay away from theaters showing The Interview and referred to the September 11 attacks.<sup>[8]</sup> The Department of Homeland Security said it had no credible intelligence of an active plot, but the country's biggest theater chains quickly said they would not show the film.<sup>[9]</sup> On December 17, Sony cancelled the planned Christmas Day release.<sup>[9]</sup></p>
+<p>On December 19, the FBI announced that it had enough information to conclude that North Korea's government was responsible. It pointed to 3 things: code and methods in the wiper that matched malware previously tied to North Korean actors, internet addresses built into the malware that had communicated with known North Korean infrastructure, and similarities to a March 2013 attack on South Korean banks and media companies.<sup>[2]</sup> The same day, the President told reporters that Sony had made a mistake by pulling the film.<sup>[10]</sup></p>
+<p>Sony reversed course. On December 24 it released The Interview online, and on Christmas Day it opened in a few hundred independent theaters.<sup>[11]</sup> Digital sales brought in up to about $40 million in the weeks that followed, making it the studio's most successful online release at the time.<sup>[11]</sup> That was still far below what a wide theatrical release had been expected to earn.<sup>[1]</sup></p>
+<h2>What the Sony Pictures hack cost</h2>
+<p>In February 2015, Sony said it expected to spend about $15 million on investigating and repairing the damage in its fiscal year.<sup>[12]</sup> That figure covered the immediate response, not lost business, delayed projects or the time spent rebuilding systems. The same month, the studio's co-chairman, whose emails had been among the most quoted, stepped down to become a producer with the company.<sup>[13]</sup></p>
+<p>Current and former employees sued, arguing that Sony had failed to protect their personal information. In April 2016 a federal judge in Los Angeles gave final approval to a settlement. Sony committed $7 million to a notification and reimbursement fund, paid for up to 3 years of credit monitoring, and covered lawyers' fees, bringing the total to as much as about $8 million.<sup>[4]</sup><sup>[3]</sup> Employees could claim reimbursement for identity theft losses and for steps they took to protect themselves.<sup>[3]</sup></p>
+<p>On September 6, 2018, the Justice Department charged a North Korean computer programmer who, prosecutors say, worked for a government front company and was part of a team behind the Sony attack, the $81 million theft from Bangladesh Bank and the WannaCry ransomware.<sup>[14]</sup> According to the charges, the Sony intrusion began with malicious messages sent to employees that gave the attackers a foothold in the network.<sup>[14]</sup> The defendant has not been brought to a U.S. court.</p>
+<h2>Why one intrusion reached half the studio</h2>
+<p>Put the pieces together and the attack looks less exotic than its headlines. The attackers got in through employees, stayed long enough to gather what they wanted, and copied terabytes of data out through the studio's own internet connection without triggering an alarm anyone acted on.<sup>[2]</sup><sup>[14]</sup></p>
+<p>Researchers who examined the wiper reported that its authors had detailed knowledge of Sony's internal IT setup, the kind of map an intruder builds only after time inside.<sup>[15]</sup> Malware that can use a trusted account spreads with that account's reach instead of breaking into each machine separately. When one set of logins works almost everywhere, and those logins are stored in labeled spreadsheets on shared drives, an intruder does not need to be clever. The network was flat enough that a single foothold reached about half of all company computers in an hour.<sup>[1]</sup></p>
+<p>It took the studio weeks to restore basic systems, and it rebuilt much of its network from scratch. The case became the reference point that security teams at other companies used for years to argue for bigger budgets.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Nov 21, 2014</td><td>Sony executives receive an email demanding money.<sup>[5]</sup></td></tr>
+<tr><td>Nov 24, 2014</td><td>Wiper erases 3,262 PCs and 837 servers in about an hour.<sup>[1]</sup></td></tr>
+<tr><td>Early Dec 2014</td><td>Leaks reveal more than 47,000 Social Security numbers.<sup>[7]</sup></td></tr>
+<tr><td>Dec 16, 2014</td><td>Hackers threaten theaters showing The Interview.<sup>[8]</sup></td></tr>
+<tr><td>Dec 17, 2014</td><td>Sony cancels the Christmas Day theatrical release.<sup>[9]</sup></td></tr>
+<tr><td>Dec 19, 2014</td><td>FBI attributes the attack to North Korea's government.<sup>[2]</sup></td></tr>
+<tr><td>Dec 24, 2014</td><td>Sony releases the film online.<sup>[11]</sup></td></tr>
+<tr><td>Feb 2015</td><td>Sony puts response costs at about $15 million; co-chairman steps down.<sup>[12]</sup><sup>[13]</sup></td></tr>
+<tr><td>Apr 6, 2016</td><td>Judge approves the employee class action settlement.<sup>[4]</sup></td></tr>
+<tr><td>Sep 6, 2018</td><td>Justice Department charges a North Korean programmer.<sup>[14]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> keep passwords out of plain-text files, limit what any one administrator login can reach, and raise an alarm when large amounts of data leave the network. With those in place, a single foothold would not have unlocked half the studio or let terabytes walk out unnoticed.<sup>[2]</sup><sup>[6]</sup></p>
+<ol>
+<li><strong>Move every shared password into a password manager.</strong> Search shared drives and email for files with names like passwords or logins, move the contents into a proper vault, then delete the files.</li>
+<li><strong>Separate everyday and admin accounts.</strong> Give staff who manage systems a separate login for admin work, protect it with two-factor sign-in, and never reuse one admin password across every machine.</li>
+<li><strong>Divide the network.</strong> Keep finance, HR and file servers on their own segments so a compromised laptop cannot reach everything at once.</li>
+<li><strong>Watch outbound data.</strong> Ask your IT provider to alert on unusually large uploads or transfers to unfamiliar destinations, and name the person who responds.</li>
+<li><strong>Treat threats and odd emails as incidents.</strong> When anyone receives an extortion demand or strange warning, report it to whoever handles security that day instead of filing it away.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The Sony attack is remembered for the film, the leaked emails and a foreign government. The reusable lesson is smaller and closer to home: the attackers found the keys where the studio kept them and walked out with the data through a door nobody was watching.</p>
+<p>Most small businesses already have a file somewhere with passwords in it. Finding it and replacing it with a password manager takes an afternoon, and it removes one of the easiest wins an intruder can get.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-sony-pictures-2014.html">The Sony Pictures hack: wiped computers and a folder named Password</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://fortune.com/longform/sony-hack-part-1/" target="_blank" rel="noopener">Fortune: Sony Pictures, Inside the Hack of the Century, Part 1</a></li><li><a href="https://www.fbi.gov/news/press-releases/update-on-sony-investigation" target="_blank" rel="noopener">FBI: Update on Sony investigation</a></li><li><a href="https://www.dataprivacyandsecurityinsider.com/2016/04/sony-settles-employees-class-action-suit-for-up-to-8m/" target="_blank" rel="noopener">Data Privacy + Security Insider: Sony settles employees&#x27; class action suit for up to $8M</a></li><li><a href="https://www.news5cleveland.com/news/national/judge-approves-settlement-in-class-action-suit-regarding-sony-pictures-hack" target="_blank" rel="noopener">News 5 Cleveland (AP): Judge approves settlement in class action suit regarding Sony Pictures hack</a></li><li><a href="https://www.computerworld.com/article/1485957/hackers-contacted-top-sony-executives-before-attack.html" target="_blank" rel="noopener">Computerworld: Hackers contacted top Sony executives before attack</a></li><li><a href="https://www.computerworld.com/article/1485593/a-lesson-from-sonys-massive-hack-dont-store-your-passwords-in-word-docs-and-excel-sheets.html" target="_blank" rel="noopener">Computerworld: A lesson from Sony&#x27;s massive hack: don&#x27;t store your passwords in Word docs and Excel sheets</a></li><li><a href="https://www.securityweek.com/sony-hackers-dump-personal-data-47000-people-celebs-included/" target="_blank" rel="noopener">SecurityWeek: Sony hackers dump personal data of 47,000 people, celebs included</a></li><li><a href="https://money.cnn.com/2014/12/16/technology/security/sony-hackers/" target="_blank" rel="noopener">CNN Money: Sony hackers threaten theaters</a></li><li><a href="https://www.npr.org/sections/thetwo-way/2014/12/17/371477960/major-theater-chains-wont-screen-the-interview-amid-threats" target="_blank" rel="noopener">NPR: Major theater chains won&#x27;t screen The Interview amid threats</a></li><li><a href="https://csmonitor.com/USA/Politics/DC-Decoder/2014/1219/Obama-Sony-made-a-mistake-in-pulling-The-Interview" target="_blank" rel="noopener">Christian Science Monitor: Obama says Sony made a mistake in pulling The Interview</a></li><li><a href="https://www.cbsnews.com/news/the-interview-digital-sales-rake-in-up-to-40-million" target="_blank" rel="noopener">CBS News: The Interview digital sales rake in up to $40 million</a></li><li><a href="https://fortune.com/2015/02/04/sony-is-spending-15-million-to-deal-with-the-big-hack" target="_blank" rel="noopener">Fortune: Sony is spending $15 million to deal with the big hack</a></li><li><a href="https://www.ksl.com/article/news/business/amy-pascal-steps-down-as-sony-pictures-chief/33363334" target="_blank" rel="noopener">KSL (AP): Amy Pascal steps down as Sony Pictures chief</a></li><li><a href="https://www.justice.gov/usao-cdca/pr/north-korean-regime-backed-programmer-charged-conspiracy-conduct-multiple-cyberattacks" target="_blank" rel="noopener">U.S. Department of Justice: North Korean regime-backed programmer charged with conspiracy to conduct multiple cyber attacks</a></li><li><a href="https://www.darkreading.com/attacks-breaches/sony-hackers-knew-details-of-sony-s-entire-it-infrastructure" target="_blank" rel="noopener">Dark Reading: Sony hackers knew details of Sony&#x27;s entire IT infrastructure</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

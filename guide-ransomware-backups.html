@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ransomware Backups for Small Business: Offline, Tested, Planned | Cyber Heists</title>
+<meta name="description" content="Maersk&#x27;s login system survived NotPetya only by luck. How a small office builds offline backups, tests restores, and writes a one-page ransomware plan.">
+<link rel="canonical" href="https://thecyberheists.com/guide-ransomware-backups.html">
+<meta property="og:title" content="Backups that survive ransomware: offline copies, tested restores and a one-page plan">
+<meta property="og:description" content="Maersk&#x27;s login system survived NotPetya only by luck. How a small office builds offline backups, tests restores, and writes a one-page ransomware plan.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/guide-ransomware-backups.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Backups that survive ransomware: offline copies, tested restores and a one-page plan", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/guide-ransomware-backups.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Ransomware backups</div>
+  <h1>Backups that survive ransomware: offline copies, tested restores and a one-page plan</h1>
+  <div class="meta">Published 2026-09-29 · 6 min read</div>
+
+<p class="lead">When NotPetya wiped the computers of Maersk, the world's largest container shipping company, in 2017, the only clean copy of its login system survived in an office in Ghana, because a local power cut had knocked it offline before the attack.<sup>[1]</sup> This guide explains how a small office builds backups that ransomware cannot reach, proves they work before an emergency, and writes a one-page plan for the day the screens go dark.</p>
+<h2>Why ordinary backups fail against ransomware</h2>
+<p>Ransomware is malicious software that scrambles your files and demands payment to unscramble them. Many groups also copy data first and threaten to publish it. In 2024 the FBI's Internet Crime Complaint Center received 3,156 ransomware complaints, and it notes that many incidents are never reported.<sup>[2]</sup></p>
+<p>The problem with many small-office backups is that they are always connected. A drive plugged into the server, a folder that syncs to the cloud, or a backup system that uses the same administrator password as everything else can all be reached by the same intruder who reached your files. CISA's ransomware guide warns that criminals actively look for accessible backups to delete or encrypt them, and tells organizations to keep offline, encrypted backups of critical data and to test them regularly.<sup>[3]</sup></p>
+<h2>A case: the backup that survived by accident</h2>
+<p>NotPetya began spreading on June 27, 2017, through a software update for an accounting program widely used in Ukraine, and it destroyed data rather than holding it for ransom. At Maersk, it wiped roughly 150 domain controllers, the servers that hold every user account and decide who can log in to what. They were all connected and copying each other, so they all went down together.<sup>[1]</sup></p>
+<p>Maersk had backups of many servers, but not a separate, offline copy of those login servers. The one survivor was in Ghana, offline only because of a blackout.<sup>[1]</sup> The company rebuilt its network in about 10 days, reinstalling some 45,000 PCs and 4,000 servers, and put its losses at $250 million to $300 million.<sup>[4]</sup> The full story is in our case file on <a href="case-notpetya-2017.html">NotPetya and Maersk</a>.</p>
+<p>A small office has no Ghana. It needs a copy that is offline on purpose.</p>
+<h2>The rules for a backup that survives</h2>
+<p>The UK's National Cyber Security Centre sums up ransomware-resistant backups in four rules.<sup>[5]</sup> Here they are for a small office:</p>
+<ul>
+<li><strong>The offline rule.</strong> At least 1 copy must be disconnected from your network at all times. That can be a drive that is unplugged and taken off site after each backup, or a cloud backup that your everyday logins cannot reach or delete.</li>
+<li><strong>The recovery rule.</strong> Choose a cloud backup service that keeps older versions and lets you recover deleted files, so you can roll back to a point before the attack.</li>
+<li><strong>The 3-2-1 rule.</strong> Keep at least 3 copies of important data, on 2 different kinds of storage, with 1 kept off site.</li>
+<li><strong>The regular rule.</strong> Back up often, and test often.</li>
+</ul>
+<p>Two more points make those rules hold. First, protect the backup account itself with separate credentials and multi-factor login, so stealing one office password does not unlock the backups too; our <a href="guide-small-business-mfa.html">MFA guide</a> explains which kind to use. Second, remember that a synced folder is not a backup. If ransomware scrambles a file on your computer, sync services can faithfully copy the scrambled version everywhere.</p>
+<h2>What to back up</h2>
+<p>Start by listing what you would need to open the doors again on a Monday morning:</p>
+<ul>
+<li><strong>Client and patient records.</strong> Practice management, electronic health records, tax files, case files, policy files and transaction records.</li>
+<li><strong>Money systems.</strong> Accounting and payroll data, with the ability to reinstall the software.</li>
+<li><strong>Email and documents.</strong> If you use Microsoft 365 or Google Workspace, ask your IT provider whether you have a separate backup of that data, with its own login, or only the service itself.</li>
+<li><strong>Logins and settings.</strong> Who has accounts, what they can reach, and how your systems are configured. This is what Maersk nearly lost.</li>
+<li><strong>Software and license keys.</strong> Installers and license information for the programs you rely on, stored with the backups.</li>
+</ul>
+<h2>Test a restore, or it does not count</h2>
+<p>A backup you have never restored is a hope, not a plan. Once a quarter, pick something real and bring it back: a client folder, a mailbox, or a whole computer. Time how long it takes and write it down. If a full restore would take a week, you want to learn that now, not during an attack.</p>
+<p>Testing also catches quiet failures. Backups stop running when a password changes, a drive fills up or a subscription lapses, and nobody notices until the day they are needed. The credit union case shows a smaller version of the same lesson: backups limited the damage when a fired employee deleted thousands of files, but only because they existed and worked. See <a href="case-credit-union-2021.html">the credit union case</a>.</p>
+<h2>A one-page incident plan</h2>
+<p>CISA recommends that every organization keep a basic incident response plan, approved by leadership, with printed and offline copies, and exercise it regularly.<sup>[3]</sup> For a small office, one page is enough. Print it and keep a copy at home:</p>
+<ul>
+<li><strong>Who decides.</strong> The owner or managing partner, and a named backup if they are away.</li>
+<li><strong>Who to call.</strong> Your IT provider's emergency number, your cyber insurer's claims line, your lawyer, and your bank's fraud line, all written on paper.</li>
+<li><strong>First moves.</strong> CISA's first step is to identify affected systems and isolate them immediately, and if many are affected, to take the network offline.<sup>[3]</sup> In practice: unplug network cables or turn off Wi-Fi on affected machines. Do not wipe or reinstall anything until your IT provider says so, because evidence helps investigators.</li>
+<li><strong>Report it.</strong> To the FBI at ic3.gov or your local FBI field office, and to CISA, as CISA's guide recommends.<sup>[3]</sup></li>
+<li><strong>How you keep working.</strong> Paper appointment books, a printed client contact list, and how you will take payments and pay staff for a week.</li>
+<li><strong>Who you must tell.</strong> Clients, patients or regulators may need to be notified under state or federal law. Your lawyer or insurer will help you work out what applies.</li>
+</ul>
+<p>Once a year, spend 30 minutes walking through the page with your team as if it were real. Ransomware can also arrive through a single forgotten login; Colonial Pipeline's 2021 shutdown began with an old remote-access account, as <a href="case-colonial-pipeline-vpn-password.html">our case file</a> explains. And the Irish health service had no response playbooks when ransomware hit in 2021, with recovery taking 4 months; see <a href="case-irish-hse-2021.html">the Irish health service case</a>.</p>
+<h2>Your ransomware backup checklist</h2>
+<ul>
+<li><strong>At least 1 offline copy.</strong> Unplugged, off site, or in an account everyday logins cannot touch.</li>
+<li><strong>3-2-1 in place.</strong> 3 copies, 2 kinds of storage, 1 off site.</li>
+<li><strong>Backup account protected.</strong> Separate password and multi-factor login.</li>
+<li><strong>Versions kept.</strong> You can roll back to before an attack.</li>
+<li><strong>Quarterly restore test.</strong> Timed and written down.</li>
+<li><strong>Backup alerts go to a person.</strong> Someone notices when a backup fails.</li>
+<li><strong>One-page plan printed.</strong> With phone numbers, first moves and who decides.</li>
+<li><strong>Annual walk-through.</strong> 30 minutes, whole team.</li>
+</ul>
+<h2>Common questions</h2>
+<h3>Should we pay if ransomware hits?</h3>
+<p>Paying does not guarantee you get your data back or that stolen data stays private. When Change Healthcare paid a $22 million ransom in 2024, the stolen data still surfaced in a second extortion demand; see <a href="case-change-healthcare-2024.html">the Change Healthcare case</a>. Maersk's attack was a wiper, so paying would not have helped at all.<sup>[1]</sup> Good offline backups are what give you a real choice. Talk to law enforcement, your insurer and your lawyer before deciding, and report the attack either way.</p>
+<h3>Is cloud backup enough on its own?</h3>
+<p>It can be, if it meets the rules above: versions kept, deletion protected, and separate credentials with multi-factor login so an intruder in your office cannot log in and erase it. Many offices pair a cloud backup with a local drive that is unplugged and taken home weekly, which covers both a ransomware attack and an internet outage.</p>
+<h3>How often should we back up?</h3>
+<p>Ask how much work you could stand to redo. If losing a day of appointments and billing would be painful but survivable, nightly backups fit. If losing even a few hours would hurt, back up more often. The offline copy can be less frequent, such as weekly, as long as it exists and is tested.</p>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Put it in writing</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More guides</div><ul><li><a href="guide-employee-offboarding-checklist.html">Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-fake-invoice-payment-fraud.html">How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="guide-help-desk-caller-verification.html">How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-patching-small-business.html">How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="guide-small-business-mfa.html">Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="guide-vendor-access-security.html">How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="controls.html#backups-recovery">Cases behind these controls</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">General guidance, not legal advice. Check requirements specific to your industry with a qualified adviser.</p>
+  
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://redmondmag.com/blogs/scott-bekker/2018/08/domain-controller-nightmare.aspx" target="_blank" rel="noopener">Redmond Magazine: A domain controller nightmare</a></li><li><a href="https://ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf" target="_blank" rel="noopener">FBI Internet Crime Complaint Center: 2024 Internet Crime Report</a></li><li><a href="https://www.cisa.gov/stopransomware/ransomware-guide" target="_blank" rel="noopener">CISA, MS-ISAC, NSA and FBI: #StopRansomware Guide</a></li><li><a href="https://www.securityweek.com/maersk-reinstalled-50000-computers-after-notpetya-attack" target="_blank" rel="noopener">SecurityWeek: Maersk reinstalled 50,000 computers after NotPetya attack</a></li><li><a href="https://www.ncsc.gov.uk/blog-post/offline-backups-in-an-online-world" target="_blank" rel="noopener">NCSC: Offline backups in an online world</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>

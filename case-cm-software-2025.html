@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C&amp;M Software hack: how $140M left Brazil&#x27;s bank reserves | Cyber Heists</title>
+<meta name="description" content="In 2025 attackers used a payments vendor&#x27;s valid login to drain about $140 million from Brazilian bank reserves. How it worked and the control that was missing.">
+<link rel="canonical" href="https://thecyberheists.com/case-cm-software-2025.html">
+<meta property="og:title" content="The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves">
+<meta property="og:description" content="In 2025 attackers used a payments vendor&#x27;s valid login to drain about $140 million from Brazilian bank reserves. How it worked and the control that was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-cm-software-2025.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The C&M Software hack: a sold login and $140 million from Brazil's bank reserves", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-cm-software-2025.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · C&amp;M SOFTWARE 2025</div>
+  <h1>The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Monitor vendor privileged credential use</div>
+
+<p class="lead">Police say the login that opened a path to Brazil's central bank reserve accounts in 2025 cost the buyers about $2,700, and roughly $140 million went out the door in a few early-morning hours.<sup>[1]</sup><sup>[2]</sup><sup>[3]</sup> This case file covers how a payments vendor's employee access was turned against the banks it served, how police traced it, and the one control that would have caught it early.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>C&amp;M Software is a Brazilian company that connects about two dozen smaller financial institutions, which do not have their own direct link, to the central bank's payment systems, including Pix, the country's instant payment network.<sup>[2]</sup><sup>[4]</sup> Each of those institutions keeps a reserve account at the central bank that is used only to settle payments between banks.<sup>[5]</sup></p>
+<p>According to police, the plot started in March 2025, when a man approached a C&amp;M IT employee outside a bar in São Paulo. Further contact happened over WhatsApp calls.<sup>[1]</sup><sup>[2]</sup> Around the turn of June into July 2025, attackers used valid C&amp;M access to send fraudulent Pix transfer orders that appeared to come from client institutions, draining reserve accounts within about 3 hours in the early morning.<sup>[3]</sup> At least 6 institutions were affected, and reported losses came to about 800 million reais, roughly $140 million.<sup>[1]</sup><sup>[2]</sup><sup>[5]</sup></p>
+<p>On July 2 the central bank ordered C&amp;M's connections cut while it investigated.<sup>[3]</sup><sup>[4]</sup> Within days, São Paulo police arrested the employee at his home.<sup>[2]</sup><sup>[6]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>This was not a break-in through a software flaw. C&amp;M said no technical breach of its systems occurred and that the attackers used legitimate credentials, obtained through social engineering, the practice of manipulating a person rather than a machine.<sup>[2]</sup><sup>[3]</sup></p>
+<p>Police say the employee sold his login for about 5,000 reais, around $900, and was then paid about 10,000 reais more, around $1,800, to run commands on the attackers' behalf from his own computer.<sup>[2]</sup> Investigators said he had access to client systems through his work equipment.<sup>[6]</sup> He also told police he changed phones about every 15 days to avoid being traced.<sup>[1]</sup><sup>[2]</sup></p>
+<p>Because the vendor sat between the banks and the central bank, activity from its trusted accounts looked routine. Once the money moved, it was pushed quickly through over-the-counter crypto desks and exchanges, and an estimated $30 million to $40 million was converted into cryptocurrency.<sup>[2]</sup><sup>[3]</sup></p>
+<h2>How it was caught</h2>
+<p>The unusual transfers were spotted by the affected institutions and the central bank, which suspended C&amp;M's access. The vendor said its security protocols let it respond quickly and that it was cooperating with the central bank and São Paulo state police.<sup>[3]</sup><sup>[4]</sup></p>
+<p>Police traced the employee and arrested him in early July 2025. Police said he admitted selling his login and helping the attackers.<sup>[3]</sup><sup>[7]</sup> He has not been convicted. In September 2025 Brazil's Federal Police arrested 8 more suspects linked to the C&amp;M attack and a similar attack on another provider. All 8 denied involvement, according to local reporting.<sup>[7]</sup></p>
+<h2>What it cost</h2>
+<p>An account holding about 270 million reais, roughly $50 million, that had received diverted money was blocked.<sup>[3]</sup><sup>[6]</sup> One of the hardest-hit institutions reported losses of about 400 million reais and recovered about 150 million reais through Pix's special return mechanism.<sup>[3]</sup><sup>[6]</sup> The institutions said customer accounts and balances were not touched, because the money came from the banks' own settlement reserves.<sup>[4]</sup><sup>[5]</sup> Later Federal Police figures put the total diverted in the C&amp;M attack higher, at about 1.2 billion reais.<sup>[7]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> monitoring what privileged vendor credentials actually do. That means watching the behavior of powerful accounts, such as volume, timing and destination of transfers, not just checking that the password is valid.</p>
+<p>A correct login proved nothing here, because it was the real login. What was abnormal was the behavior: a burst of large transfers from reserve accounts in the small hours, to new destinations, in a pattern no ordinary workday produces. Alerts on unusual volume, hold periods on large first-time transfers, and dual approval for moves above a threshold would have flagged or slowed it within minutes rather than hours.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>List every vendor that can move your money.</strong> Payroll services, payment processors and IT providers with admin access all belong on it, along with what each can do.</li>
+<li><strong>Set limits and alerts at your bank.</strong> Ask for daily transfer caps, alerts for every outgoing payment over a set amount, and a second approver for large or first-time payees.</li>
+<li><strong>Watch for odd hours and bursts.</strong> Review weekly who logged in to money systems, when and from where. Activity at 4 a.m. or a sudden spike should be a question, not a footnote.</li>
+<li><strong>Give each person their own login.</strong> Shared vendor accounts make it impossible to tell who did what. Require named accounts with MFA, and remove them when the work ends.</li>
+<li><strong>Tell staff that selling access is a crime, and that approaches get reported.</strong> Make it easy and safe for employees to report someone offering money for logins.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-17" data-v="5UjWPpdKZgw" data-title="The bank login police say sold for about $2,700"><div class="soon"><b>The bank login police say sold for about $2,700</b><span class="when">Drops 2026-11-17</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More vendors and third parties cases</div><ul><li><a href="guide-vendor-access-security.html">Guide: How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-solarwinds-2020.html">How the SolarWinds hack happened: malware shipped as a trusted update</a></li><li><a href="case-marriott-2018.html">What caused the Marriott breach: the intruder that came with Starwood</a></li><li><a href="case-bybit-2025.html">How the Bybit hack happened: a vendor&#x27;s laptop and a screen that lied</a></li><li><a href="case-caesars-2023.html">How the Caesars hack happened: a con at the outsourced IT help desk</a></li><li><a href="case-atm-heist-2013.html">How the $45 million ATM heist worked: prepaid cards with no limits</a></li><li><a href="controls.html#vendors-third-parties">Every vendors and third parties control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.bitdefender.com/en-us/blog/hotforsecurity/employee-arrested-after-brazils-central-bank-service-provider-hacked-for-us-140-million" target="_blank" rel="noopener">Bitdefender: Employee arrested after Brazil&#x27;s central bank service provider hacked for US $140 million</a></li><li><a href="https://cyberinsider.com/it-employee-sold-credentials-used-in-140m-brazil-banks-hack/" target="_blank" rel="noopener">CyberInsider: IT employee sold credentials used in $140M Brazil banks hack</a></li><li><a href="https://decrypt.co/328700/hacker-spent-2k-steal-140-million-brazil-central-bank" target="_blank" rel="noopener">Decrypt: Hacker spent $2K to steal $140 million from Brazil central bank</a></li><li><a href="https://www.teiss.co.uk/news/cyberattack-hits-brazilian-financial-services-provider-cm-software-triggers-central-bank-response-16026" target="_blank" rel="noopener">TEISS: Cyberattack hits Brazilian financial services provider C&amp;M Software, triggers central bank response</a></li><li><a href="https://www.businessinsurance.com/cyberattack-hits-reserve-accounts-of-six-banks/" target="_blank" rel="noopener">Business Insurance: Cyberattack hits reserve accounts of six banks</a></li><li><a href="https://www.moneytimes.com.br/policia-civil-prende-suspeito-de-ataque-hacker-a-c-conta-de-funcionario-com-r-270-milhoes-foi-bloqueada-rens/" target="_blank" rel="noopener">Money Times: Polícia Civil prende suspeito de ataque hacker à C&amp;M; conta com R$ 270 milhões foi bloqueada</a></li><li><a href="https://www.baguete.com.br/noticias/pf-prende-oito-suspeitos-de-ataques-a-cm-e-a-sinqia" target="_blank" rel="noopener">Baguete: PF prende oito suspeitos de ataques à C&amp;M e à Sinqia</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

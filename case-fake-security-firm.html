@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIN7 and Combi Security: the hackers posing as a security firm | Cyber Heists</title>
+<meta name="description" content="The FIN7 gang hid behind a fake security firm while stealing more than 15 million payment cards from US businesses. How it worked and what was missing.">
+<link rel="canonical" href="https://thecyberheists.com/case-fake-security-firm.html">
+<meta property="og:title" content="Combi Security: the cybercrime gang that ran a fake security company">
+<meta property="og:description" content="The FIN7 gang hid behind a fake security firm while stealing more than 15 million payment cards from US businesses. How it worked and what was missing.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-fake-security-firm.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Combi Security: the cybercrime gang that ran a fake security company", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-fake-security-firm.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · FAKE SECURITY FIRM</div>
+  <h1>Combi Security: the cybercrime gang that ran a fake security company</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Verify employers and vendors independently</div>
+
+<p class="lead">One of the most damaging card-theft gangs in US history ran what looked like a legitimate cybersecurity company, complete with a website and job openings, but with no real customers.<sup>[2]</sup><sup>[3]</sup> This case file covers how the FIN7 group used that front, how it stole more than 15 million payment card records, and the one control that would have exposed it.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>From at least 2015, a group known as FIN7 broke into the computer networks of more than 100 US companies, many of them restaurant chains, hotels and retailers. Its targets were the card terminals at checkout. Federal prosecutors said the group breached more than 6,500 point-of-sale terminals at more than 3,600 business locations in 47 states and Washington, D.C., and took more than 15 million customer card records.<sup>[3]</sup><sup>[4]</sup> Chains named as victims in the case included Chipotle, Chili's, Arby's, Red Robin and Jason's Deli.<sup>[1]</sup><sup>[2]</sup></p>
+<p>To recruit staff and look respectable, the group set up Combi Security, a company that claimed offices in Russia and Israel and presented itself as a penetration-testing firm, meaning a business companies hire to test their own defenses.<sup>[3]</sup> The US Attorney's office later called it a fake cybersecurity company with a phony website and no legitimate customers.<sup>[2]</sup></p>
+<p>In January 2018, a Ukrainian national named Fedir Hladyr, the group's systems administrator, was arrested in Dresden, Germany. Two other alleged senior members were arrested in Poland and Spain in 2018.<sup>[1]</sup><sup>[3]</sup> The stolen card data had been sold on criminal marketplaces online.<sup>[3]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>The front company did two jobs. For recruits, it made criminal work look like an ordinary tech job: people could be hired to do what sounded like authorized security testing. For the outside world, it gave the operation a legitimate-looking name and web presence.<sup>[2]</sup><sup>[4]</sup> Hladyr himself joined the group through Combi Security, according to prosecutors.<sup>[2]</sup></p>
+<p>The break-ins started with email. Staff at a restaurant or hotel would receive an email made to look like ordinary business correspondence, with a file attached. The group often followed up with a phone call to the same employee, urging them to open it. Opening the file installed malware that let the group into the network and, eventually, onto the card terminals.<sup>[3]</sup><sup>[4]</sup></p>
+<p>Hladyr's job, prosecutors said, was to keep the group's server network running, collect the stolen card data, manage its communication channels and supervise other members.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>What it cost</h2>
+<p>Hladyr was extradited to Seattle in 2018 and pleaded guilty in September 2019 to conspiracy to commit wire fraud and conspiracy to commit computer hacking.<sup>[1]</sup><sup>[2]</sup> On April 16, 2021, he was sentenced to 10 years in federal prison and ordered to pay $2.5 million in restitution. He told the court he regretted his involvement with Combi Security.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The US Attorney's office estimated that the group's overall losses to banks, merchants, card companies and consumers exceeded $3 billion. By the time of sentencing, prosecutors put the card records taken in the US at more than 20 million.<sup>[2]</sup> This page uses the more conservative 15 million figure from the original charges.</p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> verifying employers and vendors independently. That means confirming a company is who it says it is through sources it does not control, such as business registries, known clients and past work, before you trust it with your systems, your staff or your career.</p>
+<p>Combi Security had a website and a story, and that was enough. A few independent checks would have shown a firm with no real clients and no traceable history. The same habit protects businesses from the other half of the scheme: a message from a stranger claiming to be a customer, followed by a pushy phone call, deserves a check before anyone opens the attachment.<sup>[2]</sup><sup>[4]</sup></p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Vet any security or IT vendor before access.</strong> Check the business registration, ask for 2 client references you can call yourself, and confirm the people on the contract are real.</li>
+<li><strong>Get authorization in writing.</strong> Any security testing on your systems should have a signed scope, named testers and a start and end date. Unscheduled testing is an incident.</li>
+<li><strong>Treat call-to-open as a red flag.</strong> Train staff that a phone call urging them to open an emailed file is a warning sign, not reassurance.</li>
+<li><strong>Keep card terminals separate.</strong> Ask your payment provider about point-to-point encryption and keep checkout systems on a separate network from office computers.</li>
+<li><strong>Tell job seekers in your life.</strong> If a friend or family member lands a remote security job, suggest they verify the employer independently before starting.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-12-11" data-v="" data-title="The cybercrime gang that ran a fake security company"><div class="soon"><b>The cybercrime gang that ran a fake security company</b><span class="when">Drops 2026-12-11</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More vendors and third parties cases</div><ul><li><a href="guide-vendor-access-security.html">Guide: How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="case-target-breach-hvac-vendor.html">How the Target breach happened: a vendor&#x27;s billing login and the alarms nobody answered</a></li><li><a href="case-solarwinds-2020.html">How the SolarWinds hack happened: malware shipped as a trusted update</a></li><li><a href="case-marriott-2018.html">What caused the Marriott breach: the intruder that came with Starwood</a></li><li><a href="case-bybit-2025.html">How the Bybit hack happened: a vendor&#x27;s laptop and a screen that lied</a></li><li><a href="case-cm-software-2025.html">The C&amp;M Software hack: a sold login and $140 million from Brazil&#x27;s bank reserves</a></li><li><a href="case-caesars-2023.html">How the Caesars hack happened: a con at the outsourced IT help desk</a></li><li><a href="controls.html#vendors-third-parties">Every vendors and third parties control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://therecord.media/fin7-hacker-sentenced-to-10-years-in-prison" target="_blank" rel="noopener">The Record: FIN7 hacker sentenced to 10 years in prison</a></li><li><a href="https://www.justice.gov/usao-wdwa/pr/high-level-organizer-notorious-hacking-group-fin7-sentenced-ten-years-prison-scheme" target="_blank" rel="noopener">US Attorney&#x27;s Office, Western District of Washington: High-level organizer of notorious hacking group FIN7 sentenced to ten years in prison</a></li><li><a href="https://www.justice.gov/opa/pr/three-members-notorious-international-cybercrime-group-fin7-custody-role-attacking-over-100" target="_blank" rel="noopener">US Department of Justice: Three members of notorious international cybercrime group FIN7 in custody for role in attacking over 100 US companies</a></li><li><a href="https://www.fbi.gov/contact-us/field-offices/seattle/news/stories/how-cyber-crime-group-fin7-attacked-and-stole-data-from-hundreds-of-us-companies" target="_blank" rel="noopener">FBI: How cyber crime group FIN7 attacked and stole data from hundreds of US companies</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

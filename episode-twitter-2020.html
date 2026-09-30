@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the 2020 Twitter hack happened: phone calls and an admin tool | Cyber Heists</title>
+<meta name="description" content="How fake IT help desk calls, a phishing VPN page and an admin tool 1,000 staff could use let a teenager hijack 130 Twitter accounts, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/episode-twitter-2020.html">
+<meta property="og:title" content="Twitter 2020: the phone calls that hijacked Obama, Musk and Gates">
+<meta property="og:description" content="How fake IT help desk calls, a phishing VPN page and an admin tool 1,000 staff could use let a teenager hijack 130 Twitter accounts, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-twitter-2020.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Twitter 2020: the phone calls that hijacked Obama, Musk and Gates", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-twitter-2020.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · TWITTER 2020</div>
+  <h1>Twitter 2020: the phone calls that hijacked Obama, Musk and Gates</h1>
+  <div class="meta">Published 2026-09-29 · 9 min read · Episode 06 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-10-21" data-t="11:00" data-v="g1x2BFa0mvI" data-title="Twitter 2020: the phone calls that hijacked Obama, Musk and Gates"><div class="soon"><b>Twitter 2020: the phone calls that hijacked Obama, Musk and Gates</b><span class="when">Premieres 2026-10-21</span></div></div></div></div>
+
+<p class="lead">On July 15, 2020, the Twitter accounts of Barack Obama, Joe Biden, Elon Musk, Bill Gates and Apple all asked followers to send bitcoin, and nobody had broken Twitter's code to make it happen.<sup>[1]</sup> New York's financial regulator later found the attackers used no malware, no exploits and no backdoors, only phone calls and a fake login page.<sup>[1]</sup> This long read walks through the calls, the internal tool, the afternoon itself, the arrests, the regulator's findings, and the control that would have stopped it.</p>
+<h2>The phone calls to Twitter's remote workers</h2>
+<div class="case">
+<p>By July 2020, Twitter's staff had been working from home since March because of the pandemic. That meant heavy reliance on the company's VPN, the encrypted connection employees use to reach internal systems from outside the office, and frequent problems with it. A call from IT about the VPN was routine, not suspicious.<sup>[1]</sup></p>
+<p>On July 14 and 15, callers claiming to be from Twitter's IT help desk phoned employees about VPN trouble. They steered each employee to a website built to look like Twitter's real VPN login. As the employee typed a username and password into the fake page, the callers entered the same details into the genuine system in real time. That set off a real multi-factor prompt on the employee's phone, and some employees, believing they were helping IT fix the problem, approved it.<sup>[1]</sup> Twitter itself described the method as phone spear phishing, a targeted scam aimed at specific staff.<sup>[2]</sup></p>
+<p>The first people reached did not have access to anything powerful. But once inside, the callers could browse the company's intranet, learn how internal systems worked, and find out who did have access. Then they went back to the phones.<sup>[1]</sup></p>
+</div>
+<p>The regulator's summary was pointed: the techniques were basic and closer to those of a traditional scam artist than a sophisticated hacking operation.<sup>[1]</sup> The weak point was a login process that a convincing caller could walk an employee through.</p>
+<h2>The internal admin tool with 1,000 users</h2>
+<p>Twitter ran internal account management tools so support staff could help users. Those tools could see account details, change the email address tied to an account and switch off its security settings. The regulator found that more than 1,000 Twitter employees had access to them.<sup>[1]</sup> With that many people holding the keys, the attackers only needed to fool one of the right ones.</p>
+<p>They did. Between about 3 a.m. and 10 a.m. on July 15, the group was discussing and taking over so-called OG usernames: short, rare handles such as single letters or words that sell for real money in online trading circles.<sup>[1]</sup> Justice Department investigators later found one member advertising on a hacking forum that he could change the email on any Twitter account for $250, or sell direct access for $2,000 to $3,000.<sup>[5]</sup></p>
+<p>Around 2 p.m., the group posted screenshots of Twitter's internal tools from hijacked accounts. At 2:16 p.m., they took over a cryptocurrency trader's account. At 3:18 p.m., they seized the account of the exchange Binance, which triggered Twitter's incident response. Between 3:26 and 4:12 p.m., 10 more crypto-related accounts, including Coinbase, Gemini and Square, fell.<sup>[1]</sup></p>
+<h2>The afternoon the world's biggest accounts posted a scam</h2>
+<p>At 4:17 p.m., the takeovers moved to the most followed people on the platform. Between then and 6:05 p.m., the attackers posted from the accounts of Elon Musk, Bill Gates, Barack Obama, Kim Kardashian West, Jeff Bezos, Warren Buffett, Kanye West, Joe Biden, Floyd Mayweather, Uber and Apple.<sup>[1]</sup> Each post carried the same basic promise: send bitcoin and get double back.</p>
+<p>Twitter made its first public statement at 5:45 p.m. At 6:18 p.m., it took a step without precedent, locking many verified accounts so they could not tweet and restricting password changes.<sup>[1]</sup> For a few hours, heads of state, companies and news organizations were silenced on purpose. By 8:41 p.m., most accounts could tweet again, and Twitter said it restored access to most affected accounts by July 17.<sup>[1]</sup><sup>[2]</sup></p>
+<p>The final count from Twitter and the regulator was 130 accounts targeted, 45 used to send tweets, 36 with private message inboxes accessed, including a Dutch elected official, and 7 whose full account data was downloaded.<sup>[1]</sup><sup>[2]</sup> Passwords were not exposed, because Twitter did not store them in plain text.<sup>[2]</sup></p>
+<p>The scam collected about $118,000 in bitcoin. It would have been far more: cryptocurrency companies blocked more than 6,000 attempted transfers worth about $1.5 million, with Coinbase alone stopping about 5,670 of them, worth roughly $1.3 million.<sup>[1]</sup></p>
+<h2>How investigators found a 17-year-old in Tampa</h2>
+<p>The same things that made the scam fast also made it traceable. Bitcoin moves on a public ledger, and IRS Criminal Investigation analysts worked to link the scam wallets to real people. The FBI's San Francisco division led the case with help from the Secret Service.<sup>[4]</sup> Forum posts advertising Twitter account access, and chat messages about buying usernames before the attack, gave investigators handles to follow.<sup>[5]</sup> A search warrant was served in Northern California on July 21.<sup>[5]</sup></p>
+<p>On July 31, 2020, just 16 days after the attack, federal prosecutors announced charges against a 19-year-old from the United Kingdom and a 22-year-old from Orlando, Florida.<sup>[4]</sup> A third person, a juvenile, was referred to state prosecutors in Tampa, Florida, and arrested the same day.<sup>[4]</sup><sup>[3]</sup> The regulator identified him as the primary attacker. He was 17, and this page does not name him.<sup>[1]</sup></p>
+<p>A fourth name came later. Joseph James O'Connor, a British man, took part in the conspiracy by discussing the purchase of access to high-profile accounts and agreeing to pay $10,000 for one, according to federal prosecutors.<sup>[6]</sup> His case also covered a SIM-swap scheme, in which criminals hijack a victim's phone number, that stole about $794,000 in cryptocurrency from a Manhattan company's executives in 2019.<sup>[6]</sup></p>
+<h2>The pleas, the prison terms and the regulator's report</h2>
+<p>In March 2021, the Tampa teenager agreed to a plea deal on 30 felony counts, including organized fraud and unauthorized computer access. As a youthful offender he received 3 years in custody followed by 3 years of probation, with credit for about 7.5 months already served, and he surrendered the bitcoin from the scheme.<sup>[3]</sup></p>
+<p>O'Connor was extradited from Spain on April 26, 2023, pleaded guilty on May 9, 2023, and was sentenced on June 23, 2023, to 5 years in prison. He also had to forfeit $794,012.64.<sup>[6]</sup></p>
+<p>The New York Department of Financial Services, which examined the attack because several regulated crypto firms had their accounts hijacked, published its report in October 2020. It found that Twitter had been without a chief information security officer since December 2019, about 7 months before the attack. It found that over 1,000 employees could use the account tools. And it found that the company relied on app-based multi-factor prompts that an employee could be talked into approving.<sup>[1]</sup> The report went further, arguing that platforms this large should face regulation similar to systemically important banks.<sup>[1]</sup></p>
+<p>Twitter's own fix went to the heart of the problem. It moved its roughly 5,500 employees onto physical security keys, small USB or tap-to-connect devices, for internal system access, and reached full enrollment in 2021.<sup>[7]</sup> A security key checks that it is talking to the real website, so a fake login page gets nothing it can reuse, and a caller cannot talk anyone into approving one remotely.</p>
+<h2>Why a phone call beat Twitter</h2>
+<p>Trace the chain backward. The famous accounts fell because one internal tool could change their email and switch off their protections, and more than 1,000 people could use it.<sup>[1]</sup> The tool was reachable because an employee approved a login prompt for a caller who said he was IT. And the call worked because nothing in the process verified who was actually on the line, or whether the login page was real.<sup>[1]</sup></p>
+<p>Any one break in that chain would have limited the damage: fewer people with tool access, prompts that cannot be approved for someone else, or a rule that IT never asks for credentials by phone.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Dec 2019</td><td>Twitter's chief information security officer post falls vacant.<sup>[1]</sup></td></tr>
+<tr><td>Mar 2020</td><td>Twitter staff shift to remote work and rely on the VPN.<sup>[1]</sup></td></tr>
+<tr><td>Jul 14&ndash;15, 2020</td><td>Fake IT help desk calls lead employees to a phishing VPN page.<sup>[1]</sup></td></tr>
+<tr><td>Jul 15, 2020, 3:18 p.m.</td><td>Binance account seized; Twitter's incident response begins.<sup>[1]</sup></td></tr>
+<tr><td>Jul 15, 2020, 4:17&ndash;6:05 p.m.</td><td>Accounts of Obama, Biden, Musk, Gates, Apple and others post the bitcoin scam.<sup>[1]</sup></td></tr>
+<tr><td>Jul 15, 2020, 6:18 p.m.</td><td>Twitter locks many verified accounts.<sup>[1]</sup></td></tr>
+<tr><td>Jul 31, 2020</td><td>Charges announced against 3 people, including a 17-year-old.<sup>[4]</sup></td></tr>
+<tr><td>Oct 2020</td><td>New York DFS publishes its investigation report.<sup>[1]</sup></td></tr>
+<tr><td>Mar 2021</td><td>The teenage ringleader takes a plea deal: 3 years plus 3 years of probation.<sup>[3]</sup></td></tr>
+<tr><td>2021</td><td>All Twitter employees move to physical security keys.<sup>[7]</sup></td></tr>
+<tr><td>Jun 23, 2023</td><td>Joseph James O'Connor sentenced to 5 years.<sup>[6]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> phishing-resistant multi-factor login, such as hardware security keys, combined with admin tools limited to the few people who truly need them.</p><ol>
+<li><strong>Use security keys for admin accounts.</strong> Start with email, banking, domain, payroll and cloud admin logins. A key works only on the real site, so a fake page and a persuasive caller get nothing.</li>
+<li><strong>Cut the list of admins.</strong> Write down everyone who can reset passwords, change account emails or turn off security settings. If the list is longer than the jobs that need it, shorten it.</li>
+<li><strong>Set a rule: IT never asks for your password or a login approval by phone.</strong> Tell staff in writing, and repeat it. A call that asks for either is the attack.</li>
+<li><strong>Verify support calls on a known number.</strong> If someone claims to be IT or a vendor, hang up and call back using a number you already have, not one the caller gives you.</li>
+<li><strong>Alert on sensitive changes.</strong> Turn on notifications for email changes, security settings being switched off and new admin sign-ins, and make sure a real person reads them.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>The Twitter attack is now a standard teaching case because it shows how little technical skill a major breach can need. A few young people with phones beat a company with a large security budget by exploiting a remote workforce, a login prompt anyone could approve and an admin tool too many people could use.</p>
+<p>The same approach has since been used against casinos, telecoms and tech firms. For a small business, the lesson is cheap to apply: logins that cannot be phished, a short admin list, and a habit of calling back before believing a voice on the phone.</p>
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.dfs.ny.gov/reports-and-publications/other-reports/Twitter_Report" target="_blank" rel="noopener">New York State Department of Financial Services: Twitter Investigation Report</a></li><li><a href="https://blog.x.com/en_us/topics/company/2020/an-update-on-our-security-incident" target="_blank" rel="noopener">Twitter (X) Blog: An update on our security incident</a></li><li><a href="https://www.bleepingcomputer.com/news/security/teen-hacker-agrees-to-3-years-in-prison-for-twitter-bitcoin-scam/" target="_blank" rel="noopener">BleepingComputer: Teen hacker agrees to 3 years in prison for Twitter bitcoin scam</a></li><li><a href="https://www.justice.gov/usao-ndca/pr/three-individuals-charged-alleged-roles-twitter-hack" target="_blank" rel="noopener">US Department of Justice (N.D. Cal.): Three individuals charged for alleged roles in Twitter hack</a></li><li><a href="https://krebsonsecurity.com/2020/07/three-charged-in-july-15-twitter-compromise/" target="_blank" rel="noopener">Krebs on Security: Three charged in July 15 Twitter compromise</a></li><li><a href="https://www.justice.gov/usao-sdny/pr/uk-citizen-sentenced-five-years-prison-cybercrime-offenses" target="_blank" rel="noopener">US Department of Justice (S.D.N.Y.): U.K. citizen sentenced to five years in prison for cybercrime offenses</a></li><li><a href="https://www.techtarget.com/cybersecurity/news/252508792/Twitter-details-internal-Yubico-security-key-rollout" target="_blank" rel="noopener">TechTarget: Twitter details internal Yubico security key rollout</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

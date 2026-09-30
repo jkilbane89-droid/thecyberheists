@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Stop Fake Invoices and Business Email Compromise | Cyber Heists</title>
+<meta name="description" content="Business email compromise cost Americans $2.77 billion in 2024. The payment rules that stop fake invoices, changed bank details and deepfake calls from a boss.">
+<link rel="canonical" href="https://thecyberheists.com/guide-fake-invoice-payment-fraud.html">
+<meta property="og:title" content="How to stop fake invoices, changed bank details and fake-boss payment requests">
+<meta property="og:description" content="Business email compromise cost Americans $2.77 billion in 2024. The payment rules that stop fake invoices, changed bank details and deepfake calls from a boss.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/guide-fake-invoice-payment-fraud.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to stop fake invoices, changed bank details and fake-boss payment requests", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/guide-fake-invoice-payment-fraud.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Payment fraud</div>
+  <h1>How to stop fake invoices, changed bank details and fake-boss payment requests</h1>
+  <div class="meta">Published 2026-09-29 · 6 min read</div>
+
+<p class="lead">In 2024, Americans reported losing about $2.77 billion to business email compromise, the scam where a criminal poses as a supplier, a client or the boss and asks for money to go somewhere new.<sup>[1]</sup> This guide explains the three versions that hit small offices most, how deepfake voices and video have joined them, and the simple payment rules that stop all of them regardless of how convincing the request looks.</p>
+<h2>What business email compromise looks like</h2>
+<p>Business email compromise, or BEC, is not really a hacking crime. It is a paperwork crime that uses email. The FBI describes three common methods: sending from an address that looks almost like a real one, sending targeted fake messages that mimic someone you trust, and breaking into a real mailbox so the criminal can read genuine conversations about payments and slip in at the right moment.<sup>[2]</sup> In 2024 the FBI's Internet Crime Complaint Center (IC3) logged 21,442 BEC complaints.<sup>[1]</sup></p>
+<p>For a small office, it usually arrives in one of three costumes:</p>
+<ul>
+<li><strong>The fake invoice.</strong> A bill that looks like it comes from a vendor you really use, with new payment instructions.</li>
+<li><strong>The changed bank details.</strong> A friendly note from a supplier, client, title company or employee saying their bank account has changed. It shows up in payroll as a request to redirect a paycheck, and in real estate as new wiring instructions days before a closing.</li>
+<li><strong>The fake boss.</strong> A message from the owner, a partner or the CFO asking for an urgent, confidential payment, or for gift cards, often while they are "in a meeting" or traveling.</li>
+</ul>
+<h2>A case that proves size is no protection</h2>
+<p>Between 2013 and 2015, a Lithuanian man named Evaldas Rimasauskas and people working with him registered a company in Latvia with the same name as Quanta Computer, a real hardware maker in Taiwan that supplied Google and Facebook. They opened bank accounts under that name and sent emails and forged invoices to the staff who routinely paid the real supplier.<sup>[3]</sup> Over roughly 2 years, the two companies wired more than $120 million to the fake.<sup>[3]</sup><sup>[4]</sup> Rimasauskas pleaded guilty to wire fraud and was sentenced in December 2019 to 5 years in federal prison.<sup>[4]</sup></p>
+<p>Nothing about the paperwork gave it away. What was different was where the money went: bank accounts in Latvia and Cyprus instead of the supplier's usual bank. One phone call to a contact already on file would have ended it. The full story is in our case file on <a href="case-fake-invoices-2013.html">the $120 million fake invoices</a>.</p>
+<h2>Deepfake voices and video calls</h2>
+<p>The fake boss no longer has to stay on email. In March 2019 the chief executive of a UK energy company sent about &euro;220,000 to a supplier in Hungary after a phone call from someone who sounded exactly like the head of his German parent company. The voice was generated by software.<sup>[5]</sup> Read <a href="case-voice-deepfake-2019.html">how the voice deepfake worked</a>.</p>
+<p>In January 2024 a finance worker at engineering firm Arup's Hong Kong office joined a video meeting with what looked and sounded like the company's CFO and several colleagues. Police said every one of them was fake. He made 15 transfers totaling HK$200 million, about US$25 million, before checking with head office.<sup>[6]</sup> See <a href="case-arup-2024.html">the Arup deepfake video call</a>.</p>
+<p>In December 2024 the FBI warned that criminals are using AI to clone voices, create fake identity documents and appear as authority figures in live video calls. Its advice is to hang up and call back using contact details you already trust, and for families to agree on a secret word or phrase.<sup>[7]</sup> The point for a business is this: you cannot reliably spot a good fake by looking or listening. You can make it irrelevant with a process that never depends on recognizing a face or a voice.</p>
+<h2>The one rule that stops all three</h2>
+<p>Every version of this scam ends the same way: money goes to an account the real person does not control. So the defense is to verify every new or changed payment instruction, and every unusual payment request, through a channel the requester does not control. The FBI lists exactly this, alongside careful checks of email addresses and caution with urgent requests.<sup>[2]</sup></p>
+<p>In practice that means a callback:</p>
+<ul>
+<li><strong>Use a number you already had.</strong> Take it from the original vendor file, a past contract or your own phone contacts. Never use the number, link or email in the message asking for the change.</li>
+<li><strong>Ask a question only the real person can answer.</strong> An invoice number from last quarter, the name of their usual contact, or a detail from a recent job.</li>
+<li><strong>Write down who you spoke to and when.</strong> Keep it with the vendor record.</li>
+</ul>
+<p>A deepfake can fill a video screen. It cannot answer the real CFO's desk phone when you are the one who dialed.</p>
+<h2>Payment rules for a small office</h2>
+<p>Good rules take away the pressure to decide on the spot. These fit on one page and work in a 5-person office as well as a 50-person one:</p>
+<ul>
+<li><strong>No bank detail changes by email alone.</strong> Any new or changed account for a vendor, client or employee is confirmed by a callback to a known number before the next payment.</li>
+<li><strong>Two people for large or unusual payments.</strong> Set a dollar threshold. Above it, a second person who was not part of the request approves the payment.</li>
+<li><strong>Urgency and secrecy are red flags, not reasons.</strong> Tell staff in writing that the owner will never be upset about a delay caused by checking.</li>
+<li><strong>Payroll changes happen in person or inside the payroll system.</strong> Never from an email asking to redirect a paycheck.</li>
+<li><strong>Real estate and legal offices send wiring instructions one way only.</strong> Tell clients at the start that you will never change instructions by email, and to call you on a number they already have before sending.</li>
+<li><strong>No gift cards, ever.</strong> No legitimate boss pays anyone in gift cards.</li>
+<li><strong>Protect the mailboxes.</strong> Turn on multi-factor login for all email, since a broken-into mailbox lets criminals watch real conversations. Our <a href="guide-small-business-mfa.html">MFA guide</a> explains which kind to use, and our case on <a href="case-unatrac-2018.html">the Unatrac fraud</a> shows how one stolen email password cost about $11 million.</li>
+</ul>
+<h2>If money has already gone</h2>
+<p>Speed matters more than anything else. The FBI's advice is to contact your bank immediately and ask it to contact the receiving bank, then file a report at ic3.gov.<sup>[2]</sup> The IC3's Recovery Asset Team works with banks to freeze fraudulent transfers. In 2024 it acted on 3,020 complaints and reported a 66% success rate, freezing about $469 million in domestic cases.<sup>[1]</sup> Those results depend on fast reporting, so put your bank's fraud line on the same page as your payment rules.</p>
+<h2>Your payment fraud checklist</h2>
+<ul>
+<li><strong>Written callback rule.</strong> Every new or changed bank account is confirmed by phone, using a number already on file.</li>
+<li><strong>Dual approval above a set amount.</strong> A second person signs off on large or unusual payments.</li>
+<li><strong>Vendor file with verified contacts.</strong> Names and phone numbers collected when the relationship started, not from later emails.</li>
+<li><strong>MFA on every mailbox.</strong> Especially the owner, finance and anyone who talks to clients about money.</li>
+<li><strong>Staff know it is safe to slow down.</strong> The owner has said so, in writing.</li>
+<li><strong>Clients are warned.</strong> Especially in real estate, legal and accounting, where clients send you money.</li>
+<li><strong>Bank fraud line and ic3.gov are on the page.</strong> So nobody has to search for them in a panic.</li>
+</ul>
+<h2>Common questions</h2>
+<h3>How can I tell a deepfake voice or video call is fake?</h3>
+<p>Sometimes you can. The FBI suggests looking for odd details such as distorted hands, strange facial features or shadows that do not fit.<sup>[7]</sup> But the fakes are improving, and in the Arup case the employee recognized the people on screen.<sup>[6]</sup> Do not rely on spotting it. Rely on the callback rule, which works whether the fake is good or bad.</p>
+<h3>The email came from the vendor's real address. Is it safe?</h3>
+<p>Not necessarily. One of the methods the FBI describes is criminals getting into a real mailbox and reading genuine conversations before sending a request.<sup>[2]</sup> A message from the right address, in the middle of a real thread, can still carry fake bank details. The rule stays the same: new payment instructions get a callback to a number you already had.</p>
+<h3>Will my bank or insurance cover a BEC loss?</h3>
+<p>Often not. When an authorized employee sends a wire, the bank has usually done what it was told. Some cyber insurance policies cover this kind of fraud, and some exclude it or cap it, so read the section on social engineering or funds transfer fraud and ask your agent directly. Prevention is far cheaper than recovery, and the first call to your bank should be made within minutes, not days.</p>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Put it in writing</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More guides</div><ul><li><a href="guide-employee-offboarding-checklist.html">Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-patching-small-business.html">How a small business keeps software and devices patched, and why default passwords must go</a></li><li><a href="guide-ransomware-backups.html">Backups that survive ransomware: offline copies, tested restores and a one-page plan</a></li><li><a href="guide-small-business-mfa.html">Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="guide-vendor-access-security.html">How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="controls.html#payments-fraud">Cases behind these controls</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">General guidance, not legal advice. Check requirements specific to your industry with a qualified adviser.</p>
+  
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf" target="_blank" rel="noopener">FBI Internet Crime Complaint Center: 2024 Internet Crime Report</a></li><li><a href="https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/business-email-compromise" target="_blank" rel="noopener">FBI: Business Email Compromise</a></li><li><a href="https://africacheck.org/fact-checks/meta-programme-fact-checks/man-stole-122-million-tech-giants-sending-random-bills-no" target="_blank" rel="noopener">Africa Check: Man stole $122 million from tech giants by sending random bills? No, it was a global fraud</a></li><li><a href="https://cyberscoop.com/facebook-google-scam-man-sentenced/" target="_blank" rel="noopener">CyberScoop: Man who scammed Facebook and Google out of $120 million sentenced</a></li><li><a href="https://www.sophos.com/en-gb/blog/scammers-deepfake-ceos-voice-to-talk-underling-into-243000-transfer" target="_blank" rel="noopener">Sophos: Scammers deepfake CEO&#x27;s voice to talk underling into $243,000 transfer</a></li><li><a href="https://edition.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk" target="_blank" rel="noopener">CNN: Finance worker pays out $25 million after video call with deepfake chief financial officer</a></li><li><a href="https://www.ic3.gov/psa/2024/PSA241203" target="_blank" rel="noopener">FBI Internet Crime Complaint Center: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA, December 3, 2024)</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>

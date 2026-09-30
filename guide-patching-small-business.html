@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Business Patching Guide: Updates and Default Passwords | Cyber Heists</title>
+<meta name="description" content="WannaCry&#x27;s fix was out 2 months before the attack. A simple patching routine for small offices: what to update first, old equipment, and default passwords.">
+<link rel="canonical" href="https://thecyberheists.com/guide-patching-small-business.html">
+<meta property="og:title" content="How a small business keeps software and devices patched, and why default passwords must go">
+<meta property="og:description" content="WannaCry&#x27;s fix was out 2 months before the attack. A simple patching routine for small offices: what to update first, old equipment, and default passwords.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/guide-patching-small-business.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How a small business keeps software and devices patched, and why default passwords must go", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/guide-patching-small-business.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Guide · Patching</div>
+  <h1>How a small business keeps software and devices patched, and why default passwords must go</h1>
+  <div class="meta">Published 2026-09-29 · 6 min read</div>
+
+<p class="lead">The fix for the flaw that let WannaCry ransomware tear through Britain's National Health Service in May 2017 had been available, free, for almost 2 months.<sup>[1]</sup><sup>[10]</sup> This guide explains how a small office keeps its computers, software and internet-facing devices patched without an IT department, which updates cannot wait, and why the password a device shipped with needs to be changed on day one.</p>
+<h2>What patching means, and why it matters</h2>
+<p>A patch is a software update that fixes a flaw. Some updates add features, but the ones that matter here close security holes that criminals already know about. Once a fix is published, attackers can study it to find the weakness and then look for everyone who has not installed it yet. The gap between "fix available" and "fix installed" is where many break-ins happen.</p>
+<p>The Federal Trade Commission's basic advice for small businesses is to update apps, web browsers and operating systems, and to set updates to happen automatically.<sup>[2]</sup> Its guide drawn from enforcement cases adds that companies need a reasonable process for updating and patching the third-party software they rely on.<sup>[3]</sup></p>
+<h2>Two cases where the fix already existed</h2>
+<p><strong>WannaCry, 2017.</strong> On March 14, 2017, Microsoft released a critical update for a flaw in Windows file sharing.<sup>[10]</sup> On May 12, WannaCry began spreading on its own from computer to computer through that flaw. In England, at least 81 NHS trusts and hundreds of GP practices and other organizations were disrupted, and more than 19,000 appointments were cancelled. The National Audit Office found that every infected NHS organization was running Windows systems that were unpatched or too old to be supported.<sup>[1]</sup> Read <a href="case-wannacry-2017.html">the WannaCry case file</a>.</p>
+<p><strong>Equifax, 2017.</strong> A serious flaw in a widely used web software component was disclosed with a fix on March 7, 2017. Equifax's consumer dispute website was never updated, and attackers got in on May 13 and stayed for about 76 days, reaching data on about 147 million people.<sup>[4]</sup> Equifax later agreed to a settlement with the FTC, the Consumer Financial Protection Bureau and the states worth at least $575 million.<sup>[5]</sup> See <a href="case-equifax-breach-expired-certificate.html">how the Equifax breach happened</a>.</p>
+<p>Neither needed a brilliant attacker. Both needed an update that was not installed.</p>
+<h2>What to patch first, and what cannot be patched</h2>
+<p>Not every update is equally urgent. Put these at the top of the list:</p>
+<ul>
+<li><strong>Anything facing the internet.</strong> Your firewall or router, VPN or remote access gateway, email server if you run one, website and any portal clients log in to. These can be reached by anyone, anywhere.</li>
+<li><strong>Flaws that are already being used by criminals.</strong> CISA keeps a free public list called the Known Exploited Vulnerabilities catalog. Federal agencies must fix newer entries within 2 weeks, and CISA encourages every organization to use the list to decide what to fix first.<sup>[6]</sup> Ask your IT provider to check it against your equipment.</li>
+<li><strong>Operating systems and browsers.</strong> Windows, macOS, phones, Chrome, Edge and Safari. Automatic updates handle most of this.</li>
+<li><strong>Business software.</strong> Practice management, tax, accounting and records software, plus the PDF reader and office apps everyone uses.</li>
+<li><strong>Devices people forget.</strong> Printers, security cameras, video recorders, smart TVs in the waiting room, door systems and Wi-Fi access points.</li>
+</ul>
+<p><strong>Old equipment is a special case.</strong> Some software and devices reach "end of life," meaning the maker no longer sends security fixes. Windows 7, for example, stopped receiving regular updates in January 2020, yet an independent review of Ireland's health service found more than 30,000 of its computers still running it when ransomware hit in 2021.<sup>[7]</sup> See <a href="case-irish-hse-2021.html">the Irish health service attack</a>.</p>
+<p>An unsupported device is a permanent open flaw. Make a list of anything that is out of support or will be within a year, and budget to replace it. If a piece of equipment truly cannot be replaced yet, such as a medical or imaging device tied to old software, ask your IT provider to keep it off the internet and on its own separate network.</p>
+<h2>Default passwords: the flaw that needs no patch</h2>
+<p>Many routers, cameras, printers and other devices come from the factory with a built-in administrator login, often the same on every unit and easy to look up. In 2016, the Mirai botnet took over hundreds of thousands of cameras, video recorders and routers largely by trying a short list of those factory logins, then used them to knock major websites offline.<sup>[8]</sup> Read <a href="case-mirai-2016.html">how default passwords built the Mirai botnet</a>.</p>
+<p>CISA has urged manufacturers to stop shipping products with default passwords at all.<sup>[9]</sup> Until they all do, the job falls to you:</p>
+<ul>
+<li><strong>Change the admin password before a device goes online.</strong> Use a long, unique password stored in a password manager.</li>
+<li><strong>Turn off remote management you do not use.</strong> Many routers and cameras can be managed from the internet; if nobody needs that, switch it off.</li>
+<li><strong>Keep devices on their own network.</strong> Cameras, smart TVs and guest Wi-Fi should not share a network with computers that hold client records. The Target breach showed how far a loosely divided network lets an intruder travel; see <a href="case-target-breach-hvac-vendor.html">the Target case</a>.</li>
+</ul>
+<h2>A simple monthly routine</h2>
+<p>Patching works best as a habit, not a project. For a small office, a routine like this is enough:</p>
+<ul>
+<li><strong>Keep an inventory.</strong> A simple list of every computer, phone, router, printer, camera and piece of business software, with who looks after it.</li>
+<li><strong>Turn on automatic updates everywhere it is offered.</strong> Computers, phones, browsers and most apps.</li>
+<li><strong>Set a monthly check.</strong> Microsoft releases its regular security updates on the second Tuesday of each month. Use the following week to confirm every computer actually installed them.</li>
+<li><strong>Fix internet-facing and actively exploited flaws within days.</strong> Do not wait for the monthly cycle.</li>
+<li><strong>Check that updates happened.</strong> An alert that was sent is not a patch that was installed. The NHS had been warned; what was missing was anyone confirming the work was done.<sup>[1]</sup></li>
+<li><strong>Restart.</strong> Many updates only take effect after a restart. A computer that has not been rebooted in months is often not as patched as it looks.</li>
+</ul>
+<h2>Who owns patching in a small office</h2>
+<p>The most common reason patches are missed is not laziness. It is that nobody is sure whose job it is. The office manager assumes the IT provider handles it, the IT provider covers the computers but not the cameras, and the phone vendor thinks the router belongs to the internet company. Everyone is responsible, so nobody is.</p>
+<p>Fix this with one line per item on your inventory: the name of the person or company that keeps it updated. If a line is blank, that device is almost certainly behind. Review the list whenever you add equipment or change providers, and ask each owner for a quick confirmation each month. This one small habit turns patching from a vague hope into something you can check.</p>
+<h2>Your patching checklist</h2>
+<ul>
+<li><strong>Inventory of every device and program.</strong> Updated when you buy something new, with a named owner for each.</li>
+<li><strong>Automatic updates on.</strong> Everywhere they are offered.</li>
+<li><strong>Internet-facing gear patched within days.</strong> Routers, firewalls, VPNs and portals first.</li>
+<li><strong>Known exploited flaws checked.</strong> Your IT provider compares your equipment with CISA's catalog.</li>
+<li><strong>Monthly confirmation.</strong> Someone checks that updates installed and machines restarted.</li>
+<li><strong>No default passwords.</strong> Every device's admin login changed before it goes online.</li>
+<li><strong>End-of-life plan.</strong> Unsupported equipment replaced, or isolated until it can be.</li>
+</ul>
+<h2>Common questions</h2>
+<h3>Can an update break something?</h3>
+<p>Occasionally. That is why larger organizations test updates first. A small office can get most of the benefit with a simple approach: let one computer update first, wait a day or two, then roll the update to the rest. For critical flaws in internet-facing equipment, the risk of waiting usually outweighs the risk of a bad update.</p>
+<h3>Does my IT provider handle this?</h3>
+<p>Possibly, but do not assume. Ask them in writing which devices they patch, how quickly for critical flaws, whether that includes your router, firewall, printers and cameras, and how they confirm it happened. Ask for a short monthly report. Our <a href="guide-vendor-access-security.html">vendor access guide</a> has more questions to ask.</p>
+<h3>Is antivirus enough if I am behind on updates?</h3>
+<p>No. Antivirus helps catch known malicious files, but it does not close the flaw a criminal uses to get in. WannaCry spread through a Windows flaw on its own, without anyone opening a file.<sup>[1]</sup> Patching and antivirus do different jobs, and you need both.</p>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Put it in writing</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More guides</div><ul><li><a href="guide-employee-offboarding-checklist.html">Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-fake-invoice-payment-fraud.html">How to stop fake invoices, changed bank details and fake-boss payment requests</a></li><li><a href="guide-help-desk-caller-verification.html">How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-ransomware-backups.html">Backups that survive ransomware: offline copies, tested restores and a one-page plan</a></li><li><a href="guide-small-business-mfa.html">Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="guide-vendor-access-security.html">How to manage vendor, IT provider and contractor access to your systems</a></li><li><a href="controls.html#patching-monitoring">Cases behind these controls</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">General guidance, not legal advice. Check requirements specific to your industry with a qualified adviser.</p>
+  
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.nao.org.uk/press-release/investigation-wannacry-cyber-attack-and-the-nhs/" target="_blank" rel="noopener">National Audit Office: Investigation: WannaCry cyber attack and the NHS (press release)</a></li><li><a href="https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/basics" target="_blank" rel="noopener">FTC: Cybersecurity Basics</a></li><li><a href="https://www.ftc.gov/business-guidance/resources/start-security-guide-business" target="_blank" rel="noopener">FTC: Start with Security: A Guide for Business</a></li><li><a href="https://oversight.house.gov/wp-content/uploads/2018/12/Equifax-Report.pdf" target="_blank" rel="noopener">House Committee on Oversight and Government Reform: The Equifax Data Breach (Majority Staff Report, December 2018)</a></li><li><a href="https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-pay-575-million-part-settlement-ftc-cfpb-states-related-2017-data-breach" target="_blank" rel="noopener">Federal Trade Commission: Equifax to Pay $575 Million as Part of Settlement with FTC, CFPB, and States Related to 2017 Data Breach</a></li><li><a href="https://www.cisa.gov/binding-operational-directive-22-01" target="_blank" rel="noopener">CISA: BOD 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a></li><li><a href="https://thestack.technology/pwc-hse-hack-post-incident-report/" target="_blank" rel="noopener">The Stack: PwC&#x27;s HSE hack post-incident report</a></li><li><a href="https://www.forbes.com/sites/briansolomon/2016/10/21/hacked-cameras-cyber-attack-hacking-ddos-dyn-twitter-netflix/" target="_blank" rel="noopener">Forbes: Hacked cameras behind the Dyn attack that hit Twitter and Netflix</a></li><li><a href="https://www.cisa.gov/resources-tools/resources/secure-design-alert-how-manufacturers-can-protect-customers-eliminating-default-passwords" target="_blank" rel="noopener">CISA: Secure by Design Alert: How Manufacturers Can Protect Customers by Eliminating Default Passwords</a></li><li><a href="https://www.cyber.gc.ca/en/alerts/microsoft-critical-security-bulletins-summary-march-2017" target="_blank" rel="noopener">Canadian Centre for Cyber Security: Microsoft critical security bulletins summary, March 2017</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vastaamo hack: how therapy notes were used for extortion | Cyber Heists</title>
+<meta name="description" content="An extortionist emailed some 30,000 Finnish therapy patients demanding money to keep their notes private. How Vastaamo was breached, the cost, and the fix.">
+<link rel="canonical" href="https://thecyberheists.com/case-vastaamo-2020.html">
+<meta property="og:title" content="What happened in the Vastaamo breach: therapy records held for ransom, one patient at a time">
+<meta property="og:description" content="An extortionist emailed some 30,000 Finnish therapy patients demanding money to keep their notes private. How Vastaamo was breached, the cost, and the fix.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-vastaamo-2020.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What happened in the Vastaamo breach: therapy records held for ransom, one patient at a time", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-vastaamo-2020.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · VASTAAMO 2020</div>
+  <h1>What happened in the Vastaamo breach: therapy records held for ransom, one patient at a time</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Access control on sensitive databases</div>
+
+<p class="lead">In October 2020 roughly 30,000 people in Finland opened an email demanding money to keep their own psychotherapy notes off the internet.<sup>[2]</sup> This case file covers how a private therapy provider's patient database was copied 2 years earlier without anyone noticing, how the extortionist was caught and sentenced, and the one control that would have kept the records out of reach.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Vastaamo was a private psychotherapy provider with clinics across Finland. In November 2018 someone got into its patient database and copied it, and there was a second intrusion in March 2019.<sup>[2]</sup><sup>[3]</sup> The records covered about 33,000 patients and included names, national identity numbers, contact details and therapists' notes from sessions.<sup>[1]</sup><sup>[3]</sup> The breach went unnoticed for about 18 months.<sup>[4]</sup></p>
+<p>In autumn 2020 the extortionist contacted the company and demanded 40 bitcoin, then worth about &euro;450,000, to keep the data private.<sup>[2]</sup><sup>[3]</sup> When the company would not pay, batches of patient records were posted on a hidden website and, in late October 2020, emails went out directly to patients.<sup>[1]</sup><sup>[4]</sup> Each demanded &euro;200 in bitcoin within 24 hours, rising to &euro;500 after that, or their notes would be published.<sup>[2]</sup></p>
+<p>Finnish police told victims not to pay, keep the evidence and file reports, and a crisis line was set up.<sup>[4]</sup> About 20 patients paid anyway.<sup>[1]</sup> The fallout was severe: the chief executive was removed on October 26, 2020, after it emerged he had known about the March 2019 intrusion and kept it from the board, authorities and patients, and the company was declared bankrupt in February 2021.<sup>[2]</sup><sup>[3]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>Vastaamo's patient system kept everything in one database that was reachable over the internet. Prosecutors said the intruder used a compromised login to connect to that database server and download the records.<sup>[5]</sup> Once inside, nothing else stood in the way. The sensitive data was stored without encryption and without being separated from identifying details, and the system's top-level administrator account had no password set at all.<sup>[2]</sup></p>
+<p>In plain terms, the most private information a person can share with a professional sat in a single store with the door propped open, and nobody was watching who came and went. That is why a copy made in 2018 could be used for blackmail in 2020.</p>
+<h2>How it was caught</h2>
+<p>Finnish police named a suspect, Aleksanteri Kivim&auml;ki, in October 2022. He was arrested in France in February 2023 and returned to Finland that same month.<sup>[1]</sup><sup>[2]</sup> Prosecutors said investigators were able to trace him partly because he had not hidden his real internet address at one point in the operation.<sup>[5]</sup></p>
+<p>On April 30, 2024, a Finnish district court convicted him of aggravated data breach, more than 21,000 counts of attempted extortion, 20 counts of aggravated extortion and more than 9,500 counts of aggravated dissemination of information violating privacy. He was sentenced to 6 years and 3 months.<sup>[1]</sup><sup>[5]</sup> By victim count it is the largest criminal case in Finnish history.<sup>[6]</sup> He denied the charges throughout.<sup>[6]</sup></p>
+<h2>What it cost</h2>
+<p>He was released in September 2025 while his appeal continued, because of the time he had already spent in custody.<sup>[2]</sup><sup>[6]</sup> In February 2026 the Helsinki Court of Appeal raised the sentence to 6 years and 11 months, and on July 13, 2026, Finland's Supreme Court refused to hear a further appeal, making it final. Police then issued a wanted notice, and his lawyer suggested he may be abroad.<sup>[6]</sup><sup>[7]</sup></p>
+<p>The company paid too. Finland's data protection authority fined Vastaamo &euro;608,000 in December 2021, though by then it was already bankrupt.<sup>[2]</sup> Its former chief executive received a 3-month suspended sentence in 2023 over the handling of the data, but an appeals court acquitted him in December 2025.<sup>[2]</sup> The case also pushed Finland to let people change their national identity numbers, which many victims needed.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> access control on the sensitive database. The patient records needed strong, unique credentials on every account, especially the administrator one, plus encryption, limits on who and what could connect, and a log of who read the data.</p>
+<p>Any one of those would have raised the cost of this attack. Together they would likely have stopped it: a password on the administrator account, encryption of the notes and a rule that the database only answers to the clinic's own application would have left a stolen login with little to take. Watching access would have caught a bulk copy in 2018, not 2 years later when patients started getting ransom emails.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Find where your most sensitive data lives.</strong> Client files, health notes, payroll and ID numbers. List each system and who can open it.</li>
+<li><strong>Check every admin account has a strong, unique password.</strong> Include default and built-in accounts on software, servers and devices, then add two-step login wherever it is offered.</li>
+<li><strong>Keep databases off the open internet.</strong> Ask your IT provider to confirm that customer databases can only be reached from your own systems, not from anywhere online.</li>
+<li><strong>Turn on encryption for stored data.</strong> Most cloud and practice-management tools offer it. Confirm it is switched on, not just available.</li>
+<li><strong>Tell people when something goes wrong.</strong> Write down who you notify after a breach and when. Hiding an incident, as happened here in 2019, makes the eventual damage worse.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-08" data-v="H68hEvZboHk" data-title="When a hacker emailed therapy patients directly"><div class="soon"><b>When a hacker emailed therapy patients directly</b><span class="when">Drops 2026-11-08</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More identity and access cases</div><ul><li><a href="guide-employee-offboarding-checklist.html">Guide: Employee offboarding checklist: how to cut off a former employee&#x27;s access the same day</a></li><li><a href="guide-help-desk-caller-verification.html">Guide: How to verify callers before password resets, and protect your phone number from SIM swaps</a></li><li><a href="guide-small-business-mfa.html">Guide: Which two-step login actually stops phishing, and how a small office rolls it out</a></li><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="controls.html#identity-access">Every identity and access control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://spectrumlocalnews.com/nys/buffalo/ap-top-news/2024/04/30/finnish-hacker-gets-prison-for-accessing-thousands-of-psychotherapy-records-and-demanding-ransoms" target="_blank" rel="noopener">AP via Spectrum News: Finnish hacker gets prison for accessing thousands of psychotherapy records and demanding ransoms</a></li><li><a href="https://en.wikipedia.org/wiki/Vastaamo_data_breach" target="_blank" rel="noopener">Wikipedia: Vastaamo data breach</a></li><li><a href="https://www.bleepingcomputer.com/news/security/finnish-psychotherapy-clinic-discloses-data-breach-victims-extorted/amp/" target="_blank" rel="noopener">BleepingComputer: Finnish psychotherapy clinic discloses data breach, victims extorted</a></li><li><a href="https://www.theregister.com/2020/10/26/finland_psychotherapy_clinic_ransom_attack/" target="_blank" rel="noopener">The Register: Finnish psychotherapy clinic ransom attack</a></li><li><a href="https://www.bankinfosecurity.net/finnish-hacker-kivimaki-found-guilty-in-vastaamo-hack-a-24972" target="_blank" rel="noopener">BankInfoSecurity: Finnish hacker Kivimaki found guilty in Vastaamo hack</a></li><li><a href="https://yle.fi/a/74-20223088" target="_blank" rel="noopener">Yle: Kivimaki files Supreme Court appeal in Vastaamo case</a></li><li><a href="https://www.kaleva.fi/aleksanteri-kivimaen-vankeustuomio-vastaamo-jutuss/13581734" target="_blank" rel="noopener">Kaleva: Supreme Court denies leave to appeal, Kivimaki sentence stands</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

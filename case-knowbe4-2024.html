@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How KnowBe4 hired a North Korean fake IT worker | Cyber Heists</title>
+<meta name="description" content="In 2024 KnowBe4 hired a remote engineer who was a North Korean operative with a stolen identity. How he got hired, how he was caught, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-knowbe4-2024.html">
+<meta property="og:title" content="How a security training company hired a North Korean fake IT worker">
+<meta property="og:description" content="In 2024 KnowBe4 hired a remote engineer who was a North Korean operative with a stolen identity. How he got hired, how he was caught, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-knowbe4-2024.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How a security training company hired a North Korean fake IT worker", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-knowbe4-2024.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · KNOWBE4 2024</div>
+  <h1>How a security training company hired a North Korean fake IT worker</h1>
+  <div class="meta">Published 2026-09-29 · 4 min read · Missing control: Identity proofing during remote hiring</div>
+
+<p class="lead">In July 2024 a company that trains other businesses to spot scams found it had hired a North Korean operative as a senior engineer, after 4 video interviews and a clean background check.<sup>[1]</sup><sup>[3]</sup> This case file covers how the fake hire got through, how his new laptop gave him away within minutes, and the one control that would have kept him out.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>KnowBe4, which sells security awareness training, was hiring a principal software engineer for its internal IT team working on AI. The candidate interviewed over video on 4 separate occasions, and the company checked that the person on screen matched the photo on the application. Background checks and references came back clear.<sup>[1]</sup><sup>[3]</sup></p>
+<p>The company shipped the new hire a Mac laptop. As soon as it arrived, the new employee began loading malicious software onto it. At 9:55 p.m. Eastern on July 15, 2024, the company's security software flagged unusual activity, and its security operations center, the team that watches for alerts around the clock, called the new hire. He said he was fixing a slow router, then stopped responding.<sup>[1]</sup><sup>[2]</sup></p>
+<p>By about 10:20 p.m. the laptop was cut off from the network, roughly 25 minutes after the first alert.<sup>[2]</sup><sup>[4]</sup> KnowBe4 shared its findings with the FBI and the security firm Mandiant, and concluded the worker was operating from North Korea.<sup>[4]</sup> On July 24 the company published what had happened as a warning to others.<sup>[4]</sup></p>
+</div>
+<h2>How they got in</h2>
+<p>The identity was real, which is why the background check passed. It belonged to a U.S. person and had been stolen. The photo was a stock image altered with AI so that it resembled the man who showed up on the video calls.<sup>[1]</sup><sup>[4]</sup></p>
+<p>KnowBe4 described how this kind of scheme generally works. The fake worker asks for the company laptop to be sent to a U.S. address that is really a so-called laptop farm, where a helper keeps company machines powered on. The worker then connects to that laptop remotely from North Korea or China, works overnight so it looks like U.S. business hours, and does real work for a real paycheck. Much of that pay is sent back to fund the North Korean state.<sup>[1]</sup><sup>[2]</sup> The Justice Department has warned that such earnings help pay for the country's weapons programs.<sup>[3]</sup></p>
+<p>In this case the operative did not wait for payday. He used a small add-on computer to bring malicious files onto the laptop, tried to cover his tracks in its activity history and tried to run software the company had not approved.<sup>[1]</sup><sup>[2]</sup></p>
+<h2>How it was caught</h2>
+<p>The company's endpoint security tools, software that watches what happens on each laptop, raised the alarm the same night the activity began.<sup>[1]</sup> The security team did not just note the alert. It called the employee, and when the explanation did not hold up, it isolated the machine.<sup>[2]</sup></p>
+<h2>What it cost</h2>
+<p>Very little, as it turned out. KnowBe4's chief executive said no access was gained and no data was lost, compromised or stolen.<sup>[2]</sup><sup>[4]</sup> The new hire had not been given access to customer data, private networks or confidential information.<sup>[3]</sup></p>
+<p>The company did pay a reputational price, and it changed its process. It said it now looks harder for name mismatches in background checks, checks references beyond an email reply, looks for unexplained gaps in resumes, and treats a laptop shipping address that differs from the employee's home as a red flag.<sup>[1]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> identity proofing during remote hiring. That means confirming that the person you are hiring is the real owner of the identity on the paperwork, not just that the identity exists and has a clean record.</p>
+<p>A background check answers the question of whether a name has a problem. It does not answer whether the person on the video call owns that name. Checking a government ID against a live face, sending the laptop only to a verified home address or to a pickup point that requires photo ID, and calling references on numbers you found yourself would each have made this persona much harder to use.<sup>[1]</sup><sup>[3]</sup> The company's monitoring saved it this time. Proper identity proofing would have meant the laptop never shipped.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Verify ID against a live face.</strong> For remote hires, check a government ID on a live video call, or use an identity verification service, before the offer is final.</li>
+<li><strong>Control where equipment goes.</strong> Ship laptops only to the address on the verified ID, or to a shipping store where the hire must show photo ID to collect it. Treat a request to send it elsewhere as a red flag.</li>
+<li><strong>Call references yourself.</strong> Find the former employer's main number on your own and ask for the reference by name, rather than using contact details the candidate gave you.</li>
+<li><strong>Start new hires with limited access.</strong> Give new staff only what they need for their first weeks and widen access as trust is earned.</li>
+<li><strong>Watch new devices closely.</strong> Make sure every company laptop runs security software that alerts someone, and that someone actually responds after hours.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-14" data-v="LaS8eqSoi30" data-title="A Security Training Company Hired a Fake IT Worker"><div class="soon"><b>A Security Training Company Hired a Fake IT Worker</b><span class="when">Drops 2026-11-14</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-ubiquiti-2020.html">The Ubiquiti hack was an inside job: how a senior developer extorted his employer</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-twitter-2015.html">How a Twitter employee sold user data to Saudi Arabia for a watch and cash</a></li><li><a href="case-tesla-2020.html">The Tesla insider bribe plot: the $1 million offer an employee reported</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://blog.knowbe4.com/how-a-north-korean-fake-it-worker-tried-to-infiltrate-us" target="_blank" rel="noopener">KnowBe4: How a North Korean fake IT worker tried to infiltrate us</a></li><li><a href="https://www.securityweek.com/knowbe4-hires-fake-north-korean-it-worker-catches-new-employee-planting-malware/" target="_blank" rel="noopener">SecurityWeek: KnowBe4 hires fake North Korean IT worker, catches new employee planting malware</a></li><li><a href="https://darkreading.com/vulnerabilities-threats/security-firm-hires-north-korean-hacker-knowbe4" target="_blank" rel="noopener">Dark Reading: Security firm accidentally hires North Korean hacker, did not KnowBe4</a></li><li><a href="https://cyberscoop.com/cyber-firm-knowbe4-hired-a-fake-it-worker-from-north-korea/" target="_blank" rel="noopener">CyberScoop: Cyber firm KnowBe4 hired a fake IT worker from North Korea</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>

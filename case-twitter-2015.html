@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a Twitter employee spied on users for Saudi Arabia | Cyber Heists</title>
+<meta name="description" content="A Twitter partnerships manager looked up private data on Saudi critics for a $42,000 watch and $200,000. How it worked, how it ended, and the missing control.">
+<link rel="canonical" href="https://thecyberheists.com/case-twitter-2015.html">
+<meta property="og:title" content="How a Twitter employee sold user data to Saudi Arabia for a watch and cash">
+<meta property="og:description" content="A Twitter partnerships manager looked up private data on Saudi critics for a $42,000 watch and $200,000. How it worked, how it ended, and the missing control.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/case-twitter-2015.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How a Twitter employee sold user data to Saudi Arabia for a watch and cash", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/case-twitter-2015.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberjim.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Case file · TWITTER 2015</div>
+  <h1>How a Twitter employee sold user data to Saudi Arabia for a watch and cash</h1>
+  <div class="meta">Published 2026-09-29 · 5 min read · Missing control: Role-based access to user data</div>
+
+<p class="lead">A Twitter manager whose job was working with journalists and celebrities in the Middle East looked up private details behind accounts critical of the Saudi royal family, after leaving a meeting in London with a $42,000 watch.<sup>[1]</sup><sup>[7]</sup> This case file covers how an insider with the wrong kind of access became a source for a foreign government, how the case unfolded in court, and the one control that would have made his job useless to them.</p>
+<h2>What happened</h2>
+<div class="case">
+<p>Ahmad Abouammo was Twitter's media partnerships manager for the Middle East and North Africa, a role overseeing the company's relationships with journalists and celebrities in the region.<sup>[2]</sup><sup>[7]</sup> Prosecutors said a Saudi official first contacted him in June 2014.<sup>[4]</sup> In December 2014 the two met in London, and Abouammo came away with a Hublot watch worth about $42,000.<sup>[1]</sup></p>
+<p>He then looked up private information behind accounts critical of the Saudi government, including at least one influential account that criticized the royal family.<sup>[1]</sup><sup>[4]</sup> Court testimony showed he opened that account's records 7 times between December 2014 and February 2015.<sup>[4]</sup> The kind of data at stake included email addresses, phone numbers, IP addresses and dates of birth, details that can help identify and locate an anonymous user.<sup>[3]</sup></p>
+<p>In February 2015 he flew to Lebanon, where a bank account was opened in his father's name and $100,000 arrived from the official. He then moved the money into the U.S. in smaller wires.<sup>[2]</sup> He left Twitter in 2015, and another $100,000 followed afterward.<sup>[1]</sup><sup>[4]</sup> Prosecutors said a second employee, a Twitter engineer, was also passing user data to Saudi officials. When company managers confronted that engineer, he left the U.S. the next day and resigned by email on the way.<sup>[3]</sup></p>
+</div>
+<h2>How it worked</h2>
+<p>No hacking was involved. Abouammo used an internal Twitter tool that let staff view the account details behind a username. He simply typed in the accounts the official cared about and passed on what he saw.<sup>[4]</sup> Prosecutors described it as using employee credentials to reach nonpublic information without authorization, in breach of company policy.<sup>[3]</sup></p>
+<p>The weak spot was that the tool let him see it at all. Twitter's head of safety testified at trial that someone on the partnerships team had essentially one reason to use it: checking whether an inactive username could be handed to a new owner.<sup>[4]</sup> Looking up the phone number or login location of a critic was never part of the job, yet nothing stopped a partnerships manager from doing it, and nothing flagged it in time to protect the people whose data was exposed.</p>
+<h2>How it was caught</h2>
+<p>The trail went cold for years. FBI agents interviewed Abouammo at his Seattle home in October 2018. He gave them a false explanation for the money and backed it up with a fake consulting invoice he sent to the agents.<sup>[5]</sup><sup>[6]</sup> He was arrested on November 5, 2019, and charges were also filed against the engineer and a Saudi intermediary.<sup>[1]</sup><sup>[3]</sup></p>
+<h2>What it cost</h2>
+<p>On August 9, 2022, a jury convicted Abouammo of acting as an agent of Saudi Arabia without notifying the U.S. government, conspiracy, wire and honest services fraud, international money laundering and falsifying records. He was acquitted on 5 other fraud counts.<sup>[1]</sup> On December 15, 2022, a judge sentenced him to 42 months in prison and ordered $242,000 forfeited.<sup>[1]</sup> Prosecutors had asked for about 7 years.<sup>[7]</sup></p>
+<p>The case kept moving on appeal. In December 2024 the Ninth Circuit upheld the fraud and foreign agent convictions but sent the case back for resentencing over how loss had been calculated.<sup>[8]</sup> On June 11, 2026, the Supreme Court unanimously threw out only the falsified-records conviction, ruling it should have been tried in Seattle, where he made the fake invoice.<sup>[6]</sup> The other convictions were not affected by that ruling.<sup>[6]</sup></p>
+<h2>The missing control</h2>
+<p><strong>The missing control:</strong> role-based access to user data. A partnerships manager could pull private account details that his role almost never needed.</p>
+<p>If access had been tied to the job, the tool would have shown him a username's status and nothing more. Asking for a phone number or IP address would have required a documented reason and approval from someone in a trust and safety role. Even a simple alert on staff looking up the same sensitive account 7 times in 2 months would have raised the question months or years earlier.<sup>[4]</sup> The watch and the wire transfers bought an insider. Role-based access would have left that insider with little worth selling.</p>
+<h2>What to do in your business</h2>
+<ul>
+<li><strong>Map access to jobs, not people.</strong> For each role, write down which customer records it truly needs. Sales may need contact details; it rarely needs payment or ID data.</li>
+<li><strong>Turn off the extras in your tools.</strong> Most CRMs, booking systems and payroll apps let you limit fields and screens by user role. Use them instead of giving everyone full admin.</li>
+<li><strong>Log and review lookups of sensitive records.</strong> Keep a record of who viewed which customer file, and check it monthly for staff pulling records outside their normal work.</li>
+<li><strong>Add a reason prompt for sensitive data.</strong> Where possible, require staff to enter a ticket or reason before opening full customer details. It deters casual snooping and leaves a trail.</li>
+<li><strong>Set a clear gifts and outside-payment rule.</strong> Require staff to report gifts over a small amount and any outside consulting work. Unexplained luxury gifts are a warning sign worth asking about.</li>
+</ul>
+
+  
+  <div class="watch">
+    <div class="mono">Watch the case</div>
+    <div class="vids"><div class="vid" data-d="2026-11-02" data-v="kItp1lUByTk" data-title="The Twitter Employee Who Sold User Data for a Watch"><div class="soon"><b>The Twitter Employee Who Sold User Data for a Watch</b><span class="when">Drops 2026-11-02</span></div></div></div>
+  </div>
+
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberjim.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">More insider risk cases</div><ul><li><a href="case-hot-lotto-lottery-rigging.html">How the Hot Lotto was rigged: the security director who wrote the numbers</a></li><li><a href="case-ubiquiti-2020.html">The Ubiquiti hack was an inside job: how a senior developer extorted his employer</a></li><li><a href="case-coinbase-2025.html">How the Coinbase data breach happened: bribed support agents and a $20 million demand</a></li><li><a href="case-barings-1995.html">How one trader brought down Barings Bank: account 88888</a></li><li><a href="case-tesla-2020.html">The Tesla insider bribe plot: the $1 million offer an employee reported</a></li><li><a href="case-knowbe4-2024.html">How a security training company hired a North Korean fake IT worker</a></li><li><a href="controls.html#insider-risk">Every insider risk control</a></li><li><a href="case-files.html">All case files</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.justice.gov/usao-ndca/pr/former-twitter-employee-sentenced-42-months-federal-prison-acting-foreign-agent" target="_blank" rel="noopener">U.S. Attorney&#x27;s Office, N.D. Cal.: Former Twitter employee sentenced to 42 months in federal prison for acting as a foreign agent</a></li><li><a href="https://www.justice.gov/opa/pr/former-twitter-employee-found-guilty-acting-agent-foreign-government-and-unlawfully-sharing" target="_blank" rel="noopener">U.S. Department of Justice: Former Twitter employee found guilty of acting as an agent of a foreign government and unlawfully sharing Twitter user information</a></li><li><a href="https://www.justice.gov/opa/pr/two-former-twitter-employees-and-saudi-national-charged-acting-illegal-agents-saudi-arabia" target="_blank" rel="noopener">U.S. Department of Justice: Two former Twitter employees and a Saudi national charged as acting as illegal agents of Saudi Arabia</a></li><li><a href="https://courthousenews.com/trial-of-ex-twitter-employee-accused-of-spying-for-saudi-arabia-opens/" target="_blank" rel="noopener">Courthouse News Service: Trial of ex-Twitter employee accused of spying for Saudi Arabia opens</a></li><li><a href="https://www.cbsnews.com/news/ahmad-abouammo-former-twitter-worker-convicted-of-spying-saudi-arabia" target="_blank" rel="noopener">CBS News: Former Twitter worker convicted of spying for Saudi Arabia</a></li><li><a href="https://www.al-monitor.com/originals/2026/06/us-supreme-court-overturns-ex-twitter-employees-obstruction-conviction-saudi-spy" target="_blank" rel="noopener">Al-Monitor (Reuters): US Supreme Court overturns ex-Twitter employee&#x27;s obstruction conviction in Saudi spy case</a></li><li><a href="https://globalnews.ca/news/9351725/twitter-employee-spying-saudi-arabia-prison-sentence" target="_blank" rel="noopener">Global News: Ex-Twitter employee sentenced for spying for Saudi Arabia</a></li><li><a href="https://news.bloomberglaw.com/litigation/ex-twitter-staffer-gets-sentence-thrown-out-in-saudi-spying-case" target="_blank" rel="noopener">Bloomberg Law: Ex-Twitter staffer gets sentence thrown out in Saudi spying case</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>
