@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colonial Pipeline hack 2021: full story, timeline and lesson | Cyber Heists</title>
+<meta name="description" content="How one leaked password on an unused VPN account shut Colonial Pipeline in 2021: the shutdown, gas lines, $4.4 million ransom, FBI clawback and the lesson.">
+<link rel="canonical" href="https://thecyberheists.com/episode-colonial-pipeline-2021.html">
+<meta property="og:title" content="The Colonial Pipeline hack, start to finish: one unused password, 5,500 miles shut and a bitcoin clawback">
+<meta property="og:description" content="How one leaked password on an unused VPN account shut Colonial Pipeline in 2021: the shutdown, gas lines, $4.4 million ransom, FBI clawback and the lesson.">
+<meta property="og:image" content="https://thecyberheists.com/og.jpg">
+<meta property="og:url" content="https://thecyberheists.com/episode-colonial-pipeline-2021.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Colonial Pipeline hack, start to finish: one unused password, 5,500 miles shut and a bitcoin clawback", "datePublished": "2026-10-01", "dateModified": "2026-10-01", "author": {"@type": "Organization", "name": "Cyber Heists"}, "publisher": {"@type": "Organization", "name": "Cyber Heists", "logo": {"@type": "ImageObject", "url": "https://thecyberheists.com/avatar.png"}}, "image": "https://thecyberheists.com/og.jpg", "mainEntityOfPage": "https://thecyberheists.com/episode-colonial-pipeline-2021.html"}</script>
+<style>
+@font-face{font-family:Bebas;src:url(bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap}
+:root{--bg:#0b0b0d;--panel:#141417;--line:#2a2a30;--text:#ededed;--dim:#a3a3ab;--amber:#f5a623;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 85% -10%,rgba(245,166,35,.08),transparent 60%),var(--bg);color:var(--text);font:400 18px/1.7 Oswald,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:Plex,ui-monospace,monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:Bebas,Oswald,sans-serif;font-weight:400;letter-spacing:.03em;line-height:1.05}
+nav{position:sticky;top:0;z-index:5;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:Bebas;font-size:26px;letter-spacing:.12em}
+.brand img{width:36px;height:36px;border-radius:50%}
+.navlinks{display:flex;gap:22px;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--dim)}.navlinks a:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:64px 20px 40px}
+article h1{font-size:clamp(42px,7vw,68px);margin:14px 0 18px}
+.meta{color:var(--dim);font-size:15px;margin-bottom:34px}
+article h2{font-size:clamp(30px,4.5vw,40px);margin:44px 0 12px}
+article p{margin-bottom:18px}
+article ul,article ol{margin:0 0 20px 22px}
+article li{margin-bottom:8px}
+.lead{font-size:21px;color:var(--text)}
+.case{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;background:var(--panel);padding:20px 22px;margin:26px 0}
+.case p:last-child{margin-bottom:0}
+.kit{margin:40px 0 10px;padding:22px 24px;border:1px solid var(--amber);border-radius:10px;background:var(--panel)}
+.kit h3{font-size:28px;margin:6px 0 8px}
+.kit p{color:var(--dim);font-size:16px;margin-bottom:14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;padding:12px 18px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);font-weight:500;font-size:16px}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#111}
+.sources{font-size:14px;color:var(--dim);border-top:1px solid var(--line);margin-top:44px;padding-top:20px}
+.sources ol{margin-left:20px}.sources a{color:var(--dim)}
+.note{font-size:14px;color:var(--dim);font-style:italic}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px;color:var(--dim)}footer a:hover{color:var(--text)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.watch{margin:36px 0 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:12px}
+.vid{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.vid.wide{aspect-ratio:16/9}
+.vids.one{grid-template-columns:1fr}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--dim);font-size:15px;gap:6px}
+.soon b{font-family:Bebas;font-weight:400;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1.1}
+.more{margin-top:40px}.more ul{list-style:none;margin:10px 0 0}.more li{border-top:1px solid var(--line);padding:10px 0;margin:0}.more a{text-decoration:none}
+.callout{margin:30px 0;padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.callout p{margin:0}
+.control{border:1px solid var(--amber);border-radius:10px;background:var(--panel);padding:20px 22px;margin:20px 0}
+.control ol{margin-bottom:0}
+table.tl{width:100%;border-collapse:collapse;font-size:16px;margin:10px 0 24px}
+table.tl th,table.tl td{text-align:left;vertical-align:top;padding:10px 8px;border-top:1px solid var(--line)}
+table.tl th{font-family:Plex,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:400}
+table.tl td:first-child{white-space:nowrap;color:var(--dim);width:1%}
+article h3{font-size:26px;margin:26px 0 8px}
+.hub{max-width:1000px}
+.list{list-style:none;margin:18px 0 0}.list li{border-top:1px solid var(--line);margin:0}
+.list a{display:block;padding:14px 0;text-decoration:none;color:var(--text);font-size:19px;line-height:1.35}.list a:hover{color:var(--amber)}
+.list .mono{font-size:12px}.list small{display:block;color:var(--dim);font-size:15px;margin-top:2px}
+.fam{margin-top:40px}.fam p.d{color:var(--dim);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips a{font-family:Plex,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--dim)}
+.chips a:hover{border-color:var(--amber);color:var(--text)}
+.ctl{border-top:1px solid var(--line);padding:14px 0}.ctl b{font-weight:500}.ctl div{font-size:15px;color:var(--dim);margin-top:4px}
+.ctl div a{margin-right:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.tile{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px;text-decoration:none;color:var(--text)}
+.tile:hover{border-color:var(--amber)}.tile .mono{font-size:11px}.tile b{display:block;font-weight:500;font-size:18px;line-height:1.3;margin:6px 0}.tile span{color:var(--dim);font-size:15px}
+@media(max-width:640px){.navlinks .hide-sm{display:none}}
+.brand{white-space:nowrap}
+@media(max-width:560px){.brand{font-size:21px}.navlinks{gap:14px;font-size:14px}article{padding-top:40px}table.tl td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="avatar.png" alt="">CYBER HEISTS</a>
+  <div class="navlinks"><a href="case-files.html">Cases</a><a href="guides.html">Guides</a><a href="watch.html">Watch</a><a class="hide-sm" href="https://cyberheists.gumroad.com/" target="_blank" rel="noopener">Shop</a></div>
+</div></nav>
+
+<article>
+  <div class="mono">Episode · COLONIAL PIPELINE 2021</div>
+  <h1>The Colonial Pipeline hack, start to finish: one unused password, 5,500 miles shut and a bitcoin clawback</h1>
+  <div class="meta">Published 2026-10-01 · 8 min read · Episode 04 of the Cyber Heists long-form series</div>
+
+  <div class="watch" style="margin:0 0 30px"><div class="vids one"><div class="vid wide" data-d="2026-10-14" data-t="11:00" data-v="DD2iuGRTbU4" data-title="Colonial Pipeline 2021: one leaked password shut 5,500 miles of fuel"><div class="soon"><b>Colonial Pipeline 2021: one leaked password shut 5,500 miles of fuel</b><span class="when">Premieres 2026-10-14</span></div></div></div></div>
+
+<p class="lead">On the morning of May 7, 2021, Colonial Pipeline stopped all 5,500 miles of the line that carries nearly half the fuel used on the East Coast, and the trouble traced back to a single password on a remote-access account nobody was supposed to be using.<sup>[1]</sup> This long read follows the whole Colonial heist in order: the login, the shutdown, the panic at the pumps, the ransom and the clawback, and the one control that would have made the stolen password worthless.</p>
+<h2>The old VPN password that let them in</h2>
+<div class="case">
+<p>Colonial Pipeline describes itself as the largest refined-products pipeline in the country by volume, moving more than 100 million gallons a day of gasoline, diesel, jet fuel and heating oil from the Houston area toward New York Harbor.<sup>[2]</sup> In 2021 its chief executive, Joseph Blount, told senators the system ran through 13 states and Washington, D.C., with 260 delivery points serving more than 50 million Americans, and that the company had about 950 employees.<sup>[1]</sup></p>
+<p>Like most companies, Colonial let people reach its network from outside the office through a virtual private network, or VPN, an encrypted tunnel that makes a remote computer behave as if it were plugged in at headquarters. One VPN profile was old. Blount later described it as a legacy account that was not intended to be in use, yet it still worked.<sup>[1]</sup><sup>[3]</sup> It was protected by a password and nothing else: no code from a phone, no second step of any kind.<sup>[3]</sup><sup>[4]</sup></p>
+<p>According to reporting on the investigation, someone first logged in with that account on April 29, 2021, more than a week before anyone noticed. The password later turned up in a batch of leaked credentials on the dark web, which suggested an employee may have used it somewhere else that had been breached. Investigators at the security firm Mandiant said it remained unclear how the attackers actually got it.<sup>[5]</sup> Before the ransomware went off, about 100 GB of company data was copied out, a tactic known as double extortion: scramble the files, and threaten to publish what was taken.<sup>[5]</sup></p>
+</div>
+<p>Blount told the Senate that the password was a complicated one, not something easy to guess.<sup>[4]</sup> That detail matters. Complexity protects against guessing, but not against a password that has already leaked. Once it was in the wrong hands, a strong password and a weak one opened the same door.</p>
+<h2>Why Colonial shut down 5,500 miles of pipeline</h2>
+<p>Around 5 a.m. on May 7, a Colonial employee found a ransom note on a system in the company's business IT network, the side that handles things like billing and scheduling.<sup>[1]</sup> The pumps and valves that move fuel sit on a separate operational network. Colonial could not be sure the infection had stayed on its side of that line, so it chose to stop everything. The shutdown began at about 5:55 a.m., and by 6:10 a.m. the whole 5,500-mile system was confirmed shut.<sup>[1]</sup><sup>[3]</sup></p>
+<p>The company contacted the FBI that morning and brought in Mandiant to investigate.<sup>[1]</sup> Then Blount faced the decision he would later call one of the toughest of his life: whether to pay.<sup>[6]</sup> He said he authorized the payment so that Colonial would have every tool available to get the pipeline running again.<sup>[3]</sup> On May 8, the company paid about 75 bitcoin, worth roughly $4.4 million at the time.<sup>[7]</sup><sup>[8]</sup><sup>[4]</sup></p>
+<p>The decryption tool the criminals sent back did not save the day. People familiar with the transaction told reporters it was so slow that Colonial kept using its own backups to restore systems.<sup>[9]</sup> Blount described the keys as imperfect, and said that a month later some financial systems were still not fully back.<sup>[4]</sup></p>
+<h2>Gas lines, panic buying and empty stations</h2>
+<p>With the line dark, the federal government started clearing other routes for fuel. On May 9, the Federal Motor Carrier Safety Administration issued a regional emergency declaration for 17 states and the District of Columbia, easing driving-hour rules for trucks hauling gasoline, diesel and jet fuel.<sup>[10]</sup> On May 10, the FBI confirmed that DarkSide ransomware was responsible for the compromise.<sup>[11]</sup> The same day, the group posted a statement saying its aim was money, not trouble for society, and that it would vet future targets more carefully.<sup>[12]</sup> Over the following days, federal agencies issued fuel-blend waivers and Jones Act waivers to move fuel by road and by sea.<sup>[13]</sup></p>
+<p>None of that calmed drivers. People filled cars and spare cans, and the rush itself emptied pumps. By the morning of May 12, about 71% of stations in the Charlotte, North Carolina, metro area had no gasoline, according to the price-tracking service GasBuddy.<sup>[14]</sup> Later that day, at least 40% of stations in Virginia, Georgia, North Carolina and South Carolina were dry, and the Consumer Product Safety Commission had to warn people to stop putting fuel in plastic bags.<sup>[15]</sup> Georgia's governor suspended the state gas tax.<sup>[15]</sup></p>
+<p>Colonial began restarting the line at about 5 p.m. on May 12, and by May 13 it said deliveries had resumed to all of its markets.<sup>[15]</sup><sup>[13]</sup> Fuel moves slowly through a pipeline that long, so the shortages lingered. On May 14, 87% of stations in Washington, D.C., were out of gas.<sup>[16]</sup> On May 18, the national average hit $3.04 a gallon, the highest since 2014.<sup>[17]</sup><sup>[16]</sup> One count put the number of stations that ran dry during the episode at more than 15,000.<sup>[18]</sup></p>
+<h2>How the FBI clawed back the bitcoin</h2>
+<p>DarkSide ran its ransomware as a business with partners. The developers supplied the malware, and affiliates broke into victims and kept most of each ransom, with the developers taking a cut that shrank as payments grew.<sup>[19]</sup> The blockchain analytics firm Elliptic counted more than $90 million in bitcoin paid to DarkSide over roughly 9 months, and spotted Colonial's 75-bitcoin payment among them. The group reportedly shut down on May 13, less than a week after the Colonial attack.<sup>[19]</sup></p>
+<p>Bitcoin is not as anonymous as it looks. Every transfer is written to a public ledger, and the FBI followed Colonial's payment through several moves until most of it landed in one address. The Justice Department said the FBI had the private key for that address, the rough equivalent of its password, without saying how it was obtained.<sup>[8]</sup> On June 7, 2021, the department announced it had seized 63.7 bitcoin under a warrant approved by a federal magistrate judge in the Northern District of California.<sup>[8]</sup></p>
+<p>That was about 85% of the coins Colonial paid. Because bitcoin's price had fallen since May, the recovered coins were worth about $2.3 million, roughly half the original payment.<sup>[8]</sup><sup>[4]</sup> Deputy Attorney General Lisa Monaco put the lesson simply: following the money is still one of the most basic and most powerful tools investigators have.<sup>[8]</sup></p>
+<h2>The Senate hearing and new pipeline rules</h2>
+<p>Washington did not wait for the hearings to change the rules. On May 27, 2021, the Department of Homeland Security announced a Transportation Security Administration security directive for critical pipelines, the first mandatory cybersecurity rules for the industry after years of voluntary guidance.<sup>[20]</sup> Operators had to report cyber incidents to the Cybersecurity and Infrastructure Security Agency within 12 hours, name a cybersecurity coordinator available around the clock, and review their own defenses against federal guidelines within 30 days.<sup>[20]</sup></p>
+<p>On June 8, Blount testified before the Senate Homeland Security and Governmental Affairs Committee.<sup>[1]</sup><sup>[6]</sup> He confirmed that the account had no multifactor authentication and that the company was still working out how the password was stolen.<sup>[3]</sup><sup>[1]</sup> He said Colonial had since shut down the legacy VPN profile and added more layers of protection, and that crews had driven more than 29,000 miles inspecting the line before restart.<sup>[1]</sup></p>
+<p>The hunt for the people behind the malware moved slowly. In November 2021, the State Department offered up to $10 million for information identifying or locating DarkSide's leaders, and up to $5 million for information on others who took part in its attacks.<sup>[21]</sup> Federal regulators also came back to Colonial itself. In May 2022, the Pipeline and Hazardous Materials Safety Administration proposed a penalty of nearly $1 million, saying poor planning for a manual shutdown and restart had made the national impact worse.<sup>[22]</sup></p>
+<h2>How one login became a fuel crisis</h2>
+<p>Run the chain backward. The stations ran dry because drivers panicked during a shutdown. The shutdown happened because Colonial could not be certain its pipeline controls were safe. The ransomware was there because someone had been inside the business network since late April. And the intruder got in because an account that should have been deleted still accepted a password, with nothing else required.<sup>[1]</sup><sup>[5]</sup></p>
+<p>Every link after the first was expensive to break: millions in ransom, days of downtime, emergency waivers in 17 states. The first link was cheap. A second sign-in step on that account, or simply switching off a profile nobody used, would have turned a leaked password into a dead end.</p>
+<h2>Timeline</h2>
+<table class="tl"><tr><th>Date</th><th>What happened</th></tr>
+<tr><td>Apr 29, 2021</td><td>Intruders first log in through the unused VPN account, according to reports on the investigation.<sup>[5]</sup></td></tr>
+<tr><td>May 7, 2021</td><td>Ransom note found around 5 a.m.; all 5,500 miles shut by 6:10 a.m.; FBI contacted.<sup>[1]</sup></td></tr>
+<tr><td>May 8, 2021</td><td>Colonial pays about 75 bitcoin, roughly $4.4 million.<sup>[7]</sup><sup>[8]</sup></td></tr>
+<tr><td>May 9, 2021</td><td>Emergency trucking declaration for 17 states and D.C.<sup>[10]</sup></td></tr>
+<tr><td>May 10, 2021</td><td>FBI confirms DarkSide ransomware was responsible.<sup>[11]</sup></td></tr>
+<tr><td>May 12, 2021</td><td>Pipeline restart begins about 5 p.m. as stations run dry.<sup>[15]</sup></td></tr>
+<tr><td>May 13, 2021</td><td>Deliveries resume to all markets; DarkSide reportedly shuts down.<sup>[13]</sup><sup>[19]</sup></td></tr>
+<tr><td>May 18, 2021</td><td>National average gasoline price reaches $3.04 a gallon.<sup>[17]</sup></td></tr>
+<tr><td>May 27, 2021</td><td>First mandatory cybersecurity directive for pipelines announced.<sup>[20]</sup></td></tr>
+<tr><td>Jun 7, 2021</td><td>Justice Department announces seizure of 63.7 bitcoin, about $2.3 million.<sup>[8]</sup></td></tr>
+<tr><td>Jun 8, 2021</td><td>CEO Joseph Blount testifies before a Senate committee.<sup>[1]</sup></td></tr>
+<tr><td>Nov 4, 2021</td><td>State Department offers up to $10 million for DarkSide's leaders.<sup>[21]</sup></td></tr>
+</table>
+<h2>The missing control</h2>
+<div class="control"><p><strong>The missing control:</strong> multifactor authentication on every remote-access account, plus a routine that finds and disables accounts nobody uses. Either one would have stopped this login; together they leave a leaked password with nowhere to go.<sup>[1]</sup><sup>[3]</sup></p>
+<ol>
+<li><strong>Turn on a second sign-in step for every way in from outside.</strong> That means VPN, remote desktop, email, cloud storage and vendor portals. A code from an app or a tap on a phone is enough to make a stolen password useless on its own.</li>
+<li><strong>List every account that can log in remotely.</strong> Export the user list from each remote-access system and match every name to a current person with a current reason to be there.</li>
+<li><strong>Disable accounts on the day they stop being needed.</strong> Add remote access to your offboarding checklist, and review the full list every quarter for old test, vendor and former-employee accounts.</li>
+<li><strong>Stop password reuse at work.</strong> Give staff a password manager and ask that work passwords never be used on personal sites, since leaked lists are where attackers shop.</li>
+<li><strong>Keep offline backups and a written plan.</strong> Store copies the network cannot reach, test a restore, and write down who decides on a shutdown and who calls the FBI, so paying is never the only option.</li>
+</ol></div>
+<h2>What it means now</h2>
+<p>Colonial was not taken down by an exotic weapon. It was taken down by an account that should not have existed and a password that should not have been enough. The ransom was partly recovered, and the pipeline came back within a week, but the shortages, the price spike and the new federal rules showed how far one forgotten login can travel.<sup>[8]</sup><sup>[20]</sup></p>
+<p>For a small business the stakes are smaller but the shape is identical. Somewhere in your systems there is probably an old account with a password and nothing else. Find it, close it, and put a second lock on everything that remains.</p>
+
+
+  <div class="callout"><div class="mono">The short version</div><p><a href="case-colonial-pipeline-vpn-password.html">How the Colonial Pipeline hack happened: one unused VPN account and no MFA</a>: the case file and the Shorts from this case.</p></div>
+  <div class="kit">
+    <div class="mono">Close the same gap</div>
+    <h3>Check your business for this control</h3>
+    <p>The free Heist Control Checklist walks through the controls behind every case on this site in about ten minutes. For ready-made policies, the Policy Pack has five editable templates, and the Insider Threat Kit covers risks from inside your own team.</p>
+    <div class="btns">
+      <a class="btn primary" href="/#checklist">Free checklist</a>
+      <a class="btn" href="https://cyberheists.gumroad.com/l/security-policy-pack" target="_blank" rel="noopener">Policy Pack ($19)</a>
+      <a class="btn" href="https://cyberheists.gumroad.com/l/insider-threat-kit" target="_blank" rel="noopener">Insider Threat Kit ($29)</a>
+    </div>
+  </div>
+
+  <div class="more"><div class="mono">Related case files</div><ul><li><a href="case-sec-x-account-sim-swap.html">How the SEC&#x27;s X account was hacked: a fake ID, a SIM swap and no MFA</a></li><li><a href="case-twitter-2020.html">How the 2020 Twitter hack happened: a fake help desk call and an admin tool</a></li><li><a href="case-mirai-2016.html">How the Mirai botnet knocked Twitter and Netflix offline with factory passwords</a></li><li><a href="case-ronin-2022.html">How the Ronin bridge was hacked: a fake job offer and $600 million</a></li><li><a href="case-uber-2022.html">How Uber got hacked in 2022: a stolen password and one tired tap</a></li><li><a href="case-files.html#episodes">All episodes</a></li></ul></div>
+
+  <p class="note" style="margin-top:30px">Facts are drawn from court records, government reports, company statements and reputable reporting, listed below. People are named only where they were convicted, pleaded guilty or spoke publicly in an official role.</p>
+  <div class="sources"><div class="mono" style="margin-bottom:10px">Sources</div><ol><li><a href="https://www.hsgac.senate.gov/imo/media/doc/Testimony-Blount-2021-06-08.pdf" target="_blank" rel="noopener">U.S. Senate Homeland Security and Governmental Affairs Committee: Testimony of Joseph A. Blount, Jr., President and CEO, Colonial Pipeline Company (June 8, 2021)</a></li><li><a href="https://www.colpipe.com/about-us/our-company" target="_blank" rel="noopener">Colonial Pipeline Company: Our Company</a></li><li><a href="https://www.cnbc.com/2021/06/08/colonial-pipeline-ceo-testifies-on-first-hours-of-ransomware-attack.html" target="_blank" rel="noopener">CNBC: Colonial Pipeline CEO testifies on first hours of ransomware attack</a></li><li><a href="https://www.cybersecuritydive.com/news/colonial-Joseph-Blount-ransomware-legacy-vpn/601523/" target="_blank" rel="noopener">Cybersecurity Dive: Colonial Pipeline CEO Joseph Blount on the legacy VPN account and the ransom (June 9, 2021)</a></li><li><a href="https://thehackernews.com/2021/06/hackers-breached-colonial-pipeline.html" target="_blank" rel="noopener">The Hacker News: Hackers Breached Colonial Pipeline Using Compromised VPN Password</a></li><li><a href="https://ohiocapitaljournal.com/2021/06/09/colonial-pipeline-ceo-one-of-the-toughest-decisions-i-have-had-to-make-to-pay-a-4-4m-ransom/" target="_blank" rel="noopener">Ohio Capital Journal: Colonial Pipeline CEO: &#x27;One of the toughest decisions I have had to make&#x27; to pay a $4.4M ransom</a></li><li><a href="https://lawstreetmedia.com/?p=11339" target="_blank" rel="noopener">Law Street Media: DOJ Recovers $2.3M in Bitcoin From Colonial Pipeline Ransom Paid to Darkside</a></li><li><a href="https://www.justice.gov/archives/opa/pr/department-justice-seizes-23-million-cryptocurrency-paid-ransomware-extortionists-darkside" target="_blank" rel="noopener">U.S. Department of Justice: Department of Justice Seizes $2.3 Million in Cryptocurrency Paid to the Ransomware Extortionists Darkside</a></li><li><a href="https://www.aljazeera.com/economy/2021/5/13/colonial-pipeline-paid-hackers-5m-to-get-fuel-flowing-sources" target="_blank" rel="noopener">Al Jazeera: Colonial Pipeline paid hackers $5M to get fuel flowing: Sources</a></li><li><a href="https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/2021-05/ESC-SSC-WSC%20-%20Regional%20Emergency%20Declaration%202021-002%20-%2005-09-2021.pdf" target="_blank" rel="noopener">Federal Motor Carrier Safety Administration: Regional Emergency Declaration No. 2021-002 (May 9, 2021)</a></li><li><a href="https://www.fbi.gov/news/press-releases/fbi-statement-on-compromise-of-colonial-pipeline-networks" target="_blank" rel="noopener">FBI: FBI Statement on Compromise of Colonial Pipeline Networks</a></li><li><a href="https://www.insurancejournal.com/news/national/2021/05/10/613331.htm" target="_blank" rel="noopener">Insurance Journal (Reuters): Colonial Pipeline Ransomware Attackers Say They Seek Cash, Not Chaos</a></li><li><a href="https://www.energy.gov/ceser/colonial-pipeline-cyber-incident" target="_blank" rel="noopener">U.S. Department of Energy: Colonial Pipeline Cyber Incident</a></li><li><a href="https://www.wbtv.com/2021/05/11/long-lines-charlotte-gas-supply-squeezed/" target="_blank" rel="noopener">WBTV: GasBuddy reports 71% of gas stations without fuel in Charlotte metro amid Colonial Pipeline shutdown</a></li><li><a href="https://www.npr.org/2021/05/12/996139592/gas-stations-run-dry-in-southeast-as-white-house-seeks-to-boost-supplies" target="_blank" rel="noopener">NPR: Colonial Restarts Operations After Cyberattack As Panic-Buying Mounts In Southeast</a></li><li><a href="https://www.arabnews.com/node/1858866" target="_blank" rel="noopener">Arab News (AFP): US capital running out of gas, even as Colonial Pipeline recovers</a></li><li><a href="https://www.upi.com/Top_News/US/2021/05/18/gas-prices-memorial-day-aaa/1351621336779/" target="_blank" rel="noopener">UPI: AAA gas prices report ahead of Memorial Day (May 18, 2021)</a></li><li><a href="https://pgjonline.com/news/2021/may/some-us-gas-stations-still-without-fuel-after-colonial-pipeline-reopens" target="_blank" rel="noopener">Pipeline &amp; Gas Journal: Some US Gas Stations Still Without Fuel After Colonial Pipeline Reopens</a></li><li><a href="https://www.elliptic.co/blog/darkside-ransomware-has-netted-over-90-million-in-bitcoin" target="_blank" rel="noopener">Elliptic: DarkSide Ransomware Has Netted Over $90 Million in Bitcoin</a></li><li><a href="https://www.dwt.com/blogs/privacy--security-law-blog/2021/06/tsa-pipeline-lng-cybersecurity-rules" target="_blank" rel="noopener">Davis Wright Tremaine: TSA pipeline and LNG cybersecurity rules (June 2021)</a></li><li><a href="https://www.globalsecurity.org/security/library/news/2021/11/sec-211104-state01.htm" target="_blank" rel="noopener">U.S. Department of State (via GlobalSecurity.org): DarkSide ransomware reward offers (November 4, 2021)</a></li><li><a href="https://www.bulktransporter.com/hazmat-safety/article/21242767/phmsa-proposes-nearly-1m-in-penalties-for-colonial-pipeline-violations" target="_blank" rel="noopener">Bulk Transporter: PHMSA proposes nearly $1M in penalties for Colonial Pipeline violations</a></li></ol></div>
+</article>
+
+<footer><div class="wrap">
+  <div>© 2026 Cyber Heists</div>
+  <div><a href="case-files.html">Case files</a><a href="guides.html">Guides</a><a href="controls.html">Controls</a><a href="watch.html">Watch</a><a href="https://www.youtube.com/channel/UC5vOa534zTOecZK9lgLDRYQ" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cyber.heists" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cyber.heists/" target="_blank" rel="noopener">Instagram</a></div>
+</div></footer>
+<script>
+const off=d=>(d>='2026-11-01'&&d<'2027-03-14')?'-05:00':'-04:00';
+const at=(d,t)=>new Date(d+'T'+(t||'12:00')+':00'+off(d)).getTime();
+document.querySelectorAll('.vid[data-d]').forEach(el=>{const d=el.dataset.d,t=el.dataset.t;
+ if(el.dataset.v&&Date.now()>=at(d,t)){el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+el.dataset.v+'" title="'+(el.dataset.title||'Cyber Heists')+'" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>';}
+ else{const s=el.querySelector('.when');if(s)s.textContent=(el.classList.contains('wide')?'Premieres ':'Drops ')+new Date(at(d,t)).toLocaleDateString('en-US',{month:'short',day:'numeric'});}});
+document.querySelectorAll('[data-live]').forEach(el=>{if(Date.now()<at(el.dataset.live,el.dataset.t))el.remove();});
+</script>
+</body>
+</html>
